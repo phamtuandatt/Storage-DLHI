@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Storage.DTOs
 {
-    internal class TypeConsumableDto
+    internal class GroupDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

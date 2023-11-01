@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Storage.DTOs
 {
-    internal class ConsumableDto
+    internal class Item
     {
         public Guid Id { get; set; }
         public string Code { get; set; }
@@ -17,6 +17,5 @@ namespace Storage.DTOs
         public string Unit { get; set; }
         public string Group { get; set; }
         public string Type { get; set; }
-
     }
 }

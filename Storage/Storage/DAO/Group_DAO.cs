@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Storage.DAO
 {
-    internal class GroupConsumable_DAO
+    internal class Group_DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static bool Add(GroupConsumableDto group)
+        public static bool Add(GroupDto group)
         {
-            string sql = string.Format("INSERT INTO GROUP_CONSUMABLE \r\nVALUES ('{0}', N'{1}')", group.Id, group.Name);
+            string sql = string.Format("INSERT INTO GROUPS \r\nVALUES ('{0}', N'{1}')", group.Id, group.Name);
 
             return data.Insert(sql) > 0;
         }

@@ -11,15 +11,15 @@ using Storage.DTOs;
 
 namespace Storage.DAO
 {
-    internal class Consumable_DAO
+    internal class MPR_DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
         public static DataTable GetConsumable()
         {
             DataTable dt = new DataTable();
-            string sql = $"SELECT *FROM CONSUMABLE";
-            dt = data.GetData(sql, "CONSUMABLE");
+            string sql = $"SELECT *FROM MPR";
+            dt = data.GetData(sql, "MPR");
 
             return dt;
         }

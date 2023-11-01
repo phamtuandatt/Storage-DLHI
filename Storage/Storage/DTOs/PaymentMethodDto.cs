@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Storage.DTOs
 {
-    internal class GroupConsumableDto
+    internal class PaymentMethodDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
