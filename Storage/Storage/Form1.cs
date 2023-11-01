@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Storage.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace Storage
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = Consumable_DAO.GetConsumable();
+            dataGridView1.DataSource = dataTable;
         }
     }
 }

@@ -46,14 +46,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\Consumable_DAO.cs" />
+    <Compile Include="DAO\GroupConsumable_DAO.cs" />
+    <Compile Include="DAO\SupplierDAO.cs" />
+    <Compile Include="DAO\TypeConsumable_DAO.cs" />
+    <Compile Include="DAO\Unit_DAO.cs" />
+    <Compile Include="DataProvider\SQLServerProvider.cs" />
+    <Compile Include="DTOs\Consumables\ConsumableDto.cs" />
+    <Compile Include="DTOs\Consumables\GroupConsumableDto.cs" />
+    <Compile Include="DTOs\Consumables\SupplierDto.cs" />
+    <Compile Include="DTOs\Consumables\TypeConsumableDto.cs" />
+    <Compile Include="DTOs\Consumables\UnitDto.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\GroupConsumable\Add_Group_Consumable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GroupConsumable\Add_Group_Consumable.Designer.cs">
+      <DependentUpon>Add_Group_Consumable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Supplier\Add_Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Supplier\Add_Supplier.Designer.cs">
+      <DependentUpon>Add_Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TypeConsumable\Add_TypeConsumable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TypeConsumable\Add_TypeConsumable.Designer.cs">
+      <DependentUpon>Add_TypeConsumable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Unit\Add_Unit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Unit\Add_Unit.Designer.cs">
+      <DependentUpon>Add_Unit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\GroupConsumable\Add_Group_Consumable.resx">
+      <DependentUpon>Add_Group_Consumable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Supplier\Add_Supplier.resx">
+      <DependentUpon>Add_Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TypeConsumable\Add_TypeConsumable.resx">
+      <DependentUpon>Add_TypeConsumable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Unit\Add_Unit.resx">
+      <DependentUpon>Add_Unit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GUI\Consumable\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
