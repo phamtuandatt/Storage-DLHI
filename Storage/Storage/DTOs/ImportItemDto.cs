@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Storage.DTOs
 {
-    internal class ImportItemDtp
+    internal class ImportItemDto
     {
         public Guid Id { get; set; } 
         public DateTime Created { get; set; }

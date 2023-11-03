@@ -14,10 +14,25 @@ namespace Storage.DAO
 
         public static bool Add(SupplierDto supplier)
         {
-            string sql = string.Format("INSERT INTO SUPPILER \r\nVALUES ('{0}', N'{1}', N'{2}', N'{3}', N'{4}', N'{5}', N'{6}')",
-                            supplier.ID, supplier.NameSupplier, supplier.NameCompany, supplier.Address, supplier.Phone, supplier.Email, supplier.Note);
+            string sql = $"INSERT INTO SUPPLIER VALUES ('{supplier.ID}', N'{supplier.NameSupplier}', N'{supplier.NameCompany}', N'{supplier.Address}', " +
+                            $"N'{supplier.Phone}', N'{supplier.Email}', N'{supplier.Note}')";
 
             return data.Insert(sql) > 0;
+        }
+
+        public static bool Update(SupplierDto supplier)
+        {
+            string sql = $"UPDATE SUPPLIER SET NAME_SUPPIER = N'{supplier.NameSupplier}', NAME_COMPANY_SUPPLIER = N'{supplier.NameCompany}', ADDRESS = N'{supplier.Address}', " +
+                            $"PHONE = N'{supplier.Phone}', EMAIL = N'{supplier.Email}', NOTE = N'{supplier.Note}' WHERE ID = '{supplier.ID}'";
+
+            return data.Update(sql) > 0;
+        }
+
+        public static bool Delete(Guid id)
+        {
+            string sql = $"DELETE FROM SUPPLIER WHERE ID = '{id}'";
+
+            return data.Delete(sql) > 0;
         }
     }
 }

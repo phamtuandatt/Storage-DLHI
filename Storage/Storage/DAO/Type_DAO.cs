@@ -14,9 +14,23 @@ namespace Storage.DAO
 
         public static bool Add(TypeDto type)
         {
-            string sql = string.Format("INSERT INTO TYPES \r\nVALUES ('{0}', N'{1}')", type.Id, type.Name);
+            string sql = $"INSERT INTO TYPES VALUES('{type.Id}', N'{type.Name}')";
 
             return data.Insert(sql) > 0;
+        }
+
+        public static bool Update(TypeDto type)
+        {
+            string sql = $"UPDATE TYPES SET NAME = N'{type.Name}' WHERE ID = '{type.Id}'";
+
+            return data.Update(sql) > 0;
+        }
+
+        public static bool Delete(Guid id)
+        {
+            string sql = $"DELETE FROM TYPES WHERE ID = '{id}'";
+
+            return data.Delete(sql) > 0;
         }
     }
 }

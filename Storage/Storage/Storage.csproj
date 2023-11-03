@@ -52,6 +52,7 @@
     <Compile Include="DAO\LocationWareHouse_DAO.cs" />
     <Compile Include="DAO\MPR_DAO.cs" />
     <Compile Include="DAO\Group_DAO.cs" />
+    <Compile Include="DAO\MPR_Detail_DAO.cs" />
     <Compile Include="DAO\PaymentMethod_DAO.cs" />
     <Compile Include="DAO\PO_DAO.cs" />
     <Compile Include="DAO\SupplierDAO.cs" />
@@ -59,8 +60,8 @@
     <Compile Include="DAO\Unit_DAO.cs" />
     <Compile Include="DataProvider\SQLServerProvider.cs" />
     <Compile Include="DTOs\ExportItemDto.cs" />
-    <Compile Include="DTOs\ImportItemDtp.cs" />
-    <Compile Include="DTOs\Item.cs" />
+    <Compile Include="DTOs\ImportItemDto.cs" />
+    <Compile Include="DTOs\ItemDto.cs" />
     <Compile Include="DTOs\LocationWarehousseDto.cs" />
     <Compile Include="DTOs\MPRDto.cs" />
     <Compile Include="DTOs\GroupDto.cs" />
@@ -103,8 +104,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="GUI\ExportItems\" />
     <Folder Include="GUI\Groups\" />
-    <Folder Include="GUI\PMRs\" />
+    <Folder Include="GUI\ImportItems\" />
+    <Folder Include="GUI\Items\" />
+    <Folder Include="GUI\LocationWarehouses\" />
+    <Folder Include="GUI\MPRs\" />
+    <Folder Include="GUI\PaymentMethods\" />
+    <Folder Include="GUI\POs\" />
     <Folder Include="GUI\Suppliers\" />
     <Folder Include="GUI\Types\" />
     <Folder Include="GUI\Units\" />

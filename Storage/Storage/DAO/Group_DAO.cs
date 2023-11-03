@@ -14,9 +14,23 @@ namespace Storage.DAO
 
         public static bool Add(GroupDto group)
         {
-            string sql = string.Format("INSERT INTO GROUPS \r\nVALUES ('{0}', N'{1}')", group.Id, group.Name);
+            string sql = $"INSERT INTO GROUPS VALUES('{group.Id}', N'{group.Name}')";
 
             return data.Insert(sql) > 0;
+        }
+
+        public static bool Update(GroupDto group)
+        {
+            string sql = $"UPDATE GROUPS SET NAME = N'{group.Name}' WHERE ID = '{group.Id}'";
+
+            return data.Update(sql) > 0;
+        }
+
+        public static bool Delete(Guid groupId)
+        {
+            string sql = $"DELETE FROM GROUPS WHERE ID = '{groupId}'";
+
+            return data.Delete(sql) > 0;
         }
     }
 }

@@ -22,6 +22,6 @@ namespace Storage.DTOs
         public Guid Item_Id { get; set; }
         public string MPR_No { get; set; }
         public string Usage { get; set; }
-        public int Quantiry { get; set; }
+        public int Quantity { get; set; }
     }
 }
