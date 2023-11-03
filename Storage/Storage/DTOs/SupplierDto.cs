@@ -10,6 +10,7 @@ namespace Storage.DTOs
     internal class SupplierDto
     {
         public Guid ID { get; set; }
+        public string Code { get; set; }
         public string NameSupplier { get; set; }
         public string NameCompany { get; set; }
         public string Address { get; set; }

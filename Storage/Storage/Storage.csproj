@@ -70,16 +70,43 @@
     <Compile Include="DTOs\SupplierDto.cs" />
     <Compile Include="DTOs\TypeDto.cs" />
     <Compile Include="DTOs\UnitDto.cs" />
+    <Compile Include="GUI\Groups\Add_Group.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Groups\Add_Group.Designer.cs">
+      <DependentUpon>Add_Group.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Types\Add_Type.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Types\Add_Type.Designer.cs">
+      <DependentUpon>Add_Type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Units\Add_Unit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Units\Add_Unit.Designer.cs">
+      <DependentUpon>Add_Unit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Groups\Add_Group.resx">
+      <DependentUpon>Add_Group.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Types\Add_Type.resx">
+      <DependentUpon>Add_Type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Units\Add_Unit.resx">
+      <DependentUpon>Add_Unit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -105,7 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GUI\ExportItems\" />
-    <Folder Include="GUI\Groups\" />
     <Folder Include="GUI\ImportItems\" />
     <Folder Include="GUI\Items\" />
     <Folder Include="GUI\LocationWarehouses\" />
@@ -113,8 +139,6 @@
     <Folder Include="GUI\PaymentMethods\" />
     <Folder Include="GUI\POs\" />
     <Folder Include="GUI\Suppliers\" />
-    <Folder Include="GUI\Types\" />
-    <Folder Include="GUI\Units\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

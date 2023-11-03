@@ -1,4 +1,7 @@
 ﻿
+using Storage.GUI.Groups;
+using Storage.GUI.Types;
+using Storage.GUI.Units;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,17 +28,20 @@ namespace Storage.GUI
 
         private void btnAddUnit_Click(object sender, EventArgs e)
         {
-
+            Add_Unit add_Unit = new Add_Unit();
+            add_Unit.ShowDialog();
         }
 
         private void btnAddGroupConsumable_Click(object sender, EventArgs e)
         {
-
+            Add_Group add_Group = new Add_Group();
+            add_Group.ShowDialog();
         }
 
         private void btnAddTypeConsumable_Click(object sender, EventArgs e)
         {
-  
+            Add_Type type = new Add_Type();
+            type.ShowDialog();
         }
     }
 }
