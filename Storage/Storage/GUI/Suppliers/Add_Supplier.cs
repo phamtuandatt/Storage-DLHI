@@ -19,14 +19,14 @@ namespace Storage.GUI.Suppliers
             InitializeComponent();
         }
 
-        private void Add_Supplier_Load(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Add_Supplier_Load_1(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
         }
     }
 }

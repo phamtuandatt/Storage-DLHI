@@ -1,4 +1,5 @@
-﻿using Storage.DAO;
+﻿using ComponentFactory.Krypton.Toolkit;
+using Storage.DAO;
 using Storage.DTOs;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Storage.GUI.Types
 {
-    public partial class Add_Type : Form
+    public partial class Add_Type : KryptonForm
     {
         public Add_Type()
         {

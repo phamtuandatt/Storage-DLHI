@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Storage.GUI.Units
 {
-    public partial class Add_Unit : Form
+    public partial class Add_Unit : KryptonForm
     {
         public Add_Unit()
         {
