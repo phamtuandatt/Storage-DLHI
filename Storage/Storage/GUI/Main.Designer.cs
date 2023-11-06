@@ -39,6 +39,7 @@
             this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnItems = new System.Windows.Forms.ToolStripButton();
             this.mnuCommon = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSupplier = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -129,9 +130,11 @@
             // 
             // suppliersToolStripMenuItem
             // 
+            this.suppliersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSupplier});
             this.suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
-            this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.suppliersToolStripMenuItem.Text = "Suppliers";
+            this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.suppliersToolStripMenuItem.Text = "Customer";
             // 
             // inventoryToolStripMenuItem
             // 
@@ -182,6 +185,13 @@
             this.mnuCommon.Text = "Common";
             this.mnuCommon.Click += new System.EventHandler(this.mnuCommon_Click);
             // 
+            // mnuSupplier
+            // 
+            this.mnuSupplier.Name = "mnuSupplier";
+            this.mnuSupplier.Size = new System.Drawing.Size(180, 22);
+            this.mnuSupplier.Text = "Suppliers";
+            this.mnuSupplier.Click += new System.EventHandler(this.mnuSupplier_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,5 +230,6 @@
         private System.Windows.Forms.ToolStripButton btnItems;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnMain;
         private System.Windows.Forms.ToolStripMenuItem mnuCommon;
+        private System.Windows.Forms.ToolStripMenuItem mnuSupplier;
     }
 }

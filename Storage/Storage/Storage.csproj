@@ -117,6 +117,24 @@
     <Compile Include="GUI\Suppliers\Add_Supplier.Designer.cs">
       <DependentUpon>Add_Supplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Suppliers\Add_SupplierType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Suppliers\Add_SupplierType.Designer.cs">
+      <DependentUpon>Add_SupplierType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Suppliers\Edit_Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Suppliers\Edit_Supplier.Designer.cs">
+      <DependentUpon>Edit_Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Suppliers\ucSupplier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Suppliers\ucSupplier.Designer.cs">
+      <DependentUpon>ucSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Types\Add_Type.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +172,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Suppliers\Add_Supplier.resx">
       <DependentUpon>Add_Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Suppliers\Add_SupplierType.resx">
+      <DependentUpon>Add_SupplierType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Suppliers\Edit_Supplier.resx">
+      <DependentUpon>Edit_Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Suppliers\ucSupplier.resx">
+      <DependentUpon>ucSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Types\Add_Type.resx">
       <DependentUpon>Add_Type.cs</DependentUpon>

@@ -75,5 +75,13 @@ namespace Storage.GUI
             pnMain.Controls.Add(ucCommon);
             ucCommon.BringToFront();
         }
+
+        private void mnuSupplier_Click(object sender, EventArgs e)
+        {
+            ucSupplier ucSupplier = new ucSupplier();
+            ucSupplier.Dock= DockStyle.Fill;    
+            pnMain.Controls.Add(ucSupplier); 
+            ucSupplier.BringToFront();
+        }
     }
 }

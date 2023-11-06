@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Proxies;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,9 +21,85 @@ namespace Storage.DAO
             return data.GetData(sql, "cboSupplier");
         }
 
+        public static DataTable GetSuppierTypes()
+        {
+            string sql = "SELECT *FROM SUPPLIER_TYPE";
+
+            return data.GetData(sql, "cboSupplierType");
+        }
+
+        public static SupplierDto GetSupplier(Guid guid)
+        {
+            string sql = $"SELECT *FROM SUPPLIER WHERE ID = '{guid}'";
+            DataTable dt = data.GetData(sql, "GetSingleSupplier");
+            DataRow row = dt.Rows[0];
+            SupplierDto dto = new SupplierDto()
+            {
+                ID = Guid.Parse(row["ID"].ToString()),
+                Code = row["CODE"].ToString(),
+                NameSupplier = row["NAME_SUPPIER"].ToString(),
+                NameCompany = row["NAME_COMPANY_SUPPLIER"].ToString(),
+                Address = row["ADDRESS"].ToString(),
+                Phone = row["PHONE"].ToString(),
+                Email = row["EMAIL"].ToString(),
+                Note = row["NOTE"].ToString(),
+            };
+
+
+            return dto ?? new SupplierDto();
+        }
+
+        public static string GetCurrentCodeSupplier(string code)
+        {
+            string sql = $"EXEC GET_CURRENT_CODE_SUPPLIER '{code}'";
+            DataTable dt = data.GetData(sql, "code");
+            DataRow row = dt.Rows[0];
+            string numberStr = row["NUMBER"].ToString();
+            if (string.IsNullOrEmpty(numberStr)) 
+            {
+                return "0000001";
+            }
+            try
+            {
+                var number = int.Parse(numberStr);
+                if (number >= 0 && number < 10)
+                {
+                    return "000000" + (number + 1);
+                } 
+                else if (number >= 10 && number < 100) 
+                {
+                    return "00000" + (number + 1);
+                }
+                else if (number >= 100 && number < 1000)
+                {
+                    return "0000" + (number + 1);
+                }
+                else if (number >= 1000 && number < 10000)
+                {
+                    return "000" + (number + 1);
+                }
+                else if (number >= 10000 && number < 100000)
+                {
+                    return "00" + (number + 1);
+                }
+                else if (number >= 100000 && number < 1000000)
+                {
+                    return "0" + (number + 1);
+                }
+                else
+                {
+                    return numberStr + 1;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public static bool Add(SupplierDto supplier)
         {
-            string sql = $"INSERT INTO SUPPLIER VALUES ('{supplier.ID}', N'{supplier.NameSupplier}', N'{supplier.NameCompany}', N'{supplier.Address}', " +
+            string sql = $"INSERT INTO SUPPLIER VALUES ('{supplier.ID}', '{supplier.Code}', N'{supplier.NameSupplier}', N'{supplier.NameCompany}', N'{supplier.Address}', " +
                             $"N'{supplier.Phone}', N'{supplier.Email}', N'{supplier.Note}')";
 
             return data.Insert(sql) > 0;
@@ -41,6 +118,13 @@ namespace Storage.DAO
             string sql = $"DELETE FROM SUPPLIER WHERE ID = '{id}'";
 
             return data.Delete(sql) > 0;
+        }
+
+        public static bool AddSupplierType(SupplierTypeDto dto)
+        {
+            string sql = $"INSERT INTO SUPPLIER_TYPE VALUES ('{dto.ID}', N'{dto.Name}')";
+
+            return data.Insert(sql) > 0;
         }
     }
 }

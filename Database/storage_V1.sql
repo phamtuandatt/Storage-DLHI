@@ -179,6 +179,8 @@ CREATE TABLE EXPORT_ITEM (
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
+SELECT *FROM UNIT
+
 SELECT *FROM ITEM
 INSERT INTO ITEM VALUES ('', '', N'', N'', N'', N'', '', '', '')
 
@@ -218,7 +220,8 @@ DELETE FROM PO WHERE ID = ''
 SELECT *FROM PO_DETAIL
 INSERT INTO PO_DETAIL VALUES ('', '', N'', N'', 1, 1)
 
-SELECT *FROM SUPPLIER
+SELECT *FROM SUPPLIER_TYPE
+INSERT INTO SUPPLIER_TYPE VALUES ('', N'')
 INSERT INTO SUPPLIER VALUES ('', N'', N'', N'', N'', N'', N'')
 UPDATE SUPPLIER SET NAME_SUPPIER = N'', NAME_COMPANY_SUPPLIER = N'', ADDRESS = N'', PHONE = N'', EMAIL = N'', NOTE = N'' WHERE ID = ''
 DELETE FROM SUPPLIER WHERE ID = ''
@@ -251,10 +254,14 @@ GO
 CREATE PROC GET_CURRENT_CODE_SUPPLIER @KEY_CODE CHAR(3)
 AS
 BEGIN
-	SELECT MAX(RIGHT(CODE, 4)) FROM SUPPLIER 
-	WHERE CODE LIKE '%' + @KEY_CODE
+	SELECT MAX(RIGHT(RTRIM(CODE), 7)) AS NUMBER FROM SUPPLIER 
+	WHERE CODE LIKE @KEY_CODE + '%'
 END
 GO
+EXEC GET_CURRENT_CODE_SUPPLIER 'CMA'
+SELECT *FROM SUPPLIER WHERE ID = 'e7ed4788-57fd-4dbc-9e82-c1ade40aabe1'
+
+
 
 
 

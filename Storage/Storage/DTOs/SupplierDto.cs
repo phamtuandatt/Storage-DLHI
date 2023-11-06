@@ -19,4 +19,10 @@ namespace Storage.DTOs
         public string Note { get; set; }
 
     }
+
+    internal class SupplierTypeDto
+    {
+        public Guid ID { get; set; }
+        public string Name { get; set; }
+    }
 }
