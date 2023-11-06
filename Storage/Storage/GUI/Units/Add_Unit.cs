@@ -30,7 +30,11 @@ namespace Storage.GUI.Units
 
             if (Unit_DAO.Add(unitDto))
             {
-
+                this.Close();
+            }
+            else
+            {
+                KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

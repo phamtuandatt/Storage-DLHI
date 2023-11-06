@@ -1,9 +1,11 @@
 ﻿
 using ComponentFactory.Krypton.Toolkit;
 using Storage.GUI.Groups;
+using Storage.GUI.Items;
 using Storage.GUI.Suppliers;
 using Storage.GUI.Types;
 using Storage.GUI.Units;
+using Storage.GUI.UserControll;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +52,28 @@ namespace Storage.GUI
         private void Main_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Add_Item add_Item = new Add_Item();
+            add_Item.ShowDialog();
+        }
+
+        private void btnItems_Click(object sender, EventArgs e)
+        {
+            ucItems ucItems = new ucItems();
+            ucItems.Dock= DockStyle.Fill; 
+            pnMain.Controls.Add(ucItems);
+            ucItems.BringToFront();
+        }
+
+        private void mnuCommon_Click(object sender, EventArgs e)
+        {
+            ucCommon ucCommon = new ucCommon();
+            ucCommon.Dock= DockStyle.Fill;
+            pnMain.Controls.Add(ucCommon);
+            ucCommon.BringToFront();
         }
     }
 }

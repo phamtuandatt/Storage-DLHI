@@ -143,10 +143,15 @@
             // 
             this.txtUnit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtUnit.Location = new System.Drawing.Point(3, 18);
+            this.txtUnit.Location = new System.Drawing.Point(3, 13);
             this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(236, 23);
-            this.txtUnit.TabIndex = 5;
+            this.txtUnit.Size = new System.Drawing.Size(233, 33);
+            this.txtUnit.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtUnit.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.txtUnit.StateCommon.Border.Rounding = 15;
+            this.txtUnit.TabIndex = 6;
             // 
             // panel2
             // 
@@ -179,6 +184,7 @@
             this.btnAdd.StateTracking.Border.Rounding = 15;
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Values.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // Add_Unit
             // 
@@ -207,8 +213,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private System.Windows.Forms.Panel panel1;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtUnit;
         private System.Windows.Forms.Panel panel2;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAdd;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtUnit;
     }
 }

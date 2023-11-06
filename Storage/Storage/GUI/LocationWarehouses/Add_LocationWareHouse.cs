@@ -11,24 +11,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Storage.GUI.Types
+namespace Storage.GUI.LocationWarehouses
 {
-    public partial class Add_Type : KryptonForm
+    public partial class Add_LocationWareHouse : KryptonForm
     {
-        public Add_Type()
+        public Add_LocationWareHouse()
         {
             InitializeComponent();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            TypeDto type = new TypeDto()
+            LocationWarehousseDto locationWarehousseDto = new LocationWarehousseDto()
             {
                 Id = Guid.NewGuid(),
-                Name = txtType.Text,
+                Name = txtLocation.Text
             };
 
-            if (Type_DAO.Add(type))
+            if (LocationWareHouse_DAO.Add(locationWarehousseDto))
             {
                 this.Close();
             }

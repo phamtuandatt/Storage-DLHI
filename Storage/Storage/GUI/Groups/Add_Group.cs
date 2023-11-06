@@ -25,12 +25,16 @@ namespace Storage.GUI.Groups
             GroupDto dto = new GroupDto()
             {
                 Id = Guid.NewGuid(),
-                Name = txtGroup.Text,
+                Name = txtLocation.Text,
             };
 
             if (Group_DAO.Add(dto))
             {
-
+                this.Close();
+            }
+            else
+            {
+                KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }

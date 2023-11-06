@@ -55,13 +55,13 @@
             this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cboType = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtCode = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtPhone = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtNode = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtCompanyName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtEmail = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.txtAddress = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtGroup = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonTextBox2 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonTextBox3 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonTextBox6 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonTextBox5 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonTextBox4 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -246,7 +246,7 @@
             // 
             // splitContainer3.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.txtName);
+            this.splitContainer3.Panel2.Controls.Add(this.kryptonTextBox1);
             this.splitContainer3.Size = new System.Drawing.Size(414, 32);
             this.splitContainer3.SplitterDistance = 138;
             this.splitContainer3.TabIndex = 2;
@@ -263,7 +263,7 @@
             // 
             // splitContainer4.Panel2
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.txtCompanyName);
+            this.splitContainer4.Panel2.Controls.Add(this.kryptonTextBox4);
             this.splitContainer4.Size = new System.Drawing.Size(414, 32);
             this.splitContainer4.SplitterDistance = 138;
             this.splitContainer4.TabIndex = 3;
@@ -280,7 +280,7 @@
             // 
             // splitContainer5.Panel2
             // 
-            this.splitContainer5.Panel2.Controls.Add(this.txtPhone);
+            this.splitContainer5.Panel2.Controls.Add(this.kryptonTextBox2);
             this.splitContainer5.Size = new System.Drawing.Size(414, 32);
             this.splitContainer5.SplitterDistance = 138;
             this.splitContainer5.TabIndex = 4;
@@ -297,7 +297,7 @@
             // 
             // splitContainer6.Panel2
             // 
-            this.splitContainer6.Panel2.Controls.Add(this.txtEmail);
+            this.splitContainer6.Panel2.Controls.Add(this.kryptonTextBox5);
             this.splitContainer6.Size = new System.Drawing.Size(414, 32);
             this.splitContainer6.SplitterDistance = 138;
             this.splitContainer6.TabIndex = 5;
@@ -314,7 +314,7 @@
             // 
             // splitContainer7.Panel2
             // 
-            this.splitContainer7.Panel2.Controls.Add(this.txtNode);
+            this.splitContainer7.Panel2.Controls.Add(this.kryptonTextBox3);
             this.splitContainer7.Size = new System.Drawing.Size(414, 32);
             this.splitContainer7.SplitterDistance = 138;
             this.splitContainer7.TabIndex = 6;
@@ -331,7 +331,7 @@
             // 
             // splitContainer8.Panel2
             // 
-            this.splitContainer8.Panel2.Controls.Add(this.txtAddress);
+            this.splitContainer8.Panel2.Controls.Add(this.kryptonTextBox6);
             this.splitContainer8.Size = new System.Drawing.Size(414, 32);
             this.splitContainer8.SplitterDistance = 138;
             this.splitContainer8.TabIndex = 7;
@@ -490,83 +490,130 @@
             this.cboType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.cboType.DropDownWidth = 269;
-            this.cboType.Location = new System.Drawing.Point(3, 6);
+            this.cboType.Location = new System.Drawing.Point(3, 2);
             this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(263, 21);
+            this.cboType.Size = new System.Drawing.Size(263, 29);
+            this.cboType.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.cboType.StateCommon.ComboBox.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.cboType.StateCommon.ComboBox.Border.Rounding = 12;
             this.cboType.TabIndex = 1;
             this.cboType.Text = "kryptonComboBox1";
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtCode);
+            this.panel3.Controls.Add(this.txtGroup);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(272, 32);
             this.panel3.TabIndex = 0;
             // 
-            // txtCode
+            // txtGroup
             // 
-            this.txtCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtCode.Location = new System.Drawing.Point(0, 5);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(268, 23);
-            this.txtCode.TabIndex = 2;
+            this.txtGroup.Location = new System.Drawing.Point(3, 4);
+            this.txtGroup.Name = "txtGroup";
+            this.txtGroup.Size = new System.Drawing.Size(265, 24);
+            this.txtGroup.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtGroup.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.txtGroup.StateCommon.Border.Rounding = 12;
+            this.txtGroup.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.txtGroup.TabIndex = 6;
             // 
-            // txtName
+            // kryptonTextBox1
             // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.kryptonTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtName.Location = new System.Drawing.Point(0, 5);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(268, 23);
-            this.txtName.TabIndex = 3;
+            this.kryptonTextBox1.Location = new System.Drawing.Point(4, 4);
+            this.kryptonTextBox1.Name = "kryptonTextBox1";
+            this.kryptonTextBox1.Size = new System.Drawing.Size(265, 24);
+            this.kryptonTextBox1.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonTextBox1.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kryptonTextBox1.StateCommon.Border.Rounding = 12;
+            this.kryptonTextBox1.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.kryptonTextBox1.TabIndex = 7;
             // 
-            // txtPhone
+            // kryptonTextBox2
             // 
-            this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.kryptonTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtPhone.Location = new System.Drawing.Point(0, 5);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(268, 23);
-            this.txtPhone.TabIndex = 3;
+            this.kryptonTextBox2.Location = new System.Drawing.Point(4, 4);
+            this.kryptonTextBox2.Name = "kryptonTextBox2";
+            this.kryptonTextBox2.Size = new System.Drawing.Size(265, 24);
+            this.kryptonTextBox2.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonTextBox2.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kryptonTextBox2.StateCommon.Border.Rounding = 12;
+            this.kryptonTextBox2.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.kryptonTextBox2.TabIndex = 7;
             // 
-            // txtNode
+            // kryptonTextBox3
             // 
-            this.txtNode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.kryptonTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtNode.Location = new System.Drawing.Point(0, 5);
-            this.txtNode.Name = "txtNode";
-            this.txtNode.Size = new System.Drawing.Size(268, 23);
-            this.txtNode.TabIndex = 3;
+            this.kryptonTextBox3.Location = new System.Drawing.Point(4, 4);
+            this.kryptonTextBox3.Name = "kryptonTextBox3";
+            this.kryptonTextBox3.Size = new System.Drawing.Size(265, 24);
+            this.kryptonTextBox3.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonTextBox3.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kryptonTextBox3.StateCommon.Border.Rounding = 12;
+            this.kryptonTextBox3.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.kryptonTextBox3.TabIndex = 7;
             // 
-            // txtCompanyName
+            // kryptonTextBox6
             // 
-            this.txtCompanyName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.kryptonTextBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtCompanyName.Location = new System.Drawing.Point(0, 5);
-            this.txtCompanyName.Name = "txtCompanyName";
-            this.txtCompanyName.Size = new System.Drawing.Size(268, 23);
-            this.txtCompanyName.TabIndex = 3;
+            this.kryptonTextBox6.Location = new System.Drawing.Point(4, 4);
+            this.kryptonTextBox6.Name = "kryptonTextBox6";
+            this.kryptonTextBox6.Size = new System.Drawing.Size(265, 24);
+            this.kryptonTextBox6.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonTextBox6.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kryptonTextBox6.StateCommon.Border.Rounding = 12;
+            this.kryptonTextBox6.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.kryptonTextBox6.TabIndex = 7;
             // 
-            // txtEmail
+            // kryptonTextBox5
             // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.kryptonTextBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtEmail.Location = new System.Drawing.Point(0, 5);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(268, 23);
-            this.txtEmail.TabIndex = 3;
+            this.kryptonTextBox5.Location = new System.Drawing.Point(4, 4);
+            this.kryptonTextBox5.Name = "kryptonTextBox5";
+            this.kryptonTextBox5.Size = new System.Drawing.Size(263, 24);
+            this.kryptonTextBox5.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonTextBox5.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kryptonTextBox5.StateCommon.Border.Rounding = 12;
+            this.kryptonTextBox5.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.kryptonTextBox5.TabIndex = 7;
             // 
-            // txtAddress
+            // kryptonTextBox4
             // 
-            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.kryptonTextBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtAddress.Location = new System.Drawing.Point(0, 5);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(268, 23);
-            this.txtAddress.TabIndex = 3;
+            this.kryptonTextBox4.Location = new System.Drawing.Point(4, 4);
+            this.kryptonTextBox4.Name = "kryptonTextBox4";
+            this.kryptonTextBox4.Size = new System.Drawing.Size(263, 24);
+            this.kryptonTextBox4.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonTextBox4.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kryptonTextBox4.StateCommon.Border.Rounding = 12;
+            this.kryptonTextBox4.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.kryptonTextBox4.TabIndex = 7;
             // 
             // Add_Supplier
             // 
@@ -663,13 +710,13 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel5;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboType;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtAddress;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNode;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtEmail;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPhone;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtCompanyName;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtName;
         private System.Windows.Forms.Panel panel3;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtCode;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtGroup;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox6;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox3;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox5;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox4;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
     }
 }
