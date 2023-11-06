@@ -33,5 +33,10 @@ namespace Storage.GUI.Groups
             }
 
         }
+
+        private void Add_Group_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

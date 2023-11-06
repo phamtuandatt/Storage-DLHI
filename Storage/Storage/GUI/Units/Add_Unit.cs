@@ -1,4 +1,5 @@
-﻿using Storage.DAO;
+﻿using ComponentFactory.Krypton.Toolkit;
+using Storage.DAO;
 using Storage.DTOs;
 using System;
 using System.Collections.Generic;

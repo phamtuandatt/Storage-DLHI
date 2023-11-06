@@ -69,6 +69,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Add_Group";
             this.Text = "Add_Group";
+            this.Load += new System.EventHandler(this.Add_Group_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

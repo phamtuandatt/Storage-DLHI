@@ -2,6 +2,7 @@
 using Storage.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,13 @@ namespace Storage.DAO
     internal class Group_DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
+
+        public static DataTable GetGroups()
+        {
+            string sql = $"SELECT *FROM GROUPS";
+
+            return data.GetData(sql, "cboGroup");
+        }
 
         public static bool Add(GroupDto group)
         {

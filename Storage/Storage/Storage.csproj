@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,11 +81,23 @@
     <Compile Include="GUI\Groups\Add_Group.Designer.cs">
       <DependentUpon>Add_Group.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Items\Add_Item.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Items\Add_Item.Designer.cs">
+      <DependentUpon>Add_Item.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Suppliers\Add_Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Suppliers\Add_Supplier.Designer.cs">
+      <DependentUpon>Add_Supplier.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Types\Add_Type.cs">
       <SubType>Form</SubType>
@@ -99,8 +116,14 @@
     <EmbeddedResource Include="GUI\Groups\Add_Group.resx">
       <DependentUpon>Add_Group.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Items\Add_Item.resx">
+      <DependentUpon>Add_Item.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Suppliers\Add_Supplier.resx">
+      <DependentUpon>Add_Supplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Types\Add_Type.resx">
       <DependentUpon>Add_Type.cs</DependentUpon>
@@ -116,6 +139,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -133,12 +157,25 @@
   <ItemGroup>
     <Folder Include="GUI\ExportItems\" />
     <Folder Include="GUI\ImportItems\" />
-    <Folder Include="GUI\Items\" />
     <Folder Include="GUI\LocationWarehouses\" />
     <Folder Include="GUI\MPRs\" />
     <Folder Include="GUI\PaymentMethods\" />
     <Folder Include="GUI\POs\" />
-    <Folder Include="GUI\Suppliers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red-dot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green-dot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellow-dot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellow-dot1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Palette\Palette.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

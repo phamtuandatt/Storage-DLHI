@@ -2,6 +2,7 @@
 using Storage.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,13 @@ namespace Storage.DAO
     internal class SupplierDAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
+
+        public static DataTable GetSuppiers()
+        {
+            string sql = "SELECT *FROM SUPPLIER";
+
+            return data.GetData(sql, "cboSupplier");
+        }
 
         public static bool Add(SupplierDto supplier)
         {

@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!--Created by exporting the settings of a KryptonPalette instance.-->
+<!--For more information about Krypton visit www.ComponentFactory.com-->
+<!--WARNING: Modifying this file may render it invalid for importing.-->
+<KryptonPalette Version="18" Generated="Monday, 06 November 2023, 11:17">
+  <Properties>
+    <ButtonSpecs>
+      <FormClose>
+        <Image Type="Image" Value="ImageCache1" />
+        <ImageStates>
+          <ImageCheckedPressed Type="Image" Value="ImageCache1" />
+          <ImagePressed Type="Image" Value="ImageCache1" />
+          <ImageTracking Type="Image" Value="ImageCache1" />
+        </ImageStates>
+        <Style Type="PaletteButtonStyle" Value="Form" />
+        <Orientation Type="PaletteButtonOrientation" Value="Inherit" />
+      </FormClose>
+      <FormMin>
+        <Image Type="Image" Value="ImageCache2" />
+        <ImageStates>
+          <ImageTracking Type="Image" Value="ImageCache2" />
+        </ImageStates>
+        <Style Type="PaletteButtonStyle" Value="Inherit" />
+        <Orientation Type="PaletteButtonOrientation" Value="Inherit" />
+      </FormMin>
+      <FormMax>
+        <Image Type="Image" Value="ImageCache3" />
+        <ImageStates>
+          <ImageTracking Type="Image" Value="ImageCache3" />
+        </ImageStates>
+        <Style Type="PaletteButtonStyle" Value="Inherit" />
+        <Orientation Type="PaletteButtonOrientation" Value="Inherit" />
+      </FormMax>
+    </ButtonSpecs>
+    <ButtonStyles>
+      <ButtonForm>
+        <StateNormal>
+          <Back>
+            <Color1 Type="Color" Value="White" />
+            <Color2 Type="Color" Value="White" />
+            <ImageStyle Type="PaletteImageStyle" Value="Inherit" />
+          </Back>
+          <Border>
+            <DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" />
+            <Width Type="Int" Value="0" />
+            <ImageStyle Type="PaletteImageStyle" Value="Inherit" />
+          </Border>
+        </StateNormal>
+        <StateTracking>
+          <Back>
+            <Color1 Type="Color" Value="White" />
+            <Color2 Type="Color" Value="White" />
+            <ImageStyle Type="PaletteImageStyle" Value="Inherit" />
+          </Back>
+          <Border>
+            <DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" />
+            <Color1 Type="Color" Value="White" />
+            <Color2 Type="Color" Value="White" />
+            <Width Type="Int" Value="0" />
+            <ImageStyle Type="PaletteImageStyle" Value="Inherit" />
+          </Border>
+        </StateTracking>
+        <StatePressed>
+          <Back>
+            <Color1 Type="Color" Value="White" />
+            <Color2 Type="Color" Value="White" />
+            <ImageStyle Type="PaletteImageStyle" Value="Inherit" />
+          </Back>
+          <Border>
+            <DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" />
+            <Width Type="Int" Value="0" />
+            <ImageStyle Type="PaletteImageStyle" Value="Inherit" />
+          </Border>
+        </StatePressed>
+      </ButtonForm>
+    </ButtonStyles>
+    <FormStyles>
+      <FormMain>
+        <StateCommon>
+          <Back>
+            <Color1 Type="Color" Value="White" />
+            <Color2 Type="Color" Value="White" />
+            <ImageStyle Type="PaletteImageStyle" Value="Inherit" />
+          </Back>
+          <Border>
+            <DrawBorders Type="PaletteDrawBorders" Value="Top,Bottom,Left,Right" />
+            <GraphicsHint Type="PaletteGraphicsHint" Value="None" />
+            <Rounding Type="Int" Value="15" />
+            <ImageStyle Type="PaletteImageStyle" Value="Inherit" />
+          </Border>
+        </StateCommon>
+      </FormMain>
+    </FormStyles>
+    <HeaderStyles>
+      <HeaderForm>
+        <StateCommon>
+          <Back>
+            <Color1 Type="Color" Value="White" />
+            <Color2 Type="Color" Value="White" />
+            <ImageStyle Type="PaletteImageStyle" Value="Inherit" />
+          </Back>
+        </StateCommon>
+      </HeaderForm>
+    </HeaderStyles>
+    <BasePaletteMode Type="PaletteMode" Value="Global" />
+  </Properties>
+  <Images>
+    <Image Name="ImageCache1"><![CDATA[AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAATwEAAAKJUE5HDQoaCgAAAA1JSERSAAAAFAAAABQIBgAAAI2JHQ0AAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7CAAAOwgEVKEqAAAAA8UlEQVQ4T62UTQrCMBSE00KwdNPcoJvuewJ33sN7eQ93gvdw4w3EhYgiNvrVoP15rWnJwEDJmzchL5OqMRzL0pyzbHVJ0zXkmzVX9sfJmOVd6+0zjh9WKdska9TQOPkw9nmeXJNkU0VR1TXq8q2xaOlx7W1QuGm9k5rHSM+hKBbO5gd2kxp8SK+z+YB5cARJ7ENG1JopQ5aEU4hHbUYMpNucSjzqSJEtSTCHeCkCKxXnEK/whsGPHPxSQNDYABfsv+93iL1gg6BPD/DAg/4cAAV28zk+GrSDZk0wD4Ys3T5r1Hoz8wExIFsEFvL9jYYIpV59D1Mtr+M0/wAAAABJRU5ErkJgggs=]]></Image>
+    <Image Name="ImageCache2"><![CDATA[AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAFQIAAAKJUE5HDQoaCgAAAA1JSERSAAAAFAAAABQIBgAAAI2JHQ0AAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7CAAAOwgEVKEqAAAABt0lEQVQ4T2PABdKvtyuYXU4qVb8UukrxYtBhBSBWvRiy0uxiUmnslXo5qDLCIOl6vZTGhfAlwhc8/vBddP2PDQtfcP8DUpN9vVMKqg078Lpc6Ch5wectNkOwYfGL3q9cLmXaQ7WjAt/LJdZiF7y+Y9OIDwN98tn5UrYl1BgIyL/fLyB1we8JNg3EYKkLvk8qHk4ThBrHwGB4KaEfm0JSsO7FmB6wYTOfbuKSvuD/CZsiUjAw7D9sAprF4HEpzwubAnKw68UcTwaDy3FV2CTJwUaXYmsZdC/HTMImSQ4GmcWgdymmC5skOVjvUlQXg+Xl1CxskuRg40vxGQyp15t0BS64YVVACha44P4/41qrDjjpqFwMOY9NESlY8ULwWbBhIOB+OT9I4CL5ruQH+tD5apY/1DgI0L4YsQSbYmKwzoWoZVBjECD31kR2lYvBe7FpwIfVLoTuB+mFGoMKJgIlTC7FzxY67/4Pm2ZkLHjB/Z/hxdiZ8+/v54Bqxw0CLpVYql8IXS92wfsbP5pB4ue9f6hfCF8PUgNVTjxYdGERd+iVahu3K3lRzkAcCWSvermfByqNBTAwAACazqjqjQWaLAAAAABJRU5ErkJgggs=]]></Image>
+    <Image Name="ImageCache3"><![CDATA[AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAyAEAAAKJUE5HDQoaCgAAAA1JSERSAAAAFQAAABQIBgAAAGJLdjMAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7CAAAOwgEVKEqAAAABaklEQVQ4T52UTy8DURTFi5WNRCLxL2LFEolIRHwPKzY+hEQisWVnwUqCpc+Cmup0SmgtWtJ2sNKpDHqc9+ZJq3NHO3OSk3lv7r2/mXm5c1OIUuMOKO8A+RXAGgOuBnkd534VeNpl/MEkhhWG+jWguAFc9tMMR3oAeNwEPt9MYUuMtqluAZlJAfCPb6YBzzGAQLxrpD73ekQu7GZ1PB9FA/qFNn0gtyAX9GpnmZwvjeOOqh7JiXHtnmgcV00gOysnxbU9b6BeTk5IarZaCu6ZHEzq13NCn/flYFJXDhR0Tw4mtYa6p3IwqfXn1205mNSNe0J1S83ICXFtz5mWUqoeyklxXTvWOK4o9Zuqp0iJvdpZIudb47gz8vIcKMNyQTdboxwoBQNqhyq9X3D0TciFUc5M8YWyBhCIdzvkV4DCGgv6woA/5hAvrnNIv5jClhiNkMdWK21xJC4C6aEAlObxqLMrbbN1bk1ip4AfAkwTocuEmTYAAAAASUVORK5CYIIL]]></Image>
+  </Images>
+</KryptonPalette>

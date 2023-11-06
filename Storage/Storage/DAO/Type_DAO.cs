@@ -2,6 +2,7 @@
 using Storage.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,13 @@ namespace Storage.DAO
     internal class Type_DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
+
+        public static DataTable GetTypes()
+        {
+            string sql = "SELECT *FROM TYPES";
+
+            return data.GetData(sql, "cboTypes");
+        }
 
         public static bool Add(TypeDto type)
         {

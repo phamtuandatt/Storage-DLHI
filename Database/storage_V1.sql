@@ -4,7 +4,7 @@ USE STORAGE_DLHI
 GO
 CREATE TABLE SUPPLIER (
 	ID	UNIQUEIDENTIFIER NOT NULL,
-	CODE NVARCHAR(50),
+	CODE CHAR(10),
 	NAME_SUPPIER NVARCHAR(100),
 	NAME_COMPANY_SUPPLIER NVARCHAR(MAX),
 	ADDRESS NVARCHAR(MAX),
@@ -50,7 +50,7 @@ CREATE TABLE TYPES (
 GO 
 CREATE TABLE ITEM (
 	ID UNIQUEIDENTIFIER NOT NULL,
-	CODE CHAR(100),
+	CODE CHAR(10),
 	NAME NVARCHAR(100),
 	PICTURE NVARCHAR(MAX),
 	NOTE NVARCHAR(MAX),
@@ -231,7 +231,7 @@ DELETE FROM TYPES WHERE ID = ''
 ----------------------------------------------------------------------------------------------------
 -----------------------------PROCEDURE--------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
-
+SELECT *FROM LOCATION_WAREHOUSE
 -------------------------------
 -------------------------------
 GO
