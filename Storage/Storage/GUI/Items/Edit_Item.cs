@@ -64,7 +64,7 @@ namespace Storage.GUI.Items
                 cboSupplier.SelectedValue = dto.SupplierId;
                 txtNote.Text = dto.Note;
                 txtEngName.Text = dto.Eng_Name;
-                picItem.Image = Image.FromStream(new MemoryStream(dto.Image));
+                picItem.Image = dto.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(dto.Image));
                 path = dto.PictureLink;
             }
         }

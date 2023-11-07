@@ -33,7 +33,7 @@ namespace Storage.DAO
                 Code = row["CODE"].ToString(),
                 Name = row["NAME"].ToString(),
                 PictureLink = row["PICTURE_LINK"].ToString(),
-                Image = (byte[])row["PICTURE"],
+                Image = row["PICTURE"].ToString().Length > 0 && row["PICTURE"].ToString() != null ? (byte[])row["PICTURE"] : new byte[100],
                 UnitId = Guid.Parse(row["UNIT_ID"].ToString()),
                 GroupId = Guid.Parse(row["GROUP_ID"].ToString()),
                 SupplierId =Guid.Parse(row["SUPPLIER_ID"].ToString()),
@@ -87,6 +87,15 @@ namespace Storage.DAO
             string sql = $"INSERT INTO ITEM(ID, CODE, NAME, PICTURE_LINK, PICTURE, NOTE, ENG_NAME, UNIT_ID, GROUP_ID, TYPE_ID, SUPPLIER_ID) " +
                 $"VALUES ('{item.Id}', '{item.Code}', N'{item.Name}', N'{item.PictureLink}', " +
                 $"(SELECT *FROM OPENROWSET(BULK N'{item.Picture}', SINGLE_BLOB) AS IMAGE), " +
+                $"N'{item.Note}', N'{item.Eng_Name}', '{item.UnitId}', '{item.GroupId}', '{item.TypeId}' ,'{item.SupplierId}')";
+
+            return data.Insert(sql) > 0;
+        }
+
+        public static bool AddNoIamge(ItemDto item)
+        {
+            string sql = $"INSERT INTO ITEM(ID, CODE, NAME, NOTE, ENG_NAME, UNIT_ID, GROUP_ID, TYPE_ID, SUPPLIER_ID) " +
+                $"VALUES ('{item.Id}', '{item.Code}', N'{item.Name}', " +
                 $"N'{item.Note}', N'{item.Eng_Name}', '{item.UnitId}', '{item.GroupId}', '{item.TypeId}' ,'{item.SupplierId}')";
 
             return data.Insert(sql) > 0;

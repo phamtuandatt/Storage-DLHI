@@ -68,13 +68,29 @@ namespace Storage.GUI.Items
                 SupplierId = Guid.Parse(cboSupplier.SelectedValue.ToString()),
             };
 
-            if (Item_DAO.Add(itemDto))
+            if (string.IsNullOrEmpty(path))
             {
                 this.Close();
+                if (Item_DAO.AddNoIamge(itemDto))
+                {
+                    this.Close();
+                }
+                else
+                {
+                    KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
                 KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (Item_DAO.Add(itemDto))
+                {
+                    this.Close();
+                }
+                else
+                {
+                    KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
