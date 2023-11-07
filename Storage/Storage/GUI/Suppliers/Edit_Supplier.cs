@@ -46,6 +46,9 @@ namespace Storage.GUI.Suppliers
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if (KryptonMessageBox.Show("Do you want to cancel the current action ?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+                    == DialogResult.Cancel)
+                return;
             this.Close();
         }
 

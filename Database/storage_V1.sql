@@ -245,9 +245,9 @@ DELETE FROM TYPES WHERE ID = ''
 ----------------------------------------------------------------------------------------------------
 -----------------------------PROCEDURE--------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
-SELECT *FROM LOCATION_WAREHOUSE
--------------------------------
--------------------------------
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
 GO
 CREATE PROC GET_ITEMS
 AS
@@ -263,6 +263,9 @@ END
 GO
 EXEC GET_ITEMS
 
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+
 GO
 CREATE PROC GET_ITEMS_V2
 AS
@@ -277,16 +280,8 @@ END
 GO
 EXEC GET_ITEMS_V2
 
-UPDATE ITEM SET CODE = 'DL-FCT0001', NAME = N'Máy ủi', PICTURE_LINK = N'C:\Users\dat.pham\Downloads\Dozers_D39PX_Literaturelink_Glamour 2.jpeg', PICTURE = (SELECT *FROM OPENROWSET(BULK N'C:\Users\dat.pham\Downloads\Dozers_D39PX_Literaturelink_Glamour 2.jpeg', SINGLE_BLOB) AS IMAGE), NOTE = 'abc', ENG_NAME = N'aba', UNIT_ID = '3bf52620-53d0-467f-b1bd-63d738aa98ec', GROUP_ID = '77aeeac7-ad5f-4690-9d56-7fb15e2fbcaf', TYPE_ID = '683e25dd-8c78-4a3e-a094-3051df9bb962', SUPPLIER_ID = '403b9cb1-7801-4757-b8dd-12d921f21e3d', LOCATION_WAREHOUSE_ID = '' WHERE ID = '3962d1db-4cd6-4a91-9ac1-e3933910ec39'
-UPDATE ITEM SET CODE = '          ', NAME = N'', PICTURE_LINK = N'D:\ShoppingDetailModule.jpg', PICTURE = (SELECT *FROM OPENROWSET(BULK N'D:\ShoppingDetailModule.jpg', SINGLE_BLOB) AS IMAGE), 
-NOTE = '', ENG_NAME = N'', 
-UNIT_ID = '3bf52620-53d0-467f-b1bd-63d738aa98ec', 
-GROUP_ID = '77aeeac7-ad5f-4690-9d56-7fb15e2fbcaf', 
-TYPE_ID = '683e25dd-8c78-4a3e-a094-3051df9bb962', 
-SUPPLIER_ID = '403b9cb1-7801-4757-b8dd-12d921f21e3d', LOCATION_WAREHOUSE_ID = '' WHERE ID = '25145f83-c377-41b8-b37e-c705d59a106f'
-select *from ITEM
--------------------------------
--------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
 GO
 CREATE PROC GET_CURRENT_CODE_SUPPLIER @KEY_CODE CHAR(3)
 AS
@@ -296,10 +291,9 @@ BEGIN
 END
 GO
 EXEC GET_CURRENT_CODE_SUPPLIER 'CMA'
-SELECT *FROM SUPPLIER WHERE ID = 'e7ed4788-57fd-4dbc-9e82-c1ade40aabe1'
 
--------------------------------
--------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
 GO
 CREATE PROC GET_CURRENT_CODE_ITEM @KEY_CODE CHAR(6)
 AS
@@ -309,7 +303,6 @@ BEGIN
 END
 GO
 EXEC GET_CURRENT_CODE_ITEM ''
---DL-FCT0034
 
 
 

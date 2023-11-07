@@ -71,35 +71,66 @@ namespace Storage.GUI.Items
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if (KryptonMessageBox.Show("Do you want to cancel the current action ?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+                    == DialogResult.Cancel)
+                return;
             this.Close();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            ItemDto itemDto = new ItemDto()
+            if (string.IsNullOrEmpty(path))
             {
-                Id = this.Id,
-                Code = txtCode.Text,
-                Name = txtName.Text,
-                PictureLink = path,
-                Picture = path,
-                Image = File.ReadAllBytes(path),
-                Note = txtNote.Text,
-                Eng_Name = txtEngName.Text,
-                UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
-                GroupId = Guid.Parse(cboGroup.SelectedValue.ToString()),
-                TypeId = Guid.Parse(cboType.SelectedValue.ToString()),
-                SupplierId = Guid.Parse(cboSupplier.SelectedValue.ToString()),
-            };
-
-            if (Item_DAO.Update(itemDto))
-            {
-                this.Close();
+                ItemDto itemDto = new ItemDto()
+                {
+                    Id = this.Id,
+                    Code = txtCode.Text,
+                    Name = txtName.Text,
+                    Note = txtNote.Text,
+                    Eng_Name = txtEngName.Text,
+                    UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
+                    GroupId = Guid.Parse(cboGroup.SelectedValue.ToString()),
+                    TypeId = Guid.Parse(cboType.SelectedValue.ToString()),
+                    SupplierId = Guid.Parse(cboSupplier.SelectedValue.ToString()),
+                };
+                if (Item_DAO.UpdateNoImage(itemDto))
+                {
+                    this.Close();
+                }
+                else
+                {
+                    KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
-                KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ItemDto itemDto = new ItemDto()
+                {
+                    Id = this.Id,
+                    Code = txtCode.Text,
+                    Name = txtName.Text,
+                    PictureLink = path,
+                    Picture = path,
+                    Image = File.ReadAllBytes(path),
+                    Note = txtNote.Text,
+                    Eng_Name = txtEngName.Text,
+                    UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
+                    GroupId = Guid.Parse(cboGroup.SelectedValue.ToString()),
+                    TypeId = Guid.Parse(cboType.SelectedValue.ToString()),
+                    SupplierId = Guid.Parse(cboSupplier.SelectedValue.ToString()),
+                };
+                if (Item_DAO.Update(itemDto))
+                {
+                    this.Close();
+                }
+                else
+                {
+                    KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
+
+
+            
         }
 
         private void picItem_Click(object sender, EventArgs e)

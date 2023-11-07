@@ -410,6 +410,7 @@
             this.btnCancel.StateTracking.Border.Rounding = 15;
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Values.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAdd
             // 

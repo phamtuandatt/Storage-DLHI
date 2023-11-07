@@ -70,7 +70,6 @@ namespace Storage.GUI.Items
 
             if (string.IsNullOrEmpty(path))
             {
-                this.Close();
                 if (Item_DAO.AddNoIamge(itemDto))
                 {
                     this.Close();
@@ -82,7 +81,6 @@ namespace Storage.GUI.Items
             }
             else
             {
-                KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 if (Item_DAO.Add(itemDto))
                 {
                     this.Close();
@@ -103,14 +101,22 @@ namespace Storage.GUI.Items
         }
 
         private void picItem_Click(object sender, EventArgs e)
-        { 
+        {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
             if (open.ShowDialog() == DialogResult.OK)
-            {   
+            {
                 picItem.Image = new Bitmap(open.FileName);
                 path = open.FileName;
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (KryptonMessageBox.Show("Do you want to cancel the current action ?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+                    == DialogResult.Cancel)
+                return;
+            this.Close();
         }
     }
 }

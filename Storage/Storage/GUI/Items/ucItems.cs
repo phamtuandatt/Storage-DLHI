@@ -14,6 +14,7 @@ namespace Storage.GUI.Items
 {
     public partial class ucItems : UserControl
     {
+        public DataTable data = null; 
         public ucItems()
         {
             InitializeComponent();
@@ -23,11 +24,10 @@ namespace Storage.GUI.Items
         public void LoadData()
         {
             grdItems.RowTemplate.Height = 150;
-            //grdItems.Columns[4].Width = 150;
             grdItems.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-
-            grdItems.DataSource = Item_DAO.GetItems();
+            data = Item_DAO.GetItems();
+            grdItems.DataSource = data;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -66,6 +66,39 @@ namespace Storage.GUI.Items
 
                 e.Handled = true;
             }
+        }
+
+        private void txtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtSearch.Text.Length == 0)
+            {
+                grdItems.DataSource = data;
+            }
+            DataView dv = data.DefaultView;
+            dv.RowFilter = $"NAME LIKE '%{txtSearch.Text}%' " +
+                        $"OR CODE LIKE '%{txtSearch.Text}%' " +
+                        $"OR NOTE LIKE '%{txtSearch.Text}%' " +
+                        $"OR UNIT LIKE '%{txtSearch.Text}%' " +
+                        $"OR GROUPS LIKE '%{txtSearch.Text}%' " +
+                        $"OR SUPPLIER LIKE '%{txtSearch.Text}%' " +
+                        $"OR ENG_NAME LIKE '%{txtSearch.Text}%'";
+            grdItems.DataSource = dv.ToTable();
+        }
+
+        private void grdItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var rowIdx = (e.RowIndex + 1).ToString();
+
+            var centerFormat = new StringFormat()
+            {
+                // right alignment might actually make more sense for numbers
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
         }
     }
 }

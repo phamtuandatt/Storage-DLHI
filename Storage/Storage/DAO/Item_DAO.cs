@@ -113,6 +113,16 @@ namespace Storage.DAO
             return data.Insert(sql) > 0;
         }
 
+        public static bool UpdateNoImage(ItemDto item)
+        {
+            string sql = $"UPDATE ITEM SET CODE = '{item.Code}', NAME = N'{item.Name}', " +
+                $"NOTE = '{item.Note}', ENG_NAME = N'{item.Eng_Name}', UNIT_ID = '{item.UnitId}', " +
+                $"GROUP_ID = '{item.GroupId}', TYPE_ID = '{item.TypeId}', SUPPLIER_ID = '{item.SupplierId}' " +
+                $"WHERE ID = '{item.Id}'";
+
+            return data.Insert(sql) > 0;
+        }
+
         public static bool Delete(Guid itemId)
         {
             string sql = $"DELETE FROM ITEM WHERE ID = '{itemId}'";

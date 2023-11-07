@@ -14,6 +14,7 @@ namespace Storage.GUI.Suppliers
 {
     public partial class ucSupplier : UserControl
     {
+        public DataTable data;
         public ucSupplier()
         {
             InitializeComponent();
@@ -23,8 +24,8 @@ namespace Storage.GUI.Suppliers
         private void LoadData()
         {
             grdSupplierType.DataSource = SupplierDAO.GetSuppierTypes();
-
-            grdSupplier.DataSource = SupplierDAO.GetSuppiers();
+            data = SupplierDAO.GetSuppiers();
+            grdSupplier.DataSource = data;
         }
 
         private void btnAddSupplierType_Click(object sender, EventArgs e)
@@ -101,6 +102,23 @@ namespace Storage.GUI.Suppliers
             {
 
             }
+        }
+
+        private void txtName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtSearch.Text.Length == 0)
+            {
+                grdSupplier.DataSource = data;
+            }
+            DataView dv = data.DefaultView;
+            dv.RowFilter = $"CODE LIKE '%{txtSearch.Text}%' " +
+                        $"OR NAME_SUPPIER LIKE '%{txtSearch.Text}%' " +
+                        $"OR NAME_COMPANY_SUPPLIER LIKE '%{txtSearch.Text}%' " +
+                        $"OR ADDRESS LIKE '%{txtSearch.Text}%' " +
+                        $"OR PHONE LIKE '%{txtSearch.Text}%' " +
+                        $"OR EMAIL LIKE '%{txtSearch.Text}%' " +
+                        $"OR NOTE LIKE '%{txtSearch.Text}%'";
+            grdSupplier.DataSource = dv.ToTable();
         }
     }
 }
