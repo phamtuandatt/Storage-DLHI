@@ -47,6 +47,7 @@
       <HintPath>bin\Debug\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
@@ -72,6 +73,7 @@
     <Compile Include="DAO\SupplierDAO.cs" />
     <Compile Include="DAO\Type_DAO.cs" />
     <Compile Include="DAO\Unit_DAO.cs" />
+    <Compile Include="DataProvider\AppSetting.cs" />
     <Compile Include="DataProvider\SQLServerProvider.cs" />
     <Compile Include="DTOs\ExportItemDto.cs" />
     <Compile Include="DTOs\ImportItemDto.cs" />
@@ -84,6 +86,12 @@
     <Compile Include="DTOs\SupplierDto.cs" />
     <Compile Include="DTOs\TypeDto.cs" />
     <Compile Include="DTOs\UnitDto.cs" />
+    <Compile Include="GUI\ConnectSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ConnectSystem.Designer.cs">
+      <DependentUpon>ConnectSystem.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Groups\Add_Group.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +172,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\ConnectSystem.resx">
+      <DependentUpon>ConnectSystem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Groups\Add_Group.resx">
       <DependentUpon>Add_Group.cs</DependentUpon>
     </EmbeddedResource>
