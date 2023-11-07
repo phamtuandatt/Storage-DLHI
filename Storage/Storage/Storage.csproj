@@ -244,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Palette\Palette.xml" />
+    <None Include="Resources\picture-bg2.jpg" />
     <None Include="Resources\picture-bg1.jpg" />
     <None Include="Resources\add.png" />
     <None Include="Resources\warehouse.png" />
