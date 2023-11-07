@@ -136,7 +136,7 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(754, 351);
+            this.kryptonPanel1.Size = new System.Drawing.Size(884, 351);
             this.kryptonPanel1.TabIndex = 2;
             // 
             // kryptonPanel2
@@ -146,7 +146,7 @@
             this.kryptonPanel2.Location = new System.Drawing.Point(501, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel2.Size = new System.Drawing.Size(253, 351);
+            this.kryptonPanel2.Size = new System.Drawing.Size(383, 351);
             this.kryptonPanel2.TabIndex = 1;
             // 
             // panel1
@@ -514,7 +514,7 @@
             this.picItem.InitialImage = global::Storage.Properties.Resources.picture_bg;
             this.picItem.Location = new System.Drawing.Point(0, 0);
             this.picItem.Name = "picItem";
-            this.picItem.Size = new System.Drawing.Size(253, 351);
+            this.picItem.Size = new System.Drawing.Size(383, 351);
             this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picItem.TabIndex = 0;
             this.picItem.TabStop = false;
@@ -524,11 +524,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 351);
+            this.ClientSize = new System.Drawing.Size(884, 351);
             this.Controls.Add(this.kryptonPanel1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(770, 390);
-            this.MinimumSize = new System.Drawing.Size(770, 390);
+            this.MaximumSize = new System.Drawing.Size(900, 390);
+            this.MinimumSize = new System.Drawing.Size(900, 390);
             this.Name = "Edit_Item";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;

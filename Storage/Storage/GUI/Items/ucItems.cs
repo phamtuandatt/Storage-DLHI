@@ -23,8 +23,10 @@ namespace Storage.GUI.Items
         public void LoadData()
         {
             grdItems.RowTemplate.Height = 150;
-            grdItems.Columns[4].Width = 150;
-            
+            //grdItems.Columns[4].Width = 150;
+            grdItems.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+
             grdItems.DataSource = Item_DAO.GetItems();
         }
 
@@ -48,6 +50,21 @@ namespace Storage.GUI.Items
             else
             {
 
+            }
+        }
+
+        private void grdItems_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 && e.RowIndex >= 0) //change 3 with your collumn index
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                if (grdItems.Rows[e.RowIndex].Cells[5].Value.ToString().Length <= 0)
+                {
+                    grdItems.Rows[e.RowIndex].Cells[5].Value = Properties.Resources.picture_bg;
+                }
+
+                e.Handled = true;
             }
         }
     }
