@@ -5,35 +5,53 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ComponentFactory.Krypton.Toolkit;
+using System.Windows.Forms;
 
 namespace Storage.DataProvider
 {
     internal class SQLServerProvider
     {
         SqlConnection connection = null;
-        string connectionString = @"server=PC-DATPHAM\MSSQLSERVER01;database=STORAGE_DLHI;Integrated Security = true;uid=sa;pwd=Aa123456@";
+        AppSetting appSetting = new AppSetting();
 
         internal SQLServerProvider()
         {
-            connection = new SqlConnection(connectionString);
+            connection = new SqlConnection(appSetting.GetConnectionString("StorageDLHI"));
         }
 
-        internal bool TestConnection(string conn)
+        internal bool TestConnection(string connectionString)
         {
             try
             {
-                connection = new SqlConnection(conn);
+                connection = new SqlConnection(connectionString);
                 connection.Open();
                 connection.Close();
-
                 return true;
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
+                KryptonMessageBox.Show(ex.Message + "", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
-                throw new Exception(ex.Message);
             }
         }
+
+        //internal bool TestConnection(string conn)
+        //{
+        //    try
+        //    {
+        //        connection = new SqlConnection(conn);
+        //        connection.Open();
+        //        connection.Close();
+
+        //        return true;
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        return false;
+        //        throw new Exception(ex.Message);
+        //    }
+        //}
 
         internal DataTable GetData(string sql, string table_name)
         {
