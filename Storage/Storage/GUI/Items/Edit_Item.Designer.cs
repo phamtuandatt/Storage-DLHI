@@ -33,6 +33,7 @@
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.picItem = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -62,11 +63,11 @@
             this.btnCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnUpdate = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.picItem = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -82,7 +83,6 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picItem)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -152,6 +152,18 @@
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel2.Size = new System.Drawing.Size(383, 351);
             this.kryptonPanel2.TabIndex = 1;
+            // 
+            // picItem
+            // 
+            this.picItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picItem.InitialImage = global::Storage.Properties.Resources.picture_bg;
+            this.picItem.Location = new System.Drawing.Point(0, 0);
+            this.picItem.Name = "picItem";
+            this.picItem.Size = new System.Drawing.Size(383, 351);
+            this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picItem.TabIndex = 0;
+            this.picItem.TabStop = false;
+            this.picItem.Click += new System.EventHandler(this.picItem_Click);
             // 
             // panel1
             // 
@@ -512,24 +524,13 @@
             this.kryptonLabel2.TabIndex = 18;
             this.kryptonLabel2.Values.Text = "   Eng name:";
             // 
-            // picItem
-            // 
-            this.picItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picItem.InitialImage = global::Storage.Properties.Resources.picture_bg;
-            this.picItem.Location = new System.Drawing.Point(0, 0);
-            this.picItem.Name = "picItem";
-            this.picItem.Size = new System.Drawing.Size(383, 351);
-            this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picItem.TabIndex = 0;
-            this.picItem.TabStop = false;
-            this.picItem.Click += new System.EventHandler(this.picItem_Click);
-            // 
             // Edit_Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 351);
             this.Controls.Add(this.kryptonPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(900, 390);
             this.MinimumSize = new System.Drawing.Size(900, 390);
@@ -542,6 +543,7 @@
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -562,7 +564,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picItem)).EndInit();
             this.ResumeLayout(false);
 
         }

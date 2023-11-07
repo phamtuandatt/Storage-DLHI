@@ -38,9 +38,9 @@
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCommon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnItems = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -156,15 +156,6 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // pnMain
-            // 
-            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(0, 116);
-            this.pnMain.Name = "pnMain";
-            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.pnMain.Size = new System.Drawing.Size(952, 445);
-            this.pnMain.TabIndex = 2;
-            // 
             // btnItems
             // 
             this.btnItems.Image = global::Storage.Properties.Resources.list;
@@ -186,6 +177,15 @@
             this.toolStripButton1.Size = new System.Drawing.Size(96, 89);
             this.toolStripButton1.Text = "          MPR          ";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // pnMain
+            // 
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 116);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.pnMain.Size = new System.Drawing.Size(952, 445);
+            this.pnMain.TabIndex = 2;
             // 
             // Main
             // 

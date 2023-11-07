@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>download__1_-removebg-preview.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Docking">
       <HintPath>C:\Users\dat.pham\Desktop\Krypton\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
@@ -243,6 +246,7 @@
     <None Include="Resources\yellow-dot1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="download__1_-removebg-preview.ico" />
     <Content Include="Palette\Palette.xml" />
     <None Include="Resources\list.png" />
     <None Include="Resources\picture-bg2.jpg" />
