@@ -6,20 +6,28 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Storage.GUI.Items
 {
-    public partial class Add_Item : KryptonForm
+    public partial class Edit_Item : KryptonForm
     {
-        private string path = string.Empty;
-        public Add_Item()
+        public Guid Id { get; set; }
+        public string path = string.Empty;
+
+        public Edit_Item()
         {
             InitializeComponent();
+        }
+
+        public Edit_Item(Guid Id)
+        {
+            InitializeComponent();
+            this.Id = Id;
             LoadData();
         }
 
@@ -44,31 +52,46 @@ namespace Storage.GUI.Items
             cboSupplier.DataSource = dtSupplier;
             cboSupplier.DisplayMember = "NAME_SUPPIER";
             cboSupplier.ValueMember = "ID";
+
+            ItemDto dto = Item_DAO.GetItem(this.Id);
+            if (dto != null)
+            {
+                txtCode.Text = dto.Code;
+                txtName.Text = dto.Name;
+                cboUnit.SelectedValue = dto.UnitId;
+                cboGroup.SelectedValue = dto.GroupId;
+                cboType.SelectedValue = dto.TypeId;
+                cboSupplier.SelectedValue = dto.SupplierId;
+                txtNote.Text = dto.Note;
+                txtEngName.Text = dto.Eng_Name;
+                picItem.Image = Image.FromStream(new MemoryStream(dto.Image));
+            }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCode.Text) || string.IsNullOrEmpty(txtName.Text))
-            {
-                KryptonMessageBox.Show("Please fill in all information !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            this.Close();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
             ItemDto itemDto = new ItemDto()
             {
-                Id = Guid.NewGuid(),
+                Id = this.Id,
                 Code = txtCode.Text,
                 Name = txtName.Text,
                 PictureLink = path,
                 Picture = path,
-                Note = "",
-                Eng_Name = "",
+                Image = File.ReadAllBytes(path),
+                Note = txtNote.Text,
+                Eng_Name = txtEngName.Text,
                 UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
                 GroupId = Guid.Parse(cboGroup.SelectedValue.ToString()),
                 TypeId = Guid.Parse(cboType.SelectedValue.ToString()),
                 SupplierId = Guid.Parse(cboSupplier.SelectedValue.ToString()),
             };
 
-            if (Item_DAO.Add(itemDto))
+            if (Item_DAO.Update(itemDto))
             {
                 this.Close();
             }
@@ -78,20 +101,12 @@ namespace Storage.GUI.Items
             }
         }
 
-        private void btnGetCode_Click(object sender, EventArgs e)
-        {
-            string code = cboType.Text;
-            string number = Item_DAO.GetCode(code.ToUpper().Trim());
-
-            txtCode.Text = code + number;
-        }
-
         private void picItem_Click(object sender, EventArgs e)
-        { 
+        {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp";
             if (open.ShowDialog() == DialogResult.OK)
-            {   
+            {
                 picItem.Image = new Bitmap(open.FileName);
                 path = open.FileName;
             }

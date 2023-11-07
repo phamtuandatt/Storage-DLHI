@@ -89,7 +89,11 @@ namespace Storage.GUI.Suppliers
             int rsl = grdSupplier.CurrentRow.Index;
             if (grdSupplier.Rows[rsl].Cells[0].Value.ToString() != null)
             {
-               
+                string name_supplier = grdSupplier.Rows[rsl].Cells[2].Value.ToString();
+                if (KryptonMessageBox.Show($"Do you want delete supplier {name_supplier.ToUpper()} ?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+                    == DialogResult.Cancel)
+                    return;
+
                 SupplierDAO.Delete(Guid.Parse(grdSupplier.Rows[rsl].Cells[0].Value.ToString()));
                 LoadData();
             }
