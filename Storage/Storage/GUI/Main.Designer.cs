@@ -38,9 +38,8 @@
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCommon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnItems = new System.Windows.Forms.ToolStripButton();
             this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnItems = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -123,7 +122,7 @@
             // mnuSupplier
             // 
             this.mnuSupplier.Name = "mnuSupplier";
-            this.mnuSupplier.Size = new System.Drawing.Size(180, 22);
+            this.mnuSupplier.Size = new System.Drawing.Size(122, 22);
             this.mnuSupplier.Text = "Suppliers";
             this.mnuSupplier.Click += new System.EventHandler(this.mnuSupplier_Click);
             // 
@@ -147,14 +146,22 @@
             this.toolStrip1.BackColor = System.Drawing.Color.White;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnItems,
-            this.toolStripButton1});
+            this.btnItems});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(916, 92);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // pnMain
+            // 
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 116);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.pnMain.Size = new System.Drawing.Size(916, 414);
+            this.pnMain.TabIndex = 2;
             // 
             // btnItems
             // 
@@ -167,24 +174,6 @@
             this.btnItems.Text = "Items";
             this.btnItems.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnItems.Click += new System.EventHandler(this.btnItems_Click);
-            // 
-            // pnMain
-            // 
-            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(0, 116);
-            this.pnMain.Name = "pnMain";
-            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.pnMain.Size = new System.Drawing.Size(916, 414);
-            this.pnMain.TabIndex = 2;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 89);
-            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // Main
             // 
@@ -225,6 +214,5 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel pnMain;
         private System.Windows.Forms.ToolStripMenuItem mnuCommon;
         private System.Windows.Forms.ToolStripMenuItem mnuSupplier;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

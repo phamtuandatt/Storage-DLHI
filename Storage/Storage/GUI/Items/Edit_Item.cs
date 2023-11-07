@@ -65,6 +65,7 @@ namespace Storage.GUI.Items
                 txtNote.Text = dto.Note;
                 txtEngName.Text = dto.Eng_Name;
                 picItem.Image = Image.FromStream(new MemoryStream(dto.Image));
+                path = dto.PictureLink;
             }
         }
 

@@ -20,9 +20,5 @@ namespace Storage.DTOs
         public Guid GroupId { get; set; }
         public Guid TypeId { get; set; }
         public Guid SupplierId { get; set; }
-        public string Unit { get; set; }
-        public string Group { get; set; }
-        public string Type { get; set; }
-        public string Supplier { get; set; }
     }
 }
