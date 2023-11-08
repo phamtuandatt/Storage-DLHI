@@ -37,14 +37,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Docking">
-      <HintPath>C:\Users\dat.pham\Desktop\Krypton\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
+      <HintPath>..\..\..\1_References\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Navigator">
-      <HintPath>C:\Users\dat.pham\Desktop\Krypton\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+      <HintPath>..\..\..\1_References\Krypton-master\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Ribbon">
+      <HintPath>..\..\..\1_References\Krypton-master\Bin\ComponentFactory.Krypton.Ribbon.dll</HintPath>
     </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+      <HintPath>..\..\..\1_References\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Workspace">
+      <HintPath>..\..\..\1_References\Krypton-master\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -170,6 +176,12 @@
     <Compile Include="GUI\UserControll\ucCommon.Designer.cs">
       <DependentUpon>ucCommon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_MPR\ucMPR.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI_MPR\ucMPR.Designer.cs">
+      <DependentUpon>ucMPR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\ConnectSystem.resx">
@@ -213,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControll\ucCommon.resx">
       <DependentUpon>ucCommon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_MPR\ucMPR.resx">
+      <DependentUpon>ucMPR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

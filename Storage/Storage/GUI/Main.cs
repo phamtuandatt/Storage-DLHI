@@ -6,6 +6,7 @@ using Storage.GUI.Suppliers;
 using Storage.GUI.Types;
 using Storage.GUI.Units;
 using Storage.GUI.UserControll;
+using Storage.GUI_MPR;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -82,6 +83,14 @@ namespace Storage.GUI
             ucSupplier.Dock= DockStyle.Fill;    
             pnMain.Controls.Add(ucSupplier); 
             ucSupplier.BringToFront();
+        }
+
+        private void btnMPR_Click(object sender, EventArgs e)
+        {
+            ucMPR ucMPR = new ucMPR();
+            ucMPR.Dock= DockStyle.Fill;
+            pnMain.Controls.Add(ucMPR);
+            ucMPR.BringToFront();
         }
     }
 }

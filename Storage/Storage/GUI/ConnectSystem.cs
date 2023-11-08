@@ -23,15 +23,15 @@ namespace Storage.GUI
         public ConnectSystem()
         {
             InitializeComponent();
-            ConnectionString = _setting.GetConnectionString("STORAGE_DLHI");
-            if (!string.IsNullOrEmpty(ConnectionString))
-            {
-                _serverProvider.TestConnection(ConnectionString);
-                Main main = new Main();
-                this.Hide();
-                main.ShowDialog();
-                this.Close();
-            }
+            //ConnectionString = _setting.GetConnectionString("STORAGE_DLHI");
+            //if (!string.IsNullOrEmpty(ConnectionString))
+            //{
+            //    _serverProvider.TestConnection(ConnectionString);
+            //    Main main = new Main();
+            //    this.Hide();
+            //    main.ShowDialog();
+            //    this.Close();
+            //}
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
