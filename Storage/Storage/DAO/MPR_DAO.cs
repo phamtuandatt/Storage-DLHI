@@ -15,18 +15,17 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetConsumable()
+        public static DataTable GetMPRs()
         {
-            DataTable dt = new DataTable();
-            string sql = $"SELECT *FROM MPR";
-            dt = data.GetData(sql, "MPR");
+            string sql = $"EXEC GET_MPR_LIST";
 
-            return dt;
+            return data.GetData(sql, "MPRs");
         }
 
-        public static bool Add(MPRDto dto)
+        public static bool Add(MakeNewRequestDto dto)
         {
-            string sql = $"SET DATEFORMAT DMY INSERT INTO MPR VALUES ('{dto.Id}', '{dto.Created}', '{dto.ExpectDelivery}', N'{dto.Note}', '{dto.Supplier_Id}')";
+            string sql = $"SET DATEFORMAT DMY INSERT INTO MPR VALUES ('{dto.Id}', '{dto.Created}', '{dto.ExpectDelivery}', " +
+                $"'{dto.Note}', '{dto.Item_Id}', '{dto.MPR_No}', '{dto.Usage}', {dto.Quantity})";
 
             return data.Insert(sql) > 0;
         }
@@ -44,6 +43,5 @@ namespace Storage.DAO
 
             return data.Delete(sql) > 0;
         }
-
     }
 }

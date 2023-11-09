@@ -1,4 +1,5 @@
 ﻿using Storage.DAO;
+using Storage.GUI.Items;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,11 +23,25 @@ namespace Storage.GUI_MPR
 
         public void LoadData()
         {
+            data = Item_DAO.GetItems();
+
+            grdItems.DataSource = data;
             grdItems.RowTemplate.Height = 100;
             grdItems.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-            data = Item_DAO.GetItems();
-            grdItems.DataSource = data;
+            // Page add MPR
+            grdAddMPR.DataSource = data;
+            grdAddMPR.RowTemplate.Height = 100;
+            grdAddMPR.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+            // Page MPRs
+            grdMRPs.DataSource = MPR_DAO.GetMPRs();
+            grdMRPs.RowTemplate.Height = 100;
+            grdMRPs.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+            cboSupplier.DataSource = SupplierDAO.GetSuppiers();
+            cboSupplier.DisplayMember = "NAME_SUPPIER";
+            cboSupplier.ValueMember = "ID";
         }
 
         private void grdItems_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -75,6 +90,21 @@ namespace Storage.GUI_MPR
 
             var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
             e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
+        }
+
+        private void grdAddMPR_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdAddMPR.Rows.Count <= 0) return;
+            int rsl = grdAddMPR.CurrentRow.Index;
+            if (grdAddMPR.Rows[rsl].Cells[1].Value.ToString() != null)
+            {
+                Add_MPR add_MPR = new Add_MPR(Guid.Parse(grdAddMPR.Rows[rsl].Cells[1].Value.ToString()));
+                add_MPR.ShowDialog();
+            }
+            else
+            {
+
+            }
         }
     }
 }

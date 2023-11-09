@@ -176,6 +176,12 @@
     <Compile Include="GUI\UserControll\ucCommon.Designer.cs">
       <DependentUpon>ucCommon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_MPR\Add_MPR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_MPR\Add_MPR.Designer.cs">
+      <DependentUpon>Add_MPR.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_MPR\ucMPR.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UserControll\ucCommon.resx">
       <DependentUpon>ucCommon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_MPR\Add_MPR.resx">
+      <DependentUpon>Add_MPR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_MPR\ucMPR.resx">
       <DependentUpon>ucMPR.cs</DependentUpon>

@@ -23,7 +23,7 @@ namespace Storage.GUI.Items
 
         public void LoadData()
         {
-            grdItems.RowTemplate.Height = 150;
+            grdItems.RowTemplate.Height = 120;
             grdItems.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
             data = Item_DAO.GetItems();

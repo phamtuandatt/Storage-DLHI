@@ -6,6 +6,28 @@ using System.Threading.Tasks;
 
 namespace Storage.DTOs
 {
+    internal class MakeNewRequestDto
+    {
+        public Guid Id { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime ExpectDelivery { get; set; }
+        public string Note { get; set; }
+        public Guid Item_Id { get; set; }
+        public string MPR_No { get; set; }
+        public string Usage { get; set; }
+        public int Quantity { get; set; }
+
+    }
+
+//    ID UNIQUEIDENTIFIER NOT NULL,
+//CREATED DATETIME,
+//	EXPECTED_DELIVERY DATETIME,
+//    NOTE NVARCHAR(MAX),
+//	ITEM_ID UNIQUEIDENTIFIER NOT NULL,
+//    MPR_NO NVARCHAR(100),
+//	USAGE NVARCHAR(MAX),
+//	QUANTITY INT,
+
     internal class MPRDto
     {
         public Guid Id { get; set; }

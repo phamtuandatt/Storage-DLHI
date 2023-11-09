@@ -26,40 +26,35 @@ namespace Storage.GUI
             InitializeComponent();
         }
 
-        private void btnAddSupplier_Click(object sender, EventArgs e)
-        {
-            Add_Supplier add_Supplier = new Add_Supplier();
-            add_Supplier.ShowDialog();
-        }
+        //private void btnAddSupplier_Click(object sender, EventArgs e)
+        //{
+        //    Add_Supplier add_Supplier = new Add_Supplier();
+        //    add_Supplier.ShowDialog();
+        //}
 
-        private void btnAddUnit_Click(object sender, EventArgs e)
-        {
-            Add_Unit add_Unit = new Add_Unit();
-            add_Unit.ShowDialog();
-        }
+        //private void btnAddUnit_Click(object sender, EventArgs e)
+        //{
+        //    Add_Unit add_Unit = new Add_Unit();
+        //    add_Unit.ShowDialog();
+        //}
 
-        private void btnAddGroupConsumable_Click(object sender, EventArgs e)
-        {
-            Add_Group add_Group = new Add_Group();
-            add_Group.ShowDialog();
-        }
+        //private void btnAddGroupConsumable_Click(object sender, EventArgs e)
+        //{
+        //    Add_Group add_Group = new Add_Group();
+        //    add_Group.ShowDialog();
+        //}
 
-        private void btnAddTypeConsumable_Click(object sender, EventArgs e)
-        {
-            Add_Type type = new Add_Type();
-            type.ShowDialog();
-        }
+        //private void btnAddTypeConsumable_Click(object sender, EventArgs e)
+        //{
+        //    Add_Type type = new Add_Type();
+        //    type.ShowDialog();
+        //}
 
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Add_Item add_Item = new Add_Item();
-            add_Item.ShowDialog();
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    Add_Item add_Item = new Add_Item();
+        //    add_Item.ShowDialog();
+        //}
 
         private void btnItems_Click(object sender, EventArgs e)
         {
