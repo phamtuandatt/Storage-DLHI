@@ -43,7 +43,46 @@ namespace Storage.GUI_MPR
 
             if (MPR_DAO.Add(makeNewRequestDto))
             {
-                this.Close();
+                // Add MPR Export
+                if (chkCreateNew.Checked)
+                {
+                    //Update Status of MPR_Export have status is 2 become is 1
+                    if (MPR_DAO.UpdateMPR_Export_Status())
+                    {
+                        // Create MPR_Export
+                        MPR_Export mPR_Export = new MPR_Export()
+                        {
+                            Id = Guid.NewGuid(),
+                            Created = txtCreateDate.Value,
+                            ItemCount = 1,
+                            Status = 2,
+                        };
+                        MPR_Export_Detail detail = new MPR_Export_Detail()
+                        {
+                            MPR_Export_Id = mPR_Export.Id,
+                            MPR_Id = makeNewRequestDto.Id,
+                        };
+
+                        if (MPR_DAO.CreateMPR_Export(mPR_Export) && MPR_DAO.CreateMPR_Export_Detail(detail))
+                        {
+                            this.Close();
+                        }
+                    }
+                }
+                else
+                {
+                    // Insert MPR_Export have status = 2
+                    MPR_Export_Detail detail = new MPR_Export_Detail()
+                    {
+                        MPR_Export_Id = Guid.NewGuid(),
+                        MPR_Id = makeNewRequestDto.Id,
+                    };
+
+                    if (MPR_DAO.InsertDetailExportIntoCurrentMPRExport(detail))
+                    {
+                        this.Close();
+                    }
+                }
             }
             else
             {

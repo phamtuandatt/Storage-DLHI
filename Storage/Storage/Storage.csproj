@@ -87,6 +87,7 @@
     <Compile Include="DTOs\LocationWarehousseDto.cs" />
     <Compile Include="DTOs\MPRDto.cs" />
     <Compile Include="DTOs\GroupDto.cs" />
+    <Compile Include="DTOs\MPR_Export.cs" />
     <Compile Include="DTOs\PaymentMethodDto.cs" />
     <Compile Include="DTOs\PODto.cs" />
     <Compile Include="DTOs\SupplierDto.cs" />
