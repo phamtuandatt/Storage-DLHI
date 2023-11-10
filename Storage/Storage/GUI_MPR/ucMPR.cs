@@ -15,6 +15,7 @@ namespace Storage.GUI_MPR
     public partial class ucMPR : UserControl
     {
         private DataTable data;
+        private DataTable dataMPRExportDetail;
         public ucMPR()
         {
             InitializeComponent();
@@ -24,10 +25,7 @@ namespace Storage.GUI_MPR
         public void LoadData()
         {
             data = Item_DAO.GetItems();
-
-            grdItems.DataSource = data;
-            grdItems.RowTemplate.Height = 100;
-            grdItems.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataMPRExportDetail = MPR_DAO.GetMPRExportDetails();
 
             // Page add MPR
             grdAddMPR.DataSource = data;
@@ -39,31 +37,33 @@ namespace Storage.GUI_MPR
             grdMRPs.RowTemplate.Height = 100;
             grdMRPs.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-            cboSupplier.DataSource = SupplierDAO.GetSuppiers();
-            cboSupplier.DisplayMember = "NAME_SUPPIER";
-            cboSupplier.ValueMember = "ID";
-        }
+            // Page MPRExport
+            grdMPRExport.DefaultCellStyle.WrapMode= DataGridViewTriState.True;
+            DataTable dtMPRExport = new DataTable();
+            dtMPRExport.Columns.Add("ID");
+            dtMPRExport.Columns.Add("CREATED");
+            dtMPRExport.Columns.Add("ITEM_COUNT");
+            dtMPRExport.Columns.Add("STATUS");
 
-        private void grdItems_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            if (e.ColumnIndex == 5 && e.RowIndex >= 0) //change 3 with your collumn index
+            foreach (DataRow item in MPR_DAO.GetMPRExports().Rows)
             {
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                if (grdItems.Rows[e.RowIndex].Cells[5].Value.ToString().Length <= 0)
-                {
-                    grdItems.Rows[e.RowIndex].Cells[5].Value = Properties.Resources.picture_bg;
-                }
-
-                e.Handled = true;
+                DataRow r = dtMPRExport.NewRow();
+                r["ID"] = item["ID"];
+                r["CREATED"] = item["CREATED"];
+                r["ITEM_COUNT"] = item["ITEM_COUNT"];
+                r["STATUS"] = int.Parse(item["STATUS"].ToString()) == 0 ? "Exported" : "Not exported";
+                dtMPRExport.Rows.Add(r);
             }
+            grdMPRExport.DataSource = dtMPRExport;
+
+            grdMPRExportDetail.RowTemplate.Height = 100;
         }
 
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             if (txtSearch.Text.Length == 0)
             {
-                grdItems.DataSource = data;
+                grdAddMPR.DataSource = data;
             }
             DataView dv = data.DefaultView;
             dv.RowFilter = $"NAME LIKE '%{txtSearch.Text}%' " +
@@ -73,7 +73,7 @@ namespace Storage.GUI_MPR
                         $"OR GROUPS LIKE '%{txtSearch.Text}%' " +
                         $"OR SUPPLIER LIKE '%{txtSearch.Text}%' " +
                         $"OR ENG_NAME LIKE '%{txtSearch.Text}%'";
-            grdItems.DataSource = dv.ToTable();
+            grdAddMPR.DataSource = dv.ToTable();
         }
 
         private void grdItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -104,6 +104,69 @@ namespace Storage.GUI_MPR
             else
             {
 
+            }
+        }
+
+        private void grdMRPs_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 && e.RowIndex >= 0) //change 3 with your collumn index
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                if (grdMRPs.Rows[e.RowIndex].Cells[5].Value.ToString().Length <= 0)
+                {
+                    grdMRPs.Rows[e.RowIndex].Cells[5].Value = Properties.Resources.picture_bg;
+                }
+
+                e.Handled = true;
+            }
+        }
+
+        private void grdAddMPR_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 && e.RowIndex >= 0) //change 3 with your collumn index
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                if (grdAddMPR.Rows[e.RowIndex].Cells[5].Value.ToString().Length <= 0)
+                {
+                    grdAddMPR.Rows[e.RowIndex].Cells[5].Value = Properties.Resources.picture_bg;
+                }
+
+                e.Handled = true;
+            }
+        }
+
+        private void grdMPRExport_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdMPRExport.Rows.Count <= 0) return;
+            int rsl = grdMPRExport.CurrentRow.Index;
+            if (grdMPRExport.Rows[rsl].Cells[0].Value.ToString() != null)
+            {
+                DataView dv = dataMPRExportDetail.DefaultView;
+                dv.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString())}'";
+                grdMPRExportDetail.DataSource = dv.ToTable();
+                
+                //grdMPRExportDetail.DataSource = MPR_DAO.GetMPRExportDetail(Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString()));
+            }
+            else
+            {
+
+            }
+        }
+
+        private void grdMPRExportDetail_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 && e.RowIndex >= 0) //change 3 with your collumn index
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                if (grdMPRExportDetail.Rows[e.RowIndex].Cells[5].Value.ToString().Length <= 0)
+                {
+                    grdMPRExportDetail.Rows[e.RowIndex].Cells[5].Value = Properties.Resources.picture_bg;
+                }
+
+                e.Handled = true;
             }
         }
     }

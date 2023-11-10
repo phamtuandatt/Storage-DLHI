@@ -277,7 +277,35 @@ END
 GO
 EXEC GET_MPR_LIST
 
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+GO
+CREATE PROC GET_MPR_EXPORT_DETAIL @ID UNIQUEIDENTIFIER
+AS
+BEGIN
+	SELECT MPR.ID AS MPR_ID, ITEM.ID AS ITEM_ID, ITEM.CODE, ITEM.NAME, UNIT.NAME AS UNIT, ITEM.PICTURE, 
+			MPR.USAGE, MPR.CREATED, MPR.QUANTITY, MPR.NOTE, MPR.MPR_NO
+	FROM MPR, ITEM, UNIT
+	WHERE MPR.ITEM_ID = ITEM.ID AND ITEM.UNIT_ID = UNIT.ID 
+		AND MPR.ID IN (SELECT MPR_ID FROM MPR_EXPORT_DETAIL WHERE MPR_EXPORT_ID = @ID)
+END
+GO
+EXEC GET_MPR_EXPORT_DETAIL '0F921F32-88F2-48B0-A3EE-D09AED4372B0'
 
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+GO
+CREATE PROC GET_MPR_EXPORT_DETAILS
+AS
+BEGIN
+SELECT MPR.ID AS MPR_ID, ITEM.ID AS ITEM_ID, ITEM.CODE, ITEM.NAME, UNIT.NAME AS UNIT, ITEM.PICTURE, 
+			MPR.USAGE, MPR.CREATED, MPR.QUANTITY, MPR.NOTE, MPR.MPR_NO, MPR_EXPORT_DETAIL.MPR_EXPORT_ID
+	FROM MPR, ITEM, UNIT, MPR_EXPORT_DETAIL
+	WHERE MPR.ITEM_ID = ITEM.ID AND ITEM.UNIT_ID = UNIT.ID 
+		AND MPR.ID = MPR_EXPORT_DETAIL.MPR_ID
+END
+GO
+EXEC GET_MPR_EXPORT_DETAILS
 
 ----------------------------------------------------------------------------------------------------
 -------------------------------FUNCTION-------------------------------------------------------------

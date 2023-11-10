@@ -85,5 +85,26 @@ namespace Storage.DAO
 
             return data.Insert(sql_Insert) > 0;
         }
+
+        public static DataTable GetMPRExports()
+        {
+            string sql = "SELECT *FROM MPR_EXPORT";
+
+            return data.GetData(sql, "MPRExports");
+        }
+
+        public static DataTable GetMPRExportDetail(Guid Id)
+        {
+            string sql = $"EXEC GET_MPR_EXPORT_DETAIL '{Id}'";
+
+            return data.GetData(sql, "MPRExportDetail");
+        }
+
+        public static DataTable GetMPRExportDetails()
+        {
+            string sql = "EXEC GET_MPR_EXPORT_DETAILS";
+
+            return data.GetData(sql, "MPRExportDetails");
+        }
     }
 }
