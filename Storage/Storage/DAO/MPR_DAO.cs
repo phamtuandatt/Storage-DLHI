@@ -84,7 +84,11 @@ namespace Storage.DAO
 
             string sql_Insert = $"INSERT INTO MPR_EXPORT_DETAIL VALUES ('{Guid.Parse(row["ID"].ToString())}', '{dto.MPR_Id}')";
 
-            return data.Insert(sql_Insert) > 0;
+            if (data.Insert(sql_Insert) > 0)
+            {
+                return data.Update($"EXEC UPDATE_ITEM_COUNT_MPR_EXPORT '{Guid.Parse(row["ID"].ToString())}'") > 0;
+            }
+            return false;
         }
 
         public static DataTable GetMPRExports()
