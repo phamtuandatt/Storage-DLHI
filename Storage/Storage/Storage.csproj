@@ -194,6 +194,12 @@
     <Compile Include="GUI_MPR\ucMPR.Designer.cs">
       <DependentUpon>ucMPR.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_PO\ucPO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI_PO\ucPO.Designer.cs">
+      <DependentUpon>ucPO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\ConnectSystem.resx">
