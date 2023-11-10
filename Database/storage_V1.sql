@@ -154,12 +154,10 @@ CREATE TABLE PO (
 	EXPECTED_DELIVERY DATETIME,
 	TOTAL INT,
 
-	SUPPLIER_ID UNIQUEIDENTIFIER,
 	LOCATION_WAREHOUSE_ID UNIQUEIDENTIFIER,
 	PAYMENT_METHOD_ID UNIQUEIDENTIFIER,
 
 	CONSTRAINT PK_PO PRIMARY KEY (ID),
-	CONSTRAINT FK_PO_SUPPLIER FOREIGN KEY (SUPPLIER_ID) REFERENCES SUPPLIER(ID),
 	CONSTRAINT FK_PO_LOCATION_WAREHOUSE FOREIGN KEY (LOCATION_WAREHOUSE_ID) REFERENCES LOCATION_WAREHOUSE(ID),
 	CONSTRAINT FK_PO_PAYMENT_METHOD FOREIGN KEY (PAYMENT_METHOD_ID) REFERENCES PAYMENT_METHOD(ID),
 )
@@ -334,6 +332,11 @@ END
 GO
 SELECT *FROM MPR_EXPORT
 EXEC UPDATE_ITEM_COUNT_MPR_EXPORT '9D70F742-CA22-4ACB-89B8-8CD8209475BF'
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+
+
 ----------------------------------------------------------------------------------------------------
 -------------------------------FUNCTION-------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
