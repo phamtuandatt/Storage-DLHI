@@ -1,10 +1,12 @@
 ﻿using Storage.DAO;
 using Storage.GUI.Items;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,10 @@ namespace Storage.GUI_MPR
     {
         private DataTable data;
         private DataTable dataMPRExportDetail;
+        Microsoft.Office.Interop.Excel.Application excel;
+        Microsoft.Office.Interop.Excel.Workbook excelworkBook;
+        Microsoft.Office.Interop.Excel.Worksheet excelSheet;
+        Microsoft.Office.Interop.Excel.Range excelCellrange;
         public ucMPR()
         {
             InitializeComponent();
@@ -182,7 +188,29 @@ namespace Storage.GUI_MPR
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
+            //// Start Excel and get Application object.
+            //excel = new Microsoft.Office.Interop.Excel.Application();
 
+            //// Make Excel invisible and disable alerts.
+            //excel.Visible = false;
+            //excel.DisplayAlerts = false;
+
+            //// Create a new Workbook.
+            //excelworkBook = excel.Workbooks.Add(Type.Missing);
+
+            //// Create a Worksheet.
+            //excelSheet = (Microsoft.Office.Interop.Excel.Worksheet)excelworkBook.ActiveSheet;
+            //excelSheet.Name = "Test work sheet";
+
+            //// Create Excel Header
+            //excelCellrange = excelSheet.get_Range("A1", "G2");
+            //excelCellrange.Merge(false);
+            //excelCellrange.Interior.Color = System.Drawing.Color.White;
+            //excelCellrange.Font.Color = System.Drawing.Color.Gray;
+            //excelCellrange.HorizontalAlignment = OfficeExcel.XlHAlign.xlHAlignCenter;
+            //excelCellrange.VerticalAlignment = OfficeExcel.XlVAlign.xlVAlignCenter;
+            //excelCellrange.Font.Size = 26;
+            //excelCellrange.Cells[1, 1] = "Greate Novels Of All Time";
         }
     }
 }
