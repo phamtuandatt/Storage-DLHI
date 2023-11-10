@@ -16,5 +16,10 @@ namespace Storage.GUI_PO
         {
             InitializeComponent();
         }
+
+        private void kryptonTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

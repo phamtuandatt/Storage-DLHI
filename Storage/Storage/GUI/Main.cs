@@ -7,6 +7,7 @@ using Storage.GUI.Types;
 using Storage.GUI.Units;
 using Storage.GUI.UserControll;
 using Storage.GUI_MPR;
+using Storage.GUI_PO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,7 +60,7 @@ namespace Storage.GUI
         private void btnItems_Click(object sender, EventArgs e)
         {
             ucItems ucItems = new ucItems();
-            ucItems.Dock= DockStyle.Fill; 
+            ucItems.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucItems);
             ucItems.BringToFront();
         }
@@ -67,7 +68,7 @@ namespace Storage.GUI
         private void mnuCommon_Click(object sender, EventArgs e)
         {
             ucCommon ucCommon = new ucCommon();
-            ucCommon.Dock= DockStyle.Fill;
+            ucCommon.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucCommon);
             ucCommon.BringToFront();
         }
@@ -75,22 +76,25 @@ namespace Storage.GUI
         private void mnuSupplier_Click(object sender, EventArgs e)
         {
             ucSupplier ucSupplier = new ucSupplier();
-            ucSupplier.Dock= DockStyle.Fill;    
-            pnMain.Controls.Add(ucSupplier); 
+            ucSupplier.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucSupplier);
             ucSupplier.BringToFront();
         }
 
         private void btnMPR_Click(object sender, EventArgs e)
         {
             ucMPR ucMPR = new ucMPR();
-            ucMPR.Dock= DockStyle.Fill;
+            ucMPR.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucMPR);
             ucMPR.BringToFront();
         }
 
         private void btnPO_Click(object sender, EventArgs e)
         {
-
+            ucPO ucPO = new ucPO();
+            ucPO.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucPO);
+            ucPO.BringToFront();
         }
     }
 }

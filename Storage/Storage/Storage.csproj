@@ -259,6 +259,9 @@
     <EmbeddedResource Include="GUI_PO\Add_PO.resx">
       <DependentUpon>Add_PO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_PO\ucPO.resx">
+      <DependentUpon>ucPO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
