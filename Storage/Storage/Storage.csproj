@@ -284,6 +284,7 @@
   <ItemGroup>
     <Content Include="download__1_-removebg-preview.ico" />
     <Content Include="Palette\Palette.xml" />
+    <None Include="Resources\refresh.png" />
     <None Include="Resources\list.png" />
     <None Include="Resources\picture-bg2.jpg" />
     <None Include="Resources\picture-bg1.jpg" />

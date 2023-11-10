@@ -169,5 +169,15 @@ namespace Storage.GUI_MPR
                 e.Handled = true;
             }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void btnRefeshMPR_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }

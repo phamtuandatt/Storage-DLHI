@@ -47,7 +47,6 @@
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.kryptonPage1 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.kryptonPanel13 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel15 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -92,8 +91,9 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonPanel7 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.kryptonPanel8 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.btnRefeshMPR = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).BeginInit();
@@ -331,22 +331,13 @@
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.btnRefresh});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip1.Size = new System.Drawing.Size(1026, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Storage.Properties.Resources.add;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // kryptonPage1
             // 
@@ -557,7 +548,10 @@
             this.grdMPRExport.StateCommon.Background.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.grdMPRExport.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.grdMPRExport.TabIndex = 0;
+            this.grdMPRExport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMPRExport_CellContentClick);
             this.grdMPRExport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMPRExport_CellContentClick);
+            this.grdMPRExport.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMPRExport_CellContentClick);
+            this.grdMPRExport.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMPRExport_CellContentClick);
             this.grdMPRExport.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdItems_RowPostPaint);
             // 
             // dataGridViewTextBoxColumn7
@@ -695,6 +689,7 @@
             this.grdMPRExportDetail.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.grdMPRExportDetail.TabIndex = 2;
             this.grdMPRExportDetail.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdMPRExportDetail_CellPainting);
+            this.grdMPRExportDetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdItems_RowPostPaint);
             // 
             // Column3
             // 
@@ -833,22 +828,13 @@
             this.toolStrip2.BackColor = System.Drawing.Color.White;
             this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton2});
+            this.btnRefeshMPR});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip2.Size = new System.Drawing.Size(1026, 25);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Storage.Properties.Resources.add;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
             // 
             // kryptonPanel8
             // 
@@ -858,6 +844,26 @@
             this.kryptonPanel8.Name = "kryptonPanel8";
             this.kryptonPanel8.Size = new System.Drawing.Size(1026, 580);
             this.kryptonPanel8.TabIndex = 1;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefresh.Image = global::Storage.Properties.Resources.refresh;
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(24, 24);
+            this.btnRefresh.Text = "toolStripButton1";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnRefeshMPR
+            // 
+            this.btnRefeshMPR.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefeshMPR.Image = global::Storage.Properties.Resources.refresh;
+            this.btnRefeshMPR.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefeshMPR.Name = "btnRefeshMPR";
+            this.btnRefeshMPR.Size = new System.Drawing.Size(23, 22);
+            this.btnRefeshMPR.Text = "toolStripButton2";
+            this.btnRefeshMPR.Click += new System.EventHandler(this.btnRefeshMPR_Click);
             // 
             // ucMPR
             // 
@@ -923,7 +929,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView grdMRPs;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel4;
@@ -979,6 +985,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel7;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel8;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton btnRefeshMPR;
     }
 }
