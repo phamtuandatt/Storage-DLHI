@@ -68,6 +68,27 @@ namespace Storage.GUI_MPR
                             this.Close();
                         }
                     }
+                    else
+                    {
+                        // Create MPR_Export
+                        MPR_Export mPR_Export = new MPR_Export()
+                        {
+                            Id = Guid.NewGuid(),
+                            Created = txtCreateDate.Value,
+                            ItemCount = 1,
+                            Status = 2,
+                        };
+                        MPR_Export_Detail detail = new MPR_Export_Detail()
+                        {
+                            MPR_Export_Id = mPR_Export.Id,
+                            MPR_Id = makeNewRequestDto.Id,
+                        };
+
+                        if (MPR_DAO.CreateMPR_Export(mPR_Export) && MPR_DAO.CreateMPR_Export_Detail(detail))
+                        {
+                            this.Close();
+                        }
+                    }
                 }
                 else
                 {

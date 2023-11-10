@@ -61,6 +61,7 @@ namespace Storage.DAO
         {
             string sql = "SELECT *FROM MPR_EXPORT WHERE STATUS = 2";
             DataTable dt = data.GetData(sql, "status_2");
+            if (dt.Rows.Count == 0) return false;
             DataRow row = dt.Rows[0];
 
             string sql_Update = $"UPDATE MPR_EXPORT SET STATUS = 1 WHERE ID = '{Guid.Parse(row["ID"].ToString())}'";
