@@ -38,9 +38,10 @@
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCommon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnItems = new System.Windows.Forms.ToolStripButton();
             this.btnMPR = new System.Windows.Forms.ToolStripButton();
-            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnPO = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -168,13 +169,23 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnItems,
-            this.btnMPR});
+            this.btnMPR,
+            this.btnPO});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(952, 92);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // pnMain
+            // 
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 116);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.pnMain.Size = new System.Drawing.Size(952, 445);
+            this.pnMain.TabIndex = 2;
             // 
             // btnItems
             // 
@@ -199,14 +210,16 @@
             this.btnMPR.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMPR.Click += new System.EventHandler(this.btnMPR_Click);
             // 
-            // pnMain
+            // btnPO
             // 
-            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(0, 116);
-            this.pnMain.Name = "pnMain";
-            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.pnMain.Size = new System.Drawing.Size(952, 445);
-            this.pnMain.TabIndex = 2;
+            this.btnPO.Image = global::Storage.Properties.Resources.shopping_cart;
+            this.btnPO.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnPO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPO.Name = "btnPO";
+            this.btnPO.Size = new System.Drawing.Size(87, 89);
+            this.btnPO.Text = "          PO          ";
+            this.btnPO.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPO.Click += new System.EventHandler(this.btnPO_Click);
             // 
             // Main
             // 
@@ -247,5 +260,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCommon;
         private System.Windows.Forms.ToolStripMenuItem mnuSupplier;
         private System.Windows.Forms.ToolStripButton btnMPR;
+        private System.Windows.Forms.ToolStripButton btnPO;
     }
 }

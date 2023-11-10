@@ -194,6 +194,12 @@
     <Compile Include="GUI_MPR\ucMPR.Designer.cs">
       <DependentUpon>ucMPR.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_PO\Add_PO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_PO\Add_PO.Designer.cs">
+      <DependentUpon>Add_PO.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_PO\ucPO.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -250,6 +256,9 @@
     <EmbeddedResource Include="GUI_MPR\ucMPR.resx">
       <DependentUpon>ucMPR.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_PO\Add_PO.resx">
+      <DependentUpon>Add_PO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -296,6 +305,7 @@
   <ItemGroup>
     <Content Include="download__1_-removebg-preview.ico" />
     <Content Include="Palette\Palette.xml" />
+    <None Include="Resources\shopping-cart.png" />
     <None Include="Resources\excel.png" />
     <None Include="Resources\refresh.png" />
     <None Include="Resources\list.png" />

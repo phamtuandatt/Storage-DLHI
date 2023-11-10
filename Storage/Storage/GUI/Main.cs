@@ -87,5 +87,10 @@ namespace Storage.GUI
             pnMain.Controls.Add(ucMPR);
             ucMPR.BringToFront();
         }
+
+        private void btnPO_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
