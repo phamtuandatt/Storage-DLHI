@@ -94,6 +94,7 @@
             this.kryptonPanel8 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnRefeshMPR = new System.Windows.Forms.ToolStripButton();
+            this.btnExportExcel = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).BeginInit();
@@ -828,7 +829,8 @@
             this.toolStrip2.BackColor = System.Drawing.Color.White;
             this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnRefeshMPR});
+            this.btnRefeshMPR,
+            this.btnExportExcel});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -864,6 +866,16 @@
             this.btnRefeshMPR.Size = new System.Drawing.Size(23, 22);
             this.btnRefeshMPR.Text = "toolStripButton2";
             this.btnRefeshMPR.Click += new System.EventHandler(this.btnRefeshMPR_Click);
+            // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnExportExcel.Image = global::Storage.Properties.Resources.excel;
+            this.btnExportExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(23, 22);
+            this.btnExportExcel.Text = "toolStripButton1";
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // ucMPR
             // 
@@ -986,5 +998,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel8;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnRefeshMPR;
+        private System.Windows.Forms.ToolStripButton btnExportExcel;
     }
 }

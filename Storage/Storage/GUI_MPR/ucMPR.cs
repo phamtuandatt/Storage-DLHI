@@ -179,5 +179,10 @@ namespace Storage.GUI_MPR
         {
             LoadData();
         }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
