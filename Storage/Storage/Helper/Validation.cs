@@ -8,8 +8,8 @@ namespace Storage.Helper
 {
     internal class Validation
     {
-        public const string NOTALLOWED = @"><@{}[]#&()/|!^*-+$%~\";
-        public const string EMAIL = @"><{}[]#&()!^/|*+$%~\";
-        public const string NO = @"><@{}[]#&()/|!^*+$%~\";
+        public const string NOTALLOWED = @"><@{}[]#&()/|!=^*-+$%~\";
+        public const string EMAIL = @"><{}[]#&()!^/|*+$=%~\";
+        public const string NO = @"><@{}[]#&()/|!^*+$=%~\";
     }
 }
