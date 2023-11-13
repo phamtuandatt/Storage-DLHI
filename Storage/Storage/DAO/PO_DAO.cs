@@ -15,7 +15,7 @@ namespace Storage.DAO
 
         public static DataTable GetPOs()
         {
-            string sql = "SELECT *FROM PO";
+            string sql = "EXEC GET_POs";
 
             return data.GetData(sql, "POs");
         }
@@ -50,11 +50,9 @@ namespace Storage.DAO
 
         public static DataTable dtPODetails = data.GetData("SELECT *FROM PO_DETAIL", "PODetails"); 
 
-        public static bool Add(PO_DetailDto dto)
+        public static DataTable GetPODetails()
         {
-            string sql = $"INSERT INTO PO_DETAIL VALUES ('{dto.PO_Id}', '{dto.Item_Id}', N'{dto.MPR_No}', N'{dto.PO_No}', {dto.Price}, {dto.Quantity})";
-
-            return data.Insert(sql) > 0;
+            return data.GetData("EXEC GET_PO_DETAIL", "PODetails");
         }
 
         public static bool AddRange(List<PO_DetailDto> list)

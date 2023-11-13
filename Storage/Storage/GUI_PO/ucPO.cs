@@ -1,4 +1,5 @@
-﻿using Storage.DAO;
+﻿using ComponentFactory.Krypton.Toolkit;
+using Storage.DAO;
 using Storage.DTOs;
 using Storage.GUI.LocationWarehouses;
 using Storage.GUI.PaymentMethods;
@@ -19,6 +20,9 @@ namespace Storage.GUI_PO
     {
         private DataTable dataItemAddPO;
         private DataTable dtItemPO;
+
+        private DataTable dtPOs;
+        private DataTable dtPODetail;
 
         public ucPO()
         {
@@ -51,6 +55,12 @@ namespace Storage.GUI_PO
             cboWarehouse.DataSource = LocationWareHouse_DAO.GetLocationWareHouses();
             cboWarehouse.DisplayMember = "Name";
             cboWarehouse.ValueMember = "ID";
+
+            dtPOs = PO_DAO.GetPOs();
+            dtPODetail = PO_Detail_DAO.GetPODetails();
+            grdPOs.DataSource = dtPOs;
+            grdPODetail.RowTemplate.Height = 100;
+
         }
 
         private void grdItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -125,6 +135,10 @@ namespace Storage.GUI_PO
 
                     dtItemPO.Rows.Add(r);
                     grdItemPODetail.DataSource = dtItemPO;
+                    txtQuantity.Text = "";
+                    txtPrice.Text = "";
+                    txtMPR.Text = "";
+                    txtPONo.Text = "";
                 }
             }
             else
@@ -199,7 +213,13 @@ namespace Storage.GUI_PO
                 }
                 if (PO_Detail_DAO.AddRange(dtos))
                 {
-                    
+                    dtItemPO.Rows.Clear();
+                    grdItemPODetail.DataSource = dtItemPO;
+                    txtQuantity.Text = "";
+                    txtPrice.Text = "";
+                    txtMPR.Text = "";
+                    txtPONo.Text = "";
+                    KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
 
@@ -210,9 +230,37 @@ namespace Storage.GUI_PO
             LoadData();
         }
 
-        private void CreateTableCollapse()
+        private void grdPOs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (grdPOs.Rows.Count <= 0) return;
+            int rsl = grdPOs.CurrentRow.Index;
+            if (grdPOs.Rows[rsl].Cells[0].Value.ToString() != null)
+            {
+                DataView dv = dtPODetail.DefaultView;
+                dv.RowFilter = $"PO_ID = '{Guid.Parse(grdPOs.Rows[rsl].Cells[0].Value.ToString())}'";
+                grdPODetail.DataSource = dv.ToTable();
+
+                //grdMPRExportDetail.DataSource = MPR_DAO.GetMPRExportDetail(Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString()));
+            }
+            else
+            {
+
+            }
+        }
+
+        private void grdPODetail_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0) //change 3 with your collumn index
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                if (grdPODetail.Rows[e.RowIndex].Cells[3].Value.ToString().Length <= 0)
+                {
+                    grdPODetail.Rows[e.RowIndex].Cells[3].Value = Properties.Resources.picture_bg;
+                }
+
+                e.Handled = true;
+            }
         }
     }
 }

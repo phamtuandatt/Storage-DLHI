@@ -335,8 +335,31 @@ EXEC UPDATE_ITEM_COUNT_MPR_EXPORT '9D70F742-CA22-4ACB-89B8-8CD8209475BF'
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
+GO
+CREATE PROC GET_POs
+AS
+BEGIN
+	SELECT PO.ID, PO.CREATED, PO.EXPECTED_DELIVERY, PO.TOTAL, WAREHOUSE.NAME AS WAREHOUSE, PAYMENT_METHOD.NAME AS PAYMENT
+	FROM PO, WAREHOUSE, PAYMENT_METHOD
+	WHERE PO.LOCATION_WAREHOUSE_ID = WAREHOUSE.ID
+		AND PO.PAYMENT_METHOD_ID = PAYMENT_METHOD.ID
+END
+GO
+EXEC GET_POs
 
-
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+GO
+CREATE PROC GET_PO_DETAIL
+AS
+BEGIN
+	SELECT PO_DETAIL.PO_ID, ITEM.CODE, ITEM.NAME, ITEM.PICTURE, PO_DETAIL.MPR_NO, PO_DETAIL.PO_NO, PO_DETAIL.QUANTITY, PO_DETAIL.PRICE
+	FROM PO_DETAIL, ITEM
+	WHERE PO_DETAIL.ITEM_ID = ITEM.ID
+END
+GO
+EXEC GET_PO_DETAIL
+SELECT *FROM PO_DETAIL
 ----------------------------------------------------------------------------------------------------
 -------------------------------FUNCTION-------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
