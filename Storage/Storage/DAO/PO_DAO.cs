@@ -13,6 +13,13 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
+        public static DataTable GetPOs()
+        {
+            string sql = "SELECT *FROM PO";
+
+            return data.GetData(sql, "POs");
+        }
+
         public static bool Add(PODto dto)
         {
             string sql = $"SET DATEFORMAT YMD INSERT INTO PO VALUES ('{dto.Id}', '{dto.Created}', '{dto.ExpectedDelivery}', {dto.Total}, " +

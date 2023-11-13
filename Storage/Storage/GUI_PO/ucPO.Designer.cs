@@ -97,11 +97,16 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnPayment = new System.Windows.Forms.ToolStripButton();
             this.btnLocationWarehouse = new System.Windows.Forms.ToolStripButton();
+            this.kryptonPanel15 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.kryptonPanel16 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).BeginInit();
             this.kryptonDockableNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPOs)).BeginInit();
+            this.btnPOs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnNewPO)).BeginInit();
             this.btnNewPO.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -138,6 +143,10 @@
             this.kryptonPanel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdItemPODetail)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel15)).BeginInit();
+            this.kryptonPanel15.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel16)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -172,6 +181,7 @@
             // btnPOs
             // 
             this.btnPOs.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.btnPOs.Controls.Add(this.kryptonPanel15);
             this.btnPOs.Flags = 65534;
             this.btnPOs.LastVisibleSet = true;
             this.btnPOs.MinimumSize = new System.Drawing.Size(50, 50);
@@ -960,6 +970,51 @@
             this.btnLocationWarehouse.Text = "toolStripButton3";
             this.btnLocationWarehouse.Click += new System.EventHandler(this.btnLocationWarehouse_Click);
             // 
+            // kryptonPanel15
+            // 
+            this.kryptonPanel15.Controls.Add(this.kryptonPanel16);
+            this.kryptonPanel15.Controls.Add(this.toolStrip2);
+            this.kryptonPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel15.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel15.Name = "kryptonPanel15";
+            this.kryptonPanel15.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.kryptonPanel15.Size = new System.Drawing.Size(1183, 638);
+            this.kryptonPanel15.StateCommon.Color1 = System.Drawing.Color.White;
+            this.kryptonPanel15.TabIndex = 0;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.BackColor = System.Drawing.Color.White;
+            this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnRefresh});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip2.Size = new System.Drawing.Size(1183, 25);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefresh.Image = global::Storage.Properties.Resources.refresh;
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(23, 22);
+            this.btnRefresh.Text = "toolStripButton2";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // kryptonPanel16
+            // 
+            this.kryptonPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel16.Location = new System.Drawing.Point(0, 25);
+            this.kryptonPanel16.Name = "kryptonPanel16";
+            this.kryptonPanel16.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.kryptonPanel16.Size = new System.Drawing.Size(1183, 613);
+            this.kryptonPanel16.StateCommon.Color1 = System.Drawing.Color.White;
+            this.kryptonPanel16.TabIndex = 1;
+            // 
             // ucPO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -972,6 +1027,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).EndInit();
             this.kryptonDockableNavigator1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnPOs)).EndInit();
+            this.btnPOs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnNewPO)).EndInit();
             this.btnNewPO.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
@@ -1017,6 +1073,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdItemPODetail)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel15)).EndInit();
+            this.kryptonPanel15.ResumeLayout(false);
+            this.kryptonPanel15.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel16)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1092,5 +1154,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.ToolStripButton btnPayment;
         private System.Windows.Forms.ToolStripButton btnLocationWarehouse;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel15;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel16;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
     }
 }

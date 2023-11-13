@@ -204,5 +204,15 @@ namespace Storage.GUI_PO
             }
 
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void CreateTableCollapse()
+        {
+            
+        }
     }
 }
