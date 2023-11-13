@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,6 +62,10 @@ namespace Storage.GUI_MPR
                 dtMPRExport.Rows.Add(r);
             }
             grdMPRExport.DataSource = dtMPRExport;
+            grdMPRExport.Rows[0].Selected = true;
+            DataView dv = dataMPRExportDetail.DefaultView;
+            dv.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[0].Cells[0].Value.ToString())}'";
+            grdMPRExportDetail.DataSource = dv.ToTable();
 
             grdMPRExportDetail.RowTemplate.Height = 100;
         }

@@ -61,6 +61,11 @@ namespace Storage.GUI_PO
             grdPOs.DataSource = dtPOs;
             grdPODetail.RowTemplate.Height = 100;
 
+            grdPOs.Rows[0].Selected = true;
+            DataView dv = dtPODetail.DefaultView;
+            dv.RowFilter = $"PO_ID = '{Guid.Parse(grdPOs.Rows[0].Cells[0].Value.ToString())}'";
+            grdPODetail.DataSource = dv.ToTable();
+
         }
 
         private void grdItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -114,6 +119,11 @@ namespace Storage.GUI_PO
         private void btnAddSingle_Click(object sender, EventArgs e)
         {
             if (grdItemAddPO.Rows.Count <= 0) return;
+            if (txtQuantity.Text.Length == 0) return;
+            if (txtPrice.Text.Length == 0) return;
+            if (txtMPR.Text.Length == 0) return;
+            if (txtPONo.Text.Length == 0) return;
+
             int rsl = grdItemAddPO.CurrentRow.Index;
             if (grdItemAddPO.Rows[rsl].Cells[1].Value.ToString() != null)
             {

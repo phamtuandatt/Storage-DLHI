@@ -196,7 +196,7 @@
             this.kryptonDockableNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.btnPOs,
             this.btnNewPO});
-            this.kryptonDockableNavigator1.SelectedIndex = 0;
+            this.kryptonDockableNavigator1.SelectedIndex = 1;
             this.kryptonDockableNavigator1.Size = new System.Drawing.Size(1185, 665);
             this.kryptonDockableNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonDockableNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.White;
