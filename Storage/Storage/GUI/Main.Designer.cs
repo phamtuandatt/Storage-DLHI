@@ -42,6 +42,7 @@
             this.btnItems = new System.Windows.Forms.ToolStripButton();
             this.btnMPR = new System.Windows.Forms.ToolStripButton();
             this.btnPO = new System.Windows.Forms.ToolStripButton();
+            this.btnImport = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -51,60 +52,43 @@
             // 
             this.kryptonPalette1.BasePaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Global;
             this.kryptonPalette1.ButtonSpecs.FormClose.Image = global::Storage.Properties.Resources.red_dot;
-            this.kryptonPalette1.ButtonSpecs.FormClose.Orientation = ComponentFactory.Krypton.Toolkit.PaletteButtonOrientation.Inherit;
             this.kryptonPalette1.ButtonSpecs.FormClose.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Form;
             this.kryptonPalette1.ButtonSpecs.FormMax.Image = global::Storage.Properties.Resources.yellow_dot;
-            this.kryptonPalette1.ButtonSpecs.FormMax.Orientation = ComponentFactory.Krypton.Toolkit.PaletteButtonOrientation.Inherit;
-            this.kryptonPalette1.ButtonSpecs.FormMax.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
             this.kryptonPalette1.ButtonSpecs.FormMin.Image = global::Storage.Properties.Resources.green_dot;
-            this.kryptonPalette1.ButtonSpecs.FormMin.Orientation = ComponentFactory.Krypton.Toolkit.PaletteButtonOrientation.Inherit;
-            this.kryptonPalette1.ButtonSpecs.FormMin.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
             this.kryptonPalette1.ButtonSpecs.FormRestore.Image = global::Storage.Properties.Resources.yellow_dot;
-            this.kryptonPalette1.ButtonSpecs.FormRestore.Orientation = ComponentFactory.Krypton.Toolkit.PaletteButtonOrientation.Inherit;
-            this.kryptonPalette1.ButtonSpecs.FormRestore.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color1 = System.Drawing.Color.White;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.Width = 0;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Back.Color1 = System.Drawing.Color.White;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Back.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StatePressed.Border.Width = 0;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Back.Color1 = System.Drawing.Color.White;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Back.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Border.Color1 = System.Drawing.Color.White;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Border.Color2 = System.Drawing.Color.White;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateTracking.Border.Width = 0;
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.None;
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Rounding = 15;
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Width = 1;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color1 = System.Drawing.Color.Gainsboro;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = System.Drawing.Color.Gainsboro;
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Border.Width = 0;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 5;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonPadding = new System.Windows.Forms.Padding(-1, 7, 15, -1);
@@ -170,7 +154,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnItems,
             this.btnMPR,
-            this.btnPO});
+            this.btnPO,
+            this.btnImport});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -201,7 +186,7 @@
             // 
             // btnMPR
             // 
-            this.btnMPR.Image = global::Storage.Properties.Resources.warehouse;
+            this.btnMPR.Image = global::Storage.Properties.Resources.purchasing;
             this.btnMPR.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMPR.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMPR.Name = "btnMPR";
@@ -220,6 +205,17 @@
             this.btnPO.Text = "          PO          ";
             this.btnPO.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPO.Click += new System.EventHandler(this.btnPO_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.Image = global::Storage.Properties.Resources.warehouse;
+            this.btnImport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnImport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(77, 89);
+            this.btnImport.Text = "     Import     ";
+            this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // Main
             // 
@@ -261,5 +257,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSupplier;
         private System.Windows.Forms.ToolStripButton btnMPR;
         private System.Windows.Forms.ToolStripButton btnPO;
+        private System.Windows.Forms.ToolStripButton btnImport;
     }
 }

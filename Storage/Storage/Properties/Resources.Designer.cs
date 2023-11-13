@@ -133,6 +133,16 @@ namespace Storage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap purchasing {
+            get {
+                object obj = ResourceManager.GetObject("purchasing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap red_dot {
             get {
                 object obj = ResourceManager.GetObject("red-dot", resourceCulture);

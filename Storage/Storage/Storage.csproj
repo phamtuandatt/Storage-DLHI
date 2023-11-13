@@ -212,6 +212,7 @@
     <Compile Include="GUI_PO\ucPO.Designer.cs">
       <DependentUpon>ucPO.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Validation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\ConnectSystem.resx">

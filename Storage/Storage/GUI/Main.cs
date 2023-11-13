@@ -96,5 +96,10 @@ namespace Storage.GUI
             pnMain.Controls.Add(ucPO);
             ucPO.BringToFront();
         }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
