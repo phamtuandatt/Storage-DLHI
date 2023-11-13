@@ -1,4 +1,5 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using Storage.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,14 @@ namespace Storage.GUI_PO
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtMPR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NO.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

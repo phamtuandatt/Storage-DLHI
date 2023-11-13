@@ -36,8 +36,22 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonPanel17 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.grdPOs = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonPanel18 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.grdPODetail = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnNewPO = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -106,20 +120,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnPayment = new System.Windows.Forms.ToolStripButton();
             this.btnLocationWarehouse = new System.Windows.Forms.ToolStripButton();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).BeginInit();
@@ -293,6 +293,49 @@
             this.grdPOs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdPOs_CellClick);
             this.grdPOs.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdItems_RowPostPaint);
             // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "ID";
+            this.Column9.HeaderText = "Id";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Visible = false;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "CREATED";
+            this.Column10.HeaderText = "Created";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "EXPECTED_DELIVERY";
+            this.Column11.HeaderText = "Expected Delivery";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "TOTAL";
+            this.Column12.HeaderText = "Total Item";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "WAREHOUSE";
+            this.Column13.HeaderText = "Location Warehouse";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "PAYMENT";
+            this.Column14.HeaderText = "Payment Method";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            // 
             // kryptonPanel18
             // 
             this.kryptonPanel18.Controls.Add(this.grdPODetail);
@@ -330,6 +373,64 @@
             this.grdPODetail.TabIndex = 0;
             this.grdPODetail.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdPODetail_CellPainting);
             this.grdPODetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdItems_RowPostPaint);
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "PO_ID";
+            this.Column15.HeaderText = "Po_ID";
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            this.Column15.Visible = false;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "CODE";
+            this.Column16.HeaderText = "Code";
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "NAME";
+            this.Column17.HeaderText = "Name";
+            this.Column17.Name = "Column17";
+            this.Column17.ReadOnly = true;
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "PICTURE";
+            this.Column18.HeaderText = "Picture";
+            this.Column18.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
+            // 
+            // Column19
+            // 
+            this.Column19.DataPropertyName = "MPR_NO";
+            this.Column19.HeaderText = "MPR No";
+            this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
+            // 
+            // Column20
+            // 
+            this.Column20.DataPropertyName = "PO_NO";
+            this.Column20.HeaderText = "PO No";
+            this.Column20.Name = "Column20";
+            this.Column20.ReadOnly = true;
+            // 
+            // Column21
+            // 
+            this.Column21.DataPropertyName = "QUANTITY";
+            this.Column21.HeaderText = "Quantity";
+            this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "PRICE";
+            this.Column22.HeaderText = "Price";
+            this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
             // 
             // toolStrip2
             // 
@@ -771,6 +872,7 @@
             this.txtMPR.StateCommon.Border.Rounding = 15;
             this.txtMPR.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtMPR.TabIndex = 4;
+            this.txtMPR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMPR_KeyPress);
             // 
             // kryptonPanel7
             // 
@@ -891,6 +993,7 @@
             this.txtPONo.StateCommon.Border.Rounding = 15;
             this.txtPONo.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtPONo.TabIndex = 5;
+            this.txtPONo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMPR_KeyPress);
             // 
             // kryptonPanel12
             // 
@@ -973,6 +1076,7 @@
             this.txtQuantity.StateCommon.Border.Rounding = 15;
             this.txtQuantity.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtQuantity.TabIndex = 5;
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // kryptonPanel14
             // 
@@ -997,6 +1101,7 @@
             this.txtPrice.StateCommon.Border.Rounding = 15;
             this.txtPrice.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtPrice.TabIndex = 6;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // grdItemPODetail
             // 
@@ -1132,107 +1237,6 @@
             this.btnLocationWarehouse.Size = new System.Drawing.Size(23, 22);
             this.btnLocationWarehouse.Text = "toolStripButton3";
             this.btnLocationWarehouse.Click += new System.EventHandler(this.btnLocationWarehouse_Click);
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "ID";
-            this.Column9.HeaderText = "Id";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "CREATED";
-            this.Column10.HeaderText = "Created";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "EXPECTED_DELIVERY";
-            this.Column11.HeaderText = "Expected Delivery";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "TOTAL";
-            this.Column12.HeaderText = "Total Item";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column13
-            // 
-            this.Column13.DataPropertyName = "WAREHOUSE";
-            this.Column13.HeaderText = "Location Warehouse";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column14
-            // 
-            this.Column14.DataPropertyName = "PAYMENT";
-            this.Column14.HeaderText = "Payment Method";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            // 
-            // Column15
-            // 
-            this.Column15.DataPropertyName = "PO_ID";
-            this.Column15.HeaderText = "Po_ID";
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            this.Column15.Visible = false;
-            // 
-            // Column16
-            // 
-            this.Column16.DataPropertyName = "CODE";
-            this.Column16.HeaderText = "Code";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            // 
-            // Column17
-            // 
-            this.Column17.DataPropertyName = "NAME";
-            this.Column17.HeaderText = "Name";
-            this.Column17.Name = "Column17";
-            this.Column17.ReadOnly = true;
-            // 
-            // Column18
-            // 
-            this.Column18.DataPropertyName = "PICTURE";
-            this.Column18.HeaderText = "Picture";
-            this.Column18.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            // 
-            // Column19
-            // 
-            this.Column19.DataPropertyName = "MPR_NO";
-            this.Column19.HeaderText = "MPR No";
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
-            // 
-            // Column20
-            // 
-            this.Column20.DataPropertyName = "PO_NO";
-            this.Column20.HeaderText = "PO No";
-            this.Column20.Name = "Column20";
-            this.Column20.ReadOnly = true;
-            // 
-            // Column21
-            // 
-            this.Column21.DataPropertyName = "QUANTITY";
-            this.Column21.HeaderText = "Quantity";
-            this.Column21.Name = "Column21";
-            this.Column21.ReadOnly = true;
-            // 
-            // Column22
-            // 
-            this.Column22.DataPropertyName = "PRICE";
-            this.Column22.HeaderText = "Price";
-            this.Column22.Name = "Column22";
-            this.Column22.ReadOnly = true;
             // 
             // ucPO
             // 

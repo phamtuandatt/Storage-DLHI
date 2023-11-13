@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using Storage.DAO;
 using Storage.DTOs;
+using Storage.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -73,6 +74,30 @@ namespace Storage.GUI.Suppliers
             else
             {
                 KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtCusName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NOTALLOWED.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.EMAIL.Contains(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

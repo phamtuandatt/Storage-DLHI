@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using Storage.DAO;
 using Storage.DTOs;
+using Storage.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -141,6 +142,22 @@ namespace Storage.GUI.Items
             {
                 picItem.Image = new Bitmap(open.FileName);
                 path = open.FileName;
+            }
+        }
+
+        private void txtEngName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NOTALLOWED.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNote_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NOTALLOWED.Contains(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

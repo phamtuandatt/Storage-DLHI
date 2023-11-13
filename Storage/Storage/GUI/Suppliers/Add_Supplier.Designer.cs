@@ -313,6 +313,7 @@
             this.txtPhone.StateCommon.Border.Rounding = 12;
             this.txtPhone.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtPhone.TabIndex = 8;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // splitContainer6
             // 
@@ -353,6 +354,7 @@
             this.txtEmail.StateCommon.Border.Rounding = 12;
             this.txtEmail.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtEmail.TabIndex = 7;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // splitContainer5
             // 
@@ -393,6 +395,7 @@
             this.txtCusName.StateCommon.Border.Rounding = 12;
             this.txtCusName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtCusName.TabIndex = 8;
+            this.txtCusName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCusName_KeyPress);
             // 
             // splitContainer4
             // 
@@ -433,6 +436,7 @@
             this.txtComName.StateCommon.Border.Rounding = 12;
             this.txtComName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtComName.TabIndex = 7;
+            this.txtComName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComName_KeyPress);
             // 
             // splitContainer3
             // 
@@ -543,6 +547,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtCode.Location = new System.Drawing.Point(3, 4);
             this.txtCode.Name = "txtCode";
+            this.txtCode.ReadOnly = true;
             this.txtCode.Size = new System.Drawing.Size(265, 24);
             this.txtCode.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 

@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using ComponentFactory.Krypton.Toolkit;
 using Storage.DAO;
 using Storage.DTOs;
+using Storage.Helper;
 
 namespace Storage.GUI.Suppliers
 {
@@ -74,6 +75,38 @@ namespace Storage.GUI.Suppliers
             string number = SupplierDAO.GetCurrentCodeSupplier(code.ToUpper().Trim());
 
             txtCode.Text = code + number;
+        }
+
+        private void txtCusName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NOTALLOWED.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtComName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NOTALLOWED.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.EMAIL.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

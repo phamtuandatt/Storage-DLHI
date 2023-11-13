@@ -383,6 +383,7 @@
             this.txtName.StateCommon.Border.Rounding = 15;
             this.txtName.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtName.TabIndex = 1;
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // panel8
             // 

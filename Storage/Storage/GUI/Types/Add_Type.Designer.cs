@@ -138,6 +138,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.txtType.StateCommon.Border.Rounding = 15;
             this.txtType.TabIndex = 6;
+            this.txtType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtType_KeyPress);
             // 
             // panel2
             // 

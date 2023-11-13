@@ -138,6 +138,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.txtPaymentMethod.StateCommon.Border.Rounding = 15;
             this.txtPaymentMethod.TabIndex = 5;
+            this.txtPaymentMethod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaymentMethod_KeyPress);
             // 
             // panel2
             // 

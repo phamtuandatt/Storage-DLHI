@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using Storage.DAO;
 using Storage.DTOs;
+using Storage.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -114,6 +115,30 @@ namespace Storage.GUI_MPR
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtMPR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NO.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtUsage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NOTALLOWED.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

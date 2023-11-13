@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using Storage.DAO;
 using Storage.DTOs;
+using Storage.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -117,6 +118,14 @@ namespace Storage.GUI.Items
                     == DialogResult.Cancel)
                 return;
             this.Close();
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NOTALLOWED.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

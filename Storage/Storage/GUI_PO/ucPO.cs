@@ -3,6 +3,7 @@ using Storage.DAO;
 using Storage.DTOs;
 using Storage.GUI.LocationWarehouses;
 using Storage.GUI.PaymentMethods;
+using Storage.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -269,6 +270,22 @@ namespace Storage.GUI_PO
                     grdPODetail.Rows[e.RowIndex].Cells[3].Value = Properties.Resources.picture_bg;
                 }
 
+                e.Handled = true;
+            }
+        }
+
+        private void txtMPR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validation.NO.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
                 e.Handled = true;
             }
         }
