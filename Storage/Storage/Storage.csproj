@@ -188,6 +188,12 @@
     <Compile Include="GUI\UserControll\ucCommon.Designer.cs">
       <DependentUpon>ucCommon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Import\ucImport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI_Import\ucImport.Designer.cs">
+      <DependentUpon>ucImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_MPR\Add_MPR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -317,6 +323,7 @@
   <ItemGroup>
     <Content Include="download__1_-removebg-preview.ico" />
     <Content Include="Palette\Palette.xml" />
+    <None Include="Resources\purchasing.png" />
     <None Include="Resources\location-warehouse.png" />
     <None Include="Resources\dollar-symbol.png" />
     <None Include="Resources\shopping-cart.png" />
