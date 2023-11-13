@@ -14,8 +14,12 @@ namespace Storage.DTOs
         public int Quantity { get; set;  }    
         public int Price { get; set; }  
         public int Total { get; set; }
+    }
 
-        public Guid Supplier_Id { get; set; }
-        public Guid Item_Id { get; set; }
+    internal class ImportItemDetailDto
+    {
+        public Guid ImportItemId { get; set; }
+        public Guid ItemId { get; set; }
+        public string Note { get; set; }
     }
 }
