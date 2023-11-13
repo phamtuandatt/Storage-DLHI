@@ -25,7 +25,7 @@ namespace Storage.DAO
 
         public static bool Add(MakeNewRequestDto dto)
         {
-            string sql = $"SET DATEFORMAT DMY INSERT INTO MPR VALUES ('{dto.Id}', '{dto.Created}', '{dto.ExpectDelivery}', " +
+            string sql = $"SET DATEFORMAT YMD INSERT INTO MPR VALUES ('{dto.Id}', '{dto.Created}', '{dto.ExpectDelivery}', " +
                 $"'{dto.Note}', '{dto.Item_Id}', '{dto.MPR_No}', '{dto.Usage}', {dto.Quantity})";
 
             return data.Insert(sql) > 0;

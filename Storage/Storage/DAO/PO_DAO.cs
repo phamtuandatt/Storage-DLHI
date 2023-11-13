@@ -2,6 +2,7 @@
 using Storage.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,8 @@ namespace Storage.DAO
 
         public static bool Add(PODto dto)
         {
-            string sql = $"SET DATEFORMAT DMY INSERT INTO PO VALUES ('{dto.Id}', '{dto.Created}', '{dto.ExpectedDelivery}', {dto.Total}, " +
-                $"'{dto.Supplier_Id}', '{dto.LocationWareHouse_Id}', '{dto.PaymentMethod_Id}')";
+            string sql = $"SET DATEFORMAT YMD INSERT INTO PO VALUES ('{dto.Id}', '{dto.Created}', '{dto.ExpectedDelivery}', {dto.Total}, " +
+                $" '{dto.LocationWareHouse_Id}', '{dto.PaymentMethod_Id}')";
 
             return data.Insert(sql) > 0;
         }
@@ -40,11 +41,41 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
+        public static DataTable dtPODetails = data.GetData("SELECT *FROM PO_DETAIL", "PODetails"); 
+
         public static bool Add(PO_DetailDto dto)
         {
             string sql = $"INSERT INTO PO_DETAIL VALUES ('{dto.PO_Id}', '{dto.Item_Id}', N'{dto.MPR_No}', N'{dto.PO_No}', {dto.Price}, {dto.Quantity})";
 
             return data.Insert(sql) > 0;
+        }
+
+        public static bool AddRange(List<PO_DetailDto> list)
+        {
+            foreach (PO_DetailDto item in list)
+            {
+                DataRow addPO = dtPODetails.NewRow();
+                addPO[0] = item.PO_Id;
+                addPO[1] = item.Item_Id;
+                addPO[2] = item.MPR_No;
+                addPO[3] = item.PO_No;
+                addPO[4] = item.Price;
+                addPO[5] = item.Quantity;
+
+                dtPODetails.Rows.Add(addPO);
+            }
+
+            try
+            {
+                data.UpdateDatabase("SELECT *FROM PO_DETAIL", dtPODetails);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+                throw;
+            }
         }
     }
 }

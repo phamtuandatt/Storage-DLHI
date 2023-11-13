@@ -1,4 +1,7 @@
 ﻿using Storage.DAO;
+using Storage.DTOs;
+using Storage.GUI.LocationWarehouses;
+using Storage.GUI.PaymentMethods;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +43,14 @@ namespace Storage.GUI_PO
             dtItemPO.Columns.Add("PRICE");
             dtItemPO.Columns.Add("MPRNO");
             dtItemPO.Columns.Add("PONO");
+
+            cboPaymentMethod.DataSource = PaymentMethod_DAO.GetPaymentMethods();
+            cboPaymentMethod.DisplayMember = "Name";
+            cboPaymentMethod.ValueMember = "ID";
+
+            cboWarehouse.DataSource = LocationWareHouse_DAO.GetLocationWareHouses();
+            cboWarehouse.DisplayMember = "Name";
+            cboWarehouse.ValueMember = "ID";
         }
 
         private void grdItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -120,6 +131,78 @@ namespace Storage.GUI_PO
             {
 
             }
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            Add_PaymentMethod paymentMethod = new Add_PaymentMethod();
+            paymentMethod.ShowDialog();
+        }
+
+        private void btnLocationWarehouse_Click(object sender, EventArgs e)
+        {
+            Add_LocationWareHouse add_LocationWareHouse = new Add_LocationWareHouse();
+            add_LocationWareHouse.ShowDialog();
+        }
+
+        private void btnRemoveSingle_Click(object sender, EventArgs e)
+        {
+            if (grdItemPODetail.Rows.Count <= 0) return;
+            int rsl = grdItemPODetail.CurrentRow.Index;
+            if (grdItemPODetail.Rows[rsl].Cells[0].Value.ToString() != null)
+            {
+                DataRow[] drr = dtItemPO.Select($"ID='{grdItemPODetail.Rows[rsl].Cells[0].Value}'");
+                for (int i = 0; i < drr.Length; i++)
+                {
+                    drr[i].Delete();
+                }
+                dtItemPO.AcceptChanges();
+                grdItemPODetail.DataSource = dtItemPO;
+            }
+        }
+
+        private void btnRemoveAll_Click(object sender, EventArgs e)
+        {
+            if (grdItemPODetail.Rows.Count <= 0) return;
+            dtItemPO.Rows.Clear();
+            grdItemPODetail.DataSource = dtItemPO;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (grdItemPODetail.Rows.Count <= 0) return;
+            PODto pODto = new PODto()
+            {
+                Id = Guid.NewGuid(),
+                Created = DateTime.Parse(txtCreateDate.Value.ToString("yyyy-MM-dd hh:mm:ss tt")),
+                ExpectedDelivery = DateTime.Parse(txtExpected.Value.ToString("yyyy-MM-dd hh:mm:ss tt")),
+                Total = grdItemPODetail.Rows.Count,
+                LocationWareHouse_Id = Guid.Parse(cboWarehouse.SelectedValue.ToString()),
+                PaymentMethod_Id = Guid.Parse(cboPaymentMethod.SelectedValue.ToString()),
+            };
+
+            if (PO_DAO.Add(pODto))
+            {
+                List<PO_DetailDto> dtos = new List<PO_DetailDto>();
+                foreach (DataGridViewRow item in grdItemPODetail.Rows)
+                {
+                    PO_DetailDto pO_DetailDto = new PO_DetailDto()
+                    {
+                        PO_Id = pODto.Id,
+                        Item_Id = Guid.Parse(item.Cells[0].Value.ToString()),
+                        MPR_No = item.Cells[6].Value.ToString(),
+                        PO_No = item.Cells[7].Value.ToString(),
+                        Price = int.Parse(item.Cells[5].Value.ToString()),
+                        Quantity = int.Parse(item.Cells[4].Value.ToString()),
+                    };
+                    dtos.Add(pO_DetailDto);
+                }
+                if (PO_Detail_DAO.AddRange(dtos))
+                {
+                    
+                }
+            }
+
         }
     }
 }

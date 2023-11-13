@@ -1,7 +1,9 @@
-﻿using Storage.DataProvider;
+﻿
+using Storage.DataProvider;
 using Storage.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,13 @@ namespace Storage.DAO
     internal class PaymentMethod_DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
+
+        public static DataTable GetPaymentMethods()
+        {
+            string sql = "SELECT *FROM PAYMENT_METHOD";
+
+            return data.GetData(sql, "PaymentMethods");
+        }
 
         public static bool Add(PaymentMethodDto dto)
         {

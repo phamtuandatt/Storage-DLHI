@@ -15,14 +15,14 @@ namespace Storage.DAO
 
         public static DataTable GetLocationWareHouses()
         {
-            string sql = "SELECT *FROM LOCATION_WAREHOUSE";
+            string sql = "SELECT *FROM WAREHOUSE";
 
             return data.GetData(sql, "cboLocationWareHouse");
         }
 
         public static bool Add(LocationWarehousseDto locationWarehousseDto)
         {
-            string sql = $"INSERT INTO LOCATION_WAREHOUSE VALUES('{locationWarehousseDto.Id}', N'{locationWarehousseDto.Name}')";
+            string sql = $"INSERT INTO WAREHOUSE(ID, NAME) VALUES('{locationWarehousseDto.Id}', N'{locationWarehousseDto.Name}')";
 
             return data.Insert(sql) > 0;
         }

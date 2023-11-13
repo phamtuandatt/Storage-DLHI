@@ -140,6 +140,12 @@
     <Compile Include="GUI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\PaymentMethods\Add_PaymentMethod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PaymentMethods\Add_PaymentMethod.Designer.cs">
+      <DependentUpon>Add_PaymentMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Suppliers\Add_Supplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     <EmbeddedResource Include="GUI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PaymentMethods\Add_PaymentMethod.resx">
+      <DependentUpon>Add_PaymentMethod.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Suppliers\Add_Supplier.resx">
       <DependentUpon>Add_Supplier.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,7 +299,6 @@
     <Folder Include="GUI\ExportItems\" />
     <Folder Include="GUI\ImportItems\" />
     <Folder Include="GUI\MPRs\" />
-    <Folder Include="GUI\PaymentMethods\" />
     <Folder Include="GUI\POs\" />
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +316,8 @@
   <ItemGroup>
     <Content Include="download__1_-removebg-preview.ico" />
     <Content Include="Palette\Palette.xml" />
+    <None Include="Resources\location-warehouse.png" />
+    <None Include="Resources\dollar-symbol.png" />
     <None Include="Resources\shopping-cart.png" />
     <None Include="Resources\excel.png" />
     <None Include="Resources\refresh.png" />

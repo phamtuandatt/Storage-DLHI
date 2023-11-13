@@ -32,8 +32,8 @@ namespace Storage.GUI_MPR
             MakeNewRequestDto makeNewRequestDto = new MakeNewRequestDto()
             {
                 Id = Guid.NewGuid(),
-                Created = txtCreateDate.Value,
-                ExpectDelivery = txtExpectedDelivery.Value,
+                Created = DateTime.Parse(txtCreateDate.Value.ToString("yyyy-MM-dd hh:mm:ss tt")),
+                ExpectDelivery = DateTime.Parse(txtExpectedDelivery.Value.ToString("yyyy-MM-dd hh:mm:ss tt")),
                 Note = txtNote.Text,
                 Item_Id = Item_Id,
                 MPR_No = txtMPR.Text,
@@ -53,7 +53,7 @@ namespace Storage.GUI_MPR
                         MPR_Export mPR_Export = new MPR_Export()
                         {
                             Id = Guid.NewGuid(),
-                            Created = txtCreateDate.Value,
+                            Created = DateTime.Parse(txtCreateDate.Value.ToString("yyyy-MM-dd hh:mm:ss tt")),
                             ItemCount = 1,
                             Status = 2,
                         };
@@ -74,7 +74,7 @@ namespace Storage.GUI_MPR
                         MPR_Export mPR_Export = new MPR_Export()
                         {
                             Id = Guid.NewGuid(),
-                            Created = txtCreateDate.Value,
+                            Created = DateTime.Parse(txtCreateDate.Value.ToString("yyyy-MM-dd hh:mm:ss tt")),
                             ItemCount = 1,
                             Status = 2,
                         };
