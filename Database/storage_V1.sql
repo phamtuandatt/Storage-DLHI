@@ -192,6 +192,9 @@ GO
 CREATE TABLE IMPORT_ITEM_DETAIL(
 	IMPORT_ITEM_ID UNIQUEIDENTIFIER NOT NULL,
 	ITEM_ID UNIQUEIDENTIFIER NOT NULL,
+	QTY INT,
+	PRICE INT,
+	TOTAL INT,
 	NOTE NVARCHAR(MAX),
 
 	CONSTRAINT PK_IMPORT_ITEM_DETAIL PRIMARY KEY (IMPORT_ITEM_ID, ITEM_ID),
@@ -377,7 +380,27 @@ BEGIN
 END
 GO
 EXEC GET_PO_DETAIL
-SELECT *FROM PO_DETAIL
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+GO
+CREATE PROC GET_IMPORT_ITEMS
+AS
+BEGIN
+	SELECT IMPORT_ITEM_DETAIL.IMPORT_ITEM_ID, IMPORT_ITEM_DETAIL.ITEM_ID, 
+		ITEM.CODE, ITEM.NAME, ITEM.PICTURE, IMPORT_ITEM_DETAIL.QTY, IMPORT_ITEM_DETAIL.PRICE, 
+		(IMPORT_ITEM_DETAIL.QTY * IMPORT_ITEM_DETAIL.PRICE) AS TOTAL, IMPORT_ITEM_DETAIL.NOTE,
+		SUPPLIER.CODE AS SUPPLIER_CODE, SUPPLIER.NAME_SUPPIER
+	FROM IMPORT_ITEM_DETAIL, ITEM, SUPPLIER
+	WHERE IMPORT_ITEM_DETAIL.ITEM_ID = ITEM.ID
+	AND ITEM.SUPPLIER_ID = SUPPLIER.ID
+END
+GO
+EXEC GET_IMPORT_ITEMS
+
+SELECT *FROM IMPORT_ITEM
+SELECT *FROM IMPORT_ITEM_DETAIL
+SELECT *FROM ITEM
 ----------------------------------------------------------------------------------------------------
 -------------------------------FUNCTION-------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------

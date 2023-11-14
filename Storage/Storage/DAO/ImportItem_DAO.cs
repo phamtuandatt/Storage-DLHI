@@ -14,6 +14,11 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
+        public static DataTable GetImportItems()
+        {
+            return data.GetData("SELECT *FROM IMPORT_ITEM", "ImportItems");
+        }
+
         public static bool Add(ImportItemDto ex)
         {
             string sql = $"SET DATEFORMAT YMD INSERT INTO IMPORT_ITEM " +
@@ -63,6 +68,11 @@ namespace Storage.DAO
 
         public static DataTable dtImportItems = data.GetData("SELECT *FROM IMPORT_ITEM_DETAIL", "ImportItems");
 
+        public static DataTable GetImportItemDetails()
+        {
+            return data.GetData("EXEC GET_IMPORT_ITEMS", "ImportDetails");
+        }
+
         public static bool AddRange(List<ImportItemDetailDto> list)
         {
             foreach (ImportItemDetailDto item in list)
@@ -70,7 +80,9 @@ namespace Storage.DAO
                 DataRow row = dtImportItems.NewRow();
                 row[0] = item.ImportItemId;
                 row[1] = item.ItemId;
-                row[2] = item.Note;
+                row[2] = item.Qty;
+                row[3] = item.Price;
+                row[4] = item.Total;
 
                 dtImportItems.Rows.Add(row);
             }

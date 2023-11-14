@@ -6,10 +6,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Storage.GUI_Import
 {
@@ -17,6 +20,7 @@ namespace Storage.GUI_Import
     {
         private DataTable dataItemAddPO;
         private DataTable dataItemAdd;
+        private DataTable dataImportItemDetails;
 
         public ucImport()
         {
@@ -48,6 +52,16 @@ namespace Storage.GUI_Import
             var date = txtCreateDate.Value.ToString("dd-MM-yyyy").Replace("-", "");
             var convertString = $"PNK-{date}-{ImportItem_DAO.GetCurrentBillNoInDate(date)}";
             txtBillNo.Text = convertString;
+
+            grdItemImports.DataSource = ImportItem_DAO.GetImportItems();
+            dataImportItemDetails = ImportItemDetailDAO.GetImportItemDetails();
+            grdImportItemDetails.RowTemplate.Height = 100;
+            if (grdItemImports.Rows.Count > 0)
+            {
+                DataView dv = dataImportItemDetails.DefaultView;
+                dv.RowFilter = $"IMPORT_ITEM_ID = '{Guid.Parse(grdItemImports.Rows[0].Cells[0].Value.ToString())}'";
+                grdImportItemDetails.DataSource = dv.ToTable();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -77,8 +91,10 @@ namespace Storage.GUI_Import
                 {
                     ImportItemDetailDto importDetailDto = new ImportItemDetailDto()
                     {
-                        ImportItemId= importItemDto.Id,
+                        ImportItemId = importItemDto.Id,
                         ItemId = Guid.Parse(item["ID"].ToString()),
+                        Qty = int.Parse(item["QUANTITY"].ToString()),
+                        Price = int.Parse(item["PRICE"].ToString()),
                         Note = item["NOTE"].ToString(),
                     };
                     lstImport.Add(importDetailDto);
@@ -218,6 +234,97 @@ namespace Storage.GUI_Import
             if (grdImportDetail.Rows.Count <= 0) return;
             dataItemAdd.Rows.Clear();
             grdImportDetail.DataSource = dataItemAdd;
+        }
+
+        private void grdItemImports_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdItemImports.Rows.Count <= 0) return;
+            int rsl = grdItemImports.CurrentRow.Index;
+            if (grdItemImports.Rows[rsl].Cells[0].Value.ToString() != null)
+            {
+                DataView dv = dataImportItemDetails.DefaultView;
+                dv.RowFilter = $"IMPORT_ITEM_ID = '{Guid.Parse(grdItemImports.Rows[rsl].Cells[0].Value.ToString())}'";
+                grdImportItemDetails.DataSource = dv.ToTable();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void grdItemImports_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var rowIdx = (e.RowIndex + 1).ToString();
+
+            var centerFormat = new StringFormat()
+            {
+                // right alignment might actually make more sense for numbers
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
+        }
+
+        private void grdImportItemDetails_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0) //change 3 with your collumn index
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                if (grdImportItemDetails.Rows[e.RowIndex].Cells[4].Value.ToString().Length <= 0)
+                {
+                    grdImportItemDetails.Rows[e.RowIndex].Cells[4].Value = Properties.Resources.picture_bg;
+                }
+
+                e.Handled = true;
+            }
+        }
+
+        private void grdItemImports_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 & e.RowIndex >= 0)
+            {
+                if (grdItemImports.Rows[e.RowIndex].Cells[5].Value != null)
+                {
+                    int val = int.Parse(e.Value.ToString());
+                    e.Value = val.ToString("N0");
+                }
+            }
+        }
+
+        private void grdImportItemDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 6 & e.RowIndex >= 0)
+            {
+                if (grdImportItemDetails.Rows[e.RowIndex].Cells[7].Value != null)
+                {
+                    int val = Int32.Parse(e.Value.ToString());
+                    e.Value = val.ToString("N0");
+                }
+            }
+            if (e.ColumnIndex == 7 & e.RowIndex >= 0)
+            {
+                if (grdImportItemDetails.Rows[e.RowIndex].Cells[7].Value != null)
+                {
+                    int val = Int32.Parse(e.Value.ToString());
+                    e.Value = val.ToString("N0");
+                }
+            }
+        }
+
+        private void grdImportDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 & e.RowIndex >= 0)
+            {
+                if (grdImportDetail.Rows[e.RowIndex].Cells[5].Value != null)
+                {
+                    int val = Int32.Parse(e.Value.ToString());
+                    e.Value = val.ToString("N0");
+                }
+            }
         }
     }
 }
