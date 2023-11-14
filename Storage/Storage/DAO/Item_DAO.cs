@@ -45,6 +45,12 @@ namespace Storage.DAO
             return dto ?? new ItemDto();
         }
 
+
+        public static DataTable GetItemByWarehouseId(Guid guid)
+        {
+            return data.GetData($"EXEC GET_ITEMS_EXPORT '{guid}'", "ExportItems");
+        }
+
         public static string GetCode(string code)
         {
             string sql = $"EXEC GET_CURRENT_CODE_ITEM '{code}'";

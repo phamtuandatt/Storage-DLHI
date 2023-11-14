@@ -28,7 +28,13 @@ namespace Storage.GUI_Export
 
         private void LoadData()
         {
-            dtItems = Item_DAO.GetItems();
+            cboWareHouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
+            cboWareHouse.DisplayMember = "NAME";
+            cboWareHouse.ValueMember = "ID";
+            cboWareHouse.SelectedIndex = 0;
+
+            //dtItems = Item_DAO.GetItems();
+            dtItems = Item_DAO.GetItemByWarehouseId(Guid.Parse(cboWareHouse.SelectedValue.ToString()));
             grdItems.DataSource = dtItems;
             grdItems.RowTemplate.Height = 100;
 
@@ -60,6 +66,7 @@ namespace Storage.GUI_Export
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (grdItemAdds.Rows.Count <= 0 || dataItemAdd.Rows.Count <= 0) return;
             int sumQty = 0;
             foreach (DataRow item in dataItemAdd.Rows)
             {
@@ -246,6 +253,20 @@ namespace Storage.GUI_Export
                         $"OR SUPPLIER LIKE '%{txtSearch.Text}%' " +
                         $"OR ENG_NAME LIKE '%{txtSearch.Text}%'";
             grdItems.DataSource = dv.ToTable();
+        }
+
+        private void cboWareHouse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var id = Guid.Parse(cboWareHouse.SelectedValue.ToString());
+                dtItems = Item_DAO.GetItemByWarehouseId(id);
+                grdItems.DataSource = dtItems;
+            }
+            catch (Exception)
+            {
+                
+            }
         }
     }
 }

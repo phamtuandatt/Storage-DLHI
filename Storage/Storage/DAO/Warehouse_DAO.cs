@@ -15,7 +15,7 @@ namespace Storage.DAO
 
         public static DataTable GetLocationWareHouses()
         {
-            string sql = "SELECT *FROM WAREHOUSE";
+            string sql = "SELECT ID, NAME FROM WAREHOUSE";
 
             return data.GetData(sql, "cboLocationWareHouse");
         }

@@ -72,6 +72,7 @@ namespace Storage.GUI_Import
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (dataItemAdd.Rows.Count <= 0 || grdImportDetail.Rows.Count <= 0) return;
             int sumQty = 0;
             int total = 0;
             foreach (DataRow item in dataItemAdd.Rows)
