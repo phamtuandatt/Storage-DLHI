@@ -70,5 +70,29 @@ namespace Storage.DAO
                 throw;
             }
         }
+
+        public static bool UpdateQuantityItemAtWarehouse(List<WareHouse_DetailDto> items)
+        {
+            // Update datatable
+            foreach (WareHouse_DetailDto item in items)
+            {
+                DataRow row = dtWarehouseDetail.NewRow();
+                row[0] = item.WarehouseId;
+                row[1] = item.Item_Id;
+                row[2] = item.Quantity;
+
+                dtWarehouseDetail.Rows.Add(row);
+            }
+            try
+            {
+                data.UpdateDatabase("SELECT *FROM WAREHOUSE_DETAIL", dtWarehouseDetail);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw;
+            }
+        }
     }
 }

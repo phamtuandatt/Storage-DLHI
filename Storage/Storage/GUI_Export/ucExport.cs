@@ -20,6 +20,8 @@ namespace Storage.GUI_Export
         private DataTable dataExportItems;
         private DataTable dataExportItemDetail;
 
+        private DataTable dataWarehouseExport;
+
         public ucExport()
         {
             InitializeComponent();
@@ -62,6 +64,11 @@ namespace Storage.GUI_Export
             var date = txtCreateDate.Value.ToString("dd-MM-yyyy").Replace("-", "");
             var convertString = $"PXK-{date}-{ExportItem_DAO.GetCurrentBillNoInDate(date)}";
             txtBillNo.Text = convertString;
+
+            dataWarehouseExport = new DataTable();
+            dataWarehouseExport.Columns.Add("WAREHOUSE_ID");
+            dataWarehouseExport.Columns.Add("ITEM_ID");
+            dataWarehouseExport.Columns.Add("QUANTITY");
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -98,9 +105,24 @@ namespace Storage.GUI_Export
 
                 if (ExportItemDetail_DAO.AddRange(lstEmport))
                 {
-                    dataItemAdd.Rows.Clear();
-                    KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
+                    List<WareHouse_DetailDto> lstWarehouseDetails = new List<WareHouse_DetailDto>();
+                    foreach (DataRow item in dataWarehouseExport.Rows)
+                    {
+                        WareHouse_DetailDto wareHouse_DetailDto = new WareHouse_DetailDto()
+                        {
+                            WarehouseId = Guid.Parse(item["WAREHOUSE_ID"].ToString()),
+                            Item_Id = Guid.Parse(item["ITEM_ID"].ToString()),
+                            Quantity = int.Parse(item["QUANTITY"].ToString())
+                        };
+                        lstWarehouseDetails.Add(wareHouse_DetailDto);
+                    }
+
+                    if (WarehouseDetail_DAO.UpdateItemAtWarehouse(lstWarehouseDetails))
+                    {
+                        dataItemAdd.Rows.Clear();
+                        KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadData();
+                    }
                 }
             }
         }
@@ -124,6 +146,12 @@ namespace Storage.GUI_Export
                         KryptonMessageBox.Show($"Only {qty.FirstOrDefault().ToString()} products left in stock {cboWareHouse.Text.ToUpper()}.\nPlease import more products or reduce the number of products export.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+
+                    DataRow rowWarehouse = dataWarehouseExport.NewRow();
+                    rowWarehouse["WAREHOUSE_ID"] = grdItems.Rows[rsl].Cells[0].Value.ToString();
+                    rowWarehouse["ITEM_ID"] = grdItems.Rows[rsl].Cells[1].Value.ToString();
+                    rowWarehouse["QUANTITY"] = int.Parse(qty.FirstOrDefault().ToString()) - int.Parse(txtQty.Text);
+                    dataWarehouseExport.Rows.Add(rowWarehouse);
 
                     DataRow r = dataItemAdd.NewRow();
                     r["ID"] = grdItems.Rows[rsl].Cells[1].Value.ToString();
@@ -265,7 +293,7 @@ namespace Storage.GUI_Export
             }
             catch (Exception)
             {
-                
+
             }
         }
     }
