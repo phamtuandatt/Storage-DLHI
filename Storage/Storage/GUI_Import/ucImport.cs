@@ -88,6 +88,7 @@ namespace Storage.GUI_Import
                 {
                     dataItemAdd.Rows.Clear();
                     KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
                 }
             }
         }
@@ -121,7 +122,6 @@ namespace Storage.GUI_Import
                     txtQty.Text = "";
                     txtPrice.Text = "";
                     txtNote.Text = "";
-                    LoadData();
                 }
             }
             else
@@ -211,6 +211,13 @@ namespace Storage.GUI_Import
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void btnRemoveAll_Click(object sender, EventArgs e)
+        {
+            if (grdImportDetail.Rows.Count <= 0) return;
+            dataItemAdd.Rows.Clear();
+            grdImportDetail.DataSource = dataItemAdd;
         }
     }
 }
