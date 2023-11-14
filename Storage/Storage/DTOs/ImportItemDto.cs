@@ -11,8 +11,8 @@ namespace Storage.DTOs
         public Guid Id { get; set; } 
         public DateTime Created { get; set; }
         public string Bill_No { get; set; }
-        public int Quantity { get; set;  }    
-        public int Price { get; set; }  
+        public int SumQuantity { get; set;  }    
+        public int SumPrice { get; set; }  
         public int Total { get; set; }
     }
 

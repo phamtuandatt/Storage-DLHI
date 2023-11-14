@@ -266,6 +266,9 @@
     <EmbeddedResource Include="GUI\UserControll\ucCommon.resx">
       <DependentUpon>ucCommon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Import\ucImport.resx">
+      <DependentUpon>ucImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_MPR\Add_MPR.resx">
       <DependentUpon>Add_MPR.cs</DependentUpon>
     </EmbeddedResource>
