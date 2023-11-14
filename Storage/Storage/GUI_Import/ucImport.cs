@@ -39,6 +39,10 @@ namespace Storage.GUI_Import
             cboSupplier.DisplayMember = "NAME_SUPPIER";
             cboSupplier.ValueMember = "ID";
 
+            cboWareHouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
+            cboWareHouse.DisplayMember = "NAME";
+            cboWareHouse.ValueMember = "ID";
+
             dataItemAdd = new DataTable();
             dataItemAdd.Columns.Add("ID");
             dataItemAdd.Columns.Add("CODE");
@@ -89,6 +93,7 @@ namespace Storage.GUI_Import
             if (ImportItem_DAO.Add(importItemDto))
             {
                 List<ImportItemDetailDto> lstImport = new List<ImportItemDetailDto>();
+                List<WareHouse_DetailDto> lstWareHouseDetail = new List<WareHouse_DetailDto>();
                 foreach (DataRow item in dataItemAdd.Rows)
                 {
                     ImportItemDetailDto importDetailDto = new ImportItemDetailDto()
@@ -100,10 +105,18 @@ namespace Storage.GUI_Import
                         Note = item["NOTE"].ToString(),
                     };
                     lstImport.Add(importDetailDto);
+                    WareHouse_DetailDto wareHouse_DetailDto = new WareHouse_DetailDto()
+                    {
+                        WarehouseId = Guid.Parse(cboWareHouse.SelectedValue.ToString()),
+                        Item_Id = Guid.Parse(item["ID"].ToString()),
+                        Quantity = int.Parse(item["QUANTITY"].ToString()),
+                    };
+                    lstWareHouseDetail.Add(wareHouse_DetailDto);
                 }
 
-                if (ImportItemDetailDAO.AddRange(lstImport))
+                if (ImportItemDetailDAO.AddRange(lstImport) && WarehouseDetail_DAO.UpdateItemAtWarehouse(lstWareHouseDetail))
                 {
+
                     dataItemAdd.Rows.Clear();
                     KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadData();

@@ -100,8 +100,8 @@ namespace Storage.GUI_Export
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //if (grdItems.Rows.Count <= 0) return;
-            //if (txtQty.Text.Length == 0) return;
+            if (grdItems.Rows.Count <= 0) return;
+            if (txtQty.Text.Length == 0) return;
 
             int rsl = grdItems.CurrentRow.Index;
             if (grdItems.Rows[rsl].Cells[1].Value.ToString() != null)

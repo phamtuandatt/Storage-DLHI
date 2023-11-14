@@ -74,7 +74,7 @@
     <Compile Include="DAO\ExportItem_DAO.cs" />
     <Compile Include="DAO\ImportItem_DAO.cs" />
     <Compile Include="DAO\Item_DAO.cs" />
-    <Compile Include="DAO\LocationWareHouse_DAO.cs" />
+    <Compile Include="DAO\Warehouse_DAO.cs" />
     <Compile Include="DAO\MPR_DAO.cs" />
     <Compile Include="DAO\Group_DAO.cs" />
     <Compile Include="DAO\MPR_Detail_DAO.cs" />

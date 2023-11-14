@@ -53,7 +53,7 @@ namespace Storage.GUI_PO
             cboPaymentMethod.DisplayMember = "Name";
             cboPaymentMethod.ValueMember = "ID";
 
-            cboWarehouse.DataSource = LocationWareHouse_DAO.GetLocationWareHouses();
+            cboWarehouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
             cboWarehouse.DisplayMember = "Name";
             cboWarehouse.ValueMember = "ID";
 

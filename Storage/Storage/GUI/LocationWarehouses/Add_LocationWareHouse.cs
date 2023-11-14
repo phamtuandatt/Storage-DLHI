@@ -29,7 +29,7 @@ namespace Storage.GUI.LocationWarehouses
                 Name = txtLocation.Text
             };
 
-            if (LocationWareHouse_DAO.Add(locationWarehousseDto))
+            if (Warehouse_DAO.Add(locationWarehousseDto))
             {
                 this.Close();
             }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Storage.DAO
 {
-    internal class LocationWareHouse_DAO
+    internal class Warehouse_DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
@@ -39,6 +39,36 @@ namespace Storage.DAO
             string sql = $"DELETE FROM LOCATION_WAREHOUSE WHERE ID = '{locationId}'";
 
             return data.Delete(sql) > 0;
+        }
+    }
+
+    internal class WarehouseDetail_DAO
+    {
+        public static SQLServerProvider data = new SQLServerProvider();
+
+        public static DataTable dtWarehouseDetail = data.GetData("SELECT *FROM WAREHOUSE_DETAIL", "WarehouseDetails");
+
+        public static bool UpdateItemAtWarehouse(List<WareHouse_DetailDto> items)
+        {
+            foreach (WareHouse_DetailDto item in items)
+            {
+                DataRow row = dtWarehouseDetail.NewRow();
+                row[0] = item.WarehouseId;
+                row[1] = item.Item_Id;
+                row[2] = item.Quantity;
+
+                dtWarehouseDetail.Rows.Add(row);
+            }
+            try
+            {
+                data.UpdateDatabase("SELECT *FROM WAREHOUSE_DETAIL", dtWarehouseDetail);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw;
+            }
         }
     }
 }

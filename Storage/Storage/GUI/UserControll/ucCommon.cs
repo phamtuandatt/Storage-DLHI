@@ -59,7 +59,7 @@ namespace Storage.GUI.UserControll
 
             grdType.DataSource = Type_DAO.GetTypes();
 
-            grdLocationWarehouse.DataSource = LocationWareHouse_DAO.GetLocationWareHouses();
+            grdLocationWarehouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
         }
 
         private void grdUnit_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
