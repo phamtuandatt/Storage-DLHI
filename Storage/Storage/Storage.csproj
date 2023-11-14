@@ -188,6 +188,12 @@
     <Compile Include="GUI\UserControll\ucCommon.Designer.cs">
       <DependentUpon>ucCommon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Export\ucExport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI_Export\ucExport.Designer.cs">
+      <DependentUpon>ucExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Import\ucImport.cs">
       <SubType>UserControl</SubType>
     </Compile>
