@@ -6,6 +6,7 @@ using Storage.GUI.Suppliers;
 using Storage.GUI.Types;
 using Storage.GUI.Units;
 using Storage.GUI.UserControll;
+using Storage.GUI_Export;
 using Storage.GUI_Import;
 using Storage.GUI_MPR;
 using Storage.GUI_PO;
@@ -104,6 +105,14 @@ namespace Storage.GUI
             ucImport.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucImport);
             ucImport.BringToFront();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ucExport ucExport = new ucExport();
+            ucExport.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucExport);
+            ucExport.BringToFront();
         }
     }
 }

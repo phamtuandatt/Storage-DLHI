@@ -20,6 +20,7 @@ namespace Storage.GUI_Import
     {
         private DataTable dataItemAddPO;
         private DataTable dataItemAdd;
+        private DataTable dataImportItems;
         private DataTable dataImportItemDetails;
 
         public ucImport()
@@ -53,7 +54,8 @@ namespace Storage.GUI_Import
             var convertString = $"PNK-{date}-{ImportItem_DAO.GetCurrentBillNoInDate(date)}";
             txtBillNo.Text = convertString;
 
-            grdItemImports.DataSource = ImportItem_DAO.GetImportItems();
+            dataImportItems = ImportItem_DAO.GetImportItems();
+            grdItemImports.DataSource = dataImportItems;
             dataImportItemDetails = ImportItemDetailDAO.GetImportItemDetails();
             grdImportItemDetails.RowTemplate.Height = 100;
             if (grdItemImports.Rows.Count > 0)
@@ -325,6 +327,17 @@ namespace Storage.GUI_Import
                     e.Value = val.ToString("N0");
                 }
             }
+        }
+
+        private void txtSearchImports_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtSearchImports.Text.Length == 0)
+            {
+                grdItemImports.DataSource = dataImportItems;
+            }
+            DataView dv = dataImportItems.DefaultView;
+            dv.RowFilter = $"BILL_NO LIKE '%{txtSearchImports.Text}%' ";
+            grdItemImports.DataSource = dv.ToTable();
         }
     }
 }

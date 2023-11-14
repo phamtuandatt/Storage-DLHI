@@ -272,6 +272,9 @@
     <EmbeddedResource Include="GUI\UserControll\ucCommon.resx">
       <DependentUpon>ucCommon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Export\ucExport.resx">
+      <DependentUpon>ucExport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_Import\ucImport.resx">
       <DependentUpon>ucImport.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,6 +335,7 @@
   <ItemGroup>
     <Content Include="download__1_-removebg-preview.ico" />
     <Content Include="Palette\Palette.xml" />
+    <None Include="Resources\export.png" />
     <None Include="Resources\purchasing.png" />
     <None Include="Resources\location-warehouse.png" />
     <None Include="Resources\dollar-symbol.png" />

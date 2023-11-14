@@ -2,6 +2,7 @@
 using Storage.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,27 +13,85 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static bool Add(ExportItemDto ex)
+        public static DataTable GetExportItems()
         {
-            string sql = $"SET DATEFORMAT DMY INSERT INTO EXPORT_ITEM VALUES ('{ex.Id}', '{ex.Created}', N'{ex.Bill_No}', " +
-                            $"{ex.Quantity}, {ex.Price}, {ex.Total}, '{ex.Supplier_Id}', '{ex.Item_Id}')";
+            return data.GetData("SELECT *FROM EXPORT_ITEM", "ExportItems");
+        }
+
+        public static bool Add(ExportItemDto dto)
+        {
+            string sql = $"SET DATEFORMAT YMD INSERT INTO EXPORT_ITEM VALUES('{dto.Id}', '{dto.Created}', '{dto.Bill_No}', {dto.Sum_Quantity})";
 
             return data.Insert(sql) > 0;
         }
 
-        public static bool Update(ExportItemDto ex)
+        public static string GetCurrentBillNoInDate(string date)
         {
-            string sql = $"UPDATE EXPORT_ITEM SET CREATED = '{ex.Created}', BILL_NO = N'{ex.Bill_No}', QUANTITY = {ex.Quantity}, " +
-                        $"PRICE = {ex.Price}, TOTAL = {ex.Total}, SUPPLIER_ID = '{ex.Supplier_Id}', ITEM_ID = '{ex.Item_Id}' WHERE ID = '{ex.Id}'";
+            string sql = $"EXEC GET_CURRENT_BILLNO_EXPORT '{date}'";
+            DataTable dt = data.GetData(sql, "CurrentBillNo");
+            DataRow datarow = dt.Rows[0];
+            string numberStr = datarow["NUMBER"].ToString();
+            if (string.IsNullOrEmpty(numberStr))
+            {
+                return "001";
+            }
+            try
+            {
+                var number = int.Parse(numberStr);
+                if (number > 0 && number < 9)
+                {
+                    return "00" + (number + 1);
+                }
+                else if (number >= 9 && number < 99)
+                {
+                    return "0" + (number + 1);
+                }
+                else
+                {
+                    return "" + (number + 1);
+                }
+            }
+            catch (Exception)
+            {
 
-            return data.Update(sql) > 0;
+                throw;
+            }
+        }
+    }
+
+    internal class ExportItemDetail_DAO
+    {
+        public static SQLServerProvider data = new SQLServerProvider();
+
+        public static DataTable dtEmportItems = data.GetData("SELECT *FROM EXPORT_ITEM_DETAIL", "EmportItems");
+
+        public static DataTable GetEmportItemDetails()
+        {
+            return data.GetData("EXEC GET_EMPORT_ITEMS", "EmportDetails");
         }
 
-        public static bool Delete(Guid exportId)
+        public static bool AddRange(List<ExportItemDetail> list)
         {
-            string sql = $"DELETE FROM EXPORT_ITEM WHERE ID = '{exportId}'";
+            foreach (ExportItemDetail item in list)
+            {
+                DataRow row = dtEmportItems.NewRow();
+                row[0] = item.ExportItemId;
+                row[1] = item.ItemId;
+                row[2] = item.Qty;
+                row[3] = item.Note;
 
-            return data.Delete(sql) > 0;
+                dtEmportItems.Rows.Add(row);
+            }
+            try
+            {
+                data.UpdateDatabase("SELECT *FROM EXPORT_ITEM_DETAIL", dtEmportItems);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw;
+            }
         }
     }
 }

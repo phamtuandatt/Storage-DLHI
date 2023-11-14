@@ -291,6 +291,18 @@ EXEC GET_CURRENT_BILLNO '14112023'
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
 GO
+CREATE PROC GET_CURRENT_BILLNO_EXPORT @KEY_CODE CHAR(8)
+AS
+BEGIN
+	SELECT MAX(RIGHT(RTRIM(BILL_NO), 3)) AS NUMBER FROM EXPORT_ITEM 
+	WHERE BILL_NO LIKE '%' + @KEY_CODE + '%'
+END
+GO
+EXEC GET_CURRENT_BILLNO_EXPORT '14112023'
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+GO
 CREATE PROC GET_CURRENT_CODE_ITEM @KEY_CODE CHAR(6)
 AS
 BEGIN
@@ -403,8 +415,24 @@ END
 GO
 EXEC GET_IMPORT_ITEMS
 
-SELECT *FROM IMPORT_ITEM
-SELECT *FROM IMPORT_ITEM_DETAIL
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+GO
+CREATE PROC GET_EMPORT_ITEMS
+AS
+BEGIN
+	SELECT EXPORT_ITEM_DETAIL.EXPORT_ITEM_ID, EXPORT_ITEM_DETAIL.ITEM_ID, 
+		ITEM.CODE, ITEM.NAME, ITEM.PICTURE, EXPORT_ITEM_DETAIL.QTY, EXPORT_ITEM_DETAIL.NOTE,
+		SUPPLIER.CODE AS SUPPLIER_CODE, SUPPLIER.NAME_SUPPIER
+	FROM EXPORT_ITEM_DETAIL, ITEM, SUPPLIER
+	WHERE EXPORT_ITEM_DETAIL.ITEM_ID = ITEM.ID
+	AND ITEM.SUPPLIER_ID = SUPPLIER.ID
+END
+GO
+EXEC GET_EMPORT_ITEMS
+
+SELECT *FROM EXPORT_ITEM
+SELECT *FROM EXPORT_ITEM_DETAIL
 SELECT *FROM ITEM
 ----------------------------------------------------------------------------------------------------
 -------------------------------FUNCTION-------------------------------------------------------------

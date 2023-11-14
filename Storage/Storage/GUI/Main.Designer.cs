@@ -43,6 +43,7 @@
             this.btnMPR = new System.Windows.Forms.ToolStripButton();
             this.btnPO = new System.Windows.Forms.ToolStripButton();
             this.btnImport = new System.Windows.Forms.ToolStripButton();
+            this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -155,7 +156,8 @@
             this.btnItems,
             this.btnMPR,
             this.btnPO,
-            this.btnImport});
+            this.btnImport,
+            this.btnExport});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -217,6 +219,17 @@
             this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
+            // btnExport
+            // 
+            this.btnExport.Image = global::Storage.Properties.Resources.export;
+            this.btnExport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 89);
+            this.btnExport.Text = "     Export     ";
+            this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,5 +271,6 @@
         private System.Windows.Forms.ToolStripButton btnMPR;
         private System.Windows.Forms.ToolStripButton btnPO;
         private System.Windows.Forms.ToolStripButton btnImport;
+        private System.Windows.Forms.ToolStripButton btnExport;
     }
 }
