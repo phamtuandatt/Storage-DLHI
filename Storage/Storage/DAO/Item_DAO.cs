@@ -48,7 +48,8 @@ namespace Storage.DAO
 
         public static DataTable GetItemByWarehouseId(Guid guid)
         {
-            return data.GetData($"EXEC GET_ITEMS_EXPORT '{guid}'", "ExportItems");
+            //return data.GetData($"EXEC GET_ITEMS_EXPORT '{guid}'", "ExportItems");
+            return data.GetData($"EXEC GET_ITEMS_EXPORT_V2 '{guid}'", "ExportItems");
         }
 
         public static string GetCode(string code)

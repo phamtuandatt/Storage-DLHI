@@ -117,7 +117,6 @@ namespace Storage.GUI_Import
 
                 if (ImportItemDetailDAO.AddRange(lstImport) && WarehouseDetail_DAO.UpdateItemAtWarehouse(lstWareHouseDetail))
                 {
-
                     dataItemAdd.Rows.Clear();
                     KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadData();

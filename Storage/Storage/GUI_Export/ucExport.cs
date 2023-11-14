@@ -113,17 +113,23 @@ namespace Storage.GUI_Export
             int rsl = grdItems.CurrentRow.Index;
             if (grdItems.Rows[rsl].Cells[1].Value.ToString() != null)
             {
-                if (dataItemAdd.AsEnumerable().Any(row => (grdItems.Rows[rsl].Cells[1].Value.ToString()) == row.Field<string>("ID")))
+                if (!dataItemAdd.AsEnumerable().Any(row => (grdItems.Rows[rsl].Cells[1].Value.ToString()) == row.Field<string>("ID")))
                 {
+                    var qty = dtItems.AsEnumerable()
+                    .Where(row => row.Field<Guid>("ITEM_ID") == Guid.Parse(grdItems.Rows[rsl].Cells[1].Value.ToString()))
+                    .Select(row => row.Field<int>("QUANTITY"));
 
-                }
-                else
-                {
+                    if (int.Parse(qty.FirstOrDefault().ToString()) <= int.Parse(txtQty.Text))
+                    {
+                        KryptonMessageBox.Show($"Only {qty.FirstOrDefault().ToString()} products left in stock {cboWareHouse.Text.ToUpper()}.\nPlease import more products or reduce the number of products export.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     DataRow r = dataItemAdd.NewRow();
                     r["ID"] = grdItems.Rows[rsl].Cells[1].Value.ToString();
                     r["CODE"] = grdItems.Rows[rsl].Cells[2].Value.ToString();
                     r["NAME"] = grdItems.Rows[rsl].Cells[3].Value.ToString();
-                    r["IMAGE"] = (byte[])grdItems.Rows[rsl].Cells[5].Value;
+                    r["IMAGE"] = (byte[])grdItems.Rows[rsl].Cells[4].Value;
                     r["QUANTITY"] = txtQty.Text;
                     r["NOTE"] = txtNote.Text;
 
@@ -132,10 +138,6 @@ namespace Storage.GUI_Export
                     txtQty.Text = "";
                     txtNote.Text = "";
                 }
-            }
-            else
-            {
-
             }
         }
 
@@ -164,13 +166,13 @@ namespace Storage.GUI_Export
 
         private void grdItems_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex == 5 && e.RowIndex >= 0) //change 3 with your collumn index
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0) //change 3 with your collumn index
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                if (grdItems.Rows[e.RowIndex].Cells[5].Value.ToString().Length <= 0)
+                if (grdItems.Rows[e.RowIndex].Cells[4].Value.ToString().Length <= 0)
                 {
-                    grdItems.Rows[e.RowIndex].Cells[5].Value = Properties.Resources.picture_bg;
+                    grdItems.Rows[e.RowIndex].Cells[4].Value = Properties.Resources.picture_bg;
                 }
 
                 e.Handled = true;
@@ -247,11 +249,9 @@ namespace Storage.GUI_Export
             DataView dv = dtItems.DefaultView;
             dv.RowFilter = $"NAME LIKE '%{txtSearch.Text}%' " +
                         $"OR CODE LIKE '%{txtSearch.Text}%' " +
-                        $"OR NOTE LIKE '%{txtSearch.Text}%' " +
                         $"OR UNIT LIKE '%{txtSearch.Text}%' " +
                         $"OR GROUPS LIKE '%{txtSearch.Text}%' " +
-                        $"OR SUPPLIER LIKE '%{txtSearch.Text}%' " +
-                        $"OR ENG_NAME LIKE '%{txtSearch.Text}%'";
+                        $"OR SUPPLIER LIKE '%{txtSearch.Text}%' ";
             grdItems.DataSource = dv.ToTable();
         }
 

@@ -281,9 +281,27 @@ BEGIN
 END
 GO
 EXEC GET_ITEMS_EXPORT '3141A894-0B11-48BE-9EA0-DCAC7B3CC7AD'
-SELECT ID, NAME FROM WAREHOUSE
-SELECT *FROM WAREHOUSE_DETAIL
-SELECT *FROM ITEM
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+
+GO
+CREATE PROC GET_ITEMS_EXPORT_V2 @WAREHOUSE_ID UNIQUEIDENTIFIER
+AS
+BEGIN
+	SELECT WAREHOUSE_DETAIL.WAREHOUSE_ID, WAREHOUSE_DETAIL.ITEM_ID, 
+			ITEM.CODE, ITEM.NAME, ITEM.PICTURE, WAREHOUSE_DETAIL.QUANTITY,
+			UNIT.NAME AS UNIT, GROUPS.NAME AS GROUPS, SUPPLIER.NAME_SUPPIER AS SUPPLIER
+	FROM WAREHOUSE_DETAIL, ITEM, UNIT, GROUPS, SUPPLIER
+	WHERE WAREHOUSE_DETAIL.ITEM_ID = ITEM.ID
+		AND ITEM.GROUP_ID = GROUPS.ID
+		AND ITEM.UNIT_ID = UNIT.ID
+		AND ITEM.SUPPLIER_ID = SUPPLIER.ID
+		AND WAREHOUSE_DETAIL.WAREHOUSE_ID = @WAREHOUSE_ID
+
+END
+GO
+EXEC GET_ITEMS_EXPORT_V2 '3141A894-0B11-48BE-9EA0-DCAC7B3CC7AD'
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
