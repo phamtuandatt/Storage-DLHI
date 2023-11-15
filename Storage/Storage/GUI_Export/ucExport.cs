@@ -33,12 +33,14 @@ namespace Storage.GUI_Export
             cboWareHouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
             cboWareHouse.DisplayMember = "NAME";
             cboWareHouse.ValueMember = "ID";
-            cboWareHouse.SelectedIndex = 0;
-
-            //dtItems = Item_DAO.GetItems();
-            dtItems = Item_DAO.GetItemByWarehouseId(Guid.Parse(cboWareHouse.SelectedValue.ToString()));
-            grdItems.DataSource = dtItems;
-            grdItems.RowTemplate.Height = 100;
+            if (cboWareHouse.Items.Count > 0)
+            {
+                cboWareHouse.SelectedIndex = 0;
+                //dtItems = Item_DAO.GetItems();
+                dtItems = Item_DAO.GetItemByWarehouseId(Guid.Parse(cboWareHouse.SelectedValue.ToString()));
+                grdItems.DataSource = dtItems;
+                grdItems.RowTemplate.Height = 100;
+            }
 
             dataItemAdd = new DataTable();
             dataItemAdd.Columns.Add("ID");

@@ -1,5 +1,7 @@
 ﻿
 using ComponentFactory.Krypton.Toolkit;
+using Storage.DAO;
+using Storage.DTOs;
 using Storage.GUI.Groups;
 using Storage.GUI.Items;
 using Storage.GUI.Suppliers;
@@ -27,37 +29,36 @@ namespace Storage.GUI
         public Main()
         {
             InitializeComponent();
+            UpdateInventoryEachMonth();
         }
 
-        //private void btnAddSupplier_Click(object sender, EventArgs e)
-        //{
-        //    Add_Supplier add_Supplier = new Add_Supplier();
-        //    add_Supplier.ShowDialog();
-        //}
+        private void UpdateInventoryEachMonth()
+        {
+            DateTime date = DateTime.Today;
+            if (date.Day == 1)
+            {
+                DataTable dtInvetoriesImportExport = InventoryDAO.GetImportExportByLastMonth(date.Month - 1);
+                if (dtInvetoriesImportExport != null)
+                {
+                    List<InventoryDto> inventoryDtos = new List<InventoryDto>();
+                    foreach (DataRow item in dtInvetoriesImportExport.Rows)
+                    {
+                        InventoryDto dto = new InventoryDto()
+                        {
+                            Id = Guid.NewGuid(),
+                            Item_Id = Guid.Parse(item["ITEM_ID"].ToString()),
+                            Month = date.Month - 1,
+                            Amount = int.Parse(item["INVENTORY"].ToString())
+                        };
+                        inventoryDtos.Add(dto);
+                    }
+                    if (InventoryDAO.AddRange(inventoryDtos))
+                    {
 
-        //private void btnAddUnit_Click(object sender, EventArgs e)
-        //{
-        //    Add_Unit add_Unit = new Add_Unit();
-        //    add_Unit.ShowDialog();
-        //}
-
-        //private void btnAddGroupConsumable_Click(object sender, EventArgs e)
-        //{
-        //    Add_Group add_Group = new Add_Group();
-        //    add_Group.ShowDialog();
-        //}
-
-        //private void btnAddTypeConsumable_Click(object sender, EventArgs e)
-        //{
-        //    Add_Type type = new Add_Type();
-        //    type.ShowDialog();
-        //}
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    Add_Item add_Item = new Add_Item();
-        //    add_Item.ShowDialog();
-        //}
+                    }
+                }
+            }
+        }
 
         private void btnItems_Click(object sender, EventArgs e)
         {

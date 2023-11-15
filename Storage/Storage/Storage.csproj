@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="DAO\ExportItem_DAO.cs" />
     <Compile Include="DAO\ImportItem_DAO.cs" />
+    <Compile Include="DAO\InventoryDAO.cs" />
     <Compile Include="DAO\Item_DAO.cs" />
     <Compile Include="DAO\Warehouse_DAO.cs" />
     <Compile Include="DAO\MPR_DAO.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="DataProvider\SQLServerProvider.cs" />
     <Compile Include="DTOs\ExportItemDto.cs" />
     <Compile Include="DTOs\ImportItemDto.cs" />
+    <Compile Include="DTOs\InventoryDto.cs" />
     <Compile Include="DTOs\ItemDto.cs" />
     <Compile Include="DTOs\LocationWarehousseDto.cs" />
     <Compile Include="DTOs\MPRDto.cs" />

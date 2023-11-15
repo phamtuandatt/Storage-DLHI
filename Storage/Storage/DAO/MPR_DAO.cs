@@ -52,7 +52,7 @@ namespace Storage.DAO
 
         public static bool CreateMPR_Export(MPR_Export dto)
         {
-            string sql = $"SET DATEFORMAT DMY INSERT INTO MPR_EXPORT VALUES ('{dto.Id}', '{dto.Created}', {dto.ItemCount}, {dto.Status})";
+            string sql = $"SET DATEFORMAT YMD INSERT INTO MPR_EXPORT VALUES ('{dto.Id}', '{dto.Created}', {dto.ItemCount}, {dto.Status})";
 
             return data.Insert(sql) > 0;
         }

@@ -61,12 +61,13 @@ namespace Storage.GUI_PO
             dtPODetail = PO_Detail_DAO.GetPODetails();
             grdPOs.DataSource = dtPOs;
             grdPODetail.RowTemplate.Height = 100;
-
-            grdPOs.Rows[0].Selected = true;
-            DataView dv = dtPODetail.DefaultView;
-            dv.RowFilter = $"PO_ID = '{Guid.Parse(grdPOs.Rows[0].Cells[0].Value.ToString())}'";
-            grdPODetail.DataSource = dv.ToTable();
-
+            if (grdPOs.Rows.Count > 0)
+            {
+                grdPOs.Rows[0].Selected = true;
+                DataView dv = dtPODetail.DefaultView;
+                dv.RowFilter = $"PO_ID = '{Guid.Parse(grdPOs.Rows[0].Cells[0].Value.ToString())}'";
+                grdPODetail.DataSource = dv.ToTable();
+            }
         }
 
         private void grdItems_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

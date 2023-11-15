@@ -62,12 +62,15 @@ namespace Storage.GUI_MPR
                 dtMPRExport.Rows.Add(r);
             }
             grdMPRExport.DataSource = dtMPRExport;
-            grdMPRExport.Rows[0].Selected = true;
-            DataView dv = dataMPRExportDetail.DefaultView;
-            dv.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[0].Cells[0].Value.ToString())}'";
-            grdMPRExportDetail.DataSource = dv.ToTable();
+            if (grdMPRExport.Rows.Count > 0)
+            {
+                grdMPRExport.Rows[0].Selected = true;
+                DataView dv = dataMPRExportDetail.DefaultView;
+                dv.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[0].Cells[0].Value.ToString())}'";
+                grdMPRExportDetail.DataSource = dv.ToTable();
 
-            grdMPRExportDetail.RowTemplate.Height = 100;
+                grdMPRExportDetail.RowTemplate.Height = 100;
+            }
         }
 
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
