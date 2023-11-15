@@ -117,7 +117,7 @@ namespace Storage.GUI_Export
                         lstWarehouseDetails.Add(wareHouse_DetailDto);
                     }
 
-                    if (WarehouseDetail_DAO.UpdateItemAtWarehouse(lstWarehouseDetails))
+                    if (WarehouseDetail_DAO.UpdateQuantityItemAtWarehouse(lstWarehouseDetails))
                     {
                         dataItemAdd.Rows.Clear();
                         KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

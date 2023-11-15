@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Storage.DAO
 {
@@ -50,15 +52,26 @@ namespace Storage.DAO
 
         public static bool UpdateItemAtWarehouse(List<WareHouse_DetailDto> items)
         {
-            foreach (WareHouse_DetailDto item in items)
+            foreach (var item in items)
             {
-                DataRow row = dtWarehouseDetail.NewRow();
-                row[0] = item.WarehouseId;
-                row[1] = item.Item_Id;
-                row[2] = item.Quantity;
+                if (dtWarehouseDetail.AsEnumerable()
+                                .Any(row => item.WarehouseId == row.Field<Guid>("WAREHOUSE_ID")
+                                && item.Item_Id == row.Field<Guid>("ITEM_ID")))
+                {
+                    DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}'").FirstOrDefault();
+                    row["QUANTITY"] = int.Parse(row["QUANTITY"].ToString()) + item.Quantity;
+                }
+                else
+                {
+                    DataRow row = dtWarehouseDetail.NewRow();
+                    row[0] = item.WarehouseId;
+                    row[1] = item.Item_Id;
+                    row[2] = item.Quantity;
 
-                dtWarehouseDetail.Rows.Add(row);
+                    dtWarehouseDetail.Rows.Add(row);
+                }
             }
+
             try
             {
                 data.UpdateDatabase("SELECT *FROM WAREHOUSE_DETAIL", dtWarehouseDetail);
@@ -73,16 +86,12 @@ namespace Storage.DAO
 
         public static bool UpdateQuantityItemAtWarehouse(List<WareHouse_DetailDto> items)
         {
-            // Update datatable
-            foreach (WareHouse_DetailDto item in items)
+            foreach (var item in items)
             {
-                DataRow row = dtWarehouseDetail.NewRow();
-                row[0] = item.WarehouseId;
-                row[1] = item.Item_Id;
-                row[2] = item.Quantity;
-
-                dtWarehouseDetail.Rows.Add(row);
+                DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}'").FirstOrDefault();
+                row["QUANTITY"] = item.Quantity;
             }
+
             try
             {
                 data.UpdateDatabase("SELECT *FROM WAREHOUSE_DETAIL", dtWarehouseDetail);
