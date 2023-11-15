@@ -114,7 +114,8 @@ namespace Storage.GUI_Export
                         {
                             WarehouseId = Guid.Parse(item["WAREHOUSE_ID"].ToString()),
                             Item_Id = Guid.Parse(item["ITEM_ID"].ToString()),
-                            Quantity = int.Parse(item["QUANTITY"].ToString())
+                            Quantity = int.Parse(item["QUANTITY"].ToString()),
+                            Month = txtCreateDate.Value.Month,
                         };
                         lstWarehouseDetails.Add(wareHouse_DetailDto);
                     }

@@ -111,6 +111,7 @@ namespace Storage.GUI_Import
                         WarehouseId = Guid.Parse(cboWareHouse.SelectedValue.ToString()),
                         Item_Id = Guid.Parse(item["ID"].ToString()),
                         Quantity = int.Parse(item["QUANTITY"].ToString()),
+                        Month = txtCreateDate.Value.Month,
                     };
                     lstWareHouseDetail.Add(wareHouse_DetailDto);
                 }

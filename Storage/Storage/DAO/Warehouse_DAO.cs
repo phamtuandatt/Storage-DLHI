@@ -56,9 +56,10 @@ namespace Storage.DAO
             {
                 if (dtWarehouseDetail.AsEnumerable()
                                 .Any(row => item.WarehouseId == row.Field<Guid>("WAREHOUSE_ID")
-                                && item.Item_Id == row.Field<Guid>("ITEM_ID")))
+                                && item.Item_Id == row.Field<Guid>("ITEM_ID")
+                                && item.Month == row.Field<int>("MONTH")))
                 {
-                    DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}'").FirstOrDefault();
+                    DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}' AND MONTH = '{item.Month}'").FirstOrDefault();
                     row["QUANTITY"] = int.Parse(row["QUANTITY"].ToString()) + item.Quantity;
                 }
                 else
@@ -67,6 +68,7 @@ namespace Storage.DAO
                     row[0] = item.WarehouseId;
                     row[1] = item.Item_Id;
                     row[2] = item.Quantity;
+                    row[3] = item.Month;
 
                     dtWarehouseDetail.Rows.Add(row);
                 }
@@ -88,7 +90,7 @@ namespace Storage.DAO
         {
             foreach (var item in items)
             {
-                DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}'").FirstOrDefault();
+                DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}' AND MONTH = '{item.Month}'").FirstOrDefault();
                 row["QUANTITY"] = item.Quantity;
             }
 
