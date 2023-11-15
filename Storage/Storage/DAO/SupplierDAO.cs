@@ -62,27 +62,27 @@ namespace Storage.DAO
             try
             {
                 var number = int.Parse(numberStr);
-                if (number >= 0 && number < 10)
+                if (number >= 0 && number < 9)
                 {
                     return "000000" + (number + 1);
                 } 
-                else if (number >= 10 && number < 100) 
+                else if (number >= 9 && number < 99) 
                 {
                     return "00000" + (number + 1);
                 }
-                else if (number >= 100 && number < 1000)
+                else if (number >= 99 && number < 999)
                 {
                     return "0000" + (number + 1);
                 }
-                else if (number >= 1000 && number < 10000)
+                else if (number >= 999 && number < 9999)
                 {
                     return "000" + (number + 1);
                 }
-                else if (number >= 10000 && number < 100000)
+                else if (number >= 9999 && number < 99999)
                 {
                     return "00" + (number + 1);
                 }
-                else if (number >= 100000 && number < 1000000)
+                else if (number >= 99999 && number < 999999)
                 {
                     return "0" + (number + 1);
                 }
