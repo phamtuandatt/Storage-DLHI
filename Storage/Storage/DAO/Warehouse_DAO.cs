@@ -22,6 +22,11 @@ namespace Storage.DAO
             return data.GetData(sql, "cboLocationWareHouse");
         }
 
+        public static DataTable GetInventories(int month, int year)
+        {
+            return data.GetData($"EXEC GET_INVENTORY {month}, {year}", "Inventories");
+        }
+
         public static bool Add(LocationWarehousseDto locationWarehousseDto)
         {
             string sql = $"INSERT INTO WAREHOUSE(ID, NAME) VALUES('{locationWarehousseDto.Id}', N'{locationWarehousseDto.Name}')";
