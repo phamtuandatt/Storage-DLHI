@@ -12,6 +12,7 @@ using Storage.GUI_Export;
 using Storage.GUI_Import;
 using Storage.GUI_MPR;
 using Storage.GUI_PO;
+using Storage.GUI_Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -114,6 +115,14 @@ namespace Storage.GUI
             ucExport.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucExport);
             ucExport.BringToFront();
+        }
+
+        private void btnWarehouse_Click(object sender, EventArgs e)
+        {
+            ucWarehouse ucWarehouse = new ucWarehouse();
+            ucWarehouse.Dock = DockStyle.Fill;
+            pnMain.Controls.Add(ucWarehouse);
+            ucWarehouse.BringToFront();
         }
     }
 }

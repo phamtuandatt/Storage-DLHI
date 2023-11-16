@@ -38,12 +38,13 @@
             this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCommon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnItems = new System.Windows.Forms.ToolStripButton();
             this.btnMPR = new System.Windows.Forms.ToolStripButton();
             this.btnPO = new System.Windows.Forms.ToolStripButton();
             this.btnImport = new System.Windows.Forms.ToolStripButton();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
+            this.pnMain = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnWarehouse = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnMain)).BeginInit();
@@ -106,15 +107,15 @@
             this.inventoryToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(952, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1269, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // systemToolStripMenuItem
             // 
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(70, 26);
             this.systemToolStripMenuItem.Text = "System";
             // 
             // suppliersToolStripMenuItem
@@ -122,13 +123,13 @@
             this.suppliersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuSupplier});
             this.suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
-            this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(86, 26);
             this.suppliersToolStripMenuItem.Text = "Customer";
             // 
             // mnuSupplier
             // 
             this.mnuSupplier.Name = "mnuSupplier";
-            this.mnuSupplier.Size = new System.Drawing.Size(122, 22);
+            this.mnuSupplier.Size = new System.Drawing.Size(153, 26);
             this.mnuSupplier.Text = "Suppliers";
             this.mnuSupplier.Click += new System.EventHandler(this.mnuSupplier_Click);
             // 
@@ -137,13 +138,13 @@
             this.inventoryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuCommon});
             this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
-            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
             this.inventoryToolStripMenuItem.Text = "Inventory";
             // 
             // mnuCommon
             // 
             this.mnuCommon.Name = "mnuCommon";
-            this.mnuCommon.Size = new System.Drawing.Size(117, 22);
+            this.mnuCommon.Size = new System.Drawing.Size(224, 26);
             this.mnuCommon.Text = "Manage";
             this.mnuCommon.Click += new System.EventHandler(this.mnuCommon_Click);
             // 
@@ -157,22 +158,14 @@
             this.btnMPR,
             this.btnPO,
             this.btnImport,
-            this.btnExport});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.btnExport,
+            this.btnWarehouse});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(952, 92);
+            this.toolStrip1.Size = new System.Drawing.Size(1269, 97);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // pnMain
-            // 
-            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMain.Location = new System.Drawing.Point(0, 116);
-            this.pnMain.Name = "pnMain";
-            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.pnMain.Size = new System.Drawing.Size(952, 445);
-            this.pnMain.TabIndex = 2;
             // 
             // btnItems
             // 
@@ -181,7 +174,7 @@
             this.btnItems.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnItems.Name = "btnItems";
             this.btnItems.Padding = new System.Windows.Forms.Padding(10);
-            this.btnItems.Size = new System.Drawing.Size(93, 89);
+            this.btnItems.Size = new System.Drawing.Size(113, 94);
             this.btnItems.Text = "      Items     ";
             this.btnItems.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnItems.Click += new System.EventHandler(this.btnItems_Click);
@@ -192,7 +185,7 @@
             this.btnMPR.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMPR.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMPR.Name = "btnMPR";
-            this.btnMPR.Size = new System.Drawing.Size(96, 89);
+            this.btnMPR.Size = new System.Drawing.Size(123, 94);
             this.btnMPR.Text = "          MPR          ";
             this.btnMPR.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMPR.Click += new System.EventHandler(this.btnMPR_Click);
@@ -203,7 +196,7 @@
             this.btnPO.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnPO.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPO.Name = "btnPO";
-            this.btnPO.Size = new System.Drawing.Size(87, 89);
+            this.btnPO.Size = new System.Drawing.Size(112, 94);
             this.btnPO.Text = "          PO          ";
             this.btnPO.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPO.Click += new System.EventHandler(this.btnPO_Click);
@@ -214,7 +207,7 @@
             this.btnImport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnImport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(77, 89);
+            this.btnImport.Size = new System.Drawing.Size(98, 94);
             this.btnImport.Text = "     Import     ";
             this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
@@ -225,23 +218,45 @@
             this.btnExport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 89);
+            this.btnExport.Size = new System.Drawing.Size(96, 94);
             this.btnExport.Text = "     Export     ";
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // pnMain
+            // 
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 127);
+            this.pnMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
+            this.pnMain.Size = new System.Drawing.Size(1269, 563);
+            this.pnMain.TabIndex = 2;
+            // 
+            // btnWarehouse
+            // 
+            this.btnWarehouse.Image = global::Storage.Properties.Resources.location_warehouse;
+            this.btnWarehouse.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnWarehouse.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnWarehouse.Name = "btnWarehouse";
+            this.btnWarehouse.Size = new System.Drawing.Size(114, 94);
+            this.btnWarehouse.Text = "     Inventory     ";
+            this.btnWarehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnWarehouse.Click += new System.EventHandler(this.btnWarehouse_Click);
+            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(952, 561);
+            this.ClientSize = new System.Drawing.Size(1269, 690);
             this.Controls.Add(this.pnMain);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Main";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
@@ -272,5 +287,6 @@
         private System.Windows.Forms.ToolStripButton btnPO;
         private System.Windows.Forms.ToolStripButton btnImport;
         private System.Windows.Forms.ToolStripButton btnExport;
+        private System.Windows.Forms.ToolStripButton btnWarehouse;
     }
 }

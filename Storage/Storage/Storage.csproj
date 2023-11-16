@@ -226,6 +226,12 @@
     <Compile Include="GUI_PO\ucPO.Designer.cs">
       <DependentUpon>ucPO.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Warehouse\ucWarehouse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI_Warehouse\ucWarehouse.Designer.cs">
+      <DependentUpon>ucWarehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\Validation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -291,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_PO\ucPO.resx">
       <DependentUpon>ucPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Warehouse\ucWarehouse.resx">
+      <DependentUpon>ucWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
