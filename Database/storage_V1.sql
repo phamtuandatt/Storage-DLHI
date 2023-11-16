@@ -541,7 +541,7 @@ BEGIN
 								GROUP BY ITEM_ID) EXPORT_INFO ON INVENTORIES_AND_IMPORT.ID = EXPORT_INFO.ITEM_ID
 END
 GO
-EXEC GET_INVENTORY 5, 2025
+EXEC GET_INVENTORY 12, 2023
 
 
 ----------------------------------------------------------------------------------------------------------------------------

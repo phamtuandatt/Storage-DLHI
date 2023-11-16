@@ -26,6 +26,7 @@ namespace Storage.GUI_Import
         public ucImport()
         {
             InitializeComponent();
+            
             LoadData();
         }
 
@@ -224,6 +225,7 @@ namespace Storage.GUI_Import
             {
                 e.Handled = true;
             }
+
         }
 
         private void grdImportDetail_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -353,6 +355,56 @@ namespace Storage.GUI_Import
             DataView dv = dataImportItems.DefaultView;
             dv.RowFilter = $"BILL_NO LIKE '%{txtSearchImports.Text}%' ";
             grdItemImports.DataSource = dv.ToTable();
+        }
+
+        private void txtPrice_KeyUp(object sender, KeyEventArgs e)
+        {
+            //int val = int.Parse(txtPrice.Text.ToString());
+            //txtPrice.Text = txtPrice.Text.ToString("N0");
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int iKeep = txtPrice.SelectionStart - 1;
+                for (int i = iKeep; i > 0; i--)
+                    if (txtPrice.Text[i] == ',')
+                        iKeep -= 1;
+
+                txtPrice.Text = String.Format("{0:N0}", Convert.ToInt32(txtPrice.Text.Replace(",", "")));
+                for (int i = 0; i < iKeep; i++)
+                    if (txtPrice.Text[i] == ',')
+                        iKeep += 1;
+
+                txtPrice.SelectionStart = iKeep + 1;
+            }
+            catch
+            {
+                //errorhandling
+            }
+        }
+
+        private void txtQty_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int iKeep = txtQty.SelectionStart - 1;
+                for (int i = iKeep; i > 0; i--)
+                    if (txtQty.Text[i] == ',')
+                        iKeep -= 1;
+
+                txtQty.Text = String.Format("{0:N0}", Convert.ToInt32(txtQty.Text.Replace(",", "")));
+                for (int i = 0; i < iKeep; i++)
+                    if (txtQty.Text[i] == ',')
+                        iKeep += 1;
+
+                txtQty.SelectionStart = iKeep + 1;
+            }
+            catch
+            {
+                //errorhandling
+            }
         }
     }
 }
