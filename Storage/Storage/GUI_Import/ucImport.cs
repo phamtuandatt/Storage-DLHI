@@ -112,6 +112,7 @@ namespace Storage.GUI_Import
                         Item_Id = Guid.Parse(item["ID"].ToString()),
                         Quantity = int.Parse(item["QUANTITY"].ToString()),
                         Month = txtCreateDate.Value.Month,
+                        Year = txtCreateDate.Value.Year,
                     };
                     lstWareHouseDetail.Add(wareHouse_DetailDto);
                 }

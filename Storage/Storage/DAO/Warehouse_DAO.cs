@@ -57,10 +57,50 @@ namespace Storage.DAO
                 if (dtWarehouseDetail.AsEnumerable()
                                 .Any(row => item.WarehouseId == row.Field<Guid>("WAREHOUSE_ID")
                                 && item.Item_Id == row.Field<Guid>("ITEM_ID")
-                                && item.Month == row.Field<int>("MONTH")))
+                                && item.Month == row.Field<int>("MONTH")
+                                && item.Year == row.Field<int>("YEAR")))
                 {
-                    DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}' AND MONTH = '{item.Month}'").FirstOrDefault();
+                    DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}' AND MONTH = {item.Month} AND YEAR = {item.Year}").FirstOrDefault();
                     row["QUANTITY"] = int.Parse(row["QUANTITY"].ToString()) + item.Quantity;
+                }
+                else
+                {
+                    DataRow row = dtWarehouseDetail.NewRow();
+                    row[0] = item.WarehouseId;
+                    row[1] = item.Item_Id;
+                    row[2] = item.Quantity;
+                    row[3] = item.Month;
+                    row[4] = item.Year;
+
+                    dtWarehouseDetail.Rows.Add(row);
+                }
+            }
+
+            try
+            {
+                data.UpdateDatabase("SELECT *FROM WAREHOUSE_DETAIL", dtWarehouseDetail);
+                dtWarehouseDetail = data.GetData("SELECT *FROM WAREHOUSE_DETAIL", "WarehouseDetails");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw;
+            }
+        }
+
+        public static bool UpdateQuantityItemAtWarehouse(List<WareHouse_DetailDto> items)
+        {
+            foreach (var item in items)
+            {
+                if (dtWarehouseDetail.AsEnumerable()
+                                .Any(row => item.WarehouseId == row.Field<Guid>("WAREHOUSE_ID")
+                                && item.Item_Id == row.Field<Guid>("ITEM_ID")
+                                && item.Month == row.Field<int>("MONTH")
+                                && item.Year == row.Field<int>("YEAR")))
+                {
+                    DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}' AND MONTH = {item.Month} AND YEAR = {item.Year}").FirstOrDefault();
+                    row["QUANTITY"] = int.Parse(row["QUANTITY"].ToString()) - item.Quantity;
                 }
                 else
                 {
@@ -77,26 +117,7 @@ namespace Storage.DAO
             try
             {
                 data.UpdateDatabase("SELECT *FROM WAREHOUSE_DETAIL", dtWarehouseDetail);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-                throw;
-            }
-        }
-
-        public static bool UpdateQuantityItemAtWarehouse(List<WareHouse_DetailDto> items)
-        {
-            foreach (var item in items)
-            {
-                DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.Item_Id}' AND WAREHOUSE_ID = '{item.WarehouseId}' AND MONTH = '{item.Month}'").FirstOrDefault();
-                row["QUANTITY"] = item.Quantity;
-            }
-
-            try
-            {
-                data.UpdateDatabase("SELECT *FROM WAREHOUSE_DETAIL", dtWarehouseDetail);
+                dtWarehouseDetail = data.GetData("SELECT *FROM WAREHOUSE_DETAIL", "WarehouseDetails");
                 return true;
             }
             catch (Exception ex)

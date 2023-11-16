@@ -20,5 +20,6 @@ namespace Storage.DTOs
         public Guid Item_Id { get; set; }
         public int Quantity { get; set; }
         public int Month { get; set; }
+        public int Year { get; set; }
     }
 }

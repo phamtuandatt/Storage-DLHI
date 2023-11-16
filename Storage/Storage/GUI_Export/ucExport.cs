@@ -116,6 +116,7 @@ namespace Storage.GUI_Export
                             Item_Id = Guid.Parse(item["ITEM_ID"].ToString()),
                             Quantity = int.Parse(item["QUANTITY"].ToString()),
                             Month = txtCreateDate.Value.Month,
+                            Year = txtCreateDate.Value.Year,
                         };
                         lstWarehouseDetails.Add(wareHouse_DetailDto);
                     }
@@ -153,7 +154,7 @@ namespace Storage.GUI_Export
                     DataRow rowWarehouse = dataWarehouseExport.NewRow();
                     rowWarehouse["WAREHOUSE_ID"] = grdItems.Rows[rsl].Cells[0].Value.ToString();
                     rowWarehouse["ITEM_ID"] = grdItems.Rows[rsl].Cells[1].Value.ToString();
-                    rowWarehouse["QUANTITY"] = int.Parse(qty.FirstOrDefault().ToString()) - int.Parse(txtQty.Text);
+                    rowWarehouse["QUANTITY"] = /*int.Parse(qty.FirstOrDefault().ToString()) -*/ int.Parse(txtQty.Text);
                     dataWarehouseExport.Rows.Add(rowWarehouse);
 
                     DataRow r = dataItemAdd.NewRow();
