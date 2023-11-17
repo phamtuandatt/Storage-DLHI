@@ -258,11 +258,9 @@ BEGIN
 			AND ITEM.LOCATION_WAREHOUSE_ID = LOCATION_WAREHOUSE.ID
 END
 GO
-EXEC GET_ITEMS
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
-
 GO
 CREATE PROC GET_ITEMS_V2
 AS
@@ -275,11 +273,9 @@ BEGIN
 			AND ITEM.SUPPLIER_ID = SUPPLIER.ID
 END
 GO
-EXEC GET_ITEMS_V2
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
-
 GO
 CREATE PROC GET_ITEMS_EXPORT @WAREHOUSE_ID UNIQUEIDENTIFIER
 AS
@@ -293,11 +289,9 @@ BEGIN
 			AND ITEM.ID IN (SELECT ITEM_ID FROM WAREHOUSE_DETAIL WHERE WAREHOUSE_ID = @WAREHOUSE_ID)
 END
 GO
-EXEC GET_ITEMS_EXPORT '3141A894-0B11-48BE-9EA0-DCAC7B3CC7AD'
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
-
 GO
 CREATE PROC GET_ITEMS_EXPORT_V2 @WAREHOUSE_ID UNIQUEIDENTIFIER
 AS
@@ -314,7 +308,6 @@ BEGIN
 	GROUP BY WAREHOUSE_DETAIL.WAREHOUSE_ID, WAREHOUSE_DETAIL.ITEM_ID, ITEM.CODE, ITEM.NAME, ITEM.PICTURE, UNIT.NAME, GROUPS.NAME, SUPPLIER.NAME_SUPPIER
 END
 GO
-EXEC GET_ITEMS_EXPORT_V2 'D03F1664-631E-4CE2-9EE0-F3A374EEB573'
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -326,7 +319,6 @@ BEGIN
 	WHERE CODE LIKE @KEY_CODE + '%'
 END
 GO
-EXEC GET_CURRENT_CODE_SUPPLIER 'CMA'
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -338,7 +330,6 @@ BEGIN
 	WHERE BILL_NO LIKE '%' + @KEY_CODE + '%'
 END
 GO
-EXEC GET_CURRENT_BILLNO '14112023'
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -350,7 +341,6 @@ BEGIN
 	WHERE BILL_NO LIKE '%' + @KEY_CODE + '%'
 END
 GO
-EXEC GET_CURRENT_BILLNO_EXPORT '14112023'
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -362,7 +352,6 @@ BEGIN
 	WHERE CODE LIKE @KEY_CODE + '%'
 END
 GO
-EXEC GET_CURRENT_CODE_ITEM ''
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -376,7 +365,6 @@ BEGIN
 	WHERE MPR.ITEM_ID = ITEM.ID AND ITEM.UNIT_ID = UNIT.ID
 END
 GO
-EXEC GET_MPR_LIST
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -391,7 +379,6 @@ BEGIN
 		AND MPR.ID IN (SELECT MPR_ID FROM MPR_EXPORT_DETAIL WHERE MPR_EXPORT_ID = @ID)
 END
 GO
-EXEC GET_MPR_EXPORT_DETAIL '0F921F32-88F2-48B0-A3EE-D09AED4372B0'
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -406,7 +393,6 @@ SELECT MPR.ID AS MPR_ID, ITEM.ID AS ITEM_ID, ITEM.CODE, ITEM.NAME, UNIT.NAME AS 
 		AND MPR.ID = MPR_EXPORT_DETAIL.MPR_ID
 END
 GO
-EXEC GET_MPR_EXPORT_DETAILS
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -420,8 +406,6 @@ BEGIN
 	WHERE ID = @ID
 END
 GO
-SELECT *FROM MPR_EXPORT
-EXEC UPDATE_ITEM_COUNT_MPR_EXPORT '9D70F742-CA22-4ACB-89B8-8CD8209475BF'
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -435,7 +419,6 @@ BEGIN
 		AND PO.PAYMENT_METHOD_ID = PAYMENT_METHOD.ID
 END
 GO
-EXEC GET_POs
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -448,7 +431,6 @@ BEGIN
 	WHERE PO_DETAIL.ITEM_ID = ITEM.ID
 END
 GO
-EXEC GET_PO_DETAIL
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -465,7 +447,6 @@ BEGIN
 		AND ITEM.SUPPLIER_ID = SUPPLIER.ID
 END
 GO
-EXEC GET_IMPORT_ITEMS
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -481,7 +462,6 @@ BEGIN
 	AND ITEM.SUPPLIER_ID = SUPPLIER.ID
 END
 GO
-EXEC GET_EMPORT_ITEMS
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -506,7 +486,6 @@ BEGIN
 		AND INVENTORY_INFO.ITEM_ID = IMPORT_INFO.ITEM_ID
 END
 GO
-EXEC GET_IMPORT_EXPORT_ITEM_BY_LAST_MONTH 11
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
@@ -541,7 +520,6 @@ BEGIN
 								GROUP BY ITEM_ID) EXPORT_INFO ON INVENTORIES_AND_IMPORT.ID = EXPORT_INFO.ITEM_ID
 END
 GO
-EXEC GET_INVENTORY 12, 2023
 
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -549,36 +527,4 @@ EXEC GET_INVENTORY 12, 2023
 ----------------------------------------------------------------------------------------------------
 -------------------------------FUNCTION-------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
-
-
-SELECT INVENTORIES_AND_IMPORT.*, EXPORT_INFO.SUM_QTY_EXPORT, 
-	(ISNULL(INVENTORIES_AND_IMPORT.INVENTORY, 0) + ISNULL(INVENTORIES_AND_IMPORT.SUM_QTY_IMPORT, 0) - ISNULL(EXPORT_INFO.SUM_QTY_EXPORT, 0)) AS LAST_AMOUNT
-FROM
-	(SELECT INVENTORIES.*, IMPORT_INFO.SUM_QTY_IMPORT, IMPORT_INFO.SUM_PRICE_IMPORT
-	FROM 
-	(SELECT ITEMS.ID, ITEMS.CODE, ITEMS.NAME, ITEMS.UNIT, ITEMS.GROUPS, ITEMS.SUPPLIER, INVENTORY_INFO.INVENTORY
-		FROM 
-		(SELECT ITEM.ID AS ID, ITEM.CODE AS CODE, ITEM.NAME AS NAME, UNIT.NAME AS UNIT, GROUPS.NAME AS GROUPS, SUPPLIER.NAME_SUPPIER AS SUPPLIER 
-			FROM ITEM, UNIT, GROUPS, SUPPLIER
-			WHERE ITEM.UNIT_ID = UNIT.ID AND ITEM.GROUP_ID = GROUPS.ID AND ITEM.SUPPLIER_ID = SUPPLIER.ID) ITEMS 
-	LEFT JOIN 
-	(SELECT ITEM_ID, ISNULL(SUM(QUANTITY), 0) AS INVENTORY 
-		FROM WAREHOUSE_DETAIL
-		WHERE (YEAR < 2024) OR (YEAR = 2024 AND MONTH < 6)
-		GROUP BY ITEM_ID) INVENTORY_INFO ON ITEMS.ID = INVENTORY_INFO.ITEM_ID) AS INVENTORIES
-		LEFT JOIN
-		(SELECT ITEM_ID, ISNULL(SUM(QTY), 0) AS SUM_QTY_IMPORT, ISNULL(SUM(PRICE), 0) AS SUM_PRICE_IMPORT 
-			FROM IMPORT_ITEM_DETAIL 
-			WHERE IMPORT_ITEM_ID IN (SELECT ID FROM IMPORT_ITEM WHERE MONTH(CREATED) = 6)
-			GROUP BY ITEM_ID) IMPORT_INFO ON INVENTORIES.ID = IMPORT_INFO.ITEM_ID) INVENTORIES_AND_IMPORT
-		LEFT JOIN 
-		(SELECT ITEM_ID, ISNULL(SUM(QTY), 0) AS SUM_QTY_EXPORT 
-							FROM EXPORT_ITEM_DETAIL 
-							WHERE EXPORT_ITEM_ID IN (SELECT ID FROM EXPORT_ITEM WHERE MONTH(CREATED) = 6)
-							GROUP BY ITEM_ID) EXPORT_INFO ON INVENTORIES_AND_IMPORT.ID = EXPORT_INFO.ITEM_ID
-
-
-
-
-
 		
