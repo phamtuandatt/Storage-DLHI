@@ -190,7 +190,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cboSupplier.StateCommon.ComboBox.Border.Rounding = 12;
             this.cboSupplier.TabIndex = 2;
-            this.cboSupplier.Text = "kryptonComboBox1";
             // 
             // panel6
             // 
@@ -214,7 +213,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cboUnit.StateCommon.ComboBox.Border.Rounding = 12;
             this.cboUnit.TabIndex = 3;
-            this.cboUnit.Text = "kryptonComboBox1";
             // 
             // panel5
             // 
@@ -238,7 +236,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cboGroup.StateCommon.ComboBox.Border.Rounding = 12;
             this.cboGroup.TabIndex = 3;
-            this.cboGroup.Text = "kryptonComboBox1";
             // 
             // panel4
             // 
@@ -262,7 +259,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cboType.StateCommon.ComboBox.Border.Rounding = 12;
             this.cboType.TabIndex = 3;
-            this.cboType.Text = "kryptonComboBox1";
             // 
             // kryptonLabel11
             // 
@@ -484,7 +480,7 @@
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Add_Item";
+            this.Text = "Add Item";
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

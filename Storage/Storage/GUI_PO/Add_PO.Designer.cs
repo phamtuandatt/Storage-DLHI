@@ -274,7 +274,7 @@
             this.txtCreateDate.Location = new System.Drawing.Point(4, 2);
             this.txtCreateDate.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateDate.Name = "txtCreateDate";
-            this.txtCreateDate.Size = new System.Drawing.Size(157, 27);
+            this.txtCreateDate.Size = new System.Drawing.Size(332, 27);
             this.txtCreateDate.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -299,7 +299,7 @@
             this.txtExpectedDelivery.Location = new System.Drawing.Point(4, 2);
             this.txtExpectedDelivery.Margin = new System.Windows.Forms.Padding(2);
             this.txtExpectedDelivery.Name = "txtExpectedDelivery";
-            this.txtExpectedDelivery.Size = new System.Drawing.Size(157, 27);
+            this.txtExpectedDelivery.Size = new System.Drawing.Size(332, 27);
             this.txtExpectedDelivery.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -403,7 +403,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cboType.StateCommon.ComboBox.Border.Rounding = 12;
             this.cboType.TabIndex = 4;
-            this.cboType.Text = "kryptonComboBox1";
             // 
             // kryptonPanel2
             // 
@@ -499,7 +498,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.kryptonComboBox1.StateCommon.ComboBox.Border.Rounding = 12;
             this.kryptonComboBox1.TabIndex = 5;
-            this.kryptonComboBox1.Text = "kryptonComboBox1";
             // 
             // Add_PO
             // 
@@ -508,10 +506,11 @@
             this.ClientSize = new System.Drawing.Size(474, 352);
             this.Controls.Add(this.kryptonPanel5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Add_PO";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.Text = "Add_PO";
+            this.Text = "New Purchase Order";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
             this.kryptonPanel5.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);

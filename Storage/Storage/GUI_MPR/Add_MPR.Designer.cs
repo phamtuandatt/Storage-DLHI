@@ -253,7 +253,7 @@
             this.txtCreateDate.Location = new System.Drawing.Point(3, 2);
             this.txtCreateDate.Margin = new System.Windows.Forms.Padding(2);
             this.txtCreateDate.Name = "txtCreateDate";
-            this.txtCreateDate.Size = new System.Drawing.Size(157, 27);
+            this.txtCreateDate.Size = new System.Drawing.Size(311, 27);
             this.txtCreateDate.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -279,7 +279,7 @@
             this.txtExpectedDelivery.Location = new System.Drawing.Point(3, 2);
             this.txtExpectedDelivery.Margin = new System.Windows.Forms.Padding(2);
             this.txtExpectedDelivery.Name = "txtExpectedDelivery";
-            this.txtExpectedDelivery.Size = new System.Drawing.Size(157, 27);
+            this.txtExpectedDelivery.Size = new System.Drawing.Size(311, 27);
             this.txtExpectedDelivery.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -450,12 +450,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 319);
             this.Controls.Add(this.kryptonPanel5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(486, 400);
             this.MinimumSize = new System.Drawing.Size(486, 308);
             this.Name = "Add_MPR";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
-            this.Text = "Add_MPR";
+            this.Text = "Mill Purchsing Request";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
             this.kryptonPanel5.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
