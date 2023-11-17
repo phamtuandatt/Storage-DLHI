@@ -52,6 +52,7 @@ namespace Storage.GUI.Items
             if (string.IsNullOrEmpty(txtCode.Text) || string.IsNullOrEmpty(txtName.Text))
             {
                 KryptonMessageBox.Show("Please fill in all information !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus();
                 return;
             }
             ItemDto itemDto = new ItemDto()

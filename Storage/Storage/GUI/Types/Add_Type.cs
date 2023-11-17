@@ -1,4 +1,5 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using ComponentFactory.Krypton.Ribbon;
+using ComponentFactory.Krypton.Toolkit;
 using Storage.DAO;
 using Storage.DTOs;
 using Storage.Helper;
@@ -23,6 +24,12 @@ namespace Storage.GUI.Types
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtType.Text))
+            {
+                KryptonMessageBox.Show("Please fill all information !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtType.Focus();
+                return;
+            }
             TypeDto type = new TypeDto()
             {
                 Id = Guid.NewGuid(),

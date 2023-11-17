@@ -23,6 +23,12 @@ namespace Storage.GUI.LocationWarehouses
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtLocation.Text))
+            {
+                KryptonMessageBox.Show("Please fill all information !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtLocation.Focus();
+                return;
+            }
             LocationWarehousseDto locationWarehousseDto = new LocationWarehousseDto()
             {
                 Id = Guid.NewGuid(),

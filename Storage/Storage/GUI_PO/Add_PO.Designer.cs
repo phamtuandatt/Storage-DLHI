@@ -47,7 +47,7 @@
             this.kryptonPanel8 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.txtMPR = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel9 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.txtUsage = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtPONo = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel10 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.txtQuantity = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel11 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -333,7 +333,7 @@
             // 
             // kryptonPanel9
             // 
-            this.kryptonPanel9.Controls.Add(this.txtUsage);
+            this.kryptonPanel9.Controls.Add(this.txtPONo);
             this.kryptonPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel9.Location = new System.Drawing.Point(126, 150);
             this.kryptonPanel9.Margin = new System.Windows.Forms.Padding(2);
@@ -343,17 +343,17 @@
             this.kryptonPanel9.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel9.TabIndex = 3;
             // 
-            // txtUsage
+            // txtPONo
             // 
-            this.txtUsage.Location = new System.Drawing.Point(4, 3);
-            this.txtUsage.Name = "txtUsage";
-            this.txtUsage.Size = new System.Drawing.Size(332, 26);
-            this.txtUsage.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.txtPONo.Location = new System.Drawing.Point(4, 3);
+            this.txtPONo.Name = "txtPONo";
+            this.txtPONo.Size = new System.Drawing.Size(332, 26);
+            this.txtPONo.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtUsage.StateCommon.Border.Rounding = 15;
-            this.txtUsage.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
-            this.txtUsage.TabIndex = 4;
+            this.txtPONo.StateCommon.Border.Rounding = 15;
+            this.txtPONo.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            this.txtPONo.TabIndex = 4;
             // 
             // kryptonPanel10
             // 
@@ -561,7 +561,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel8;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtMPR;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel9;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtUsage;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPONo;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel10;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtQuantity;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;

@@ -23,10 +23,16 @@ namespace Storage.GUI.Groups
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtGroup.Text)) 
+            {
+                KryptonMessageBox.Show("Please fill all information !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtGroup.Focus();
+                return;
+            }
             GroupDto dto = new GroupDto()
             {
                 Id = Guid.NewGuid(),
-                Name = txtLocation.Text,
+                Name = txtGroup.Text,
             };
 
             if (Group_DAO.Add(dto))
@@ -37,11 +43,6 @@ namespace Storage.GUI.Groups
             {
                 KryptonMessageBox.Show("Failure !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-        }
-
-        private void Add_Group_Load(object sender, EventArgs e)
-        {
 
         }
 

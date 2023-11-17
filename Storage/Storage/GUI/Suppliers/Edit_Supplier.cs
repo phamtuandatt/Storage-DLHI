@@ -1,4 +1,5 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using ComponentFactory.Krypton.Ribbon;
+using ComponentFactory.Krypton.Toolkit;
 using Storage.DAO;
 using Storage.DTOs;
 using Storage.Helper;
@@ -55,6 +56,12 @@ namespace Storage.GUI.Suppliers
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtCusName.Text))
+            {
+                KryptonMessageBox.Show("Please fill all information !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCusName.Focus();
+                return;
+            }
             SupplierDto supplier = new SupplierDto()
             {
                 ID = this.Id,
