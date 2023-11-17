@@ -1076,6 +1076,7 @@
             this.txtQuantity.StateCommon.Border.Rounding = 15;
             this.txtQuantity.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtQuantity.TabIndex = 5;
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // kryptonPanel14
@@ -1101,6 +1102,7 @@
             this.txtPrice.StateCommon.Border.Rounding = 15;
             this.txtPrice.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtPrice.TabIndex = 6;
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // grdItemPODetail

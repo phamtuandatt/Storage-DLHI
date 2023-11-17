@@ -247,6 +247,7 @@
             // 
             // txtCreateDate
             // 
+            this.txtCreateDate.CalendarTodayDate = new System.DateTime(2023, 11, 16, 0, 0, 0, 0);
             this.txtCreateDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.txtCreateDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtCreateDate.Location = new System.Drawing.Point(3, 2);
@@ -273,6 +274,7 @@
             // 
             // txtExpectedDelivery
             // 
+            this.txtExpectedDelivery.CalendarTodayDate = new System.DateTime(2023, 11, 16, 0, 0, 0, 0);
             this.txtExpectedDelivery.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtExpectedDelivery.Location = new System.Drawing.Point(3, 2);
             this.txtExpectedDelivery.Margin = new System.Windows.Forms.Padding(2);
@@ -357,6 +359,7 @@
             this.txtQuantity.StateCommon.Border.Rounding = 15;
             this.txtQuantity.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             this.txtQuantity.TabIndex = 3;
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // kryptonPanel11

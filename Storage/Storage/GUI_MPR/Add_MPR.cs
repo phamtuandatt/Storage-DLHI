@@ -140,5 +140,27 @@ namespace Storage.GUI_MPR
                 e.Handled = true;
             }
         }
+
+        private void txtQuantity_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int iKeep = txtQuantity.SelectionStart - 1;
+                for (int i = iKeep; i > 0; i--)
+                    if (txtQuantity.Text[i] == ',')
+                        iKeep -= 1;
+
+                txtQuantity.Text = String.Format("{0:N0}", Convert.ToInt32(txtQuantity.Text.Replace(",", "")));
+                for (int i = 0; i < iKeep; i++)
+                    if (txtQuantity.Text[i] == ',')
+                        iKeep += 1;
+
+                txtQuantity.SelectionStart = iKeep + 1;
+            }
+            catch
+            {
+                //errorhandling
+            }
+        }
     }
 }

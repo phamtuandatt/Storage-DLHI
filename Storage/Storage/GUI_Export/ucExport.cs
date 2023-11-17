@@ -300,5 +300,27 @@ namespace Storage.GUI_Export
 
             }
         }
+
+        private void txtQty_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int iKeep = txtQty.SelectionStart - 1;
+                for (int i = iKeep; i > 0; i--)
+                    if (txtQty.Text[i] == ',')
+                        iKeep -= 1;
+
+                txtQty.Text = String.Format("{0:N0}", Convert.ToInt32(txtQty.Text.Replace(",", "")));
+                for (int i = 0; i < iKeep; i++)
+                    if (txtQty.Text[i] == ',')
+                        iKeep += 1;
+
+                txtQty.SelectionStart = iKeep + 1;
+            }
+            catch
+            {
+                //errorhandling
+            }
+        }
     }
 }
