@@ -178,6 +178,7 @@
             // 
             // btnItems
             // 
+            this.btnItems.BackColor = System.Drawing.Color.White;
             this.btnItems.Image = global::Storage.Properties.Resources.list;
             this.btnItems.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnItems.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -216,8 +217,8 @@
             this.btnImport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnImport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(77, 89);
-            this.btnImport.Text = "     Import     ";
+            this.btnImport.Size = new System.Drawing.Size(107, 89);
+            this.btnImport.Text = "          Import          ";
             this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
@@ -227,8 +228,8 @@
             this.btnExport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 89);
-            this.btnExport.Text = "     Export     ";
+            this.btnExport.Size = new System.Drawing.Size(105, 89);
+            this.btnExport.Text = "          Export          ";
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
@@ -238,8 +239,8 @@
             this.btnWarehouse.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnWarehouse.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnWarehouse.Name = "btnWarehouse";
-            this.btnWarehouse.Size = new System.Drawing.Size(91, 89);
-            this.btnWarehouse.Text = "     Inventory     ";
+            this.btnWarehouse.Size = new System.Drawing.Size(109, 89);
+            this.btnWarehouse.Text = "        Inventory        ";
             this.btnWarehouse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnWarehouse.Click += new System.EventHandler(this.btnWarehouse_Click);
             // 

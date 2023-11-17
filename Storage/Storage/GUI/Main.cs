@@ -30,7 +30,7 @@ namespace Storage.GUI
         public Main()
         {
             InitializeComponent();
-            UpdateInventoryEachMonth();
+            //UpdateInventoryEachMonth();
         }
 
         private void UpdateInventoryEachMonth()
@@ -63,6 +63,13 @@ namespace Storage.GUI
 
         private void btnItems_Click(object sender, EventArgs e)
         {
+            btnItems.BackColor = Color.WhiteSmoke;
+            btnMPR.BackColor = Color.White;
+            btnPO.BackColor = Color.White;
+            btnImport.BackColor = Color.White;
+            btnExport.BackColor = Color.White;
+            btnWarehouse.BackColor = Color.White;
+
             ucItems ucItems = new ucItems();
             ucItems.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucItems);
@@ -87,6 +94,12 @@ namespace Storage.GUI
 
         private void btnMPR_Click(object sender, EventArgs e)
         {
+            btnItems.BackColor = Color.White;
+            btnMPR.BackColor = Color.WhiteSmoke;
+            btnPO.BackColor = Color.White;
+            btnImport.BackColor = Color.White;
+            btnExport.BackColor = Color.White;
+            btnWarehouse.BackColor = Color.White;
             ucMPR ucMPR = new ucMPR();
             ucMPR.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucMPR);
@@ -95,6 +108,12 @@ namespace Storage.GUI
 
         private void btnPO_Click(object sender, EventArgs e)
         {
+            btnItems.BackColor = Color.White;
+            btnMPR.BackColor = Color.White;
+            btnPO.BackColor = Color.WhiteSmoke;
+            btnImport.BackColor = Color.White;
+            btnExport.BackColor = Color.White;
+            btnWarehouse.BackColor = Color.White;
             ucPO ucPO = new ucPO();
             ucPO.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucPO);
@@ -103,6 +122,12 @@ namespace Storage.GUI
 
         private void btnImport_Click(object sender, EventArgs e)
         {
+            btnItems.BackColor = Color.White;
+            btnMPR.BackColor = Color.White;
+            btnPO.BackColor = Color.White;
+            btnImport.BackColor = Color.WhiteSmoke;
+            btnExport.BackColor = Color.White;
+            btnWarehouse.BackColor = Color.White;
             ucImport ucImport = new ucImport();
             ucImport.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucImport);
@@ -111,6 +136,12 @@ namespace Storage.GUI
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            btnItems.BackColor = Color.White;
+            btnMPR.BackColor = Color.White;
+            btnPO.BackColor = Color.White;
+            btnImport.BackColor = Color.White;
+            btnExport.BackColor = Color.WhiteSmoke;
+            btnWarehouse.BackColor = Color.White;
             ucExport ucExport = new ucExport();
             ucExport.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucExport);
@@ -119,6 +150,12 @@ namespace Storage.GUI
 
         private void btnWarehouse_Click(object sender, EventArgs e)
         {
+            btnItems.BackColor = Color.White;
+            btnMPR.BackColor = Color.White;
+            btnPO.BackColor = Color.White;
+            btnImport.BackColor = Color.White;
+            btnExport.BackColor = Color.White;
+            btnWarehouse.BackColor = Color.WhiteSmoke;
             ucWarehouse ucWarehouse = new ucWarehouse();
             ucWarehouse.Dock = DockStyle.Fill;
             pnMain.Controls.Add(ucWarehouse);
