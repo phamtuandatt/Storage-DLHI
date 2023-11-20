@@ -372,7 +372,7 @@ namespace Storage.GUI_Import
                     if (txtPrice.Text[i] == ',')
                         iKeep -= 1;
 
-                txtPrice.Text = String.Format("{0:N0}", Convert.ToInt32(txtPrice.Text.Replace(",", "")));
+                txtPrice.Text = String.Format("{0:N0}", Convert.ToInt64(txtPrice.Text.Replace(",", "")));
                 for (int i = 0; i < iKeep; i++)
                     if (txtPrice.Text[i] == ',')
                         iKeep += 1;
@@ -394,7 +394,7 @@ namespace Storage.GUI_Import
                     if (txtQty.Text[i] == ',')
                         iKeep -= 1;
 
-                txtQty.Text = String.Format("{0:N0}", Convert.ToInt32(txtQty.Text.Replace(",", "")));
+                txtQty.Text = String.Format("{0:N0}", Convert.ToInt64(txtQty.Text.Replace(",", "")));
                 for (int i = 0; i < iKeep; i++)
                     if (txtQty.Text[i] == ',')
                         iKeep += 1;

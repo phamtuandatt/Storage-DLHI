@@ -310,7 +310,7 @@ namespace Storage.GUI_Export
                     if (txtQty.Text[i] == ',')
                         iKeep -= 1;
 
-                txtQty.Text = String.Format("{0:N0}", Convert.ToInt32(txtQty.Text.Replace(",", "")));
+                txtQty.Text = String.Format("{0:N0}", Convert.ToInt64(txtQty.Text.Replace(",", "")));
                 for (int i = 0; i < iKeep; i++)
                     if (txtQty.Text[i] == ',')
                         iKeep += 1;
