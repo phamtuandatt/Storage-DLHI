@@ -111,5 +111,12 @@ namespace Storage.DAO
 
             return data.GetData(sql, "MPRExportDetails");
         }
+
+        public static DataTable GetMPRExportExcel()
+        {
+            string sql = "EXEC GET_MPR_EXPORT_EXCEL";
+
+            return data.GetData(sql, "Export Data");
+        }
     }
 }

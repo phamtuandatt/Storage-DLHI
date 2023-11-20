@@ -397,6 +397,21 @@ GO
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
 GO
+CREATE PROC GET_MPR_EXPORT_EXCEL
+AS
+BEGIN
+SELECT MPR.ID AS MPR_ID, ITEM.ID AS ITEM_ID, ITEM.CODE, ITEM.NAME, UNIT.NAME AS UNIT, ITEM.PICTURE, 
+			MPR.USAGE, MPR.CREATED, MPR.QUANTITY, MPR.NOTE, MPR.MPR_NO, MPR_EXPORT_DETAIL.MPR_EXPORT_ID,
+			ITEM.PICTURE_LINK
+	FROM MPR, ITEM, UNIT, MPR_EXPORT_DETAIL
+	WHERE MPR.ITEM_ID = ITEM.ID AND ITEM.UNIT_ID = UNIT.ID 
+		AND MPR.ID = MPR_EXPORT_DETAIL.MPR_ID
+END
+GO
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+GO
 CREATE PROC UPDATE_ITEM_COUNT_MPR_EXPORT @ID UNIQUEIDENTIFIER
 AS
 BEGIN
@@ -528,3 +543,4 @@ GO
 -------------------------------FUNCTION-------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 		
+EXEC GET_MPR_EXPORT_DETAILS

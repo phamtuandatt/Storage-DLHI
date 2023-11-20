@@ -1,4 +1,8 @@
-﻿using Storage.DAO;
+﻿
+using OfficeOpenXml;
+using OfficeOpenXml.Drawing;
+using OfficeOpenXml.Style;
+using Storage.DAO;
 using Storage.GUI.Items;
 using System;
 using System.Collections;
@@ -12,6 +16,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LicenseContext = OfficeOpenXml.LicenseContext;
 
 namespace Storage.GUI_MPR
 {
@@ -19,14 +24,25 @@ namespace Storage.GUI_MPR
     {
         private DataTable data;
         private DataTable dataMPRExportDetail;
-        Microsoft.Office.Interop.Excel.Application excel;
-        Microsoft.Office.Interop.Excel.Workbook excelworkBook;
-        Microsoft.Office.Interop.Excel.Worksheet excelSheet;
-        Microsoft.Office.Interop.Excel.Range excelCellrange;
+
+        private DataTable dataExportExcel_DB;
+        private DataTable dataExportExcel;
+
         public ucMPR()
         {
             InitializeComponent();
             LoadData();
+            dataExportExcel_DB = MPR_DAO.GetMPRExportExcel();
+            dataExportExcel = new DataTable();
+            dataExportExcel.Columns.Add("NO");
+            dataExportExcel.Columns.Add("Code");
+            dataExportExcel.Columns.Add("Name");
+            dataExportExcel.Columns.Add("Unit");
+            dataExportExcel.Columns.Add("Link");
+            dataExportExcel.Columns.Add("Picture", typeof(byte[]));
+            dataExportExcel.Columns.Add("Usage");
+            dataExportExcel.Columns.Add("ExpectedDelivery");
+            dataExportExcel.Columns.Add("Qty");
         }
 
         public void LoadData()
@@ -45,7 +61,7 @@ namespace Storage.GUI_MPR
             grdMRPs.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
             // Page MPRExport
-            grdMPRExport.DefaultCellStyle.WrapMode= DataGridViewTriState.True;
+            grdMPRExport.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             DataTable dtMPRExport = new DataTable();
             dtMPRExport.Columns.Add("ID");
             dtMPRExport.Columns.Add("CREATED");
@@ -160,8 +176,26 @@ namespace Storage.GUI_MPR
                 DataView dv = dataMPRExportDetail.DefaultView;
                 dv.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString())}'";
                 grdMPRExportDetail.DataSource = dv.ToTable();
-                
-                //grdMPRExportDetail.DataSource = MPR_DAO.GetMPRExportDetail(Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString()));
+
+                DataView dtView = dataExportExcel_DB.DefaultView;
+                dtView.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString())}'";
+                int i = 1;
+                foreach (DataRow item in dtView.ToTable().Rows)
+                {
+                    DataRow row = dataExportExcel.NewRow();
+                    row[0] = i;
+                    row[1] = item.Field<string>("CODE");
+                    row[2] = item.Field<string>("NAME");
+                    row[3] = item.Field<string>("UNIT");
+                    row[4] = item.Field<string>("PICTURE_LINK");
+                    row[5] = item.Field<byte[]>("PICTURE");
+                    row[6] = item.Field<string>("USAGE");
+                    row[7] = "";
+                    row[8] = item.Field<int>("QUANTITY");
+
+                    i++;
+                    dataExportExcel.Rows.Add(row);
+                }
             }
             else
             {
@@ -196,29 +230,114 @@ namespace Storage.GUI_MPR
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
-            //// Start Excel and get Application object.
-            //excel = new Microsoft.Office.Interop.Excel.Application();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            //// Make Excel invisible and disable alerts.
-            //excel.Visible = false;
-            //excel.DisplayAlerts = false;
 
-            //// Create a new Workbook.
-            //excelworkBook = excel.Workbooks.Add(Type.Missing);
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = saveFileDialog.FileName;
+                using (ExcelPackage package = new ExcelPackage())
+                {
+                    ExcelWorksheet sheet = package.Workbook.Worksheets.Add("MPR");
+                    sheet.Row(1).Height = 40;
+                    sheet.Row(2).Height = 40;
+                    sheet.Row(3).Height = 40;
 
-            //// Create a Worksheet.
-            //excelSheet = (Microsoft.Office.Interop.Excel.Worksheet)excelworkBook.ActiveSheet;
-            //excelSheet.Name = "Test work sheet";
+                    sheet.Column(1).Width = 5;
+                    sheet.Column(2).Width = 15;
+                    sheet.Column(3).Width = 20;
+                    sheet.Column(4).Width = 20;
+                    sheet.Column(5).Width = 30;
+                    sheet.Column(6).Width = 20;
+                    sheet.Column(7).Width = 20;
+                    sheet.Column(8).Width = 15;
+                    sheet.Column(9).Width = 15;
+                    sheet.Column(10).Width = 15;
+                    sheet.Column(11).Width = 15;
+                    sheet.Column(12).Width = 15;
 
-            //// Create Excel Header
-            //excelCellrange = excelSheet.get_Range("A1", "G2");
-            //excelCellrange.Merge(false);
-            //excelCellrange.Interior.Color = System.Drawing.Color.White;
-            //excelCellrange.Font.Color = System.Drawing.Color.Gray;
-            //excelCellrange.HorizontalAlignment = OfficeExcel.XlHAlign.xlHAlignCenter;
-            //excelCellrange.VerticalAlignment = OfficeExcel.XlVAlign.xlVAlignCenter;
-            //excelCellrange.Font.Size = 26;
-            //excelCellrange.Cells[1, 1] = "Greate Novels Of All Time";
+                    var cellStyleRange = sheet.Cells["A1:L2"].Style;
+                    cellStyleRange.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    cellStyleRange.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+
+                    sheet.Cells["A1:B1"].Merge = true;
+                    sheet.Cells["A1"].Value = $"MPR No\n(요구서 번호)";
+                    sheet.Cells["A2:B2"].Merge = true;
+                    sheet.Cells["A2"].Value = "Project Name\n (공사명)";
+                    sheet.Cells["A3"].Value = "No";
+                    sheet.Cells["B3"].Value = "Code";
+
+                    sheet.Cells["C1"].Value = "MPR-PE-026";
+                    sheet.Cells["C2"].Value = "N/A";
+                    sheet.Cells["C3"].Value = "Name";
+
+                    sheet.Cells["D1"].Value = "WO No. (공사번호)\nP.O DEL.(계약납기)";
+                    sheet.Cells["D2"].Value = "";
+                    sheet.Cells["D3"].Value = "Unit";
+
+                    sheet.Cells["E1:G2"].Merge = true;
+                    sheet.Cells["E1"].Value = "구매 요구서(MPR)  □ 견적 의뢰서(RFQ)";
+                    sheet.Cells["E3"].Value = "Link";
+
+                    sheet.Cells["F3"].Value = "Picture";
+                    sheet.Cells["G3"].Value = "Usage";
+
+                    sheet.Cells["H1"].Value = "Rev.\n(개정)";
+                    sheet.Cells["H2"].Value = "0";
+                    sheet.Cells["H3"].Value = "EXPECT RECEIVE DATE";
+
+                    sheet.Cells["I1"].Value = "Date\n(일자)";
+                    sheet.Cells["I2"].Value = "" + DateTime.Now.ToString("dd-MM-yyyy");
+                    sheet.Cells["I3"].Value = "Q'ty / Sh't";
+
+                    sheet.Cells["J1"].Value = "Prepared\n(작성)";
+                    sheet.Cells["J2"].Value = "" + DateTime.Now.ToString("dd-MM-yyyy");
+                    sheet.Cells["J3"].Value = "Weight(kg)";
+
+                    sheet.Cells["K1"].Value = "Reviewed\n(검토)";
+                    sheet.Cells["K2"].Value = "Good";
+
+                    sheet.Cells["L1"].Value = "Approve\n(승인)";
+                    sheet.Cells["L2"].Value = "Good";
+
+                    int rowIndex = 3;
+                    foreach (DataRow item in dataExportExcel.Rows)
+                    {
+                        FileInfo imageFile = new FileInfo(item[4].ToString());
+                        Image image = Image.FromFile(item[4].ToString());
+
+                        // Add the image to the worksheet
+                        ExcelPicture picture = sheet.Drawings.AddPicture($"PictureName {rowIndex}", imageFile, new ExcelHyperLink(item[4].ToString()));
+                        picture.SetSize(130, 70);
+                        picture.SetPosition(rowIndex, 0, 5, 0);
+                        rowIndex++;
+                        item[5] = new byte[0];
+                    }
+
+                    // Get the style object for the range of cells
+                    var addressTable = $"A1:L{dataExportExcel.Rows.Count + 3}";
+                    var rangeStyle = sheet.Cells[addressTable].Style;
+                    var loop = dataExportExcel.Rows.Count + 4;
+                    for (int i = 4; i < loop; i++)
+                    {
+                        sheet.Row(i).Height = 70;
+                    }
+
+                    // Center the content horizontally and vertically for the range
+                    rangeStyle.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                    rangeStyle.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+
+                    // Set border for the range
+                    rangeStyle.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                    rangeStyle.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                    rangeStyle.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                    rangeStyle.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+
+                    sheet.Cells["A4"].LoadFromDataTable(dataExportExcel, false);
+                    package.SaveAs(new FileInfo(path));
+                }
+            }
         }
     }
 }
