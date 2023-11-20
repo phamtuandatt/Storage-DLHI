@@ -46,7 +46,7 @@ namespace Storage.GUI_PO
                     if (txtQuantity.Text[i] == ',')
                         iKeep -= 1;
 
-                txtQuantity.Text = String.Format("{0:N0}", Convert.ToInt32(txtQuantity.Text.Replace(",", "")));
+                txtQuantity.Text = String.Format("{0:N0}", Convert.ToInt64(txtQuantity.Text.Replace(",", "")));
                 for (int i = 0; i < iKeep; i++)
                     if (txtQuantity.Text[i] == ',')
                         iKeep += 1;
