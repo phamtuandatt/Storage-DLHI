@@ -361,6 +361,10 @@ namespace Storage.GUI_MPR
 
                     sheet.Cells["A4"].LoadFromDataTable(dataExportExcel, false);
                     package.SaveAs(new FileInfo(path));
+
+                    int rsl = grdMPRExport.CurrentRow.Index;
+                    bool ex = MPR_DAO.UpdateStatusExportExcel(Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString()));
+
                     KryptonMessageBox.Show("Export successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

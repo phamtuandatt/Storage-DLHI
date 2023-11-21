@@ -118,5 +118,10 @@ namespace Storage.DAO
 
             return data.GetData(sql, "Export Data");
         }
+
+        public static bool UpdateStatusExportExcel(Guid id)
+        {
+            return data.Update($"UPDATE MPR_EXPORT SET STATUS = 0 WHERE ID = '{id}'") > 0;
+        }
     }
 }
