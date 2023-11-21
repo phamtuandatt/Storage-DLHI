@@ -163,12 +163,19 @@ namespace Storage.GUI_PO
         {
             Add_PaymentMethod paymentMethod = new Add_PaymentMethod();
             paymentMethod.ShowDialog();
+            cboPaymentMethod.DataSource = PaymentMethod_DAO.GetPaymentMethods();
+            cboPaymentMethod.DisplayMember = "Name";
+            cboPaymentMethod.ValueMember = "ID";
         }
 
         private void btnLocationWarehouse_Click(object sender, EventArgs e)
         {
             Add_LocationWareHouse add_LocationWareHouse = new Add_LocationWareHouse();
             add_LocationWareHouse.ShowDialog();
+
+            cboWarehouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
+            cboWarehouse.DisplayMember = "Name";
+            cboWarehouse.ValueMember = "ID";
         }
 
         private void btnRemoveSingle_Click(object sender, EventArgs e)

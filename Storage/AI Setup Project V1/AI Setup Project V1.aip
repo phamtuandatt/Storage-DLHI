@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="21.2.2" version="21.2.2" Modules="simple" RootPath="." Language="en" Id="{8930B653-FA9F-4CBF-B5FE-471C36CACB08}">
+  <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
+    <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;FixupComponent;MsiXDiffComponent;MsixManifestEditorComponent"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPURLINFOABOUT" Value="https://www.facebook.com/phamtuandat.profile"/>
+    <ROW Property="Manufacturer" Value="DLHI"/>
+    <ROW Property="ProductCode" Value="1033:{07372192-884B-4569-9680-AFCFA590A107} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="DLHI"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Options="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{DA87BA6B-7DB4-432D-A2D5-705641C5FA73}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="APPDIR" ComponentId="{1A8FE82B-A363-4164-A216-7CA1AD8A1730}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="ComponentFactory.Krypton.Docking.dll" ComponentId="{E2A1FBAA-9180-4CAB-A75A-22E7D7CE704B}" Directory_="APPDIR" Attributes="0" KeyPath="ComponentFactory.Krypton.Docking.dll"/>
+    <ROW Component="ComponentFactory.Krypton.Navigator.dll" ComponentId="{018AABA6-0C61-4D25-B1EF-EBCD682BBAAA}" Directory_="APPDIR" Attributes="0" KeyPath="ComponentFactory.Krypton.Navigator.dll"/>
+    <ROW Component="ComponentFactory.Krypton.Ribbon.dll" ComponentId="{F2BB1AC4-98BA-4E61-B614-CA8AFA46E68D}" Directory_="APPDIR" Attributes="0" KeyPath="ComponentFactory.Krypton.Ribbon.dll"/>
+    <ROW Component="ComponentFactory.Krypton.Toolkit.dll" ComponentId="{24771529-6718-4787-9CD6-86CD97291EFA}" Directory_="APPDIR" Attributes="0" KeyPath="ComponentFactory.Krypton.Toolkit.dll"/>
+    <ROW Component="ComponentFactory.Krypton.Workspace.dll" ComponentId="{D04C3BC6-1DD2-48AF-95DB-E86FF8DC8F70}" Directory_="APPDIR" Attributes="0" KeyPath="ComponentFactory.Krypton.Workspace.dll"/>
+    <ROW Component="EPPlus.Interfaces.dll" ComponentId="{559A0EF4-A2D6-4AD9-BCF8-FF1C1DC6625B}" Directory_="APPDIR" Attributes="0" KeyPath="EPPlus.Interfaces.dll"/>
+    <ROW Component="EPPlus.System.Drawing.dll" ComponentId="{28EE0E9B-102E-458D-9F4A-9B7ED94317D4}" Directory_="APPDIR" Attributes="0" KeyPath="EPPlus.System.Drawing.dll"/>
+    <ROW Component="EPPlus.dll" ComponentId="{D8B5989C-5EB5-40F9-A584-F32D03BED599}" Directory_="APPDIR" Attributes="0" KeyPath="EPPlus.dll"/>
+    <ROW Component="EPPlus.xml" ComponentId="{ED10A267-2612-4008-8D62-32732D5D0222}" Directory_="APPDIR" Attributes="0" KeyPath="EPPlus.xml" Type="0"/>
+    <ROW Component="Microsoft.IO.RecyclableMemoryStream.dll" ComponentId="{B34E04AF-9E97-45E9-B11F-1E4B6D59234D}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.IO.RecyclableMemoryStream.dll"/>
+    <ROW Component="ProductInformation" ComponentId="{6D3D70FC-166A-4D37-816B-32F87943A015}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="Storage.exe" ComponentId="{CA9439ED-4DC9-419C-BECD-1ECA7CC2D9B3}" Directory_="APPDIR" Attributes="0" KeyPath="Storage.exe"/>
+    <ROW Component="System.ComponentModel.Annotations.dll" ComponentId="{22A4F94B-4155-43B6-9DD2-58F8A2A10019}" Directory_="APPDIR" Attributes="0" KeyPath="System.ComponentModel.Annotations.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="ComponentFactory.Krypton.Docking.dll" Component_="ComponentFactory.Krypton.Docking.dll" FileName="COMPON~1.DLL|ComponentFactory.Krypton.Docking.dll" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Docking.dll" SelfReg="false"/>
+    <ROW File="ComponentFactory.Krypton.Docking.pdb" Component_="ComponentFactory.Krypton.Docking.dll" FileName="COMPON~1.PDB|ComponentFactory.Krypton.Docking.pdb" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Docking.pdb" SelfReg="false"/>
+    <ROW File="ComponentFactory.Krypton.Navigator.dll" Component_="ComponentFactory.Krypton.Navigator.dll" FileName="COMPON~2.DLL|ComponentFactory.Krypton.Navigator.dll" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Navigator.dll" SelfReg="false"/>
+    <ROW File="ComponentFactory.Krypton.Navigator.pdb" Component_="ComponentFactory.Krypton.Navigator.dll" FileName="COMPON~2.PDB|ComponentFactory.Krypton.Navigator.pdb" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Navigator.pdb" SelfReg="false"/>
+    <ROW File="ComponentFactory.Krypton.Ribbon.dll" Component_="ComponentFactory.Krypton.Ribbon.dll" FileName="COMPON~3.DLL|ComponentFactory.Krypton.Ribbon.dll" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Ribbon.dll" SelfReg="false"/>
+    <ROW File="ComponentFactory.Krypton.Ribbon.pdb" Component_="ComponentFactory.Krypton.Ribbon.dll" FileName="COMPON~3.PDB|ComponentFactory.Krypton.Ribbon.pdb" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Ribbon.pdb" SelfReg="false"/>
+    <ROW File="ComponentFactory.Krypton.Toolkit.dll" Component_="ComponentFactory.Krypton.Toolkit.dll" FileName="COMPON~4.DLL|ComponentFactory.Krypton.Toolkit.dll" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Toolkit.dll" SelfReg="false"/>
+    <ROW File="ComponentFactory.Krypton.Toolkit.pdb" Component_="ComponentFactory.Krypton.Toolkit.dll" FileName="COMPON~4.PDB|ComponentFactory.Krypton.Toolkit.pdb" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Toolkit.pdb" SelfReg="false"/>
+    <ROW File="ComponentFactory.Krypton.Workspace.dll" Component_="ComponentFactory.Krypton.Workspace.dll" FileName="COMPON~5.DLL|ComponentFactory.Krypton.Workspace.dll" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Workspace.dll" SelfReg="false"/>
+    <ROW File="ComponentFactory.Krypton.Workspace.pdb" Component_="ComponentFactory.Krypton.Workspace.dll" FileName="COMPON~5.PDB|ComponentFactory.Krypton.Workspace.pdb" Attributes="0" SourcePath="..\Storage\bin\Release\ComponentFactory.Krypton.Workspace.pdb" SelfReg="false"/>
+    <ROW File="EPPlus.dll" Component_="EPPlus.dll" FileName="EPPlus.dll" Attributes="0" SourcePath="..\Storage\bin\Release\EPPlus.dll" SelfReg="false"/>
+    <ROW File="EPPlus.Interfaces.dll" Component_="EPPlus.Interfaces.dll" FileName="EPPLUS~1.DLL|EPPlus.Interfaces.dll" Attributes="0" SourcePath="..\Storage\bin\Release\EPPlus.Interfaces.dll" SelfReg="false"/>
+    <ROW File="EPPlus.System.Drawing.dll" Component_="EPPlus.System.Drawing.dll" FileName="EPPLUS~2.DLL|EPPlus.System.Drawing.dll" Attributes="0" SourcePath="..\Storage\bin\Release\EPPlus.System.Drawing.dll" SelfReg="false"/>
+    <ROW File="EPPlus.xml" Component_="EPPlus.xml" FileName="EPPlus.xml" Attributes="0" SourcePath="..\Storage\bin\Release\EPPlus.xml" SelfReg="false"/>
+    <ROW File="Microsoft.IO.RecyclableMemoryStream.dll" Component_="Microsoft.IO.RecyclableMemoryStream.dll" FileName="MICROS~1.DLL|Microsoft.IO.RecyclableMemoryStream.dll" Attributes="0" SourcePath="..\Storage\bin\Release\Microsoft.IO.RecyclableMemoryStream.dll" SelfReg="false"/>
+    <ROW File="Microsoft.IO.RecyclableMemoryStream.xml" Component_="EPPlus.xml" FileName="MICROS~1.XML|Microsoft.IO.RecyclableMemoryStream.xml" Attributes="0" SourcePath="..\Storage\bin\Release\Microsoft.IO.RecyclableMemoryStream.xml" SelfReg="false"/>
+    <ROW File="Storage.exe" Component_="Storage.exe" FileName="Storage.exe" Attributes="0" SourcePath="..\Storage\bin\Release\Storage.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="Storage.exe.config" Component_="EPPlus.xml" FileName="STORAG~1.CON|Storage.exe.config" Attributes="0" SourcePath="..\Storage\bin\Release\Storage.exe.config" SelfReg="false"/>
+    <ROW File="Storage.pdb" Component_="Storage.exe" FileName="Storage.pdb" Attributes="0" SourcePath="..\Storage\bin\Release\Storage.pdb" SelfReg="false"/>
+    <ROW File="System.ComponentModel.Annotations.dll" Component_="System.ComponentModel.Annotations.dll" FileName="SYSTEM~1.DLL|System.ComponentModel.Annotations.dll" Attributes="0" SourcePath="..\Storage\bin\Release\System.ComponentModel.Annotations.dll" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="Themes.aip" Path="&lt;AI_FRAGS&gt;Themes.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Type="65" Source="aicustact.dll" Target="PreserveInstallType"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
+    <ROW Feature_="MainFeature" Component_="APPDIR"/>
+    <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="MainFeature" Component_="ComponentFactory.Krypton.Docking.dll"/>
+    <ROW Feature_="MainFeature" Component_="ComponentFactory.Krypton.Navigator.dll"/>
+    <ROW Feature_="MainFeature" Component_="ComponentFactory.Krypton.Ribbon.dll"/>
+    <ROW Feature_="MainFeature" Component_="ComponentFactory.Krypton.Toolkit.dll"/>
+    <ROW Feature_="MainFeature" Component_="ComponentFactory.Krypton.Workspace.dll"/>
+    <ROW Feature_="MainFeature" Component_="EPPlus.dll"/>
+    <ROW Feature_="MainFeature" Component_="EPPlus.Interfaces.dll"/>
+    <ROW Feature_="MainFeature" Component_="EPPlus.System.Drawing.dll"/>
+    <ROW Feature_="MainFeature" Component_="EPPlus.xml"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.IO.RecyclableMemoryStream.dll"/>
+    <ROW Feature_="MainFeature" Component_="Storage.exe"/>
+    <ROW Feature_="MainFeature" Component_="System.ComponentModel.Annotations.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Manufacturer" Root="-1" Key="Software\[Manufacturer]" Name="\"/>
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="ProductName" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="\"/>
+    <ROW Registry="Software" Root="-1" Key="Software" Name="\"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+</DOCUMENT>

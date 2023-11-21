@@ -157,7 +157,7 @@
             this.page,
             this.kryptonPage1,
             this.kryptonPage4});
-            this.kryptonDockableNavigator1.SelectedIndex = 2;
+            this.kryptonDockableNavigator1.SelectedIndex = 0;
             this.kryptonDockableNavigator1.Size = new System.Drawing.Size(1371, 778);
             this.kryptonDockableNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonDockableNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.WhiteSmoke;
