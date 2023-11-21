@@ -312,6 +312,14 @@ namespace Storage.GUI_Import
                     e.Value = val.ToString("N0");
                 }
             }
+            if (e.ColumnIndex == 3 & e.RowIndex >= 0)
+            {
+                if (grdItemImports.Rows[e.RowIndex].Cells[3].Value != null)
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
+            }
         }
 
         private void grdImportItemDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
