@@ -46,7 +46,7 @@ namespace Storage.GUI_MPR
                 Item_Id = Item_Id,
                 MPR_No = txtMPR.Text,
                 Usage = txtUsage.Text,
-                Quantity = int.Parse(txtQuantity.Text),
+                Quantity = Convert.ToInt64(txtQuantity.Text.Replace(",", "")),
             };
 
             if (MPR_DAO.Add(makeNewRequestDto))

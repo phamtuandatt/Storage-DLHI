@@ -76,10 +76,10 @@ namespace Storage.GUI_Export
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (grdItemAdds.Rows.Count <= 0 || dataItemAdd.Rows.Count <= 0) return;
-            int sumQty = 0;
+            Int64 sumQty = 0;
             foreach (DataRow item in dataItemAdd.Rows)
             {
-                sumQty += int.Parse(item["QUANTITY"].ToString());
+                sumQty += Convert.ToInt64(item["QUANTITY"].ToString().Replace(",", ""));
             }
 
             ExportItemDto exportItemDto = new ExportItemDto()
@@ -99,7 +99,7 @@ namespace Storage.GUI_Export
                     {
                         ExportItemId = exportItemDto.Id,
                         ItemId = Guid.Parse(item["ID"].ToString()),
-                        Qty = int.Parse(item["QUANTITY"].ToString()),
+                        Qty = Convert.ToInt64(item["QUANTITY"].ToString()),
                         Note = item["NOTE"].ToString(),
                     };
                     lstEmport.Add(emportDetailDto);
@@ -114,7 +114,7 @@ namespace Storage.GUI_Export
                         {
                             WarehouseId = Guid.Parse(item["WAREHOUSE_ID"].ToString()),
                             Item_Id = Guid.Parse(item["ITEM_ID"].ToString()),
-                            Quantity = int.Parse(item["QUANTITY"].ToString()),
+                            Quantity = Convert.ToInt64(item["QUANTITY"].ToString().Replace(",", "")),
                             Month = txtCreateDate.Value.Month,
                             Year = txtCreateDate.Value.Year,
                         };
@@ -145,16 +145,16 @@ namespace Storage.GUI_Export
                     .Where(row => row.Field<Guid>("ITEM_ID") == Guid.Parse(grdItems.Rows[rsl].Cells[1].Value.ToString()))
                     .Select(row => row.Field<int>("QUANTITY"));
 
-                    if (int.Parse(qty.FirstOrDefault().ToString()) <= int.Parse(txtQty.Text))
+                    if (int.Parse(qty.FirstOrDefault().ToString().Replace(",", "")) <= int.Parse(txtQty.Text.Replace(",", "")))
                     {
-                        KryptonMessageBox.Show($"Only {qty.FirstOrDefault().ToString()} products left in stock {cboWareHouse.Text.ToUpper()}.\nPlease import more products or reduce the number of products export.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        KryptonMessageBox.Show($"Only {qty.FirstOrDefault().ToString().Replace(",", "")} products left in stock {cboWareHouse.Text.ToUpper()}.\nPlease import more products or reduce the number of products export.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
                     DataRow rowWarehouse = dataWarehouseExport.NewRow();
                     rowWarehouse["WAREHOUSE_ID"] = grdItems.Rows[rsl].Cells[0].Value.ToString();
                     rowWarehouse["ITEM_ID"] = grdItems.Rows[rsl].Cells[1].Value.ToString();
-                    rowWarehouse["QUANTITY"] = /*int.Parse(qty.FirstOrDefault().ToString()) -*/ int.Parse(txtQty.Text);
+                    rowWarehouse["QUANTITY"] = /*int.Parse(qty.FirstOrDefault().ToString()) -*/ int.Parse(txtQty.Text.Replace(",", ""));
                     dataWarehouseExport.Rows.Add(rowWarehouse);
 
                     DataRow r = dataItemAdd.NewRow();
@@ -162,7 +162,7 @@ namespace Storage.GUI_Export
                     r["CODE"] = grdItems.Rows[rsl].Cells[2].Value.ToString();
                     r["NAME"] = grdItems.Rows[rsl].Cells[3].Value.ToString();
                     r["IMAGE"] = (byte[])grdItems.Rows[rsl].Cells[4].Value;
-                    r["QUANTITY"] = txtQty.Text;
+                    r["QUANTITY"] = txtQty.Text.Replace(",", "");
                     r["NOTE"] = txtNote.Text;
 
                     dataItemAdd.Rows.Add(r);
@@ -320,6 +320,54 @@ namespace Storage.GUI_Export
             catch
             {
                 //errorhandling
+            }
+        }
+
+        private void grdItems_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 & e.RowIndex >= 0)
+            {
+                if (grdItems.Rows[e.RowIndex].Cells[5].Value != null)
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
+            }
+        }
+
+        private void grdItemAdds_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 4 & e.RowIndex >= 0)
+            {
+                if (grdItemAdds.Rows[e.RowIndex].Cells[4].Value != null)
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
+            }
+        }
+
+        private void grdItemEmports_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 3 & e.RowIndex >= 0)
+            {
+                if (grdItemEmports.Rows[e.RowIndex].Cells[3].Value != null)
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
+            }
+        }
+
+        private void grdEmportItemDetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 & e.RowIndex >= 0)
+            {
+                if (grdEmportItemDetails.Rows[e.RowIndex].Cells[5].Value != null)
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
             }
         }
     }

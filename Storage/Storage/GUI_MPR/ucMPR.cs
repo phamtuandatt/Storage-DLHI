@@ -1,4 +1,5 @@
 ﻿
+using ComponentFactory.Krypton.Toolkit;
 using OfficeOpenXml;
 using OfficeOpenXml.Drawing;
 using OfficeOpenXml.Style;
@@ -43,6 +44,26 @@ namespace Storage.GUI_MPR
             dataExportExcel.Columns.Add("Usage");
             dataExportExcel.Columns.Add("ExpectedDelivery");
             dataExportExcel.Columns.Add("Qty");
+
+            DataView dtView = dataExportExcel_DB.DefaultView;
+            dtView.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[0].Cells[0].Value.ToString())}'";
+            int i = 1;
+            foreach (DataRow item in dtView.ToTable().Rows)
+            {
+                DataRow row = dataExportExcel.NewRow();
+                row[0] = i;
+                row[1] = item.Field<string>("CODE");
+                row[2] = item.Field<string>("NAME");
+                row[3] = item.Field<string>("UNIT");
+                row[4] = item.Field<string>("PICTURE_LINK");
+                row[5] = item.Field<byte[]>("PICTURE");
+                row[6] = item.Field<string>("USAGE");
+                row[7] = "";
+                row[8] = item.Field<int>("QUANTITY");
+
+                i++;
+                dataExportExcel.Rows.Add(row);
+            }
         }
 
         public void LoadData()
@@ -180,6 +201,7 @@ namespace Storage.GUI_MPR
                 DataView dtView = dataExportExcel_DB.DefaultView;
                 dtView.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString())}'";
                 int i = 1;
+                dataExportExcel.Rows.Clear();
                 foreach (DataRow item in dtView.ToTable().Rows)
                 {
                     DataRow row = dataExportExcel.NewRow();
@@ -304,15 +326,18 @@ namespace Storage.GUI_MPR
                     int rowIndex = 3;
                     foreach (DataRow item in dataExportExcel.Rows)
                     {
-                        FileInfo imageFile = new FileInfo(item[4].ToString());
-                        Image image = Image.FromFile(item[4].ToString());
+                        if (!string.IsNullOrEmpty(item[4].ToString()))
+                        {
+                            FileInfo imageFile = new FileInfo(item[4].ToString());
+                            Image image = Image.FromFile(item[4].ToString());
 
-                        // Add the image to the worksheet
-                        ExcelPicture picture = sheet.Drawings.AddPicture($"PictureName {rowIndex}", imageFile, new ExcelHyperLink(item[4].ToString()));
-                        picture.SetSize(130, 70);
-                        picture.SetPosition(rowIndex, 0, 5, 0);
-                        rowIndex++;
-                        item[5] = new byte[0];
+                            // Add the image to the worksheet
+                            ExcelPicture picture = sheet.Drawings.AddPicture($"PictureName {rowIndex}", imageFile, new ExcelHyperLink(item[4].ToString()));
+                            picture.SetSize(130, 70);
+                            picture.SetPosition(rowIndex, 0, 5, 0);
+                            rowIndex++;
+                            item[5] = new byte[0];
+                        }
                     }
 
                     // Get the style object for the range of cells
@@ -336,6 +361,7 @@ namespace Storage.GUI_MPR
 
                     sheet.Cells["A4"].LoadFromDataTable(dataExportExcel, false);
                     package.SaveAs(new FileInfo(path));
+                    KryptonMessageBox.Show("Export successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

@@ -74,12 +74,12 @@ namespace Storage.GUI_Import
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (dataItemAdd.Rows.Count <= 0 || grdImportDetail.Rows.Count <= 0) return;
-            int sumQty = 0;
-            int total = 0;
+            Int64 sumQty = 0;
+            Int64 total = 0;
             foreach (DataRow item in dataItemAdd.Rows)
             {
-                sumQty += int.Parse(item["QUANTITY"].ToString().Replace(",", ""));
-                total += int.Parse(item["QUANTITY"].ToString().Replace(",", "")) * int.Parse(item["PRICE"].ToString().Replace(",", ""));
+                sumQty += Convert.ToInt64(item["QUANTITY"].ToString().Replace(",", ""));
+                total += Convert.ToInt64(item["QUANTITY"].ToString().Replace(",", "")) * Convert.ToInt64(item["PRICE"].ToString().Replace(",", ""));
             }
 
             ImportItemDto importItemDto = new ImportItemDto()
@@ -102,8 +102,8 @@ namespace Storage.GUI_Import
                     {
                         ImportItemId = importItemDto.Id,
                         ItemId = Guid.Parse(item["ID"].ToString()),
-                        Qty = int.Parse(item["QUANTITY"].ToString().Replace(",", "")),
-                        Price = int.Parse(item["PRICE"].ToString().Replace(",", "")),
+                        Qty = Convert.ToInt64(item["QUANTITY"].ToString().Replace(",", "")),
+                        Price = Convert.ToInt64(item["PRICE"].ToString().Replace(",", "")),
                         Note = item["NOTE"].ToString(),
                     };
                     lstImport.Add(importDetailDto);
@@ -148,7 +148,7 @@ namespace Storage.GUI_Import
                     r["NAME"] = grdItems.Rows[rsl].Cells[3].Value.ToString();
                     r["IMAGE"] = (byte[])grdItems.Rows[rsl].Cells[5].Value;
                     r["QUANTITY"] = txtQty.Text;
-                    r["PRICE"] = txtPrice.Text;
+                    r["PRICE"] = txtPrice.Text.Replace(",", "");
                     r["NOTE"] = txtNote.Text;
 
                     dataItemAdd.Rows.Add(r);
@@ -308,7 +308,7 @@ namespace Storage.GUI_Import
             {
                 if (grdItemImports.Rows[e.RowIndex].Cells[5].Value != null)
                 {
-                    int val = int.Parse(e.Value.ToString().Replace(",", ""));
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
                     e.Value = val.ToString("N0");
                 }
             }
@@ -318,9 +318,9 @@ namespace Storage.GUI_Import
         {
             if (e.ColumnIndex == 6 & e.RowIndex >= 0)
             {
-                if (grdImportItemDetails.Rows[e.RowIndex].Cells[7].Value != null)
+                if (grdImportItemDetails.Rows[e.RowIndex].Cells[6].Value != null)
                 {
-                    int val = Int32.Parse(e.Value.ToString().Replace(",", ""));
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
                     e.Value = val.ToString("N0");
                 }
             }
@@ -340,7 +340,7 @@ namespace Storage.GUI_Import
             {
                 if (grdImportDetail.Rows[e.RowIndex].Cells[5].Value != null)
                 {
-                    int val = Int32.Parse(e.Value.ToString().Replace(",", ""));
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
                     e.Value = val.ToString("N0");
                 }
             }

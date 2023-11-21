@@ -99,7 +99,7 @@ GO
 CREATE TABLE MPR_EXPORT (
 	ID UNIQUEIDENTIFIER NOT NULL,
 	CREATED DATETIME,
-	ITEM_COUNT INT,
+	ITEM_COUNT BIGINT,
 	STATUS INT, 
 	-- 0: Exported MPR -> When Export -> Update status : 0
 	-- 1: Do not exported but create new MPR_Export -> When check create new MPR_Export -> Get MPR have status is 2 -> Update = 1
@@ -544,3 +544,5 @@ GO
 ----------------------------------------------------------------------------------------------------
 		
 EXEC GET_MPR_EXPORT_DETAILS
+SELECT *FROM IMPORT_ITEM
+EXEC GET_MPR_EXPORT_EXCEL
