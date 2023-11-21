@@ -78,8 +78,8 @@ namespace Storage.GUI_Import
             int total = 0;
             foreach (DataRow item in dataItemAdd.Rows)
             {
-                sumQty += int.Parse(item["QUANTITY"].ToString());
-                total += int.Parse(item["QUANTITY"].ToString()) * int.Parse(item["PRICE"].ToString());
+                sumQty += int.Parse(item["QUANTITY"].ToString().Replace(",", ""));
+                total += int.Parse(item["QUANTITY"].ToString().Replace(",", "")) * int.Parse(item["PRICE"].ToString().Replace(",", ""));
             }
 
             ImportItemDto importItemDto = new ImportItemDto()
@@ -102,8 +102,8 @@ namespace Storage.GUI_Import
                     {
                         ImportItemId = importItemDto.Id,
                         ItemId = Guid.Parse(item["ID"].ToString()),
-                        Qty = int.Parse(item["QUANTITY"].ToString()),
-                        Price = int.Parse(item["PRICE"].ToString()),
+                        Qty = int.Parse(item["QUANTITY"].ToString().Replace(",", "")),
+                        Price = int.Parse(item["PRICE"].ToString().Replace(",", "")),
                         Note = item["NOTE"].ToString(),
                     };
                     lstImport.Add(importDetailDto);
@@ -111,7 +111,7 @@ namespace Storage.GUI_Import
                     {
                         WarehouseId = Guid.Parse(cboWareHouse.SelectedValue.ToString()),
                         Item_Id = Guid.Parse(item["ID"].ToString()),
-                        Quantity = int.Parse(item["QUANTITY"].ToString()),
+                        Quantity = int.Parse(item["QUANTITY"].ToString().Replace(",", "")),
                         Month = txtCreateDate.Value.Month,
                         Year = txtCreateDate.Value.Year,
                     };
@@ -308,7 +308,7 @@ namespace Storage.GUI_Import
             {
                 if (grdItemImports.Rows[e.RowIndex].Cells[5].Value != null)
                 {
-                    int val = int.Parse(e.Value.ToString());
+                    int val = int.Parse(e.Value.ToString().Replace(",", ""));
                     e.Value = val.ToString("N0");
                 }
             }
@@ -320,7 +320,7 @@ namespace Storage.GUI_Import
             {
                 if (grdImportItemDetails.Rows[e.RowIndex].Cells[7].Value != null)
                 {
-                    int val = Int32.Parse(e.Value.ToString());
+                    int val = Int32.Parse(e.Value.ToString().Replace(",", ""));
                     e.Value = val.ToString("N0");
                 }
             }
@@ -328,7 +328,7 @@ namespace Storage.GUI_Import
             {
                 if (grdImportItemDetails.Rows[e.RowIndex].Cells[7].Value != null)
                 {
-                    int val = Int32.Parse(e.Value.ToString());
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
                     e.Value = val.ToString("N0");
                 }
             }
@@ -340,7 +340,7 @@ namespace Storage.GUI_Import
             {
                 if (grdImportDetail.Rows[e.RowIndex].Cells[5].Value != null)
                 {
-                    int val = Int32.Parse(e.Value.ToString());
+                    int val = Int32.Parse(e.Value.ToString().Replace(",", ""));
                     e.Value = val.ToString("N0");
                 }
             }

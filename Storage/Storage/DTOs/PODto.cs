@@ -12,7 +12,7 @@ namespace Storage.DTOs
         public Guid Id { get; set; }
         public DateTime Created { get; set; } 
         public DateTime ExpectedDelivery { get; set; }
-        public int Total { get; set; }
+        public Int64 Total { get; set; }
 
         public Guid Supplier_Id { get; set; }  
         public Guid LocationWareHouse_Id { get; set; }
@@ -25,7 +25,7 @@ namespace Storage.DTOs
         public Guid Item_Id { get; set; } 
         public string MPR_No { get; set; } 
         public string PO_No { get; set; }
-        public int Price { get; set; }
-        public int Quantity { get; set; }
+        public Int64 Price { get; set; }
+        public Int64 Quantity { get; set; }
     }
 }

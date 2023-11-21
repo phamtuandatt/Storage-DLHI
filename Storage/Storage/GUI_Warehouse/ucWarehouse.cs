@@ -100,5 +100,41 @@ namespace Storage.GUI_Warehouse
             dtInventories = Warehouse_DAO.GetInventories(txtDate.Value.Month, txtDate.Value.Year);
             grdInventories.DataSource = dtInventories;
         }
+
+        private void grdInventories_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 6 & e.RowIndex >= 0)
+            {
+                if (grdInventories.Rows[e.RowIndex].Cells[6].Value != null && grdInventories.Rows[e.RowIndex].Cells[6].Value.ToString() != "")
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
+            }
+            if (e.ColumnIndex == 7 & e.RowIndex >= 0)
+            {
+                if (grdInventories.Rows[e.RowIndex].Cells[7].Value != null && grdInventories.Rows[e.RowIndex].Cells[7].Value.ToString() != "")
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
+            }
+            if (e.ColumnIndex == 8 & e.RowIndex >= 0)
+            {
+                if (grdInventories.Rows[e.RowIndex].Cells[8].Value != null && grdInventories.Rows[e.RowIndex].Cells[8].Value.ToString() != "")
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
+            }
+            if (e.ColumnIndex == 9 & e.RowIndex >= 0)
+            {
+                if (grdInventories.Rows[e.RowIndex].Cells[9].Value != null && grdInventories.Rows[e.RowIndex].Cells[9].Value.ToString() != "")
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
+            }
+        }
     }
 }

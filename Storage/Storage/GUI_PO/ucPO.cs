@@ -218,8 +218,8 @@ namespace Storage.GUI_PO
                         Item_Id = Guid.Parse(item.Cells[0].Value.ToString()),
                         MPR_No = item.Cells[6].Value.ToString(),
                         PO_No = item.Cells[7].Value.ToString(),
-                        Price = int.Parse(item.Cells[5].Value.ToString()),
-                        Quantity = int.Parse(item.Cells[4].Value.ToString()),
+                        Price = Convert.ToInt64(item.Cells[5].Value.ToString().Replace(",", "")),
+                        Quantity = int.Parse(item.Cells[4].Value.ToString().Replace(",", "")),
                     };
                     dtos.Add(pO_DetailDto);
                 }
@@ -332,6 +332,27 @@ namespace Storage.GUI_PO
             catch
             {
                 //errorhandling
+            }
+        }
+
+        private void grdPODetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 6 & e.RowIndex >= 0)
+            {
+                if (grdPODetail.Rows[e.RowIndex].Cells[6].Value != null)
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
+            }
+
+            if (e.ColumnIndex == 7 & e.RowIndex >= 0)
+            {
+                if (grdPODetail.Rows[e.RowIndex].Cells[7].Value != null)
+                {
+                    Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
+                    e.Value = val.ToString("N0");
+                }
             }
         }
     }

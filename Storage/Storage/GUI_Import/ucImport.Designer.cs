@@ -186,7 +186,7 @@
             this.kryptonPanel1.Controls.Add(this.kryptonDockableNavigator1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel1.Size = new System.Drawing.Size(1811, 871);
@@ -236,7 +236,7 @@
             this.tableLayoutPanel4.Controls.Add(this.kryptonPanel17, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -249,7 +249,7 @@
             this.kryptonPanel16.Controls.Add(this.kryptonPanel18);
             this.kryptonPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel16.Location = new System.Drawing.Point(4, 4);
-            this.kryptonPanel16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel16.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel16.Name = "kryptonPanel16";
             this.kryptonPanel16.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel16.Size = new System.Drawing.Size(625, 832);
@@ -261,7 +261,7 @@
             this.kryptonPanel19.Controls.Add(this.grdItemImports);
             this.kryptonPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel19.Location = new System.Drawing.Point(0, 46);
-            this.kryptonPanel19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel19.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel19.Name = "kryptonPanel19";
             this.kryptonPanel19.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel19.Size = new System.Drawing.Size(625, 786);
@@ -283,7 +283,7 @@
             this.Column13});
             this.grdItemImports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdItemImports.Location = new System.Drawing.Point(0, 0);
-            this.grdItemImports.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdItemImports.Margin = new System.Windows.Forms.Padding(4);
             this.grdItemImports.Name = "grdItemImports";
             this.grdItemImports.ReadOnly = true;
             this.grdItemImports.RowHeadersWidth = 51;
@@ -350,7 +350,7 @@
             this.kryptonPanel18.Controls.Add(this.kryptonLabel7);
             this.kryptonPanel18.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonPanel18.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel18.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel18.Name = "kryptonPanel18";
             this.kryptonPanel18.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel18.Size = new System.Drawing.Size(625, 46);
@@ -361,7 +361,7 @@
             // 
             this.txtSearchImports.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchImports.Location = new System.Drawing.Point(116, 6);
-            this.txtSearchImports.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearchImports.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchImports.Name = "txtSearchImports";
             this.txtSearchImports.Size = new System.Drawing.Size(180, 30);
             this.txtSearchImports.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -378,7 +378,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.kryptonLabel7.AutoSize = false;
             this.kryptonLabel7.Location = new System.Drawing.Point(32, 0);
-            this.kryptonLabel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel7.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel7.Name = "kryptonLabel7";
             this.kryptonLabel7.Size = new System.Drawing.Size(120, 46);
             this.kryptonLabel7.TabIndex = 0;
@@ -389,7 +389,7 @@
             this.kryptonPanel17.Controls.Add(this.grdImportItemDetails);
             this.kryptonPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel17.Location = new System.Drawing.Point(637, 4);
-            this.kryptonPanel17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel17.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel17.Name = "kryptonPanel17";
             this.kryptonPanel17.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel17.Size = new System.Drawing.Size(1168, 832);
@@ -416,7 +416,7 @@
             this.Column24});
             this.grdImportItemDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdImportItemDetails.Location = new System.Drawing.Point(0, 0);
-            this.grdImportItemDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdImportItemDetails.Margin = new System.Windows.Forms.Padding(4);
             this.grdImportItemDetails.Name = "grdImportItemDetails";
             this.grdImportItemDetails.ReadOnly = true;
             this.grdImportItemDetails.RowHeadersWidth = 51;
@@ -524,7 +524,7 @@
             this.kryptonPage1.Controls.Add(this.kryptonPanel2);
             this.kryptonPage1.Flags = 65534;
             this.kryptonPage1.LastVisibleSet = true;
-            this.kryptonPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPage1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPage1.MinimumSize = new System.Drawing.Size(67, 62);
             this.kryptonPage1.Name = "kryptonPage1";
             this.kryptonPage1.Size = new System.Drawing.Size(1809, 840);
@@ -538,7 +538,7 @@
             this.kryptonPanel2.Controls.Add(this.toolStrip1);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel2.Size = new System.Drawing.Size(1809, 840);
@@ -549,11 +549,11 @@
             // 
             this.kryptonPanel3.Controls.Add(this.tableLayoutPanel1);
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(0, 27);
-            this.kryptonPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel3.Location = new System.Drawing.Point(0, 31);
+            this.kryptonPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel3.Name = "kryptonPanel3";
             this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel3.Size = new System.Drawing.Size(1809, 813);
+            this.kryptonPanel3.Size = new System.Drawing.Size(1809, 809);
             this.kryptonPanel3.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel3.TabIndex = 1;
             // 
@@ -567,11 +567,11 @@
             this.tableLayoutPanel1.Controls.Add(this.kryptonGroupBox1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1809, 813);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1809, 809);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // kryptonPanel4
@@ -579,10 +579,10 @@
             this.kryptonPanel4.Controls.Add(this.tableLayoutPanel2);
             this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel4.Location = new System.Drawing.Point(4, 4);
-            this.kryptonPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel4.Name = "kryptonPanel4";
             this.kryptonPanel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel4.Size = new System.Drawing.Size(896, 805);
+            this.kryptonPanel4.Size = new System.Drawing.Size(896, 801);
             this.kryptonPanel4.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel4.TabIndex = 0;
             // 
@@ -594,12 +594,12 @@
             this.tableLayoutPanel2.Controls.Add(this.kryptonPanel6, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 195F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(896, 805);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(896, 801);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // kryptonPanel5
@@ -607,10 +607,10 @@
             this.kryptonPanel5.Controls.Add(this.grdItems);
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel5.Location = new System.Drawing.Point(4, 199);
-            this.kryptonPanel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel5.Name = "kryptonPanel5";
             this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel5.Size = new System.Drawing.Size(888, 602);
+            this.kryptonPanel5.Size = new System.Drawing.Size(888, 598);
             this.kryptonPanel5.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel5.TabIndex = 0;
             // 
@@ -634,13 +634,13 @@
             this.dataGridViewTextBoxColumn16});
             this.grdItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdItems.Location = new System.Drawing.Point(0, 0);
-            this.grdItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdItems.Margin = new System.Windows.Forms.Padding(4);
             this.grdItems.MultiSelect = false;
             this.grdItems.Name = "grdItems";
             this.grdItems.ReadOnly = true;
             this.grdItems.RowHeadersWidth = 51;
             this.grdItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdItems.Size = new System.Drawing.Size(888, 602);
+            this.grdItems.Size = new System.Drawing.Size(888, 598);
             this.grdItems.TabIndex = 3;
             this.grdItems.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdItems_CellPainting);
             this.grdItems.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdItemImports_RowPostPaint);
@@ -752,7 +752,7 @@
             this.kryptonPanel6.Controls.Add(this.tableLayoutPanel3);
             this.kryptonPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel6.Location = new System.Drawing.Point(4, 4);
-            this.kryptonPanel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel6.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel6.Name = "kryptonPanel6";
             this.kryptonPanel6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel6.Size = new System.Drawing.Size(888, 187);
@@ -766,7 +766,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.71895F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.48366F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.3268F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
             this.tableLayoutPanel3.Controls.Add(this.labNote, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.kryptonPanel8, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.kryptonPanel10, 3, 0);
@@ -789,7 +789,7 @@
             this.tableLayoutPanel3.Controls.Add(this.kryptonPanel20, 3, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -803,7 +803,7 @@
             // 
             this.labNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labNote.Location = new System.Drawing.Point(4, 142);
-            this.labNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labNote.Margin = new System.Windows.Forms.Padding(4);
             this.labNote.Name = "labNote";
             this.labNote.Size = new System.Drawing.Size(118, 41);
             this.labNote.TabIndex = 3;
@@ -815,10 +815,10 @@
             this.kryptonPanel8.Controls.Add(this.kryptonPanel7);
             this.kryptonPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel8.Location = new System.Drawing.Point(130, 4);
-            this.kryptonPanel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel8.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel8.Name = "kryptonPanel8";
             this.kryptonPanel8.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel8.Size = new System.Drawing.Size(227, 38);
+            this.kryptonPanel8.Size = new System.Drawing.Size(226, 38);
             this.kryptonPanel8.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel8.TabIndex = 0;
             // 
@@ -830,7 +830,7 @@
             this.txtCreateDate.Location = new System.Drawing.Point(8, 4);
             this.txtCreateDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCreateDate.Name = "txtCreateDate";
-            this.txtCreateDate.Size = new System.Drawing.Size(214, 31);
+            this.txtCreateDate.Size = new System.Drawing.Size(225, 31);
             this.txtCreateDate.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -841,7 +841,7 @@
             // kryptonPanel7
             // 
             this.kryptonPanel7.Location = new System.Drawing.Point(4, 86);
-            this.kryptonPanel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel7.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel7.Name = "kryptonPanel7";
             this.kryptonPanel7.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel7.Size = new System.Drawing.Size(97, 79);
@@ -852,8 +852,8 @@
             // 
             this.kryptonPanel10.Controls.Add(this.txtBillNo);
             this.kryptonPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel10.Location = new System.Drawing.Point(537, 4);
-            this.kryptonPanel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel10.Location = new System.Drawing.Point(536, 4);
+            this.kryptonPanel10.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel10.Name = "kryptonPanel10";
             this.kryptonPanel10.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel10.Size = new System.Drawing.Size(224, 38);
@@ -864,7 +864,7 @@
             // 
             this.txtBillNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBillNo.Location = new System.Drawing.Point(0, 4);
-            this.txtBillNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBillNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtBillNo.Name = "txtBillNo";
             this.txtBillNo.ReadOnly = true;
             this.txtBillNo.Size = new System.Drawing.Size(224, 30);
@@ -879,8 +879,8 @@
             // 
             this.kryptonPanel11.Controls.Add(this.txtPrice);
             this.kryptonPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel11.Location = new System.Drawing.Point(537, 50);
-            this.kryptonPanel11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel11.Location = new System.Drawing.Point(536, 50);
+            this.kryptonPanel11.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel11.Name = "kryptonPanel11";
             this.kryptonPanel11.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel11.Size = new System.Drawing.Size(224, 38);
@@ -891,7 +891,7 @@
             // 
             this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrice.Location = new System.Drawing.Point(0, 4);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(224, 30);
             this.txtPrice.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -909,10 +909,10 @@
             this.kryptonPanel12.Controls.Add(this.cboSupplier);
             this.kryptonPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel12.Location = new System.Drawing.Point(130, 96);
-            this.kryptonPanel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel12.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel12.Name = "kryptonPanel12";
             this.kryptonPanel12.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel12.Size = new System.Drawing.Size(227, 38);
+            this.kryptonPanel12.Size = new System.Drawing.Size(226, 38);
             this.kryptonPanel12.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel12.TabIndex = 0;
             // 
@@ -923,9 +923,9 @@
             this.cboSupplier.Items.AddRange(new object[] {
             "Add more..."});
             this.cboSupplier.Location = new System.Drawing.Point(8, 2);
-            this.cboSupplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.cboSupplier.Name = "cboSupplier";
-            this.cboSupplier.Size = new System.Drawing.Size(214, 33);
+            this.cboSupplier.Size = new System.Drawing.Size(213, 33);
             this.cboSupplier.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -937,10 +937,10 @@
             this.kryptonPanel13.Controls.Add(this.txtQty);
             this.kryptonPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel13.Location = new System.Drawing.Point(130, 50);
-            this.kryptonPanel13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel13.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel13.Name = "kryptonPanel13";
             this.kryptonPanel13.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel13.Size = new System.Drawing.Size(227, 38);
+            this.kryptonPanel13.Size = new System.Drawing.Size(226, 38);
             this.kryptonPanel13.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel13.TabIndex = 0;
             // 
@@ -948,9 +948,9 @@
             // 
             this.txtQty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtQty.Location = new System.Drawing.Point(8, 4);
-            this.txtQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(4);
             this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(214, 30);
+            this.txtQty.Size = new System.Drawing.Size(213, 30);
             this.txtQty.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -964,7 +964,7 @@
             // 
             this.kryptonLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonLabel1.Location = new System.Drawing.Point(4, 4);
-            this.kryptonLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.Size = new System.Drawing.Size(118, 38);
             this.kryptonLabel1.TabIndex = 1;
@@ -974,7 +974,7 @@
             // 
             this.kryptonLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonLabel2.Location = new System.Drawing.Point(4, 50);
-            this.kryptonLabel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel2.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.Size = new System.Drawing.Size(118, 38);
             this.kryptonLabel2.TabIndex = 1;
@@ -983,8 +983,8 @@
             // kryptonLabel3
             // 
             this.kryptonLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel3.Location = new System.Drawing.Point(365, 96);
-            this.kryptonLabel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel3.Location = new System.Drawing.Point(364, 96);
+            this.kryptonLabel3.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel3.Name = "kryptonLabel3";
             this.kryptonLabel3.Size = new System.Drawing.Size(164, 38);
             this.kryptonLabel3.TabIndex = 1;
@@ -994,7 +994,7 @@
             // 
             this.kryptonLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonLabel4.Location = new System.Drawing.Point(4, 96);
-            this.kryptonLabel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel4.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel4.Name = "kryptonLabel4";
             this.kryptonLabel4.Size = new System.Drawing.Size(118, 38);
             this.kryptonLabel4.TabIndex = 1;
@@ -1003,8 +1003,8 @@
             // kryptonLabel5
             // 
             this.kryptonLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel5.Location = new System.Drawing.Point(365, 50);
-            this.kryptonLabel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel5.Location = new System.Drawing.Point(364, 50);
+            this.kryptonLabel5.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel5.Name = "kryptonLabel5";
             this.kryptonLabel5.Size = new System.Drawing.Size(164, 38);
             this.kryptonLabel5.TabIndex = 1;
@@ -1013,8 +1013,8 @@
             // kryptonLabel6
             // 
             this.kryptonLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel6.Location = new System.Drawing.Point(365, 4);
-            this.kryptonLabel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel6.Location = new System.Drawing.Point(364, 4);
+            this.kryptonLabel6.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel6.Name = "kryptonLabel6";
             this.kryptonLabel6.Size = new System.Drawing.Size(164, 38);
             this.kryptonLabel6.TabIndex = 1;
@@ -1023,10 +1023,10 @@
             // btnSave
             // 
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.Location = new System.Drawing.Point(769, 4);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Location = new System.Drawing.Point(768, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(115, 38);
+            this.btnSave.Size = new System.Drawing.Size(116, 38);
             this.btnSave.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -1038,10 +1038,10 @@
             // btnAdd
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAdd.Location = new System.Drawing.Point(769, 50);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Location = new System.Drawing.Point(768, 50);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(115, 38);
+            this.btnAdd.Size = new System.Drawing.Size(116, 38);
             this.btnAdd.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -1053,10 +1053,10 @@
             // btnRemove
             // 
             this.btnRemove.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemove.Location = new System.Drawing.Point(769, 96);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemove.Location = new System.Drawing.Point(768, 96);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(115, 38);
+            this.btnRemove.Size = new System.Drawing.Size(116, 38);
             this.btnRemove.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -1070,10 +1070,10 @@
             this.kryptonPanel14.Controls.Add(this.kryptonPanel15);
             this.kryptonPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel14.Location = new System.Drawing.Point(130, 142);
-            this.kryptonPanel14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel14.Name = "kryptonPanel14";
             this.kryptonPanel14.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel14.Size = new System.Drawing.Size(227, 41);
+            this.kryptonPanel14.Size = new System.Drawing.Size(226, 41);
             this.kryptonPanel14.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel14.TabIndex = 4;
             // 
@@ -1082,10 +1082,10 @@
             this.kryptonPanel15.Controls.Add(this.txtSearch);
             this.kryptonPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel15.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel15.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel15.Name = "kryptonPanel15";
             this.kryptonPanel15.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel15.Size = new System.Drawing.Size(227, 41);
+            this.kryptonPanel15.Size = new System.Drawing.Size(226, 41);
             this.kryptonPanel15.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel15.TabIndex = 1;
             // 
@@ -1093,9 +1093,9 @@
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(8, 4);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(214, 30);
+            this.txtSearch.Size = new System.Drawing.Size(213, 30);
             this.txtSearch.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -1107,10 +1107,10 @@
             // btnRemoveAll
             // 
             this.btnRemoveAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveAll.Location = new System.Drawing.Point(769, 142);
-            this.btnRemoveAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemoveAll.Location = new System.Drawing.Point(768, 142);
+            this.btnRemoveAll.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveAll.Name = "btnRemoveAll";
-            this.btnRemoveAll.Size = new System.Drawing.Size(115, 41);
+            this.btnRemoveAll.Size = new System.Drawing.Size(116, 41);
             this.btnRemoveAll.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -1122,8 +1122,8 @@
             // kryptonLabel8
             // 
             this.kryptonLabel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonLabel8.Location = new System.Drawing.Point(365, 142);
-            this.kryptonLabel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonLabel8.Location = new System.Drawing.Point(364, 142);
+            this.kryptonLabel8.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonLabel8.Name = "kryptonLabel8";
             this.kryptonLabel8.Size = new System.Drawing.Size(164, 41);
             this.kryptonLabel8.TabIndex = 13;
@@ -1133,8 +1133,8 @@
             // 
             this.kryptonPanel9.Controls.Add(this.txtNote);
             this.kryptonPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel9.Location = new System.Drawing.Point(537, 142);
-            this.kryptonPanel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel9.Location = new System.Drawing.Point(536, 142);
+            this.kryptonPanel9.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel9.Name = "kryptonPanel9";
             this.kryptonPanel9.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel9.Size = new System.Drawing.Size(224, 41);
@@ -1145,7 +1145,7 @@
             // 
             this.txtNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNote.Location = new System.Drawing.Point(0, 0);
-            this.txtNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(224, 41);
@@ -1161,8 +1161,8 @@
             // 
             this.kryptonPanel20.Controls.Add(this.cboWareHouse);
             this.kryptonPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel20.Location = new System.Drawing.Point(537, 96);
-            this.kryptonPanel20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonPanel20.Location = new System.Drawing.Point(536, 96);
+            this.kryptonPanel20.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel20.Name = "kryptonPanel20";
             this.kryptonPanel20.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.kryptonPanel20.Size = new System.Drawing.Size(224, 38);
@@ -1176,7 +1176,7 @@
             this.cboWareHouse.Items.AddRange(new object[] {
             "Add more..."});
             this.cboWareHouse.Location = new System.Drawing.Point(0, 2);
-            this.cboWareHouse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboWareHouse.Margin = new System.Windows.Forms.Padding(4);
             this.cboWareHouse.Name = "cboWareHouse";
             this.cboWareHouse.Size = new System.Drawing.Size(224, 33);
             this.cboWareHouse.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -1189,14 +1189,14 @@
             // 
             this.kryptonGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonGroupBox1.Location = new System.Drawing.Point(908, 4);
-            this.kryptonGroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonGroupBox1.Name = "kryptonGroupBox1";
             this.kryptonGroupBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             // 
             // kryptonGroupBox1.Panel
             // 
             this.kryptonGroupBox1.Panel.Controls.Add(this.grdImportDetail);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(897, 805);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(897, 801);
             this.kryptonGroupBox1.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.kryptonGroupBox1.TabIndex = 1;
             this.kryptonGroupBox1.Values.Heading = "Items";
@@ -1217,12 +1217,12 @@
             this.Column7});
             this.grdImportDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdImportDetail.Location = new System.Drawing.Point(0, 0);
-            this.grdImportDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdImportDetail.Margin = new System.Windows.Forms.Padding(4);
             this.grdImportDetail.Name = "grdImportDetail";
             this.grdImportDetail.ReadOnly = true;
             this.grdImportDetail.RowHeadersWidth = 51;
             this.grdImportDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdImportDetail.Size = new System.Drawing.Size(893, 777);
+            this.grdImportDetail.Size = new System.Drawing.Size(893, 773);
             this.grdImportDetail.TabIndex = 0;
             this.grdImportDetail.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdImportDetail_CellFormatting);
             this.grdImportDetail.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdImportDetail_CellPainting);
@@ -1296,7 +1296,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1809, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1809, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1307,7 +1307,7 @@
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(29, 24);
-            this.btnRefresh.Text = "toolStripButton1";
+            this.btnRefresh.Text = "Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // ucImport
@@ -1315,7 +1315,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kryptonPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucImport";
             this.Size = new System.Drawing.Size(1811, 871);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
