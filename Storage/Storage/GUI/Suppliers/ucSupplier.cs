@@ -63,7 +63,7 @@ namespace Storage.GUI.Suppliers
 
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
-            Add_Supplier add_Supplier = new Add_Supplier();
+            Add_Supplier_V2 add_Supplier = new Add_Supplier_V2();
             add_Supplier.ShowDialog();
             LoadData();
         }
