@@ -66,3 +66,17 @@ D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.csproj.CopyComplete
 D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.exe
 D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.pdb
 D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.GUI_MPR.Add_MPR.resources
+D:\Study\StorageDLHI\Storage\Storage\obj\Debug\Storage.GUI.PaymentMethods.Add_PaymentMethod.resources
+D:\Study\StorageDLHI\Storage\Storage\obj\Debug\Storage.GUI_Export.ucExport.resources
+D:\Study\StorageDLHI\Storage\Storage\obj\Debug\Storage.GUI_Import.ucImport.resources
+D:\Study\StorageDLHI\Storage\Storage\obj\Debug\Storage.GUI_MPR.Add_MPR.resources
+D:\Study\StorageDLHI\Storage\Storage\obj\Debug\Storage.GUI_PO.Add_PO.resources
+D:\Study\StorageDLHI\Storage\Storage\obj\Debug\Storage.GUI_PO.ucPO.resources
+D:\Study\StorageDLHI\Storage\Storage\obj\Debug\Storage.GUI_Warehouse.ucWarehouse.resources
+D:\Study\StorageDLHI\Storage\Storage\bin\Debug\EPPlus.dll
+D:\Study\StorageDLHI\Storage\Storage\bin\Debug\EPPlus.Interfaces.dll
+D:\Study\StorageDLHI\Storage\Storage\bin\Debug\EPPlus.System.Drawing.dll
+D:\Study\StorageDLHI\Storage\Storage\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Study\StorageDLHI\Storage\Storage\bin\Debug\System.ComponentModel.Annotations.dll
+D:\Study\StorageDLHI\Storage\Storage\bin\Debug\EPPlus.xml
+D:\Study\StorageDLHI\Storage\Storage\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
