@@ -74,7 +74,7 @@ namespace Storage.GUI.Suppliers
             int rsl = grdSupplier.CurrentRow.Index;
             if (grdSupplier.Rows[rsl].Cells[0].Value.ToString() != null)
             {
-                Edit_Supplier edit_Supplier = new Edit_Supplier(Guid.Parse(grdSupplier.Rows[rsl].Cells[0].Value.ToString()));
+                Edit_Supplier_V2 edit_Supplier = new Edit_Supplier_V2(Guid.Parse(grdSupplier.Rows[rsl].Cells[0].Value.ToString()));
                 edit_Supplier.ShowDialog();
                 LoadData();
             }

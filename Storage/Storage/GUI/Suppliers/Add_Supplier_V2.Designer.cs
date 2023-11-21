@@ -508,7 +508,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cboType.StateCommon.ComboBox.Border.Rounding = 15;
             this.cboType.TabIndex = 0;
-            this.cboType.Text = "kryptonComboBox1";
             // 
             // btnGetCode
             // 
