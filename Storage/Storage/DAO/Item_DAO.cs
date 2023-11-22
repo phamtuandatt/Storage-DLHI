@@ -14,6 +14,8 @@ using Storage.Response;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Reflection;
 using static System.Resources.ResXFileRef;
+using Storage.Helper;
+using OfficeOpenXml.Export.ToDataTable;
 
 namespace Storage.DAO
 {
@@ -25,8 +27,9 @@ namespace Storage.DAO
         {
             using (HttpClient client = new HttpClient())
             {
-                string json = await client.GetStringAsync($"https://localhost:7166/api/Items/proc");
-                var res = JsonConvert.DeserializeObject<List<ItemResponse>>(json).ToList();
+                var url = $"{API.API_ROUTER}{API.GET_ITEMS}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<ItemsResponseDto>>(json).ToList();
 
                 DataTable dt = new DataTable();
                 dt.Columns.Add("ID");
@@ -40,24 +43,7 @@ namespace Storage.DAO
                 dt.Columns.Add("NOTE");
                 dt.Columns.Add("ENG_NAME");
 
-                foreach (var item in res)
-                {
-                    DataRow row = dt.NewRow();
-                    row[0] = item.Id;
-                    row[1] = item.Code;
-                    row[2] = item.Name;
-                    row[3] = item.PICTURE_LINK;
-                    row[4] = item.PICTURE;
-                    row[5] = item.Unit;
-                    row[6] = item.GROUPS;
-                    row[7] = item.Supplier;
-                    row[8] = item.Note;
-                    row[9] = item.Eng_Name;
-
-                    dt.Rows.Add(row);
-                }
-
-                return dt;
+                return API.ToDataTables(res, dt);
             }
 
             //string sql = "EXEC GET_ITEMS_V2";
@@ -79,7 +65,7 @@ namespace Storage.DAO
                 Image = row["PICTURE"].ToString().Length > 0 && row["PICTURE"].ToString() != null ? (byte[])row["PICTURE"] : new byte[100],
                 UnitId = Guid.Parse(row["UNIT_ID"].ToString()),
                 GroupId = Guid.Parse(row["GROUP_ID"].ToString()),
-                SupplierId =Guid.Parse(row["SUPPLIER_ID"].ToString()),
+                SupplierId = Guid.Parse(row["SUPPLIER_ID"].ToString()),
                 TypeId = Guid.Parse(row["TYPE_ID"].ToString()),
                 Note = row["NOTE"].ToString(),
                 Eng_Name = row["ENG_NAME"].ToString()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using WebAPI_V1.Models.ResponseDto;
 
 namespace WebAPI_V1.Models;
 
@@ -15,6 +16,12 @@ public partial class StorageDlhiContext : DbContext
     {
     }
 
+    public virtual DbSet<ItemResponse> ItemResponses { get; set; }
+
+    //------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------
     public virtual DbSet<ExportItem> ExportItems { get; set; }
 
     public virtual DbSet<ExportItemDetail> ExportItemDetails { get; set; }

@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using WebAPI_V1.Models;
+using WebAPI_V1.Models.ResponseDto;
 
 namespace WebAPI_V1.Controllers
 {
@@ -19,6 +27,28 @@ namespace WebAPI_V1.Controllers
         {
             _context = context;
         }
+
+        [HttpGet("get-item-v2")]
+        public async Task<IActionResult> GetItemsByProc()
+        {
+            try
+            {
+                var courseList = await _context.ItemResponses.FromSqlInterpolated($"EXEC GET_ITEMS_V2").ToListAsync();
+
+                return Ok(JArray.FromObject(courseList).ToString());
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------
 
         // GET: api/Items
         [HttpGet]
