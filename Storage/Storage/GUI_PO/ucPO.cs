@@ -121,17 +121,37 @@ namespace Storage.GUI_PO
         private void btnAddSingle_Click(object sender, EventArgs e)
         {
             if (grdItemAddPO.Rows.Count <= 0) return;
-            if (txtQuantity.Text.Length == 0) return;
-            if (txtPrice.Text.Length == 0) return;
-            if (txtMPR.Text.Length == 0) return;
-            if (txtPONo.Text.Length == 0) return;
+            if (txtMPR.Text.Length == 0)
+            {
+                KryptonMessageBox.Show("Please enter MPR No !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMPR.Focus();
+                return;
+            }
+            if (txtPONo.Text.Length == 0)
+            {
+                KryptonMessageBox.Show("Please enter PO No!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPONo.Focus();
+                return;
+            }
+            if (txtQuantity.Text.Length == 0)
+            {
+                KryptonMessageBox.Show("Please enter quantity !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtQuantity.Focus();
+                return;
+            }
+            if (txtPrice.Text.Length == 0)
+            {
+                KryptonMessageBox.Show("Please enter price !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPrice.Focus();
+                return;
+            }
 
             int rsl = grdItemAddPO.CurrentRow.Index;
             if (grdItemAddPO.Rows[rsl].Cells[1].Value.ToString() != null)
             {
                 if (dtItemPO.AsEnumerable().Any(row => (grdItemAddPO.Rows[rsl].Cells[1].Value.ToString()) == row.Field<string>("ID")))
                 {
-
+                    KryptonMessageBox.Show("The item has been added to the order list !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -204,6 +224,18 @@ namespace Storage.GUI_PO
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (grdItemPODetail.Rows.Count <= 0) return;
+
+            if (cboPaymentMethod.Items.Count <= 0)
+            {
+                KryptonMessageBox.Show("Please Choose a Payment term or Add Payment term to Make Purchase Order !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (cboWarehouse.Items.Count <= 0)
+            {
+                KryptonMessageBox.Show("Please Choose a Warehosue or Add Warehouse to Make Purchase Order !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PODto pODto = new PODto()
             {
                 Id = Guid.NewGuid(),
