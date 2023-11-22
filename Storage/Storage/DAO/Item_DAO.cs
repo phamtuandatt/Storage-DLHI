@@ -1,12 +1,19 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using Newtonsoft.Json;
 using Storage.DataProvider;
 using Storage.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Storage.Response;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Reflection;
+using static System.Resources.ResXFileRef;
 
 namespace Storage.DAO
 {
@@ -14,12 +21,48 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetItems()
+        public static async Task<DataTable> GetItemsAsync()
         {
-            //string sql = "EXEC GET_ITEMS";
-            string sql = "EXEC GET_ITEMS_V2";
+            using (HttpClient client = new HttpClient())
+            {
+                string json = await client.GetStringAsync($"https://localhost:7166/api/Items/proc");
+                var res = JsonConvert.DeserializeObject<List<ItemResponse>>(json).ToList();
 
-            return data.GetData(sql, "ITEMS");
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("CODE");
+                dt.Columns.Add("NAME");
+                dt.Columns.Add("PICTURE_LINK");
+                dt.Columns.Add("PICTURE", typeof(byte[]));
+                dt.Columns.Add("UNIT");
+                dt.Columns.Add("GROUPS");
+                dt.Columns.Add("SUPPLIER");
+                dt.Columns.Add("NOTE");
+                dt.Columns.Add("ENG_NAME");
+
+                foreach (var item in res)
+                {
+                    DataRow row = dt.NewRow();
+                    row[0] = item.Id;
+                    row[1] = item.Code;
+                    row[2] = item.Name;
+                    row[3] = item.PICTURE_LINK;
+                    row[4] = item.PICTURE;
+                    row[5] = item.Unit;
+                    row[6] = item.GROUPS;
+                    row[7] = item.Supplier;
+                    row[8] = item.Note;
+                    row[9] = item.Eng_Name;
+
+                    dt.Rows.Add(row);
+                }
+
+                return dt;
+            }
+
+            //string sql = "EXEC GET_ITEMS_V2";
+
+            //return data.GetData(sql, "ITEMS");
         }
 
         public static ItemDto GetItem(Guid id)

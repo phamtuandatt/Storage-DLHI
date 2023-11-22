@@ -21,12 +21,12 @@ namespace Storage.GUI.Items
             LoadData();
         }
 
-        public void LoadData()
+        public async void LoadData()
         {
             grdItems.RowTemplate.Height = 120;
             grdItems.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
-            data = Item_DAO.GetItems();
+            data = await Item_DAO.GetItemsAsync();
             grdItems.DataSource = data;
         }
 

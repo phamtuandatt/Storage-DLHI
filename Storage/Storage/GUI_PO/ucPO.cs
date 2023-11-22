@@ -31,9 +31,9 @@ namespace Storage.GUI_PO
             LoadData();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
-            dataItemAddPO = Item_DAO.GetItems();
+            dataItemAddPO = await Item_DAO.GetItemsAsync();
             grdItemAddPO.DataSource = dataItemAddPO;
             grdItemAddPO.RowTemplate.Height = 100;
 

@@ -69,9 +69,9 @@ namespace Storage.GUI_MPR
             }
         }
 
-        public void LoadData()
+        public async void LoadData()
         {
-            data = Item_DAO.GetItems();
+            data = await Item_DAO.GetItemsAsync();
             dataMPRExportDetail = MPR_DAO.GetMPRExportDetails();
 
             // Page add MPR
