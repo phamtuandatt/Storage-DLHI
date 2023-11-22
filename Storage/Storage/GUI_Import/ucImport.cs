@@ -26,7 +26,7 @@ namespace Storage.GUI_Import
         public ucImport()
         {
             InitializeComponent();
-            
+
             LoadData();
         }
 
@@ -73,6 +73,17 @@ namespace Storage.GUI_Import
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (cboWareHouse.Items.Count <= 0)
+            {
+                KryptonMessageBox.Show("Please Choose a Warehouse or Add Warehouse to Import Items !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (cboSupplier.Items.Count <= 0)
+            {
+                KryptonMessageBox.Show("Please Choose a supplier or Add supplier to Import Items !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (dataItemAdd.Rows.Count <= 0 || grdImportDetail.Rows.Count <= 0) return;
             Int64 sumQty = 0;
             Int64 total = 0;
@@ -130,8 +141,17 @@ namespace Storage.GUI_Import
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (grdItems.Rows.Count <= 0) return;
-            if (txtQty.Text.Length == 0) return;
-            if (txtPrice.Text.Length == 0) return;
+            if (txtQty.Text.Length == 0)
+            {
+                KryptonMessageBox.Show("Please enter quantity !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (txtPrice.Text.Length == 0)
+            {
+                KryptonMessageBox.Show("Please enter price !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             int rsl = grdItems.CurrentRow.Index;
             if (grdItems.Rows[rsl].Cells[1].Value.ToString() != null)
