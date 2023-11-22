@@ -139,10 +139,10 @@
             this.kryptonPanel1.Controls.Add(this.kryptonDockableNavigator1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel1.Size = new System.Drawing.Size(1371, 778);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1028, 632);
             this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel1.TabIndex = 0;
             // 
@@ -151,14 +151,14 @@
             this.kryptonDockableNavigator1.Button.CloseButtonDisplay = ComponentFactory.Krypton.Navigator.ButtonDisplay.Hide;
             this.kryptonDockableNavigator1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDockableNavigator1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonDockableNavigator1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kryptonDockableNavigator1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonDockableNavigator1.Name = "kryptonDockableNavigator1";
             this.kryptonDockableNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
             this.page,
             this.kryptonPage1,
             this.kryptonPage4});
-            this.kryptonDockableNavigator1.SelectedIndex = 0;
-            this.kryptonDockableNavigator1.Size = new System.Drawing.Size(1371, 778);
+            this.kryptonDockableNavigator1.SelectedIndex = 2;
+            this.kryptonDockableNavigator1.Size = new System.Drawing.Size(1028, 632);
             this.kryptonDockableNavigator1.StateCommon.Panel.Color1 = System.Drawing.Color.White;
             this.kryptonDockableNavigator1.StateCommon.Panel.Color2 = System.Drawing.Color.WhiteSmoke;
             this.kryptonDockableNavigator1.StateCommon.Tab.Back.Color1 = System.Drawing.Color.White;
@@ -172,10 +172,10 @@
             this.page.Controls.Add(this.kryptonPanel2);
             this.page.Flags = 65534;
             this.page.LastVisibleSet = true;
-            this.page.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.page.MinimumSize = new System.Drawing.Size(51, 50);
+            this.page.Margin = new System.Windows.Forms.Padding(2);
+            this.page.MinimumSize = new System.Drawing.Size(38, 41);
             this.page.Name = "page";
-            this.page.Size = new System.Drawing.Size(1369, 747);
+            this.page.Size = new System.Drawing.Size(1026, 605);
             this.page.Text = "MPR List";
             this.page.ToolTipTitle = "Page ToolTip";
             this.page.UniqueName = "6831C3D06F394974C1AED65C511E0466";
@@ -186,10 +186,10 @@
             this.kryptonPanel2.Controls.Add(this.toolStrip1);
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kryptonPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel2.Size = new System.Drawing.Size(1369, 747);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1026, 605);
             this.kryptonPanel2.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel2.TabIndex = 0;
             // 
@@ -213,14 +213,15 @@
             this.Column20});
             this.grdMRPs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdMRPs.Location = new System.Drawing.Point(0, 27);
-            this.grdMRPs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grdMRPs.Margin = new System.Windows.Forms.Padding(2);
             this.grdMRPs.Name = "grdMRPs";
             this.grdMRPs.ReadOnly = true;
             this.grdMRPs.RowHeadersWidth = 51;
             this.grdMRPs.RowTemplate.Height = 24;
             this.grdMRPs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdMRPs.Size = new System.Drawing.Size(1369, 720);
+            this.grdMRPs.Size = new System.Drawing.Size(1026, 578);
             this.grdMRPs.TabIndex = 1;
+            this.grdMRPs.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdMRPs_CellFormatting);
             this.grdMRPs.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdMRPs_CellPainting);
             this.grdMRPs.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdItems_RowPostPaint);
             // 
@@ -327,7 +328,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1369, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1026, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -337,8 +338,9 @@
             this.btnRefresh.Image = global::Storage.Properties.Resources.refresh;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(29, 24);
-            this.btnRefresh.Text = "toolStripButton1";
+            this.btnRefresh.Size = new System.Drawing.Size(24, 24);
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.ToolTipText = "Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // kryptonPage1
@@ -347,10 +349,9 @@
             this.kryptonPage1.Controls.Add(this.kryptonPanel13);
             this.kryptonPage1.Flags = 65534;
             this.kryptonPage1.LastVisibleSet = true;
-            this.kryptonPage1.Margin = new System.Windows.Forms.Padding(4);
-            this.kryptonPage1.MinimumSize = new System.Drawing.Size(67, 62);
+            this.kryptonPage1.MinimumSize = new System.Drawing.Size(50, 50);
             this.kryptonPage1.Name = "kryptonPage1";
-            this.kryptonPage1.Size = new System.Drawing.Size(1369, 747);
+            this.kryptonPage1.Size = new System.Drawing.Size(1026, 605);
             this.kryptonPage1.Text = "Add MPR";
             this.kryptonPage1.ToolTipTitle = "Page ToolTip";
             this.kryptonPage1.UniqueName = "F6CDB37FE8BF4DA54DAF3B902B7ABA29";
@@ -361,10 +362,9 @@
             this.kryptonPanel13.Controls.Add(this.kryptonPanel14);
             this.kryptonPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel13.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel13.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel13.Name = "kryptonPanel13";
             this.kryptonPanel13.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel13.Size = new System.Drawing.Size(1369, 747);
+            this.kryptonPanel13.Size = new System.Drawing.Size(1026, 605);
             this.kryptonPanel13.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel13.TabIndex = 0;
             // 
@@ -372,11 +372,11 @@
             // 
             this.kryptonPanel15.Controls.Add(this.grdAddMPR);
             this.kryptonPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel15.Location = new System.Drawing.Point(0, 54);
-            this.kryptonPanel15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kryptonPanel15.Location = new System.Drawing.Point(0, 44);
+            this.kryptonPanel15.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel15.Name = "kryptonPanel15";
             this.kryptonPanel15.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel15.Size = new System.Drawing.Size(1369, 693);
+            this.kryptonPanel15.Size = new System.Drawing.Size(1026, 561);
             this.kryptonPanel15.TabIndex = 2;
             // 
             // grdAddMPR
@@ -399,13 +399,12 @@
             this.dataGridViewTextBoxColumn16});
             this.grdAddMPR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdAddMPR.Location = new System.Drawing.Point(0, 0);
-            this.grdAddMPR.Margin = new System.Windows.Forms.Padding(4);
             this.grdAddMPR.MultiSelect = false;
             this.grdAddMPR.Name = "grdAddMPR";
             this.grdAddMPR.ReadOnly = true;
             this.grdAddMPR.RowHeadersWidth = 51;
             this.grdAddMPR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdAddMPR.Size = new System.Drawing.Size(1369, 693);
+            this.grdAddMPR.Size = new System.Drawing.Size(1026, 561);
             this.grdAddMPR.TabIndex = 1;
             this.grdAddMPR.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdAddMPR_CellDoubleClick);
             this.grdAddMPR.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdAddMPR_CellPainting);
@@ -519,19 +518,17 @@
             this.kryptonPanel14.Controls.Add(this.kryptonLabel7);
             this.kryptonPanel14.Dock = System.Windows.Forms.DockStyle.Top;
             this.kryptonPanel14.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel14.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel14.Name = "kryptonPanel14";
             this.kryptonPanel14.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel14.Size = new System.Drawing.Size(1369, 54);
+            this.kryptonPanel14.Size = new System.Drawing.Size(1026, 44);
             this.kryptonPanel14.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel14.TabIndex = 0;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(143, 12);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Location = new System.Drawing.Point(107, 10);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(311, 30);
+            this.txtSearch.Size = new System.Drawing.Size(233, 26);
             this.txtSearch.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -542,10 +539,10 @@
             // 
             // kryptonLabel7
             // 
-            this.kryptonLabel7.Location = new System.Drawing.Point(28, 17);
-            this.kryptonLabel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kryptonLabel7.Location = new System.Drawing.Point(21, 14);
+            this.kryptonLabel7.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonLabel7.Name = "kryptonLabel7";
-            this.kryptonLabel7.Size = new System.Drawing.Size(73, 24);
+            this.kryptonLabel7.Size = new System.Drawing.Size(60, 20);
             this.kryptonLabel7.TabIndex = 4;
             this.kryptonLabel7.Values.Text = "   Search:";
             // 
@@ -555,10 +552,10 @@
             this.kryptonPage4.Controls.Add(this.kryptonPanel7);
             this.kryptonPage4.Flags = 65534;
             this.kryptonPage4.LastVisibleSet = true;
-            this.kryptonPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.kryptonPage4.MinimumSize = new System.Drawing.Size(51, 50);
+            this.kryptonPage4.Margin = new System.Windows.Forms.Padding(2);
+            this.kryptonPage4.MinimumSize = new System.Drawing.Size(38, 41);
             this.kryptonPage4.Name = "kryptonPage4";
-            this.kryptonPage4.Size = new System.Drawing.Size(1369, 747);
+            this.kryptonPage4.Size = new System.Drawing.Size(1026, 605);
             this.kryptonPage4.Text = "MPR";
             this.kryptonPage4.ToolTipTitle = "Page ToolTip";
             this.kryptonPage4.UniqueName = "713F10A3D48C4311F8B242A6BBA129D8";
@@ -569,10 +566,9 @@
             this.kryptonPanel7.Controls.Add(this.toolStrip2);
             this.kryptonPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel7.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel7.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel7.Name = "kryptonPanel7";
             this.kryptonPanel7.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel7.Size = new System.Drawing.Size(1369, 747);
+            this.kryptonPanel7.Size = new System.Drawing.Size(1026, 605);
             this.kryptonPanel7.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel7.TabIndex = 1;
             // 
@@ -581,9 +577,8 @@
             this.kryptonPanel8.Controls.Add(this.tableLayoutPanel1);
             this.kryptonPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel8.Location = new System.Drawing.Point(0, 27);
-            this.kryptonPanel8.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel8.Name = "kryptonPanel8";
-            this.kryptonPanel8.Size = new System.Drawing.Size(1369, 720);
+            this.kryptonPanel8.Size = new System.Drawing.Size(1026, 578);
             this.kryptonPanel8.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -596,22 +591,22 @@
             this.tableLayoutPanel1.Controls.Add(this.kryptonPanel4, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1369, 720);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1026, 578);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // kryptonPanel3
             // 
             this.kryptonPanel3.Controls.Add(this.kryptonPanel5);
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel3.Location = new System.Drawing.Point(3, 2);
-            this.kryptonPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kryptonPanel3.Location = new System.Drawing.Point(2, 2);
+            this.kryptonPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel3.Name = "kryptonPanel3";
             this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel3.Size = new System.Drawing.Size(473, 716);
+            this.kryptonPanel3.Size = new System.Drawing.Size(355, 574);
             this.kryptonPanel3.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel3.TabIndex = 0;
             // 
@@ -620,10 +615,9 @@
             this.kryptonPanel5.Controls.Add(this.grdMPRExport);
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel5.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel5.Name = "kryptonPanel5";
             this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel5.Size = new System.Drawing.Size(473, 716);
+            this.kryptonPanel5.Size = new System.Drawing.Size(355, 574);
             this.kryptonPanel5.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel5.TabIndex = 0;
             // 
@@ -640,12 +634,11 @@
             this.Column6});
             this.grdMPRExport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdMPRExport.Location = new System.Drawing.Point(0, 0);
-            this.grdMPRExport.Margin = new System.Windows.Forms.Padding(4);
             this.grdMPRExport.Name = "grdMPRExport";
             this.grdMPRExport.ReadOnly = true;
             this.grdMPRExport.RowHeadersWidth = 51;
             this.grdMPRExport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdMPRExport.Size = new System.Drawing.Size(473, 716);
+            this.grdMPRExport.Size = new System.Drawing.Size(355, 574);
             this.grdMPRExport.TabIndex = 0;
             this.grdMPRExport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMPRExport_CellContentClick);
             this.grdMPRExport.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdItems_RowPostPaint);
@@ -687,11 +680,11 @@
             // 
             this.kryptonPanel4.Controls.Add(this.kryptonPanel6);
             this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kryptonPanel4.Location = new System.Drawing.Point(482, 2);
-            this.kryptonPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kryptonPanel4.Location = new System.Drawing.Point(361, 2);
+            this.kryptonPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel4.Name = "kryptonPanel4";
             this.kryptonPanel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel4.Size = new System.Drawing.Size(884, 716);
+            this.kryptonPanel4.Size = new System.Drawing.Size(663, 574);
             this.kryptonPanel4.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel4.TabIndex = 0;
             // 
@@ -700,10 +693,9 @@
             this.kryptonPanel6.Controls.Add(this.grdMPRExportDetail);
             this.kryptonPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel6.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel6.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel6.Name = "kryptonPanel6";
             this.kryptonPanel6.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
-            this.kryptonPanel6.Size = new System.Drawing.Size(884, 716);
+            this.kryptonPanel6.Size = new System.Drawing.Size(663, 574);
             this.kryptonPanel6.StateCommon.Color1 = System.Drawing.Color.White;
             this.kryptonPanel6.TabIndex = 0;
             // 
@@ -728,14 +720,15 @@
             this.Column7});
             this.grdMPRExportDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdMPRExportDetail.Location = new System.Drawing.Point(0, 0);
-            this.grdMPRExportDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grdMPRExportDetail.Margin = new System.Windows.Forms.Padding(2);
             this.grdMPRExportDetail.Name = "grdMPRExportDetail";
             this.grdMPRExportDetail.ReadOnly = true;
             this.grdMPRExportDetail.RowHeadersWidth = 51;
             this.grdMPRExportDetail.RowTemplate.Height = 24;
             this.grdMPRExportDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdMPRExportDetail.Size = new System.Drawing.Size(884, 716);
+            this.grdMPRExportDetail.Size = new System.Drawing.Size(663, 574);
             this.grdMPRExportDetail.TabIndex = 2;
+            this.grdMPRExportDetail.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdMPRExportDetail_CellFormatting);
             this.grdMPRExportDetail.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdMPRExportDetail_CellPainting);
             this.grdMPRExportDetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdItems_RowPostPaint);
             // 
@@ -852,7 +845,7 @@
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip2.Size = new System.Drawing.Size(1369, 27);
+            this.toolStrip2.Size = new System.Drawing.Size(1026, 27);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -862,8 +855,8 @@
             this.btnRefeshMPR.Image = global::Storage.Properties.Resources.refresh;
             this.btnRefeshMPR.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefeshMPR.Name = "btnRefeshMPR";
-            this.btnRefeshMPR.Size = new System.Drawing.Size(29, 24);
-            this.btnRefeshMPR.Text = "toolStripButton2";
+            this.btnRefeshMPR.Size = new System.Drawing.Size(24, 24);
+            this.btnRefeshMPR.Text = "Refresh";
             this.btnRefeshMPR.Click += new System.EventHandler(this.btnRefeshMPR_Click);
             // 
             // btnExportExcel
@@ -872,18 +865,18 @@
             this.btnExportExcel.Image = global::Storage.Properties.Resources.excel;
             this.btnExportExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(29, 24);
-            this.btnExportExcel.Text = "toolStripButton1";
+            this.btnExportExcel.Size = new System.Drawing.Size(24, 24);
+            this.btnExportExcel.Text = "Export Excel";
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // ucMPR
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kryptonPanel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ucMPR";
-            this.Size = new System.Drawing.Size(1371, 778);
+            this.Size = new System.Drawing.Size(1028, 632);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).EndInit();

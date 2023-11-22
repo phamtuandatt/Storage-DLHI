@@ -11,5 +11,6 @@ namespace Storage.Helper
         public const string NOTALLOWED = @"><@{}[]#&()/|!=^*-+$%~\";
         public const string EMAIL = @"><{}[]#&()!^/|*+$=%~\";
         public const string NO = @"><@{}[]#&()/|!^*+$=%~\";
+        public const string NOTALLOWED_ITEMTYPE = @"><@{}[]#&()/|!=^*+$%~\";
     }
 }

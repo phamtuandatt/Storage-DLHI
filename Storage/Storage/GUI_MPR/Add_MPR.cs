@@ -111,6 +111,10 @@ namespace Storage.GUI_MPR
                     {
                         this.Close();
                     }
+                    else
+                    {
+                        KryptonMessageBox.Show("Please checked Create new MPR File Because You completed Current MPR and Exported File !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
             else

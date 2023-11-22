@@ -80,6 +80,7 @@ namespace Storage.DAO
         {
             string sql = "SELECT *FROM MPR_EXPORT WHERE STATUS = 2";
             DataTable dt = data.GetData(sql, "status_2");
+            if (dt.Rows.Count == 0) { return false; }
             DataRow row = dt.Rows[0];
 
             string sql_Insert = $"INSERT INTO MPR_EXPORT_DETAIL VALUES ('{Guid.Parse(row["ID"].ToString())}', '{dto.MPR_Id}')";

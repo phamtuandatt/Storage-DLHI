@@ -48,7 +48,7 @@ namespace Storage.GUI.Types
 
         private void txtType_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Validation.NOTALLOWED.Contains(e.KeyChar))
+            if (Validation.NOTALLOWED_ITEMTYPE.Contains(e.KeyChar))
             {
                 e.Handled = true;
             }
