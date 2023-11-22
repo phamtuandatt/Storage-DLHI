@@ -25,30 +25,30 @@ namespace Storage.DAO
 
         public static async Task<DataTable> GetItemsAsync()
         {
-            using (HttpClient client = new HttpClient())
-            {
-                var url = $"{API.API_ROUTER}{API.GET_ITEMS}";
-                string json = await client.GetStringAsync(url);
-                var res = JsonConvert.DeserializeObject<List<ItemsResponseDto>>(json).ToList();
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    var url = $"{API.API_ROUTER}{API.GET_ITEMS}";
+            //    string json = await client.GetStringAsync(url);
+            //    var res = JsonConvert.DeserializeObject<List<ItemsResponseDto>>(json).ToList();
 
-                DataTable dt = new DataTable();
-                dt.Columns.Add("ID");
-                dt.Columns.Add("CODE");
-                dt.Columns.Add("NAME");
-                dt.Columns.Add("PICTURE_LINK");
-                dt.Columns.Add("PICTURE", typeof(byte[]));
-                dt.Columns.Add("UNIT");
-                dt.Columns.Add("GROUPS");
-                dt.Columns.Add("SUPPLIER");
-                dt.Columns.Add("NOTE");
-                dt.Columns.Add("ENG_NAME");
+            //    DataTable dt = new DataTable();
+            //    dt.Columns.Add("ID");
+            //    dt.Columns.Add("CODE");
+            //    dt.Columns.Add("NAME");
+            //    dt.Columns.Add("PICTURE_LINK");
+            //    dt.Columns.Add("PICTURE", typeof(byte[]));
+            //    dt.Columns.Add("UNIT");
+            //    dt.Columns.Add("GROUPS");
+            //    dt.Columns.Add("SUPPLIER");
+            //    dt.Columns.Add("NOTE");
+            //    dt.Columns.Add("ENG_NAME");
 
-                return API.ToDataTables(res, dt);
-            }
+            //    return API.ToDataTables(res, dt);
+            //}
 
-            //string sql = "EXEC GET_ITEMS_V2";
+            string sql = "EXEC GET_ITEMS_V2";
 
-            //return data.GetData(sql, "ITEMS");
+            return data.GetData(sql, "ITEMS");
         }
 
         public static ItemDto GetItem(Guid id)
