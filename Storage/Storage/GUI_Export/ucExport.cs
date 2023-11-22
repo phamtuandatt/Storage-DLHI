@@ -134,7 +134,12 @@ namespace Storage.GUI_Export
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (grdItems.Rows.Count <= 0) return;
-            if (txtQty.Text.Length == 0) return;
+            if (txtQty.Text.Length == 0)
+            {
+                KryptonMessageBox.Show("Please enter quantity !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtQty.Focus();
+                return;
+            }
 
             int rsl = grdItems.CurrentRow.Index;
             if (grdItems.Rows[rsl].Cells[1].Value.ToString() != null)
@@ -143,11 +148,12 @@ namespace Storage.GUI_Export
                 {
                     var qty = dtItems.AsEnumerable()
                     .Where(row => row.Field<Guid>("ITEM_ID") == Guid.Parse(grdItems.Rows[rsl].Cells[1].Value.ToString()))
-                    .Select(row => row.Field<int>("QUANTITY"));
+                    .Select(row => row.Field<Int64>("QUANTITY"));
 
                     if (int.Parse(qty.FirstOrDefault().ToString().Replace(",", "")) <= int.Parse(txtQty.Text.Replace(",", "")))
                     {
                         KryptonMessageBox.Show($"Only {qty.FirstOrDefault().ToString().Replace(",", "")} products left in stock {cboWareHouse.Text.ToUpper()}.\nPlease import more products or reduce the number of products export.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtQty.Focus();
                         return;
                     }
 
@@ -169,6 +175,10 @@ namespace Storage.GUI_Export
                     grdItemAdds.DataSource = dataItemAdd;
                     txtQty.Text = "";
                     txtNote.Text = "";
+                }
+                else
+                {
+                    KryptonMessageBox.Show("The item has been added to the export list !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
