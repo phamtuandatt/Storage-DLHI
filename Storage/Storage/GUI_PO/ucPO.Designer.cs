@@ -117,9 +117,9 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnPayment = new System.Windows.Forms.ToolStripButton();
             this.btnLocationWarehouse = new System.Windows.Forms.ToolStripButton();
+            this.btnExport = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonDockableNavigator1)).BeginInit();
@@ -451,7 +451,8 @@
             this.toolStrip2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnRefresh});
+            this.btnRefresh,
+            this.btnExport});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -685,7 +686,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.tableLayoutPanel3.Controls.Add(this.kryptonLabel1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.kryptonLabel2, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.kryptonLabel3, 0, 2);
@@ -1220,7 +1221,6 @@
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
             this.btnPayment,
             this.btnLocationWarehouse});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -1229,15 +1229,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(1183, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Storage.Properties.Resources.excel;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton1.Text = "Export Excel";
             // 
             // btnPayment
             // 
@@ -1258,6 +1249,16 @@
             this.btnLocationWarehouse.Size = new System.Drawing.Size(24, 24);
             this.btnLocationWarehouse.Text = "Create Warehouse";
             this.btnLocationWarehouse.Click += new System.EventHandler(this.btnLocationWarehouse_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnExport.Image = global::Storage.Properties.Resources.excel;
+            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(24, 24);
+            this.btnExport.Text = "Export Excel";
+            this.btnExport.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // ucPO
             // 
@@ -1347,7 +1348,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView grdItemPODetail;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView grdItemAddPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
@@ -1429,5 +1429,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddSingle;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnRemoveSingle;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnRemoveAll;
+        private System.Windows.Forms.ToolStripButton btnExport;
     }
 }

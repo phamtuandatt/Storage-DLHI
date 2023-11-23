@@ -12,7 +12,7 @@ namespace Storage.Response
         public string Code { get; set; }
         public string Name { get; set; }
         public string PICTURE_LINK { get; set; }
-        public string[] PICTURE { get; set; }
+        public byte[] PICTURE { get; set; }
         public string Unit { get; set; }
         public string GROUPS { get; set; }
         public string Supplier { get; set; }

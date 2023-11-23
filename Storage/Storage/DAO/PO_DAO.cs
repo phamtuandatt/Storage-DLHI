@@ -55,6 +55,11 @@ namespace Storage.DAO
             return data.GetData("EXEC GET_PO_DETAIL", "PODetails");
         }
 
+        public static DataTable GetPOExport()
+        {
+            return data.GetData("EXEC GET_PO_EXPORT", "ExportPO");
+        }
+
         public static bool AddRange(List<PO_DetailDto> list)
         {
             foreach (PO_DetailDto item in list)
