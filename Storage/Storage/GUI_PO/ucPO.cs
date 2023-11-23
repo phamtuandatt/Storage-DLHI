@@ -604,13 +604,13 @@ namespace Storage.GUI_PO
                             sheet.Cells[$"D{r}:F{r}"].Merge = true;
                             sheet.Cells[$"D{r}"].Value = item[3].ToString();
 
-                            sheet.Cells[$"G{r}"].Value = item[4].ToString();
+                            sheet.Cells[$"G{r}"].Value = Int64.Parse(item[4].ToString()).ToString("N0");
                             sheet.Cells[$"H{r}"].Value = item[5].ToString();
                             sheet.Cells[$"I{r}"].Value = item[6].ToString();
                             sheet.Cells[$"J{r}"].Value = "";
-                            sheet.Cells[$"K{r}"].Value = item[8].ToString();
+                            sheet.Cells[$"K{r}"].Value = DateTime.Parse(item[8].ToString()).ToString("dd-MM-yyyy");
                             sheet.Cells[$"L{r}"].Value = item[9].ToString();
-                            sheet.Cells[$"M{r}"].Value = item[10].ToString();
+                            sheet.Cells[$"M{r}"].Value = Int64.Parse(item[10].ToString()).ToString("N0");
                             sheet.Cells[$"N{r}"].Value = item[11].ToString();
 
                             sheet.Cells[$"O{r}"].Value = item[12].ToString();
