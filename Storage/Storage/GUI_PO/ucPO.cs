@@ -227,8 +227,8 @@ namespace Storage.GUI_PO
                     grdItemPODetail.DataSource = dtItemPO;
                     txtQuantity.Text = "";
                     txtPrice.Text = "";
-                    txtMPR.Text = "";
-                    txtPONo.Text = "";
+                    txtMPR.ReadOnly = true;
+                    txtPONo.ReadOnly = true;
                 }
             }
             else
@@ -277,6 +277,10 @@ namespace Storage.GUI_PO
             if (grdItemPODetail.Rows.Count <= 0) return;
             dtItemPO.Rows.Clear();
             grdItemPODetail.DataSource = dtItemPO;
+            txtMPR.Text = "";
+            txtPONo.Text = "";
+            txtMPR.ReadOnly = false;
+            txtPONo.ReadOnly = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -328,6 +332,8 @@ namespace Storage.GUI_PO
                     txtPrice.Text = "";
                     txtMPR.Text = "";
                     txtPONo.Text = "";
+                    txtMPR.ReadOnly = false;
+                    txtPONo.ReadOnly = false;
                     KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
