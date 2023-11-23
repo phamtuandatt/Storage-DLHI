@@ -450,6 +450,19 @@ GO
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
 GO
+CREATE PROC GET_PO_EXPORT
+AS
+BEGIN
+	SELECT PO_DETAIL.PO_ID, ITEM.CODE, ITEM.NAME, ITEM.PICTURE, PO_DETAIL.MPR_NO, PO_DETAIL.PO_NO, PO_DETAIL.QUANTITY, PO_DETAIL.PRICE, UNIT.NAME AS UNIT, ITEM.PICTURE_LINK, PO_DETAIL.PO_NO
+	FROM PO_DETAIL, ITEM, UNIT
+	WHERE PO_DETAIL.ITEM_ID = ITEM.ID
+		AND ITEM.UNIT_ID = UNIT.ID
+END
+GO
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+GO
 CREATE PROC GET_IMPORT_ITEMS
 AS
 BEGIN
@@ -543,6 +556,8 @@ GO
 -------------------------------FUNCTION-------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 		
-EXEC GET_MPR_EXPORT_DETAILS
-SELECT *FROM IMPORT_ITEM
 EXEC GET_MPR_EXPORT_EXCEL
+SELECT *FROM IMPORT_ITEM
+EXEC GET_ITEMS_EXPORT_V2 '5D24A571-E5E4-4F4F-A072-F92A4B27B372'
+
+SELECT *FROM ITEM WHERE ID = '03F92E69-87E8-4795-B1FF-63AC03A128F1'
