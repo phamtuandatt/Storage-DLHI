@@ -1,0 +1,102 @@
+DECLARE @USER_NAMES NVARCHAR(50);
+SET @USER_NAMES = N'DAVIDPHAM'
+--------------------------------------------------WAREHOUSE
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON WAREHOUSE
+TO DAVIDPHAM
+--------------------------------------------------WAREHOUSE_DETAIL
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  WAREHOUSE_DETAIL
+TO DAVIDPHAM
+--------------------------------------------------EXPORT_ITEM
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  EXPORT_ITEM
+TO DAVIDPHAM
+--------------------------------------------------EXPORT_ITEM_DETAIL
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  EXPORT_ITEM_DETAIL
+TO DAVIDPHAM
+--------------------------------------------------GROUPS
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  GROUPS
+TO DAVIDPHAM
+--------------------------------------------------IMPORT_ITEM
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  IMPORT_ITEM
+TO DAVIDPHAM
+--------------------------------------------------IMPORT_ITEM_DETAIL
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  IMPORT_ITEM_DETAIL
+TO DAVIDPHAM
+--------------------------------------------------INVENTORY
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  INVENTORY
+TO DAVIDPHAM
+--------------------------------------------------ITEM
+USE STORAGE_DLHI
+GRANT SELECT, INSERT, UPDATE
+ON  ITEM
+TO DAVIDPHAM
+--------------------------------------------------LOCATION_WAREHOUSE
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  LOCATION_WAREHOUSE
+TO DAVIDPHAM
+--------------------------------------------------MPR
+USE STORAGE_DLHI
+GRANT SELECT, INSERT, UPDATE
+ON  MPR
+TO DAVIDPHAM
+--------------------------------------------------MPR_EXPORT
+USE STORAGE_DLHI
+GRANT SELECT, INSERT, UPDATE
+ON  MPR_EXPORT
+TO DAVIDPHAM
+--------------------------------------------------MPR_EXPORT_DETAIL
+USE STORAGE_DLHI
+GRANT SELECT, INSERT, UPDATE
+ON  MPR_EXPORT_DETAIL
+TO DAVIDPHAM
+--------------------------------------------------PAYMENT_METHOD
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  PAYMENT_METHOD
+TO DAVIDPHAM
+--------------------------------------------------PO
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  PO
+TO DAVIDPHAM
+--------------------------------------------------PO_DETAIL
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  PO_DETAIL
+TO DAVIDPHAM
+--------------------------------------------------SUPPLIER
+USE STORAGE_DLHI
+GRANT SELECT, INSERT, UPDATE
+ON  SUPPLIER
+TO DAVIDPHAM
+--------------------------------------------------SUPPLIER_TYPE
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  SUPPLIER_TYPE
+TO DAVIDPHAM
+--------------------------------------------------TYPES
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  TYPES
+TO DAVIDPHAM
+--------------------------------------------------UNIT
+USE STORAGE_DLHI
+GRANT SELECT, INSERT
+ON  UNIT
+TO DAVIDPHAM
