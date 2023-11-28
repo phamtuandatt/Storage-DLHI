@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LicenseContext = OfficeOpenXml.LicenseContext;
 using Validation = Storage.Helper.Validation;
+using System.Threading;
+using System.Windows.Media;
 
 namespace Storage.GUI_PO
 {
@@ -645,12 +647,15 @@ namespace Storage.GUI_PO
                             }
                             else
                             {
-                                string fileName = string.Format("{0}Resources\\picture-bg.jpg", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")));
+                                string fileName = string.Format("{0}Resources\\picture-bg1.jpg", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")));
                                 FileInfo imageFile = new FileInfo(fileName);
-                                Image image = Image.FromFile(fileName);
+                                Image image = Image.FromHbitmap(Properties.Resources.picture_bg.GetHbitmap());
 
                                 // Add the image to the worksheet
-                                ExcelPicture picture = sheet.Drawings.AddPicture($"PictureName {rowIndex}", imageFile, new ExcelHyperLink(fileName));
+                                ImageConverter converter= new ImageConverter();
+                                ExcelPicture picture = sheet.Drawings.AddPicture($"PictureName {rowIndex}", 
+                                                new MemoryStream((byte[])converter.ConvertTo(image, typeof(byte[]))));
+
                                 picture.SetSize(130, 70);
                                 picture.SetPosition(rowIndex, 0, 4, 0);
                                 rowIndex++;
