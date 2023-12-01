@@ -66,7 +66,7 @@ namespace Storage.Helper
         }
 
 
-        public static string API_ROUTER 
+        public static string API_DOMAIN
         {
             get 
             {
@@ -77,5 +77,6 @@ namespace Storage.Helper
         // Item
         public const string GET_ITEMS = "/Items/get-item-v2";
         public const string GET_ITEM = "/Items/";
+        public const string GET_ITEM_BY_WAREHOUSE = "/Items/get-item-export-v2/";
     }
 }

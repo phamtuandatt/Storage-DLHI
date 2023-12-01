@@ -33,7 +33,7 @@ namespace Storage.GUI.Items
             LoadData();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
             var dtUnits = Unit_DAO.GetUnits();
             cboUnit.DataSource = dtUnits;
@@ -55,7 +55,7 @@ namespace Storage.GUI.Items
             cboSupplier.DisplayMember = "NAME_SUPPIER";
             cboSupplier.ValueMember = "ID";
 
-            ItemDto dto = Item_DAO.GetItem(this.Id);
+            ItemDto dto = await Item_DAO.GetItemAsync(this.Id);
             if (dto != null)
             {
                 txtCode.Text = dto.Code;

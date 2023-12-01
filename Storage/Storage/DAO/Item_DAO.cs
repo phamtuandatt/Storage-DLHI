@@ -16,6 +16,7 @@ using System.Reflection;
 using static System.Resources.ResXFileRef;
 using Storage.Helper;
 using OfficeOpenXml.Export.ToDataTable;
+using Storage.Response.ItemResponseDto;
 
 namespace Storage.DAO
 {
@@ -25,60 +26,55 @@ namespace Storage.DAO
 
         public static async Task<DataTable> GetItemsAsync()
         {
-            //using (HttpClient client = new HttpClient())
-            //{
-            //    var url = $"{API.API_ROUTER}{API.GET_ITEMS}";
-            //    string json = await client.GetStringAsync(url);
-            //    var res = JsonConvert.DeserializeObject<List<ItemsResponseDto>>(json).ToList();
-
-            //    DataTable dt = new DataTable();
-            //    dt.Columns.Add("ID");
-            //    dt.Columns.Add("CODE");
-            //    dt.Columns.Add("NAME");
-            //    dt.Columns.Add("PICTURE_LINK");
-            //    dt.Columns.Add("PICTURE", typeof(byte[]));
-            //    dt.Columns.Add("UNIT");
-            //    dt.Columns.Add("GROUPS");
-            //    dt.Columns.Add("SUPPLIER");
-            //    dt.Columns.Add("NOTE");
-            //    dt.Columns.Add("ENG_NAME");
-
-            //    return API.ToDataTables(res, dt);
-            //}
-
-            string sql = "EXEC GET_ITEMS_V2";
-
-            return data.GetData(sql, "ITEMS");
-        }
-
-        public static ItemDto GetItem(Guid id)
-        {
-            string sql = $"SELECT *FROM ITEM WHERE ID = '{id}'";
-            DataTable dt = data.GetData(sql, "Item");
-            DataRow row = dt.Rows[0];
-            ItemDto dto = new ItemDto()
+            using (HttpClient client = new HttpClient())
             {
-                Id = Guid.Parse(row["ID"].ToString()),
-                Code = row["CODE"].ToString(),
-                Name = row["NAME"].ToString(),
-                PictureLink = row["PICTURE_LINK"].ToString(),
-                Image = row["PICTURE"].ToString().Length > 0 && row["PICTURE"].ToString() != null ? (byte[])row["PICTURE"] : new byte[100],
-                UnitId = Guid.Parse(row["UNIT_ID"].ToString()),
-                GroupId = Guid.Parse(row["GROUP_ID"].ToString()),
-                SupplierId = Guid.Parse(row["SUPPLIER_ID"].ToString()),
-                TypeId = Guid.Parse(row["TYPE_ID"].ToString()),
-                Note = row["NOTE"].ToString(),
-                Eng_Name = row["ENG_NAME"].ToString()
-            };
+                var url = $"{API.API_DOMAIN}{API.GET_ITEMS}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<ItemsResponseDto>>(json).ToList();
 
-            return dto ?? new ItemDto();
+                return API.ListToDataTable(res, "ITEM_V2");
+            }
         }
 
-
-        public static DataTable GetItemByWarehouseId(Guid guid)
+        public static async Task<ItemDto> GetItemAsync(Guid id)
         {
-            //return data.GetData($"EXEC GET_ITEMS_EXPORT '{guid}'", "ExportItems");
-            return data.GetData($"EXEC GET_ITEMS_EXPORT_V2 '{guid}'", "ExportItems");
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_ITEM}{id}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<ItemsResponseDto>(json);
+
+                ItemDto itemDto = new ItemDto()
+                {
+                    Id = Guid.Parse(res.Id.ToString()),
+                    Code = res.Code,
+                    Name = res.Name,
+                    PictureLink = res.PICTURE_LINK,
+                    Image = res.PICTURE != null ? (byte[])res.PICTURE : new byte[100],
+                    UnitId = Guid.Parse(res.UnitId.ToString()),
+                    GroupId = Guid.Parse(res.GroupId.ToString()),
+                    SupplierId = Guid.Parse(res.SupplierId.ToString()),
+                    TypeId = Guid.Parse(res.TypeId.ToString()),
+                    Note = res.Note,
+                    Eng_Name = res.Eng_Name
+                };
+
+                return itemDto ?? new ItemDto();
+            }
+        }
+
+        public static async Task<DataTable> GetItemByWarehouseIdAsync(Guid guid)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_ITEM_BY_WAREHOUSE}{guid}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<ItemByWarehouseResponseDto>>(json).ToList();
+
+                return API.ListToDataTable(res, "ExportItems");
+            }
+            ////return data.GetData($"EXEC GET_ITEMS_EXPORT '{guid}'", "ExportItems");
+            //return data.GetData($"EXEC GET_ITEMS_EXPORT_V2 '{guid}'", "ExportItems");
         }
 
         public static string GetCode(string code)

@@ -18,5 +18,10 @@ namespace Storage.Response
         public string Supplier { get; set; }
         public string Note { get; set; }
         public string Eng_Name { get; set; }
+
+        public Guid UnitId { get; set; }
+        public Guid GroupId { get; set; }
+        public Guid TypeId { get; set; }
+        public Guid SupplierId { get; set; }
     }
 }

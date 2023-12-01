@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using WebAPI_V1.Models.ResponseDto;
+using WebAPI_V1.Models.ResponseDto.ItemResponse;
+using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponse;
+using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponseDto;
+using WebAPI_V1.Models.ResponseDto.UnitResponse;
 
 namespace WebAPI_V1.Models;
 
@@ -17,8 +19,18 @@ public partial class StorageDlhiContext : DbContext
     }
 
     public virtual DbSet<ItemResponse> ItemResponses { get; set; }
-    public virtual DbSet<ItemExportResponseDto> ItemExportResponses { get; set; }
-    public virtual DbSet<UnitResponseDto> UnitResponses { get; set; }
+    public virtual DbSet<ItemByWarehouseResponseDto> ItemByWarehouseResponses{ get; set; }
+
+
+    //public List<ItemWare> ExcuteProc(Guid id)
+    //{
+    //    return this.Set<ItemWare>().FromSqlRaw($"EXEC GET_ITEMS_EXPORT_V2 '{id}'").ToList();
+    //}
+
+    //public class ItemWare
+    //{
+    //    public List<ItemByWarehouseResponseDto> Items { get; set; }
+    //}
 
     //------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------
@@ -69,8 +81,8 @@ public partial class StorageDlhiContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ItemExportResponseDto>(c => c.HasNoKey());
-
+        modelBuilder.Entity<ItemByWarehouseResponseDto>(k => k.HasNoKey());
+        // modelBuilder.Ignore<ItemByWarehouseResponseDto>();
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------

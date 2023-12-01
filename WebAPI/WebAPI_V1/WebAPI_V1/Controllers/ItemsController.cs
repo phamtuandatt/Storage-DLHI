@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -13,7 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebAPI_V1.Models;
-using WebAPI_V1.Models.ResponseDto;
+using WebAPI_V1.Models.ResponseDto.ItemResponse;
+using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponse;
 
 namespace WebAPI_V1.Controllers
 {
@@ -59,35 +61,22 @@ namespace WebAPI_V1.Controllers
         {
             try
             {
-                //var courseList = await _context.ItemResponses.FromSqlInterpolated($"EXEC GET_ITEMS_V2").ToListAsync();
-                //var a = await _context.Database.ExecuteSqlRawAsync($"EXEC GET_ITEMS_V2");
-                //return Ok(JArray.FromObject(courseList).ToString());
-
                 var courseList = await _context.ItemResponses.FromSqlRaw("EXEC GET_ITEMS_V2").ToListAsync();
                 return Ok(courseList);
             }
             catch (Exception)
             {
-                return BadRequest();    
+                return BadRequest();
             }
         }
 
-        [HttpGet("get-item-export-v2")]
-        public async Task<IActionResult> GetItemExportByProc(Guid id)
+        [HttpGet("get-item-export-v2/{id}")]
+        public async Task<IActionResult> GetItemtByWarehouseId(Guid id)
         {
             try
             {
-                //var courseList = await _context.ItemExportResponses.FromSqlInterpolated($"EXEC GET_ITEMS_EXPORT_V2 '{id}'").ToListAsync();
-                //var courseList = _context.UnitResponses.FromSqlRaw($"SELECT TOP (1000) [ID] ,[NAME] FROM [STORAGE_DLHI].[dbo].[UNIT]").AsQueryable().ToList();
-                //var courseList = _context.ItemExportResponses.FromSqlRaw<ItemExportResponseDto>($"EXEC GET_ITEMS_EXPORT_V2 '{id}'").AsQueryable().ToList();
-                var courseList = await _context.Database.ExecuteSqlRawAsync($"EXEC GET_ITEMS_EXPORT_V2 '{id}'");
-
-                if (courseList <= 0)
-                {
-                    return BadRequest();
-                }
-
-                return Ok(JArray.FromObject(courseList).ToString());
+                var courseList =  _context.ItemByWarehouseResponses.FromSqlRaw($"EXEC GET_ITEMS_EXPORT_V2 '{id}'");
+                return Ok(courseList);
             }
             catch (Exception)
             {
@@ -106,10 +95,10 @@ namespace WebAPI_V1.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
-          if (_context.Items == null)
-          {
-              return NotFound();
-          }
+            if (_context.Items == null)
+            {
+                return NotFound();
+            }
             return await _context.Items.ToListAsync();
         }
 
@@ -117,10 +106,10 @@ namespace WebAPI_V1.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(Guid id)
         {
-          if (_context.Items == null)
-          {
-              return NotFound();
-          }
+            if (_context.Items == null)
+            {
+                return NotFound();
+            }
             var item = await _context.Items.FindAsync(id);
 
             if (item == null)
@@ -167,10 +156,10 @@ namespace WebAPI_V1.Controllers
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item item)
         {
-          if (_context.Items == null)
-          {
-              return Problem("Entity set 'StorageDlhiContext.Items'  is null.");
-          }
+            if (_context.Items == null)
+            {
+                return Problem("Entity set 'StorageDlhiContext.Items'  is null.");
+            }
             _context.Items.Add(item);
             try
             {

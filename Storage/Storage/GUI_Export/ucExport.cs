@@ -28,7 +28,7 @@ namespace Storage.GUI_Export
             LoadData();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
             cboWareHouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
             cboWareHouse.DisplayMember = "NAME";
@@ -37,7 +37,7 @@ namespace Storage.GUI_Export
             {
                 cboWareHouse.SelectedIndex = 0;
                 //dtItems = Item_DAO.GetItems();
-                dtItems = Item_DAO.GetItemByWarehouseId(Guid.Parse(cboWareHouse.SelectedValue.ToString()));
+                dtItems = await Item_DAO.GetItemByWarehouseIdAsync(Guid.Parse(cboWareHouse.SelectedValue.ToString()));
                 grdItems.DataSource = dtItems;
                 grdItems.RowTemplate.Height = 100;
             }
@@ -297,12 +297,12 @@ namespace Storage.GUI_Export
             grdItems.DataSource = dv.ToTable();
         }
 
-        private void cboWareHouse_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cboWareHouse_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 var id = Guid.Parse(cboWareHouse.SelectedValue.ToString());
-                dtItems = Item_DAO.GetItemByWarehouseId(id);
+                dtItems = await Item_DAO.GetItemByWarehouseIdAsync(id);
                 grdItems.DataSource = dtItems;
             }
             catch (Exception)
