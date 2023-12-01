@@ -68,6 +68,9 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -179,11 +182,23 @@
     <Compile Include="GUI\Suppliers\Add_SupplierType.Designer.cs">
       <DependentUpon>Add_SupplierType.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Suppliers\Add_Supplier_V2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Suppliers\Add_Supplier_V2.Designer.cs">
+      <DependentUpon>Add_Supplier_V2.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Suppliers\Edit_Supplier.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Suppliers\Edit_Supplier.Designer.cs">
       <DependentUpon>Edit_Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Suppliers\Edit_Supplier_V2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Suppliers\Edit_Supplier_V2.Designer.cs">
+      <DependentUpon>Edit_Supplier_V2.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Suppliers\ucSupplier.cs">
       <SubType>UserControl</SubType>
@@ -251,9 +266,13 @@
     <Compile Include="GUI_Warehouse\ucWarehouse.Designer.cs">
       <DependentUpon>ucWarehouse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\API.cs" />
     <Compile Include="Helper\Validation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\ItemResponseDto\ItemByWarehouseResponseDto.cs" />
+    <Compile Include="Response\ItemResponseDto\ItemResponseDto.cs" />
+    <Compile Include="Response\ItemResponseDto\ItemsResponseDto.cs" />
     <EmbeddedResource Include="GUI\ConnectSystem.resx">
       <DependentUpon>ConnectSystem.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,8 +303,14 @@
     <EmbeddedResource Include="GUI\Suppliers\Add_SupplierType.resx">
       <DependentUpon>Add_SupplierType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Suppliers\Add_Supplier_V2.resx">
+      <DependentUpon>Add_Supplier_V2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Suppliers\Edit_Supplier.resx">
       <DependentUpon>Edit_Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Suppliers\Edit_Supplier_V2.resx">
+      <DependentUpon>Edit_Supplier_V2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Suppliers\ucSupplier.resx">
       <DependentUpon>ucSupplier.cs</DependentUpon>

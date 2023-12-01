@@ -30,32 +30,6 @@ namespace WebAPI_V1.Controllers
             _context = context;
         }
 
-        [HttpGet("CallProcedure")]
-        public async Task<IActionResult> CallStoredProcedure()
-        {
-            try
-            {
-                // Replace "YourStoredProcedure" with the actual name of your stored procedure
-                var result = await _context.Database.SqlQuery<ItemExportResponseDto>($"EXEC GET_ITEMS_EXPORT_V2 '{Guid.NewGuid()}'").ToListAsync();
-
-                if (result.Any())
-                {
-                    // Process the result as needed
-                    return Ok(result);
-                }
-                else
-                {
-                    // Handle the case where no results are returned
-                    return NotFound();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log or handle the exception as needed
-                return NotFound(ex);
-            }
-        }
-
         [HttpGet("get-item-v2")]
         public async Task<IActionResult> GetItemsByProc()
         {
@@ -90,17 +64,6 @@ namespace WebAPI_V1.Controllers
         //--------------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------------
-
-        // GET: api/Items
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItems()
-        {
-            if (_context.Items == null)
-            {
-                return NotFound();
-            }
-            return await _context.Items.ToListAsync();
-        }
 
         // GET: api/Items/5
         [HttpGet("{id}")]

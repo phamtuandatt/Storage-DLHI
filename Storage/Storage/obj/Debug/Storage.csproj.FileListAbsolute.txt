@@ -80,3 +80,21 @@ D:\Study\StorageDLHI\Storage\Storage\bin\Debug\Microsoft.IO.RecyclableMemoryStre
 D:\Study\StorageDLHI\Storage\Storage\bin\Debug\System.ComponentModel.Annotations.dll
 D:\Study\StorageDLHI\Storage\Storage\bin\Debug\EPPlus.xml
 D:\Study\StorageDLHI\Storage\Storage\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.GUI.PaymentMethods.Add_PaymentMethod.resources
+D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.GUI.Suppliers.Add_Supplier_V2.resources
+D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.GUI.Suppliers.Edit_Supplier_V2.resources
+D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.GUI_Export.ucExport.resources
+D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.GUI_Import.ucImport.resources
+D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.GUI_PO.Add_PO.resources
+D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.GUI_PO.ucPO.resources
+D:\Storage DLHI\Storage\Storage\obj\Debug\Storage.GUI_Warehouse.ucWarehouse.resources
+D:\Storage DLHI\Storage\Storage\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\Storage DLHI\Storage\Storage\bin\Debug\EPPlus.dll
+D:\Storage DLHI\Storage\Storage\bin\Debug\EPPlus.Interfaces.dll
+D:\Storage DLHI\Storage\Storage\bin\Debug\EPPlus.System.Drawing.dll
+D:\Storage DLHI\Storage\Storage\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Storage DLHI\Storage\Storage\bin\Debug\Newtonsoft.Json.dll
+D:\Storage DLHI\Storage\Storage\bin\Debug\System.ComponentModel.Annotations.dll
+D:\Storage DLHI\Storage\Storage\bin\Debug\EPPlus.xml
+D:\Storage DLHI\Storage\Storage\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\Storage DLHI\Storage\Storage\bin\Debug\Newtonsoft.Json.xml

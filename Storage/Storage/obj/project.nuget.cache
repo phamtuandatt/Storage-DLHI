@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lseXlSZAjqseF4mSExbbGO4K+tbHX9vjtZwcRiBHExh3ddnuMQx7nKi+/MTGisn0uvyPqTYRfV7U65vnphrE0Q==",
+  "success": true,
+  "projectFilePath": "D:\\Storage DLHI\\Storage\\Storage\\Storage.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dat.pham\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -45,7 +45,7 @@ namespace Storage.GUI_MPR
             dataExportExcel.Columns.Add("ExpectedDelivery");
             dataExportExcel.Columns.Add("Qty");
 
-            if (dataExportExcel_DB.Rows.Count > 0)
+            if (dataExportExcel_DB.Rows.Count > 0 && grdMPRExport.RowCount > 0)
             {
                 DataView dtView = dataExportExcel_DB.DefaultView;
                 dtView.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[0].Cells[0].Value.ToString())}'";
