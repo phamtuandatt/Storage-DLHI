@@ -28,12 +28,64 @@ namespace WebAPI_V1.Controllers
             _context = context;
         }
 
+        [HttpGet("CallProcedure")]
+        public async Task<IActionResult> CallStoredProcedure()
+        {
+            try
+            {
+                // Replace "YourStoredProcedure" with the actual name of your stored procedure
+                var result = await _context.Database.SqlQuery<ItemExportResponseDto>($"EXEC GET_ITEMS_EXPORT_V2 '{Guid.NewGuid()}'").ToListAsync();
+
+                if (result.Any())
+                {
+                    // Process the result as needed
+                    return Ok(result);
+                }
+                else
+                {
+                    // Handle the case where no results are returned
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception as needed
+                return NotFound(ex);
+            }
+        }
+
         [HttpGet("get-item-v2")]
         public async Task<IActionResult> GetItemsByProc()
         {
             try
             {
-                var courseList = await _context.ItemResponses.FromSqlInterpolated($"EXEC GET_ITEMS_V2").ToListAsync();
+                //var courseList = await _context.ItemResponses.FromSqlInterpolated($"EXEC GET_ITEMS_V2").ToListAsync();
+                //var a = await _context.Database.ExecuteSqlRawAsync($"EXEC GET_ITEMS_V2");
+                //return Ok(JArray.FromObject(courseList).ToString());
+
+                var courseList = await _context.ItemResponses.FromSqlRaw("EXEC GET_ITEMS_V2").ToListAsync();
+                return Ok(courseList);
+            }
+            catch (Exception)
+            {
+                return BadRequest();    
+            }
+        }
+
+        [HttpGet("get-item-export-v2")]
+        public async Task<IActionResult> GetItemExportByProc(Guid id)
+        {
+            try
+            {
+                //var courseList = await _context.ItemExportResponses.FromSqlInterpolated($"EXEC GET_ITEMS_EXPORT_V2 '{id}'").ToListAsync();
+                //var courseList = _context.UnitResponses.FromSqlRaw($"SELECT TOP (1000) [ID] ,[NAME] FROM [STORAGE_DLHI].[dbo].[UNIT]").AsQueryable().ToList();
+                //var courseList = _context.ItemExportResponses.FromSqlRaw<ItemExportResponseDto>($"EXEC GET_ITEMS_EXPORT_V2 '{id}'").AsQueryable().ToList();
+                var courseList = await _context.Database.ExecuteSqlRawAsync($"EXEC GET_ITEMS_EXPORT_V2 '{id}'");
+
+                if (courseList <= 0)
+                {
+                    return BadRequest();
+                }
 
                 return Ok(JArray.FromObject(courseList).ToString());
             }

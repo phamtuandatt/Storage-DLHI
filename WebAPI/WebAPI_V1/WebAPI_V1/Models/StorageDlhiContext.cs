@@ -17,6 +17,8 @@ public partial class StorageDlhiContext : DbContext
     }
 
     public virtual DbSet<ItemResponse> ItemResponses { get; set; }
+    public virtual DbSet<ItemExportResponseDto> ItemExportResponses { get; set; }
+    public virtual DbSet<UnitResponseDto> UnitResponses { get; set; }
 
     //------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------
@@ -67,6 +69,12 @@ public partial class StorageDlhiContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<ItemExportResponseDto>(c => c.HasNoKey());
+
+        //------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------
         modelBuilder.Entity<ExportItem>(entity =>
         {
             entity.ToTable("EXPORT_ITEM");
