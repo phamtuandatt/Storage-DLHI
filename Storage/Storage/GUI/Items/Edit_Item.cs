@@ -35,7 +35,7 @@ namespace Storage.GUI.Items
 
         private async void LoadData()
         {
-            var dtUnits = Unit_DAO.GetUnits();
+            var dtUnits = await Unit_DAO.GetUnits();
             cboUnit.DataSource = dtUnits;
             cboUnit.DisplayMember = "Name";
             cboUnit.ValueMember = "ID";

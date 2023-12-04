@@ -1,9 +1,14 @@
-﻿using Storage.DataProvider;
+﻿using Newtonsoft.Json;
+using Storage.DataProvider;
 using Storage.DTOs;
+using Storage.Helper;
+using Storage.Response;
+using Storage.Response.UnitResponseDto;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,18 +18,34 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetUnits()
+        public static async Task<DataTable> GetUnits()
         {
-            string sql = "SELECT *FROM UNIT";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_UNITS}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<UnitResponseDto>>(json).ToList();
 
-            return data.GetData(sql, "cboUnit");
+                return API.ListToDataTable(res, "UNITS");
+            }
         }
 
-        public static bool Add(UnitDto type)
+        public static async Task<bool> Add(UnitDto type)
         {
-            string sql = $"INSERT INTO UNIT VALUES('{type.Id}', N'{type.Name}')";
+            StringContent content = new StringContent(JsonConvert.SerializeObject(type),
+                    Encoding.UTF8, "application/json");
 
-            return data.Insert(sql) > 0;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_UNIT}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
         public static bool Update(UnitDto type)

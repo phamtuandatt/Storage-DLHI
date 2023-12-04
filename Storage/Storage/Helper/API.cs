@@ -84,5 +84,9 @@ namespace Storage.Helper
         public const string PUT_ITEM = "/Items/";
         public const string PUT_ITEM_NO_IMAGE = "/Items/UpdateItemNoImage/";
         public const string DELETE_ITEM = "/Items/";
+
+        // Unit
+        public const string GET_UNITS = "/Units";
+        public const string POST_UNIT = "/Units";
     }
 }

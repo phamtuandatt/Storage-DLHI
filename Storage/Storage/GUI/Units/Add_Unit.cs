@@ -22,7 +22,7 @@ namespace Storage.GUI.Units
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtUnit.Text))
             {
@@ -36,7 +36,7 @@ namespace Storage.GUI.Units
                 Name = txtUnit.Text,
             };
 
-            if (Unit_DAO.Add(unitDto))
+            if (await Unit_DAO.Add(unitDto))
             {
                 this.Close();
             }

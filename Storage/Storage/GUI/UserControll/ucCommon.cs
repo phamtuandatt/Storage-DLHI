@@ -51,9 +51,9 @@ namespace Storage.GUI.UserControll
             LoadData();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
-            grdUnit.DataSource = Unit_DAO.GetUnits();
+            grdUnit.DataSource = await Unit_DAO.GetUnits();
 
             grdGroup.DataSource = Group_DAO.GetGroups();
 
