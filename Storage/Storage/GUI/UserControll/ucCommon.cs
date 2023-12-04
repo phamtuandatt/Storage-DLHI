@@ -57,7 +57,7 @@ namespace Storage.GUI.UserControll
 
             grdGroup.DataSource = await Group_DAO.GetGroups();
 
-            grdType.DataSource = Type_DAO.GetTypes();
+            grdType.DataSource = await Type_DAO.GetTypes();
 
             grdLocationWarehouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
         }

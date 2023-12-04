@@ -45,7 +45,7 @@ namespace Storage.GUI.Items
             cboGroup.DisplayMember = "Name";
             cboGroup.ValueMember = "ID";
 
-            var dtTypes = Type_DAO.GetTypes();
+            var dtTypes = await Type_DAO.GetTypes();
             cboType.DataSource = dtTypes;
             cboType.DisplayMember = "Name";
             cboType.ValueMember = "ID";

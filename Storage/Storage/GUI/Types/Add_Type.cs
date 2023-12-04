@@ -22,7 +22,7 @@ namespace Storage.GUI.Types
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtType.Text))
             {
@@ -36,7 +36,7 @@ namespace Storage.GUI.Types
                 Name = txtType.Text,
             };
 
-            if (Type_DAO.Add(type))
+            if (await Type_DAO.Add(type))
             {
                 this.Close();
             }

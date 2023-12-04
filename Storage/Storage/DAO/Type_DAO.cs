@@ -1,9 +1,13 @@
-﻿using Storage.DataProvider;
+﻿using Newtonsoft.Json;
+using Storage.DataProvider;
 using Storage.DTOs;
+using Storage.Helper;
+using Storage.Response.GroupResponseDto;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,18 +17,34 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetTypes()
+        public static async Task<DataTable> GetTypes()
         {
-            string sql = "SELECT *FROM TYPES";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_TYPES}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<GroupResponseDto>>(json).ToList();
 
-            return data.GetData(sql, "cboTypes");
+                return API.ListToDataTable(res, "TYPES");
+            }
         }
 
-        public static bool Add(TypeDto type)
+        public static async Task<bool> Add(TypeDto type)
         {
-            string sql = $"INSERT INTO TYPES VALUES('{type.Id}', N'{type.Name}')";
+            StringContent content = new StringContent(JsonConvert.SerializeObject(type),
+                                Encoding.UTF8, "application/json");
 
-            return data.Insert(sql) > 0;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_TYPE}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
         public static bool Update(TypeDto type)

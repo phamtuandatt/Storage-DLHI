@@ -92,5 +92,9 @@ namespace Storage.Helper
         // Group
         public const string GET_GROUPS = "/Groups";
         public const string POST_GROUP = "/Groups";
+
+        // Type
+        public const string GET_TYPES = "/Types";
+        public const string POST_TYPE = "/Types";
     }
 }
