@@ -21,7 +21,7 @@ namespace Storage.GUI.LocationWarehouses
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtLocation.Text))
             {
@@ -35,7 +35,7 @@ namespace Storage.GUI.LocationWarehouses
                 Name = txtLocation.Text
             };
 
-            if (Warehouse_DAO.Add(locationWarehousseDto))
+            if (await Warehouse_DAO.Add(locationWarehousseDto))
             {
                 this.Close();
             }

@@ -63,7 +63,7 @@ namespace Storage.GUI_PO
             cboPaymentMethod.DisplayMember = "Name";
             cboPaymentMethod.ValueMember = "ID";
 
-            cboWarehouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
+            cboWarehouse.DataSource = await Warehouse_DAO.GetLocationWareHouses();
             cboWarehouse.DisplayMember = "Name";
             cboWarehouse.ValueMember = "ID";
 
@@ -248,12 +248,12 @@ namespace Storage.GUI_PO
             cboPaymentMethod.ValueMember = "ID";
         }
 
-        private void btnLocationWarehouse_Click(object sender, EventArgs e)
+        private async void btnLocationWarehouse_Click(object sender, EventArgs e)
         {
             Add_LocationWareHouse add_LocationWareHouse = new Add_LocationWareHouse();
             add_LocationWareHouse.ShowDialog();
 
-            cboWarehouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
+            cboWarehouse.DataSource = await Warehouse_DAO.GetLocationWareHouses();
             cboWarehouse.DisplayMember = "Name";
             cboWarehouse.ValueMember = "ID";
         }

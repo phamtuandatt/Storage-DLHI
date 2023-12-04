@@ -1,9 +1,15 @@
-﻿using Storage.DataProvider;
+﻿using Newtonsoft.Json;
+using Storage.DataProvider;
 using Storage.DTOs;
+using Storage.Helper;
+using Storage.Response;
+using Storage.Response.UnitResponseDto;
+using Storage.Response.WarehouseResponseDto;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,37 +21,47 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetLocationWareHouses()
+        public static async Task<DataTable> GetLocationWareHouses()
         {
-            string sql = "SELECT ID, NAME FROM WAREHOUSE";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_WAREHOSE_COMBOXBOX}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<WarehouseForComboboxResponseDto>>(json).ToList();
 
-            return data.GetData(sql, "cboLocationWareHouse");
+                return API.ListToDataTable(res, "WAREHOUSES");
+            }
         }
 
-        public static DataTable GetInventories(int month, int year)
+        public static async Task<DataTable> GetInventories(int month, int year)
         {
-            return data.GetData($"EXEC GET_INVENTORY {month}, {year}", "Inventories");
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_WAREHOUSE_INVENTORIES}?month={month}&year={year}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<InventoriesResponseDto>>(json).ToList();
+
+                return API.ListToDataTable(res, "WAREHOUSES_INVENTORIES");
+            }
+            //return data.GetData($"EXEC GET_INVENTORY {month}, {year}", "Inventories");
         }
 
-        public static bool Add(LocationWarehousseDto locationWarehousseDto)
+        public static async Task<bool> Add(LocationWarehousseDto locationWarehousseDto)
         {
-            string sql = $"INSERT INTO WAREHOUSE(ID, NAME) VALUES('{locationWarehousseDto.Id}', N'{locationWarehousseDto.Name}')";
+            StringContent content = new StringContent(JsonConvert.SerializeObject(locationWarehousseDto),
+                                Encoding.UTF8, "application/json");
 
-            return data.Insert(sql) > 0;
-        }
-
-        public static bool Update(LocationWarehousseDto locationWhousseDto)
-        {
-            string sql = $"UPDATE LOCATION_WAREHOUSE SET NAME = N'{locationWhousseDto.Name}' WHERE ID = '{locationWhousseDto.Id}'";
-
-            return data.Update(sql) > 0;
-        }
-
-        public static bool Delete(Guid locationId)
-        {
-            string sql = $"DELETE FROM LOCATION_WAREHOUSE WHERE ID = '{locationId}'";
-
-            return data.Delete(sql) > 0;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_WAREHOUSE}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
     }
 

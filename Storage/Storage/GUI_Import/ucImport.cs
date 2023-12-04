@@ -40,7 +40,7 @@ namespace Storage.GUI_Import
             cboSupplier.DisplayMember = "NAME_SUPPIER";
             cboSupplier.ValueMember = "ID";
 
-            cboWareHouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
+            cboWareHouse.DataSource = await Warehouse_DAO.GetLocationWareHouses();
             cboWareHouse.DisplayMember = "NAME";
             cboWareHouse.ValueMember = "ID";
 

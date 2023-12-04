@@ -20,9 +20,9 @@ namespace Storage.GUI_Warehouse
             LoadData();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
-            dtInventories = Warehouse_DAO.GetInventories(txtDate.Value.Month , txtDate.Value.Year);
+            dtInventories = await Warehouse_DAO.GetInventories(txtDate.Value.Month , txtDate.Value.Year);
             grdInventories.DataSource = dtInventories;
         }
 
@@ -95,9 +95,9 @@ namespace Storage.GUI_Warehouse
             }
         }
 
-        private void txtDate_ValueChanged(object sender, EventArgs e)
+        private async void txtDate_ValueChanged(object sender, EventArgs e)
         {
-            dtInventories = Warehouse_DAO.GetInventories(txtDate.Value.Month, txtDate.Value.Year);
+            dtInventories = await Warehouse_DAO.GetInventories(txtDate.Value.Month, txtDate.Value.Year);
             grdInventories.DataSource = dtInventories;
         }
 

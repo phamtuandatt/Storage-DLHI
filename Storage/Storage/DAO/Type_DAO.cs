@@ -3,6 +3,7 @@ using Storage.DataProvider;
 using Storage.DTOs;
 using Storage.Helper;
 using Storage.Response.GroupResponseDto;
+using Storage.Response.TypeResponseDto;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,7 +24,7 @@ namespace Storage.DAO
             {
                 var url = $"{API.API_DOMAIN}{API.GET_TYPES}";
                 string json = await client.GetStringAsync(url);
-                var res = JsonConvert.DeserializeObject<List<GroupResponseDto>>(json).ToList();
+                var res = JsonConvert.DeserializeObject<List<TypeResponseDto>>(json).ToList();
 
                 return API.ListToDataTable(res, "TYPES");
             }

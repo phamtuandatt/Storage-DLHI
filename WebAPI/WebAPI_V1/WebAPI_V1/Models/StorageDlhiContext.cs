@@ -4,6 +4,7 @@ using WebAPI_V1.Models.ResponseDto.ItemResponse;
 using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponse;
 using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponseDto;
 using WebAPI_V1.Models.ResponseDto.UnitResponse;
+using WebAPI_V1.Models.ResponseDto.WarehouseResponse;
 
 namespace WebAPI_V1.Models;
 
@@ -20,6 +21,7 @@ public partial class StorageDlhiContext : DbContext
 
     public virtual DbSet<ItemResponse> ItemResponses { get; set; }
     public virtual DbSet<ItemByWarehouseResponseDto> ItemByWarehouseResponses{ get; set; }
+    public virtual DbSet<InventoriesResponseDto> InventoriesResponse { get; set; }
 
 
     //public List<ItemWare> ExcuteProc(Guid id)
@@ -82,7 +84,7 @@ public partial class StorageDlhiContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<ItemByWarehouseResponseDto>(k => k.HasNoKey());
-        // modelBuilder.Ignore<ItemByWarehouseResponseDto>();
+        modelBuilder.Entity<InventoriesResponseDto>(k => k.HasNoKey());
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------

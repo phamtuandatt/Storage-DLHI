@@ -30,7 +30,7 @@ namespace Storage.GUI_Export
 
         private async void LoadData()
         {
-            cboWareHouse.DataSource = Warehouse_DAO.GetLocationWareHouses();
+            cboWareHouse.DataSource = await Warehouse_DAO.GetLocationWareHouses();
             cboWareHouse.DisplayMember = "NAME";
             cboWareHouse.ValueMember = "ID";
             if (cboWareHouse.Items.Count > 0)

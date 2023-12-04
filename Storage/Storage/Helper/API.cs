@@ -96,5 +96,10 @@ namespace Storage.Helper
         // Type
         public const string GET_TYPES = "/Types";
         public const string POST_TYPE = "/Types";
+
+        // Warehouse
+        public const string GET_WAREHOSE_COMBOXBOX = "/Warehouses";
+        public const string GET_WAREHOUSE_INVENTORIES = "/Warehouses/GetInventories";
+        public const string POST_WAREHOUSE = "/Warehouses";
     }
 }
