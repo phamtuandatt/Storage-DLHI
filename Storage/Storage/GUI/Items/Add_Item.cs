@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace Storage.GUI.Items
             cboSupplier.ValueMember = "ID";
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCode.Text) || string.IsNullOrEmpty(txtName.Text))
             {
@@ -61,9 +62,9 @@ namespace Storage.GUI.Items
                 Code = txtCode.Text,
                 Name = txtName.Text,
                 PictureLink = path,
-                Picture = path,
+                Picture = !string.IsNullOrEmpty(path) ? File.ReadAllBytes(path) : null,
                 Note = "",
-                Eng_Name = "",
+                EngName = "",
                 UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
                 GroupId = Guid.Parse(cboGroup.SelectedValue.ToString()),
                 TypeId = Guid.Parse(cboType.SelectedValue.ToString()),
@@ -72,7 +73,7 @@ namespace Storage.GUI.Items
 
             if (string.IsNullOrEmpty(path))
             {
-                if (Item_DAO.AddNoIamge(itemDto))
+                if (await Item_DAO.AddNoIamge(itemDto))
                 {
                     this.Close();
                 }
@@ -83,7 +84,7 @@ namespace Storage.GUI.Items
             }
             else
             {
-                if (Item_DAO.Add(itemDto))
+                if (await Item_DAO.Add(itemDto))
                 {
                     this.Close();
                 }
@@ -94,10 +95,10 @@ namespace Storage.GUI.Items
             }
         }
 
-        private void btnGetCode_Click(object sender, EventArgs e)
+        private async void btnGetCode_Click(object sender, EventArgs e)
         {
             string code = cboType.Text;
-            string number = Item_DAO.GetCode(code.ToUpper().Trim());
+            string number = await Item_DAO.GetCode(code.ToUpper().Trim());
 
             txtCode.Text = code + number;
         }

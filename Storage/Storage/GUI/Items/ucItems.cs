@@ -14,7 +14,7 @@ namespace Storage.GUI.Items
 {
     public partial class ucItems : UserControl
     {
-        public DataTable data = null; 
+        public DataTable data = null;
         public ucItems()
         {
             InitializeComponent();
@@ -28,6 +28,12 @@ namespace Storage.GUI.Items
 
             data = await Item_DAO.GetItemsAsync();
             grdItems.DataSource = data;
+            grdItems.Columns["EngName"].Visible = false;
+            grdItems.Columns["UnitId"].Visible = false;
+            grdItems.Columns["GroupId"].Visible = false;
+            grdItems.Columns["TypeId"].Visible = false;
+            grdItems.Columns["SupplierId"].Visible = false;
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

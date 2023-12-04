@@ -14,7 +14,7 @@ namespace Storage.Response.ItemResponseDto
         public string PICTURELINK { get; set; }
         public byte[] PICTURE { get; set; }
         public string Note { get; set; }
-        public string EngName { get; set; }
+        public string Eng_Name { get; set; }
         public Guid UNITID { get; set; }
         public Guid GROUPID { get; set; }
         public Guid TYPEID { get; set; }

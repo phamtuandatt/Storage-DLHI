@@ -65,7 +65,7 @@ namespace Storage.GUI.Items
                 cboType.SelectedValue = dto.TypeId;
                 cboSupplier.SelectedValue = dto.SupplierId;
                 txtNote.Text = dto.Note;
-                txtEngName.Text = dto.Eng_Name;
+                txtEngName.Text = dto.EngName;
                 picItem.Image = dto.Image.Length == 100 ? picItem.InitialImage : Image.FromStream(new MemoryStream(dto.Image));
                 path = dto.PictureLink;
             }
@@ -79,7 +79,7 @@ namespace Storage.GUI.Items
             this.Close();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtName.Text))
             {
@@ -95,13 +95,13 @@ namespace Storage.GUI.Items
                     Code = txtCode.Text,
                     Name = txtName.Text,
                     Note = txtNote.Text,
-                    Eng_Name = txtEngName.Text,
+                    EngName = txtEngName.Text,
                     UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
                     GroupId = Guid.Parse(cboGroup.SelectedValue.ToString()),
                     TypeId = Guid.Parse(cboType.SelectedValue.ToString()),
                     SupplierId = Guid.Parse(cboSupplier.SelectedValue.ToString()),
                 };
-                if (Item_DAO.UpdateNoImage(itemDto))
+                if (await Item_DAO.UpdateNoImage(itemDto))
                 {
                     this.Close();
                 }
@@ -118,16 +118,16 @@ namespace Storage.GUI.Items
                     Code = txtCode.Text,
                     Name = txtName.Text,
                     PictureLink = path,
-                    Picture = path,
+                    Picture = !string.IsNullOrEmpty(path) ? File.ReadAllBytes(path) : new byte[100],
                     Image = File.ReadAllBytes(path),
                     Note = txtNote.Text,
-                    Eng_Name = txtEngName.Text,
+                    EngName = txtEngName.Text,
                     UnitId = Guid.Parse(cboUnit.SelectedValue.ToString()),
                     GroupId = Guid.Parse(cboGroup.SelectedValue.ToString()),
                     TypeId = Guid.Parse(cboType.SelectedValue.ToString()),
                     SupplierId = Guid.Parse(cboSupplier.SelectedValue.ToString()),
                 };
-                if (Item_DAO.Update(itemDto))
+                if (await Item_DAO.Update(itemDto))
                 {
                     this.Close();
                 }
