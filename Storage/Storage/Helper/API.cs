@@ -101,5 +101,8 @@ namespace Storage.Helper
         public const string GET_WAREHOSE_COMBOXBOX = "/Warehouses";
         public const string GET_WAREHOUSE_INVENTORIES = "/Warehouses/GetInventories";
         public const string POST_WAREHOUSE = "/Warehouses";
+
+        // Warehouse Detail
+        public const string GET_WAREHOUSE_DETAIL = "/WarehouseDetails";
     }
 }

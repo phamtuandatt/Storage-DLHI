@@ -7,6 +7,7 @@ using Storage.Response.UnitResponseDto;
 using Storage.Response.WarehouseResponseDto;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Net.Http;
@@ -69,7 +70,26 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable dtWarehouseDetail = data.GetData("SELECT *FROM WAREHOUSE_DETAIL", "WarehouseDetails");
+        //public static DataTable dtWarehouseDetail = data.GetData("SELECT *FROM WAREHOUSE_DETAIL", "WarehouseDetails");
+
+        public static DataTable dtWarehouseDetail
+        {
+            get
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var url = $"{API.API_DOMAIN}{API.GET_WAREHOUSE_DETAIL}";
+                    string json = client.GetStringAsync(url).GetAwaiter().GetResult();
+                    var res = JsonConvert.DeserializeObject<List<InventoriesResponseDto>>(json).ToList();
+
+                    return API.ListToDataTable(res, "WAREHOUSES_INVENTORIES");
+                }
+            }
+            set
+            {
+                dtWarehouseDetail = value;
+            }
+        }
 
         public static bool UpdateItemAtWarehouse(List<WareHouse_DetailDto> items)
         {
