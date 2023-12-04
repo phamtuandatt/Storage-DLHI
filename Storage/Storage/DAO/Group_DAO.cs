@@ -1,9 +1,14 @@
-﻿using Storage.DataProvider;
+﻿using Newtonsoft.Json;
+using Storage.DataProvider;
 using Storage.DTOs;
+using Storage.Helper;
+using Storage.Response.GroupResponseDto;
+using Storage.Response.UnitResponseDto;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,18 +18,37 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetGroups()
+        public static async Task<DataTable> GetGroups()
         {
-            string sql = $"SELECT *FROM GROUPS";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_GROUPS}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<GroupResponseDto>>(json).ToList();
 
-            return data.GetData(sql, "cboGroup");
+                return API.ListToDataTable(res, "GROUPS");
+            }
+            //string sql = $"SELECT *FROM GROUPS";
+
+            //return data.GetData(sql, "cboGroup");
         }
 
-        public static bool Add(GroupDto group)
+        public static async Task<bool> Add(GroupDto group)
         {
-            string sql = $"INSERT INTO GROUPS VALUES('{group.Id}', N'{group.Name}')";
+            StringContent content = new StringContent(JsonConvert.SerializeObject(group),
+                    Encoding.UTF8, "application/json");
 
-            return data.Insert(sql) > 0;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.GET_GROUPS}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
         public static bool Update(GroupDto group)

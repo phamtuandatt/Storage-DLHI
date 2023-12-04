@@ -21,7 +21,7 @@ namespace Storage.GUI.Groups
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtGroup.Text)) 
             {
@@ -35,7 +35,7 @@ namespace Storage.GUI.Groups
                 Name = txtGroup.Text,
             };
 
-            if (Group_DAO.Add(dto))
+            if (await Group_DAO.Add(dto))
             {
                 this.Close();
             }

@@ -88,5 +88,9 @@ namespace Storage.Helper
         // Unit
         public const string GET_UNITS = "/Units";
         public const string POST_UNIT = "/Units";
+
+        // Group
+        public const string GET_GROUPS = "/Groups";
+        public const string POST_GROUP = "/Groups";
     }
 }

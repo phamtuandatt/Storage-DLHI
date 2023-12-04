@@ -32,7 +32,7 @@ namespace Storage.GUI.Items
             cboUnit.DisplayMember = "Name";
             cboUnit.ValueMember = "ID";
 
-            var dtGroups = Group_DAO.GetGroups();
+            var dtGroups = await Group_DAO.GetGroups();
             cboGroup.DataSource = dtGroups;
             cboGroup.DisplayMember = "Name";
             cboGroup.ValueMember = "ID";
