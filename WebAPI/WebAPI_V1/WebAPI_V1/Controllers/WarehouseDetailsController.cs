@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using WebAPI_V1.Models;
+using WebAPI_V1.Models.RequestDto;
 
 namespace WebAPI_V1.Controllers
 {
@@ -14,20 +17,22 @@ namespace WebAPI_V1.Controllers
     public class WarehouseDetailsController : ControllerBase
     {
         private readonly StorageDlhiContext _context;
+        private readonly IMapper mapper;
 
-        public WarehouseDetailsController(StorageDlhiContext context)
+        public WarehouseDetailsController(StorageDlhiContext context, IMapper mapper)
         {
             _context = context;
+            this.mapper = mapper;
         }
 
         // GET: api/WarehouseDetails
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WarehouseDetail>>> GetWarehouseDetails()
         {
-          if (_context.WarehouseDetails == null)
-          {
-              return NotFound();
-          }
+            if (_context.WarehouseDetails == null)
+            {
+                return NotFound();
+            }
             return await _context.WarehouseDetails.ToListAsync();
         }
 
@@ -35,10 +40,10 @@ namespace WebAPI_V1.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<WarehouseDetail>> GetWarehouseDetail(Guid id)
         {
-          if (_context.WarehouseDetails == null)
-          {
-              return NotFound();
-          }
+            if (_context.WarehouseDetails == null)
+            {
+                return NotFound();
+            }
             var warehouseDetail = await _context.WarehouseDetails.FindAsync(id);
 
             if (warehouseDetail == null)
@@ -58,7 +63,7 @@ namespace WebAPI_V1.Controllers
             {
                 return BadRequest();
             }
-
+            _context.WarehouseDetails.UpdateRange(new List<WarehouseDetail>());
             _context.Entry(warehouseDetail).State = EntityState.Modified;
 
             try
@@ -83,20 +88,38 @@ namespace WebAPI_V1.Controllers
         // POST: api/WarehouseDetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<WarehouseDetail>> PostWarehouseDetail(WarehouseDetail warehouseDetail)
+        public async Task<ActionResult<WarehouseDetail>> PostWarehouseDetail(List<WarehouseRequestDto> warehouseDetail)
         {
-          if (_context.WarehouseDetails == null)
-          {
-              return Problem("Entity set 'StorageDlhiContext.WarehouseDetails'  is null.");
-          }
-            _context.WarehouseDetails.Add(warehouseDetail);
+            if (_context.WarehouseDetails == null)
+            {
+                return Problem("Entity set 'StorageDlhiContext.WarehouseDetails'  is null.");
+            }
+
+            var source = _context.WarehouseDetails.ToList();
+            var viewModel = mapper.Map<List<WarehouseDetail>>(warehouseDetail);
+            foreach (var item in viewModel)
+            {
+                if (source.Any(row => item.WarehouseId == row.WarehouseId
+                                && item.ItemId == row.ItemId
+                                && item.Month == row.Month
+                                && item.Year == row.Year))
+                {
+                    _context.Entry(item).State = EntityState.Modified;
+                }
+                else
+                {
+                    _context.WarehouseDetails.Add(item);
+                }
+                
+            }
+            
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (WarehouseDetailExists(warehouseDetail.WarehouseId))
+                if (WarehouseDetailExists(warehouseDetail[0].WarehouseId))
                 {
                     return Conflict();
                 }
@@ -106,7 +129,7 @@ namespace WebAPI_V1.Controllers
                 }
             }
 
-            return CreatedAtAction("GetWarehouseDetail", new { id = warehouseDetail.WarehouseId }, warehouseDetail);
+            return CreatedAtAction("GetWarehouseDetail", new { id = warehouseDetail[0].WarehouseId }, warehouseDetail);
         }
 
         // DELETE: api/WarehouseDetails/5

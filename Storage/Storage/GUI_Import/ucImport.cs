@@ -71,7 +71,7 @@ namespace Storage.GUI_Import
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (cboWareHouse.Items.Count <= 0)
             {
@@ -121,7 +121,7 @@ namespace Storage.GUI_Import
                     WareHouse_DetailDto wareHouse_DetailDto = new WareHouse_DetailDto()
                     {
                         WarehouseId = Guid.Parse(cboWareHouse.SelectedValue.ToString()),
-                        Item_Id = Guid.Parse(item["ID"].ToString()),
+                        ItemId = Guid.Parse(item["ID"].ToString()),
                         Quantity = int.Parse(item["QUANTITY"].ToString().Replace(",", "")),
                         Month = txtCreateDate.Value.Month,
                         Year = txtCreateDate.Value.Year,
@@ -129,7 +129,7 @@ namespace Storage.GUI_Import
                     lstWareHouseDetail.Add(wareHouse_DetailDto);
                 }
 
-                if (ImportItemDetailDAO.AddRange(lstImport) && WarehouseDetail_DAO.UpdateItemAtWarehouse(lstWareHouseDetail))
+                if (ImportItemDetailDAO.AddRange(lstImport) && await WarehouseDetail_DAO.UpdateItemAtWarehouse(lstWareHouseDetail))
                 {
                     dataItemAdd.Rows.Clear();
                     KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

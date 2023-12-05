@@ -4,17 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Storage.DTOs
+namespace Storage.Response
 {
-    internal class WareHouseDto
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public Int64 TotalItem { get; set; }
-    }
-
-    internal class WareHouse_DetailDto
+    internal class WarehouseDetailResponseDto
     {
         public Guid WarehouseId { get; set; }
 

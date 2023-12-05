@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using WebAPI_V1.Models;
+using AutoMapper;
+using WebAPI_V1;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<StorageDlhiContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn"),
                 b => b.MigrationsAssembly("OA_Data")));
+
+builder.Services.AddAutoMapper(typeof(Program));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

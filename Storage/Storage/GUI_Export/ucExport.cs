@@ -113,7 +113,7 @@ namespace Storage.GUI_Export
                         WareHouse_DetailDto wareHouse_DetailDto = new WareHouse_DetailDto()
                         {
                             WarehouseId = Guid.Parse(item["WAREHOUSE_ID"].ToString()),
-                            Item_Id = Guid.Parse(item["ITEM_ID"].ToString()),
+                            ItemId = Guid.Parse(item["ITEM_ID"].ToString()),
                             Quantity = Convert.ToInt64(item["QUANTITY"].ToString().Replace(",", "")),
                             Month = txtCreateDate.Value.Month,
                             Year = txtCreateDate.Value.Year,

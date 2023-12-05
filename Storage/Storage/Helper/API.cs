@@ -104,5 +104,6 @@ namespace Storage.Helper
 
         // Warehouse Detail
         public const string GET_WAREHOUSE_DETAIL = "/WarehouseDetails";
+        public const string POST_WAREHOUSE_DETAIL = "/WarehouseDetails";
     }
 }
