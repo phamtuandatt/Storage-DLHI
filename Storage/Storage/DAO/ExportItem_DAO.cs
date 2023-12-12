@@ -1,9 +1,14 @@
-﻿using Storage.DataProvider;
+﻿using Newtonsoft.Json;
+using Storage.DataProvider;
 using Storage.DTOs;
+using Storage.Helper;
+using Storage.Response;
+using Storage.Response.ExportItemResponseDto;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,48 +18,49 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetExportItems()
+        public static async Task<DataTable> GetExportItems()
         {
-            return data.GetData("SELECT *FROM EXPORT_ITEM", "ExportItems");
+            //return data.GetData("SELECT *FROM EXPORT_ITEM", "ExportItems");
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_EXPORT_ITEM}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<ExportItemResponseDto>>(json).ToList();
+
+                return API.ListToDataTable(res, "EXPORT_ITEM");
+            }
         }
 
-        public static bool Add(ExportItemDto dto)
+        public static async Task<bool> Add(ExportItemDto dto)
         {
-            string sql = $"SET DATEFORMAT YMD INSERT INTO EXPORT_ITEM VALUES('{dto.Id}', '{dto.Created}', '{dto.Bill_No}', {dto.Sum_Quantity})";
+            //string sql = $"SET DATEFORMAT YMD INSERT INTO EXPORT_ITEM VALUES('{dto.Id}', '{dto.Created}', '{dto.Bill_No}', {dto.Sum_Quantity})";
 
-            return data.Insert(sql) > 0;
+            //return data.Insert(sql) > 0;
+            var a = JsonConvert.SerializeObject(dto);
+            StringContent content = new StringContent(JsonConvert.SerializeObject(dto),
+                    Encoding.UTF8, "application/json");
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_EXPORT_ITEM}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
-        public static string GetCurrentBillNoInDate(string date)
+        public static async Task<string> GetCurrentBillNoInDate(string date)
         {
-            string sql = $"EXEC GET_CURRENT_BILLNO_EXPORT '{date}'";
-            DataTable dt = data.GetData(sql, "CurrentBillNo");
-            DataRow datarow = dt.Rows[0];
-            string numberStr = datarow["NUMBER"].ToString();
-            if (string.IsNullOrEmpty(numberStr))
+            using (HttpClient client = new HttpClient())
             {
-                return "001";
-            }
-            try
-            {
-                var number = int.Parse(numberStr);
-                if (number > 0 && number < 9)
-                {
-                    return "00" + (number + 1);
-                }
-                else if (number >= 9 && number < 99)
-                {
-                    return "0" + (number + 1);
-                }
-                else
-                {
-                    return "" + (number + 1);
-                }
-            }
-            catch (Exception)
-            {
+                var url = $"{API.API_DOMAIN}{API.GET_CURRENT_BILL_NO_IN_DATE}{date}";
+                string json = await client.GetStringAsync(url);
 
-                throw;
+                return json;
             }
         }
     }

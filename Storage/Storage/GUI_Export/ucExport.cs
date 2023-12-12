@@ -52,11 +52,11 @@ namespace Storage.GUI_Export
 
             grdItemAdds.RowTemplate.Height = 100;
 
-            dataExportItems = ExportItem_DAO.GetExportItems();
+            dataExportItems = await ExportItem_DAO.GetExportItems();
             grdItemEmports.DataSource = dataExportItems;
             dataExportItemDetail = ExportItemDetail_DAO.GetEmportItemDetails();
             grdEmportItemDetails.RowTemplate.Height = 100;
-            if (grdItemEmports.Rows.Count > 0)
+            if (grdItemEmports.Rows.Count > 0 && dataExportItemDetail.Rows.Count > 0 && dataExportItems.Rows.Count > 0)
             {
                 DataView dv = dataExportItemDetail.DefaultView;
                 dv.RowFilter = $"EXPORT_ITEM_ID = '{Guid.Parse(grdItemEmports.Rows[0].Cells[0].Value.ToString())}'";
@@ -64,7 +64,7 @@ namespace Storage.GUI_Export
             }
 
             var date = txtCreateDate.Value.ToString("dd-MM-yyyy").Replace("-", "");
-            var convertString = $"PXK-{date}-{ExportItem_DAO.GetCurrentBillNoInDate(date)}";
+            var convertString = $"PXK-{date}-{await ExportItem_DAO.GetCurrentBillNoInDate(date)}";
             txtBillNo.Text = convertString;
 
             dataWarehouseExport = new DataTable();
@@ -86,11 +86,11 @@ namespace Storage.GUI_Export
             {
                 Id = Guid.NewGuid(),
                 Created = DateTime.Parse(txtCreateDate.Value.ToString("yyyy-MM-dd hh:mm:ss tt")),
-                Bill_No = txtBillNo.Text,
-                Sum_Quantity = sumQty,
+                BillNo = txtBillNo.Text,
+                SumQuantity = sumQty,
             };
 
-            if (ExportItem_DAO.Add(exportItemDto))
+            if (await ExportItem_DAO.Add(exportItemDto))
             {
                 List<ExportItemDetail> lstEmport = new List<ExportItemDetail>();
                 foreach (DataRow item in dataItemAdd.Rows)
@@ -237,10 +237,10 @@ namespace Storage.GUI_Export
             e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
         }
 
-        private void txtCreateDate_ValueChanged(object sender, EventArgs e)
+        private async void txtCreateDate_ValueChanged(object sender, EventArgs e)
         {
             var date = txtCreateDate.Value.ToString("dd-MM-yyyy").Replace("-", "");
-            var convertString = $"PXK-{date}-{ExportItem_DAO.GetCurrentBillNoInDate(date)}";
+            var convertString = $"PXK-{date}-{await ExportItem_DAO.GetCurrentBillNoInDate(date)}";
             txtBillNo.Text = convertString;
         }
 
@@ -359,9 +359,9 @@ namespace Storage.GUI_Export
 
         private void grdItemEmports_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 3 & e.RowIndex >= 0)
+            if (e.ColumnIndex == 5 & e.RowIndex >= 0)
             {
-                if (grdItemEmports.Rows[e.RowIndex].Cells[3].Value != null)
+                if (grdItemEmports.Rows[e.RowIndex].Cells[5].Value != null)
                 {
                     Int64 val = Convert.ToInt64(e.Value.ToString().Replace(",", ""));
                     e.Value = val.ToString("N0");

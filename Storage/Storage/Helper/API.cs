@@ -134,5 +134,10 @@ namespace Storage.Helper
         // Warehouse Detail
         public const string GET_WAREHOUSE_DETAIL = "/WarehouseDetails";
         public const string POST_WAREHOUSE_DETAIL = "/WarehouseDetails";
+
+        // Export Item 
+        public const string GET_EXPORT_ITEM = "/ExportItems";
+        public const string POST_EXPORT_ITEM = "/ExportItems";
+        public const string GET_CURRENT_BILL_NO_IN_DATE = "/ExportItems/get-current-bill-no-in-date/";
     }
 }

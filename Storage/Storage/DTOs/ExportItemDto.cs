@@ -10,8 +10,8 @@ namespace Storage.DTOs
     {
         public Guid Id { get; set; }
         public DateTime Created { get; set; }
-        public string Bill_No { get; set; }
-        public Int64 Sum_Quantity { get; set; }
+        public string BillNo { get; set; }
+        public Int64 SumQuantity { get; set; }
     }
 
     internal class ExportItemDetail
