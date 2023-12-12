@@ -30,9 +30,9 @@ namespace Storage.GUI.Suppliers
             LoadData();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
-            var dto = SupplierDAO.GetSupplier(Id);
+            var dto = await SupplierDAO.GetSupplier(Id);
             if (dto != null)
             {
                 txtCode.Text = dto.Code;
@@ -54,7 +54,7 @@ namespace Storage.GUI.Suppliers
             this.Close();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCusName.Text))
             {
@@ -74,7 +74,7 @@ namespace Storage.GUI.Suppliers
                 Note = txtNote.Text,
             };
 
-            if (SupplierDAO.Update(supplier))
+            if (await SupplierDAO.Update(supplier))
             {
                 this.Close();
             }

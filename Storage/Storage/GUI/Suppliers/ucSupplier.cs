@@ -21,10 +21,10 @@ namespace Storage.GUI.Suppliers
             LoadData();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
-            grdSupplierType.DataSource = SupplierDAO.GetSuppierTypes();
-            data = SupplierDAO.GetSuppiers();
+            grdSupplierType.DataSource = await SupplierDAO.GetSuppierTypes();
+            data = await SupplierDAO.GetSuppiers();
             grdSupplier.DataSource = data;
         }
 

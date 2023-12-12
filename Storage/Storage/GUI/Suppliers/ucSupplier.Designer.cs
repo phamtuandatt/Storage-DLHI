@@ -37,14 +37,6 @@
             this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonGroupBox3 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.grdSupplier = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnuStripSuppliers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuDeleteSupplier = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
@@ -59,6 +51,14 @@
             this.kryptonContextMenuItems1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems();
             this.kryptonContextMenuItems2 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems();
             this.kryptonContextMenuItems3 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -200,71 +200,6 @@
             this.grdSupplier.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdSupplier_CellDoubleClick);
             this.grdSupplier.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.grdSupplier_RowPostPaint);
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Code";
-            this.Column3.HeaderText = "Code";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "NAME_SUPPIER";
-            this.Column4.HeaderText = "Name";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "NAME_COMPANY_SUPPLIER";
-            this.Column5.HeaderText = "Company";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "ADDRESS";
-            this.Column6.HeaderText = "Address";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "PHONE";
-            this.Column7.HeaderText = "Phone";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "EMAIL";
-            this.Column8.HeaderText = "Email";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "NOTE";
-            this.Column9.HeaderText = "Note";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
             // mnuStripSuppliers
             // 
             this.mnuStripSuppliers.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -394,6 +329,71 @@
             this.btnAddSupplierType.Text = "Add Supplier Type";
             this.btnAddSupplierType.Click += new System.EventHandler(this.btnAddSupplierType_Click);
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn3.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Code";
+            this.Column3.HeaderText = "Code";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "NameSuppier";
+            this.Column4.HeaderText = "Name";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "NameCompanySupplier";
+            this.Column5.HeaderText = "Company";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Address";
+            this.Column6.HeaderText = "Address";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "PHONE";
+            this.Column7.HeaderText = "Phone";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "EMAIL";
+            this.Column8.HeaderText = "Email";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "NOTE";
+            this.Column9.HeaderText = "Note";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
             // ucSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -452,6 +452,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnAddSupplierType;
+        private System.Windows.Forms.ContextMenuStrip mnuStripSuppliers;
+        private System.Windows.Forms.ToolStripMenuItem mnuDeleteSupplier;
+        private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems1;
+        private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems2;
+        private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
@@ -460,10 +465,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.ContextMenuStrip mnuStripSuppliers;
-        private System.Windows.Forms.ToolStripMenuItem mnuDeleteSupplier;
-        private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems1;
-        private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems2;
-        private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems3;
     }
 }

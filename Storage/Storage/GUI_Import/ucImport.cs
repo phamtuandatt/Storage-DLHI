@@ -36,8 +36,8 @@ namespace Storage.GUI_Import
             grdItems.DataSource = dataItemAddPO;
             grdItems.RowTemplate.Height = 100;
 
-            cboSupplier.DataSource = SupplierDAO.GetSuppiers();
-            cboSupplier.DisplayMember = "NAME_SUPPIER";
+            cboSupplier.DataSource = await SupplierDAO.GetSuppiers();
+            cboSupplier.DisplayMember = "NameSuppier";
             cboSupplier.ValueMember = "ID";
 
             cboWareHouse.DataSource = await Warehouse_DAO.GetLocationWareHouses();

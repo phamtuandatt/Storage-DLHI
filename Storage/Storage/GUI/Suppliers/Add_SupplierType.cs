@@ -22,7 +22,7 @@ namespace Storage.GUI.Suppliers
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtSupplierType.Text))
             {
@@ -36,7 +36,7 @@ namespace Storage.GUI.Suppliers
                 Name = txtSupplierType.Text,
             };
 
-            if (SupplierDAO.AddSupplierType(supplierTypeDto))
+            if (await SupplierDAO.AddSupplierType(supplierTypeDto))
             {
                 this.Close();
             }

@@ -22,7 +22,7 @@ namespace Storage.GUI.Suppliers
             LoadData();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCode.Text) || string.IsNullOrEmpty(txtCusName.Text))
             {
@@ -41,7 +41,7 @@ namespace Storage.GUI.Suppliers
                 Note = txtNote.Text,
             };
 
-            if (SupplierDAO.Add(supplier))
+            if (await SupplierDAO.Add(supplier))
             {
                 this.Close();
             }
@@ -60,17 +60,17 @@ namespace Storage.GUI.Suppliers
             this.Close();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
-            cboType.DataSource = SupplierDAO.GetSuppierTypes();
+            cboType.DataSource = await SupplierDAO.GetSuppierTypes();
             cboType.DisplayMember = "Name";
             cboType.ValueMember = "ID";
         }
 
-        private void btnGetCode_Click(object sender, EventArgs e)
+        private async void btnGetCode_Click(object sender, EventArgs e)
         {
             string code = cboType.Text;
-            string number = SupplierDAO.GetCurrentCodeSupplier(code.ToUpper().Trim());
+            string number = await SupplierDAO.GetCurrentCodeSupplier(code.ToUpper().Trim());
 
             txtCode.Text = code + number;
         }

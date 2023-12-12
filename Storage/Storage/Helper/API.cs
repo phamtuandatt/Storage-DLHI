@@ -144,5 +144,16 @@ namespace Storage.Helper
         public const string GET_EXPORT_ITEM_DETAIL = "/ExportItemDetails";
         public const string GET_EXPORT_ITEM_DETAIL_FROM_PROC = "/ExportItemDetails/get-export-item-details";
         public const string POST_EXPORT_ITEM_DETAIL = "/ExportItemDetails";
+
+        // Supplier
+        public const string GET_SUPPLIERS = "/Suppliers";
+        public const string GET_SUPPLIER_BY_ID = "/Suppliers/";
+        public const string GET_CURRENT_CODE_SUPPLIER = "/Suppliers/get-code-supplier/";
+        public const string POST_SUPPLIERS = "/Suppliers";
+        public const string PUT_SUPPLIERS = "/Suppliers/";
+
+        // Supplier Type
+        public const string GET_SUPPLIER_TYPES = "/SupplierTypes";
+        public const string POST_SUPPLIER_TYPES = "/SupplierTypes";
     }
 }

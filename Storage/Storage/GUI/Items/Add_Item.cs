@@ -42,9 +42,9 @@ namespace Storage.GUI.Items
             cboType.DisplayMember = "Name";
             cboType.ValueMember = "ID";
 
-            var dtSupplier = SupplierDAO.GetSuppiers();
+            var dtSupplier = await SupplierDAO.GetSuppiers();
             cboSupplier.DataSource = dtSupplier;
-            cboSupplier.DisplayMember = "NAME_SUPPIER";
+            cboSupplier.DisplayMember = "NameSuppier";
             cboSupplier.ValueMember = "ID";
         }
 
