@@ -73,7 +73,7 @@ namespace Storage.GUI_Export
             dataWarehouseExport.Columns.Add("QUANTITY");
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (grdItemAdds.Rows.Count <= 0 || dataItemAdd.Rows.Count <= 0) return;
             Int64 sumQty = 0;
@@ -121,7 +121,7 @@ namespace Storage.GUI_Export
                         lstWarehouseDetails.Add(wareHouse_DetailDto);
                     }
 
-                    if (WarehouseDetail_DAO.UpdateQuantityItemAtWarehouse(lstWarehouseDetails))
+                    if (await WarehouseDetail_DAO.UpdateQuantityItemAtWarehouse(lstWarehouseDetails))
                     {
                         dataItemAdd.Rows.Clear();
                         KryptonMessageBox.Show("Created successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -113,13 +113,9 @@ namespace Storage.DAO
 
             try
             {
-                //data.UpdateDatabase("SELECT *FROM WAREHOUSE_DETAIL", dtWarehouseDetail);
-                //dtWarehouseDetail = data.GetData("SELECT *FROM WAREHOUSE_DETAIL", "WarehouseDetails");
-                //return true;
                 List<WareHouse_DetailDto> data = new List<WareHouse_DetailDto>();
                 data = API.ConvertDataTable<WareHouse_DetailDto>(dtWarehouseDetail);
 
-                var a = JsonConvert.SerializeObject(data);
                 StringContent content = new StringContent(JsonConvert.SerializeObject(data),
                                 Encoding.UTF8, "application/json");
 
@@ -143,17 +139,17 @@ namespace Storage.DAO
             }
         }
 
-        public static bool UpdateQuantityItemAtWarehouse(List<WareHouse_DetailDto> items)
+        public static async Task<bool> UpdateQuantityItemAtWarehouse(List<WareHouse_DetailDto> items)
         {
             foreach (var item in items)
             {
                 if (dtWarehouseDetail.AsEnumerable()
-                                .Any(row => item.WarehouseId == row.Field<Guid>("WAREHOUSE_ID")
-                                && item.ItemId == row.Field<Guid>("ITEM_ID")
+                                .Any(row => item.WarehouseId == row.Field<Guid>("WAREHOUSEID")
+                                && item.ItemId == row.Field<Guid>("ITEMID")
                                 && item.Month == row.Field<int>("MONTH")
                                 && item.Year == row.Field<int>("YEAR")))
                 {
-                    DataRow row = dtWarehouseDetail.Select($"ITEM_ID = '{item.ItemId}' AND WAREHOUSE_ID = '{item.WarehouseId}' AND MONTH = {item.Month} AND YEAR = {item.Year}").FirstOrDefault();
+                    DataRow row = dtWarehouseDetail.Select($"ITEMID = '{item.ItemId}' AND WAREHOUSEID = '{item.WarehouseId}' AND MONTH = {item.Month} AND YEAR = {item.Year}").FirstOrDefault();
                     row["QUANTITY"] = int.Parse(row["QUANTITY"].ToString()) - item.Quantity;
                 }
                 else
@@ -163,6 +159,7 @@ namespace Storage.DAO
                     row[1] = item.ItemId;
                     row[2] = item.Quantity;
                     row[3] = item.Month;
+                    row[4] = item.Year;
 
                     dtWarehouseDetail.Rows.Add(row);
                 }
@@ -170,9 +167,23 @@ namespace Storage.DAO
 
             try
             {
-                data.UpdateDatabase("SELECT *FROM WAREHOUSE_DETAIL", dtWarehouseDetail);
-                dtWarehouseDetail = data.GetData("SELECT *FROM WAREHOUSE_DETAIL", "WarehouseDetails");
-                return true;
+                List<WareHouse_DetailDto> data = new List<WareHouse_DetailDto>();
+                data = API.ConvertDataTable<WareHouse_DetailDto>(dtWarehouseDetail);
+
+                StringContent content = new StringContent(JsonConvert.SerializeObject(data),
+                                Encoding.UTF8, "application/json");
+
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_WAREHOUSE_DETAIL}", content))
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                }
             }
             catch (Exception ex)
             {
