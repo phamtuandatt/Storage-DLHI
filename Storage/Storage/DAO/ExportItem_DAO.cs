@@ -69,14 +69,33 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable dtEmportItems = data.GetData("SELECT *FROM EXPORT_ITEM_DETAIL", "EmportItems");
+        public static DataTable dtEmportItems = GetData();
 
-        public static DataTable GetEmportItemDetails()
+        public static DataTable GetData()
         {
-            return data.GetData("EXEC GET_EMPORT_ITEMS", "EmportDetails");
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_EXPORT_ITEM_DETAIL}";
+                string json = client.GetStringAsync(url).GetAwaiter().GetResult();
+                var res = JsonConvert.DeserializeObject<List<ExportItemDetailResponseDto>>(json).ToList();
+
+                return API.ListToDataTable(res, "EXPORT_ITEM_DETAILS");
+            }
         }
 
-        public static bool AddRange(List<ExportItemDetail> list)
+        public static async Task<DataTable> GetEmportItemDetails()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_EXPORT_ITEM_DETAIL_FROM_PROC}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<ExportItemDetailFromProcResponseDto>>(json).ToList();
+
+                return API.ListToDataTable(res, "EXPORT_ITEM_DETAILS_PROC");
+            }
+        }
+
+        public static async Task<bool> AddRange(List<ExportItemDetail> list)
         {
             foreach (ExportItemDetail item in list)
             {
@@ -88,16 +107,46 @@ namespace Storage.DAO
 
                 dtEmportItems.Rows.Add(row);
             }
+
             try
             {
-                data.UpdateDatabase("SELECT *FROM EXPORT_ITEM_DETAIL", dtEmportItems);
-                return true;
+                List<ExportItemDetail> data = new List<ExportItemDetail>();
+                data = API.ConvertDataTable<ExportItemDetail>(dtEmportItems);
+
+                StringContent content = new StringContent(JsonConvert.SerializeObject(data),
+                                Encoding.UTF8, "application/json");
+
+                var a = JsonConvert.SerializeObject(data);
+
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_EXPORT_ITEM_DETAIL}", content))
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                }
+
             }
             catch (Exception ex)
             {
                 return false;
                 throw;
             }
+
+            //try
+            //{
+            //    data.UpdateDatabase("SELECT *FROM EXPORT_ITEM_DETAIL", dtEmportItems);
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    return false;
+            //    throw;
+            //}
         }
     }
 }

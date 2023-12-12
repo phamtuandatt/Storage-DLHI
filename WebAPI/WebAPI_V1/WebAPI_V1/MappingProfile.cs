@@ -15,6 +15,10 @@ namespace WebAPI_V1
             CreateMap<ExportItem, ExportItemRequestDto>();
 
             CreateMap<ExportItemRequestDto, ExportItem>();
+
+            CreateMap<ExportItemDetail, ExportItemDetailRequestDto>();
+
+            CreateMap<ExportItemDetailRequestDto, ExportItemDetail>();
         }
     }
 }

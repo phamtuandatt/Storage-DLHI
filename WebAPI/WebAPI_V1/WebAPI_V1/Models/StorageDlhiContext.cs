@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using WebAPI_V1.Models.ResponseDto.ExportItemResponseDto;
 using WebAPI_V1.Models.ResponseDto.ItemResponse;
-using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponse;
 using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponseDto;
-using WebAPI_V1.Models.ResponseDto.UnitResponse;
 using WebAPI_V1.Models.ResponseDto.WarehouseResponse;
 
 namespace WebAPI_V1.Models;
@@ -22,17 +21,7 @@ public partial class StorageDlhiContext : DbContext
     public virtual DbSet<ItemResponse> ItemResponses { get; set; }
     public virtual DbSet<ItemByWarehouseResponseDto> ItemByWarehouseResponses{ get; set; }
     public virtual DbSet<InventoriesResponseDto> InventoriesResponse { get; set; }
-
-
-    //public List<ItemWare> ExcuteProc(Guid id)
-    //{
-    //    return this.Set<ItemWare>().FromSqlRaw($"EXEC GET_ITEMS_EXPORT_V2 '{id}'").ToList();
-    //}
-
-    //public class ItemWare
-    //{
-    //    public List<ItemByWarehouseResponseDto> Items { get; set; }
-    //}
+    public virtual DbSet<ExportItemDetailResponseDto> ExportItemDetailResponseDtos { get; set; }
 
     //------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------
@@ -85,6 +74,7 @@ public partial class StorageDlhiContext : DbContext
     {
         modelBuilder.Entity<ItemByWarehouseResponseDto>(k => k.HasNoKey());
         modelBuilder.Entity<InventoriesResponseDto>(k => k.HasNoKey());
+        modelBuilder.Entity<ExportItemDetailResponseDto>(k => k.HasNoKey());
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------

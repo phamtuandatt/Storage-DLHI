@@ -54,7 +54,7 @@ namespace Storage.GUI_Export
 
             dataExportItems = await ExportItem_DAO.GetExportItems();
             grdItemEmports.DataSource = dataExportItems;
-            dataExportItemDetail = ExportItemDetail_DAO.GetEmportItemDetails();
+            dataExportItemDetail = await ExportItemDetail_DAO.GetEmportItemDetails();
             grdEmportItemDetails.RowTemplate.Height = 100;
             if (grdItemEmports.Rows.Count > 0 && dataExportItemDetail.Rows.Count > 0 && dataExportItems.Rows.Count > 0)
             {
@@ -105,7 +105,7 @@ namespace Storage.GUI_Export
                     lstEmport.Add(emportDetailDto);
                 }
 
-                if (ExportItemDetail_DAO.AddRange(lstEmport))
+                if (await ExportItemDetail_DAO.AddRange(lstEmport))
                 {
                     List<WareHouse_DetailDto> lstWarehouseDetails = new List<WareHouse_DetailDto>();
                     foreach (DataRow item in dataWarehouseExport.Rows)

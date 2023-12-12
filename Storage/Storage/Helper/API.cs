@@ -139,5 +139,10 @@ namespace Storage.Helper
         public const string GET_EXPORT_ITEM = "/ExportItems";
         public const string POST_EXPORT_ITEM = "/ExportItems";
         public const string GET_CURRENT_BILL_NO_IN_DATE = "/ExportItems/get-current-bill-no-in-date/";
+
+        // Export Item Detail
+        public const string GET_EXPORT_ITEM_DETAIL = "/ExportItemDetails";
+        public const string GET_EXPORT_ITEM_DETAIL_FROM_PROC = "/ExportItemDetails/get-export-item-details";
+        public const string POST_EXPORT_ITEM_DETAIL = "/ExportItemDetails";
     }
 }
