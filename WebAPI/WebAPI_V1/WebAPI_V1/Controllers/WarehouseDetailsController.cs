@@ -88,34 +88,46 @@ namespace WebAPI_V1.Controllers
         // POST: api/WarehouseDetails
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<WarehouseDetail>> PostWarehouseDetail(List<WarehouseRequestDto> warehouseDetail)
+        public async Task<ActionResult<List<WarehouseDetail>>> PostWarehouseDetail(List<WarehouseRequestDto> warehouseDetail)
         {
             if (_context.WarehouseDetails == null)
             {
                 return Problem("Entity set 'StorageDlhiContext.WarehouseDetails'  is null.");
             }
 
-            var source = _context.WarehouseDetails.ToList();
-            var viewModel = mapper.Map<List<WarehouseDetail>>(warehouseDetail);
-            foreach (var item in viewModel)
-            {
-                if (source.Any(row => item.WarehouseId == row.WarehouseId
-                                && item.ItemId == row.ItemId
-                                && item.Month == row.Month
-                                && item.Year == row.Year))
-                {
-                    _context.Entry(item).State = EntityState.Modified;
-                }
-                else
-                {
-                    _context.WarehouseDetails.Add(item);
-                }
-                
-            }
-            
             try
             {
-                await _context.SaveChangesAsync();
+                var viewModel = mapper.Map<List<WarehouseDetail>>(warehouseDetail);
+                using (var context = _context)
+                {
+                    foreach (var item in viewModel)
+                    {
+                        var oldModel = context.WarehouseDetails.AsNoTracking().FirstOrDefault(a => a.WarehouseId == item.WarehouseId
+                                                                        && a.ItemId == item.ItemId
+                                                                        && a.Year == item.Year
+                                                                        && a.Month == item.Month);
+                        if (oldModel != null)
+                        {
+                            oldModel = mapper.Map<WarehouseDetail>(item);
+
+                            context.Attach(oldModel);
+                            context.Entry(oldModel).State = EntityState.Modified;
+                            //context.Entry(oldModel).State = EntityState.Detached;
+                        }
+                        else
+                        {
+                            context.WarehouseDetails.Add(new WarehouseDetail()
+                            {
+                                WarehouseId = item.WarehouseId,
+                                ItemId = item.ItemId,
+                                Month = item.Month,
+                                Year = item.Year,
+                                Quantity = item.Quantity,
+                            });
+                        }
+                    }
+                    await context.SaveChangesAsync();
+                }
             }
             catch (DbUpdateException)
             {

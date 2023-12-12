@@ -117,7 +117,7 @@ namespace Storage.DAO
                 //dtWarehouseDetail = data.GetData("SELECT *FROM WAREHOUSE_DETAIL", "WarehouseDetails");
                 //return true;
                 List<WareHouse_DetailDto> data = new List<WareHouse_DetailDto>();
-                data = ConvertDataTable<WareHouse_DetailDto>(dtWarehouseDetail);
+                data = API.ConvertDataTable<WareHouse_DetailDto>(dtWarehouseDetail);
 
                 var a = JsonConvert.SerializeObject(data);
                 StringContent content = new StringContent(JsonConvert.SerializeObject(data),
@@ -179,34 +179,6 @@ namespace Storage.DAO
                 return false;
                 throw;
             }
-        }
-
-        private static List<T> ConvertDataTable<T>(DataTable dt)
-        {
-            List<T> data = new List<T>();
-            foreach (DataRow row in dt.Rows)
-            {
-                T item = GetItem<T>(row);
-                data.Add(item);
-            }
-            return data;
-        }
-        private static T GetItem<T>(DataRow dr)
-        {
-            Type temp = typeof(T);
-            T obj = Activator.CreateInstance<T>();
-
-            foreach (DataColumn column in dr.Table.Columns)
-            {
-                foreach (PropertyInfo pro in temp.GetProperties())
-                {
-                    if (pro.Name == column.ColumnName)
-                        pro.SetValue(obj, dr[column.ColumnName], null);
-                    else
-                        continue;
-                }
-            }
-            return obj;
         }
     }
 }
