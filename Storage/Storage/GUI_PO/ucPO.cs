@@ -67,8 +67,8 @@ namespace Storage.GUI_PO
             cboWarehouse.DisplayMember = "Name";
             cboWarehouse.ValueMember = "ID";
 
-            dtPOs = PO_DAO.GetPOs();
-            dtPODetail = PO_Detail_DAO.GetPODetails();
+            dtPOs = await PO_DAO.GetPOs();
+            dtPODetail = await PO_Detail_DAO.GetPODetails();
             grdPOs.DataSource = dtPOs;
             grdPODetail.RowTemplate.Height = 100;
             if (grdPOs.Rows.Count > 0)
@@ -79,7 +79,7 @@ namespace Storage.GUI_PO
                 grdPODetail.DataSource = dv.ToTable();
             }
 
-            dtExportPO_DB = PO_Detail_DAO.GetPOExport();
+            dtExportPO_DB = await PO_Detail_DAO.GetPOExport();
             dtExportPO = new DataTable();
             dtExportPO.Columns.Add("NO");
             dtExportPO.Columns.Add("CODE");
@@ -285,7 +285,7 @@ namespace Storage.GUI_PO
             txtPONo.ReadOnly = false;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (grdItemPODetail.Rows.Count <= 0) return;
 
@@ -310,7 +310,7 @@ namespace Storage.GUI_PO
                 PaymentMethod_Id = Guid.Parse(cboPaymentMethod.SelectedValue.ToString()),
             };
 
-            if (PO_DAO.Add(pODto))
+            if (await  PO_DAO.Add(pODto))
             {
                 List<PO_DetailDto> dtos = new List<PO_DetailDto>();
                 foreach (DataGridViewRow item in grdItemPODetail.Rows)
@@ -326,7 +326,7 @@ namespace Storage.GUI_PO
                     };
                     dtos.Add(pO_DetailDto);
                 }
-                if (PO_Detail_DAO.AddRange(dtos))
+                if (await PO_Detail_DAO.AddRange(dtos))
                 {
                     dtItemPO.Rows.Clear();
                     grdItemPODetail.DataSource = dtItemPO;

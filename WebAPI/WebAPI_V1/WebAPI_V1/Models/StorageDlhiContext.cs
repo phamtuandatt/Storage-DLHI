@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using WebAPI_V1.Models.ResponseDto.ExportItemResponseDto;
 using WebAPI_V1.Models.ResponseDto.ItemResponse;
 using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponseDto;
+using WebAPI_V1.Models.ResponseDto.POResponseDto;
 using WebAPI_V1.Models.ResponseDto.WarehouseResponse;
 
 namespace WebAPI_V1.Models;
@@ -22,6 +23,9 @@ public partial class StorageDlhiContext : DbContext
     public virtual DbSet<ItemByWarehouseResponseDto> ItemByWarehouseResponses{ get; set; }
     public virtual DbSet<InventoriesResponseDto> InventoriesResponse { get; set; }
     public virtual DbSet<ExportItemDetailResponseDto> ExportItemDetailResponseDtos { get; set; }
+    public virtual DbSet<POResponseDto> POResponseDtos { get; set; }
+    public virtual DbSet<PODetailResponseDto> PODetailResponseDtos { get; set; }
+    public virtual DbSet<GetPoExportResponseDto> GetPoExportResponseDtos { get; set; }
 
     //------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------
@@ -75,6 +79,10 @@ public partial class StorageDlhiContext : DbContext
         modelBuilder.Entity<ItemByWarehouseResponseDto>(k => k.HasNoKey());
         modelBuilder.Entity<InventoriesResponseDto>(k => k.HasNoKey());
         modelBuilder.Entity<ExportItemDetailResponseDto>(k => k.HasNoKey());
+        modelBuilder.Entity<POResponseDto>(k => k.HasNoKey());
+        modelBuilder.Entity<PODetailResponseDto>(k => k.HasNoKey());
+        modelBuilder.Entity<GetPoExportResponseDto>(k => k.HasNoKey());
+
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------

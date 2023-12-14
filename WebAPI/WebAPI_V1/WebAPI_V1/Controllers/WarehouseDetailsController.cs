@@ -141,7 +141,7 @@ namespace WebAPI_V1.Controllers
                 }
             }
 
-            return CreatedAtAction("GetWarehouseDetail", new { id = warehouseDetail[0].WarehouseId }, warehouseDetail);
+            return Ok();
         }
 
         // DELETE: api/WarehouseDetails/5

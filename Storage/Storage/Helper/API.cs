@@ -155,5 +155,15 @@ namespace Storage.Helper
         // Supplier Type
         public const string GET_SUPPLIER_TYPES = "/SupplierTypes";
         public const string POST_SUPPLIER_TYPES = "/SupplierTypes";
+
+        // PO
+        public const string GET_POs = "/Poes";
+        public const string POST_POs = "/Poes";
+
+        // PO Detail
+        public const string GET_PO_Detail = "/PoDetails";
+        public const string GET_PO_Detail_By_Proc = "/PoDetails/get-po-detail-by-proc";
+        public const string GET_PO_Export = "/PoDetails/get-po-export";
+        public const string POST_PO_Detail = "/PoDetails";
     }
 }

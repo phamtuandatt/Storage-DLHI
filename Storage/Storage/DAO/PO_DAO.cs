@@ -1,9 +1,16 @@
-﻿using Storage.DataProvider;
+﻿using Newtonsoft.Json;
+using Storage.DataProvider;
 using Storage.DTOs;
+using Storage.Helper;
+using Storage.RequestDto.PORequestDto;
+using Storage.Response;
+using Storage.Response.PODetailResponseDto;
+using Storage.Response.POResponseDto;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,19 +20,44 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetPOs()
+        public static async Task<DataTable> GetPOs()
         {
-            string sql = "EXEC GET_POs";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_POs}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<POResponseDto>>(json).ToList();
 
-            return data.GetData(sql, "POs");
+                return API.ListToDataTable(res, "POs");
+            }
         }
 
-        public static bool Add(PODto dto)
+        public static async Task<bool> Add(PODto dto)
         {
-            string sql = $"SET DATEFORMAT YMD INSERT INTO PO VALUES ('{dto.Id}', '{dto.Created}', '{dto.ExpectedDelivery}', {dto.Total}, " +
-                $" '{dto.LocationWareHouse_Id}', '{dto.PaymentMethod_Id}')";
+            var entity = new PORequestDto()
+            {
+                Id = dto.Id,
+                Created = dto.Created,
+                ExpectedDelivery = dto.ExpectedDelivery,
+                Total = dto.Total,
+                LocationWarehouseId = dto.LocationWareHouse_Id,
+                PaymentMethodId = dto.PaymentMethod_Id
+            };
+            var a = JsonConvert.SerializeObject(entity);
+            StringContent content = new StringContent(JsonConvert.SerializeObject(entity),
+                                Encoding.UTF8, "application/json");
 
-            return data.Insert(sql) > 0;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_POs}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
         public static bool Update(PODto dto)
@@ -48,19 +80,47 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable dtPODetails = data.GetData("SELECT *FROM PO_DETAIL", "PODetails"); 
+        //public static DataTable dtPODetails = data.GetData("SELECT *FROM PO_DETAIL", "PODetails");
 
-        public static DataTable GetPODetails()
+        public static DataTable dtPODetails = GetData();
+
+        public static DataTable GetData()
         {
-            return data.GetData("EXEC GET_PO_DETAIL", "PODetails");
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_PO_Detail}";
+                string json = client.GetStringAsync(url).GetAwaiter().GetResult();
+                var res = JsonConvert.DeserializeObject<List<PODetailReponseDto>>(json).ToList();
+
+                return API.ListToDataTable(res, "PODetailsV1");
+            }
         }
 
-        public static DataTable GetPOExport()
+        public static async Task<DataTable> GetPODetails()
         {
-            return data.GetData("EXEC GET_PO_EXPORT", "ExportPO");
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_PO_Detail_By_Proc}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<PODetailByProcResponseDto>>(json).ToList();
+
+                return API.ListToDataTable(res, "PODetails");
+            }
         }
 
-        public static bool AddRange(List<PO_DetailDto> list)
+        public static async Task<DataTable> GetPOExport()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_PO_Export}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<GetPoExportResponseDto>>(json).ToList();
+
+                return API.ListToDataTable(res, "ExportPO");
+            }
+        }
+
+        public static async Task<bool> AddRange(List<PO_DetailDto> list)
         {
             foreach (PO_DetailDto item in list)
             {
@@ -77,12 +137,28 @@ namespace Storage.DAO
 
             try
             {
-                data.UpdateDatabase("SELECT *FROM PO_DETAIL", dtPODetails);
-                return true;
+                List<PODetailRequestDto> data = new List<PODetailRequestDto>();
+                data = API.ConvertDataTable<PODetailRequestDto>(dtPODetails);
+
+                StringContent content = new StringContent(JsonConvert.SerializeObject(data),
+                                Encoding.UTF8, "application/json");
+
+                var a = JsonConvert.SerializeObject(data);
+
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_PO_Detail}", content))
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                }
             }
             catch (Exception ex)
             {
-
                 return false;
                 throw;
             }
