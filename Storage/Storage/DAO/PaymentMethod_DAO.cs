@@ -1,10 +1,14 @@
 ﻿
+using Newtonsoft.Json;
 using Storage.DataProvider;
 using Storage.DTOs;
+using Storage.Helper;
+using Storage.Response;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,18 +18,36 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetPaymentMethods()
+        public static async Task<DataTable> GetPaymentMethods()
         {
-            string sql = "SELECT *FROM PAYMENT_METHOD";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_PAYMENT_METHOD}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<PaymentMethodDto>>(json).ToList();
 
-            return data.GetData(sql, "PaymentMethods");
+                return API.ListToDataTable(res, "PAYMENT_METHODS");
+            }
         }
 
-        public static bool Add(PaymentMethodDto dto)
+        public static async Task<bool> Add(PaymentMethodDto dto)
         {
-            string sql = $"INSERT INTO PAYMENT_METHOD VALUES ('{dto.Id}', N'{dto.Name}')";
+            StringContent content = new StringContent(JsonConvert.SerializeObject(dto),
+                                Encoding.UTF8, "application/json");
 
-            return data.Insert(sql) > 0;
+            var a = JsonConvert.SerializeObject(dto);
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_PAYMENT_METHOD}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
         public static bool Update(PaymentMethodDto dto)

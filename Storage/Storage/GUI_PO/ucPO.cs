@@ -59,7 +59,7 @@ namespace Storage.GUI_PO
             dtItemPO.Columns.Add("MPRNO");
             dtItemPO.Columns.Add("PONO");
 
-            cboPaymentMethod.DataSource = PaymentMethod_DAO.GetPaymentMethods();
+            cboPaymentMethod.DataSource = await PaymentMethod_DAO.GetPaymentMethods();
             cboPaymentMethod.DisplayMember = "Name";
             cboPaymentMethod.ValueMember = "ID";
 
@@ -239,11 +239,11 @@ namespace Storage.GUI_PO
             }
         }
 
-        private void btnPayment_Click(object sender, EventArgs e)
+        private async void btnPayment_Click(object sender, EventArgs e)
         {
             Add_PaymentMethod paymentMethod = new Add_PaymentMethod();
             paymentMethod.ShowDialog();
-            cboPaymentMethod.DataSource = PaymentMethod_DAO.GetPaymentMethods();
+            cboPaymentMethod.DataSource = await PaymentMethod_DAO.GetPaymentMethods();
             cboPaymentMethod.DisplayMember = "Name";
             cboPaymentMethod.ValueMember = "ID";
         }

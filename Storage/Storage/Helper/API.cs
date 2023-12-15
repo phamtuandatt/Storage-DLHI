@@ -151,6 +151,7 @@ namespace Storage.Helper
         public const string GET_CURRENT_CODE_SUPPLIER = "/Suppliers/get-code-supplier/";
         public const string POST_SUPPLIERS = "/Suppliers";
         public const string PUT_SUPPLIERS = "/Suppliers/";
+        public const string DELETE_SUPPLIER = "/Suppliers/";
 
         // Supplier Type
         public const string GET_SUPPLIER_TYPES = "/SupplierTypes";
@@ -165,5 +166,9 @@ namespace Storage.Helper
         public const string GET_PO_Detail_By_Proc = "/PoDetails/get-po-detail-by-proc";
         public const string GET_PO_Export = "/PoDetails/get-po-export";
         public const string POST_PO_Detail = "/PoDetails";
+
+        // Payment method
+        public const string GET_PAYMENT_METHOD = "/PaymentMethods";
+        public const string POST_PAYMENT_METHOD = "/PaymentMethods";
     }
 }

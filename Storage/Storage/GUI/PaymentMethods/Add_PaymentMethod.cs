@@ -22,7 +22,7 @@ namespace Storage.GUI.PaymentMethods
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtPaymentMethod.Text))
             {
@@ -36,7 +36,7 @@ namespace Storage.GUI.PaymentMethods
                 Name = txtPaymentMethod.Text,
             };
 
-            if (PaymentMethod_DAO.Add(paymentMethod))
+            if (await PaymentMethod_DAO.Add(paymentMethod))
             {
                 this.Close();
             }

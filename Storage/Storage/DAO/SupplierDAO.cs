@@ -149,12 +149,19 @@ namespace Storage.DAO
             }
         }
 
-        public static bool Delete(Guid id)
+        public static async Task<bool> Delete(Guid id)
         {
-            string sql = $"DELETE FROM SUPPLIER WHERE ID = '{id}'";
-
-            //return data.Delete(sql) > 0;
-            return false;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.DeleteAsync($"{API.API_DOMAIN}{API.DELETE_SUPPLIER}{id}"))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
         public static async Task<bool> AddSupplierType(SupplierTypeDto dto)
