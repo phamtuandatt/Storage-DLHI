@@ -49,8 +49,7 @@ namespace WebAPI_V1.Controllers
             return mprExport;
         }
 
-        // PUT: api/MprExports/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPut("UpdateMPR_Export_Status")]
         public async Task<IActionResult> UpdateMPR_Export_Status()
         {
