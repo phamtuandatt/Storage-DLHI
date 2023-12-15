@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using WebAPI_V1.Models.ResponseDto.ExportItemResponseDto;
-using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponseDto;
 using WebAPI_V1.Models.ResponseDto.ItemResponse;
+using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponseDto;
 using WebAPI_V1.Models.ResponseDto.MPRResponseDto;
 using WebAPI_V1.Models.ResponseDto.POResponseDto;
 using WebAPI_V1.Models.ResponseDto.WarehouseResponse;
@@ -56,6 +56,8 @@ public partial class StorageDlhiContext : DbContext
     public virtual DbSet<Mpr> Mprs { get; set; }
 
     public virtual DbSet<MprExport> MprExports { get; set; }
+
+    public virtual DbSet<MprExportDetail> MprExportDetails { get; set; }
 
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
 
@@ -310,25 +312,27 @@ public partial class StorageDlhiContext : DbContext
                 .HasColumnName("CREATED");
             entity.Property(e => e.ItemCount).HasColumnName("ITEM_COUNT");
             entity.Property(e => e.Status).HasColumnName("STATUS");
+        });
 
-            entity.HasMany(d => d.Mprs).WithMany(p => p.MprExports)
-                .UsingEntity<Dictionary<string, object>>(
-                    "MprExportDetail",
-                    r => r.HasOne<Mpr>().WithMany()
-                        .HasForeignKey("MprId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_MPR_EXPORT_DETAIL_MPR"),
-                    l => l.HasOne<MprExport>().WithMany()
-                        .HasForeignKey("MprExportId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_MPR_EXPORT_DETAIL_MPR_EXPORT"),
-                    j =>
-                    {
-                        j.HasKey("MprExportId", "MprId");
-                        j.ToTable("MPR_EXPORT_DETAIL");
-                        j.IndexerProperty<Guid>("MprExportId").HasColumnName("MPR_EXPORT_ID");
-                        j.IndexerProperty<Guid>("MprId").HasColumnName("MPR_ID");
-                    });
+        modelBuilder.Entity<MprExportDetail>(entity =>
+        {
+            entity.HasKey(e => e.MprExportId);
+
+            entity.ToTable("MPR_EXPORT_DETAIL");
+
+            entity.Property(e => e.MprExportId)
+                .ValueGeneratedNever()
+                .HasColumnName("MPR_EXPORT_ID");
+            entity.Property(e => e.MprId).HasColumnName("MPR_ID");
+
+            entity.HasOne(d => d.MprExport).WithOne(p => p.MprExportDetail)
+                .HasForeignKey<MprExportDetail>(d => d.MprExportId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_MPR_EXPORT_DETAIL_MPR_EXPORT");
+
+            entity.HasOne(d => d.Mpr).WithMany(p => p.MprExportDetails)
+                .HasForeignKey(d => d.MprId)
+                .HasConstraintName("FK_MPR_EXPORT_DETAIL_MPR");
         });
 
         modelBuilder.Entity<PaymentMethod>(entity =>
