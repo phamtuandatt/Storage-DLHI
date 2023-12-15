@@ -126,11 +126,27 @@ namespace Storage.DAO
             //return data.Update(sql_Update) > 0;
         }
 
-        public static bool CreateMPR_Export_Detail(MPR_Export_Detail dto)
+        public static async Task<bool> CreateMPR_Export_Detail(MPR_Export_Detail dto)
         {
-            string sql = $"INSERT INTO MPR_EXPORT_DETAIL VALUES ('{dto.MPR_Export_Id}', '{dto.MPR_Id}')";
+            var entity = new MPRExportDetailRequestDto()
+            {
+                MprExportId = dto.MPR_Export_Id,
+                MprId = dto.MPR_Id,
+            };
 
-            return data.Insert(sql) > 0;
+            StringContent content = new StringContent(JsonConvert.SerializeObject(entity),
+                                Encoding.UTF8, "application/json");
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_MPR_DETAIL}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
         public static bool InsertDetailExportIntoCurrentMPRExport(MPR_Export_Detail dto)

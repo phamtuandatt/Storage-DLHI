@@ -11,5 +11,5 @@ public partial class MprExportDetail
 
     public virtual Mpr? Mpr { get; set; }
 
-    public virtual MprExport MprExport { get; set; } = null!;
+    public virtual MprExport? MprExport { get; set; }
 }

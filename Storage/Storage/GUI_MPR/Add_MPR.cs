@@ -71,7 +71,7 @@ namespace Storage.GUI_MPR
                             MPR_Id = makeNewRequestDto.Id,
                         };
 
-                        if (await MPR_DAO.CreateMPR_Export(mPR_Export) && MPR_DAO.CreateMPR_Export_Detail(detail))
+                        if (await MPR_DAO.CreateMPR_Export(mPR_Export) && await MPR_DAO.CreateMPR_Export_Detail(detail))
                         {
                             this.Close();
                         }
@@ -92,7 +92,7 @@ namespace Storage.GUI_MPR
                             MPR_Id = makeNewRequestDto.Id,
                         };
 
-                        if (await MPR_DAO.CreateMPR_Export(mPR_Export) && MPR_DAO.CreateMPR_Export_Detail(detail))
+                        if (await MPR_DAO.CreateMPR_Export(mPR_Export) && await MPR_DAO.CreateMPR_Export_Detail(detail))
                         {
                             this.Close();
                         }
