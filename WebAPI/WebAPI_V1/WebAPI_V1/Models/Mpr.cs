@@ -21,7 +21,7 @@ public partial class Mpr
 
     public long? Quantity { get; set; }
 
-    public virtual Item Item { get; set; } = null!;
+    public virtual Item? Item { get; set; }
 
     public virtual ICollection<MprExport> MprExports { get; set; } = new List<MprExport>();
 }

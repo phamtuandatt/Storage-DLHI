@@ -29,7 +29,7 @@ namespace Storage.GUI_MPR
             this.Item_Id = Item_Id;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMPR.Text) || string.IsNullOrEmpty(txtQuantity.Text))
             {
@@ -49,13 +49,13 @@ namespace Storage.GUI_MPR
                 Quantity = Convert.ToInt64(txtQuantity.Text.Replace(",", "")),
             };
 
-            if (MPR_DAO.Add(makeNewRequestDto))
+            if (await MPR_DAO.Add(makeNewRequestDto))
             {
                 // Add MPR Export
                 if (chkCreateNew.Checked)
                 {
                     //Update Status of MPR_Export have status is 2 become is 1
-                    if (MPR_DAO.UpdateMPR_Export_Status())
+                    if (await MPR_DAO.UpdateMPR_Export_Status())
                     {
                         // Create MPR_Export
                         MPR_Export mPR_Export = new MPR_Export()
@@ -71,7 +71,7 @@ namespace Storage.GUI_MPR
                             MPR_Id = makeNewRequestDto.Id,
                         };
 
-                        if (MPR_DAO.CreateMPR_Export(mPR_Export) && MPR_DAO.CreateMPR_Export_Detail(detail))
+                        if (await MPR_DAO.CreateMPR_Export(mPR_Export) && MPR_DAO.CreateMPR_Export_Detail(detail))
                         {
                             this.Close();
                         }
@@ -92,7 +92,7 @@ namespace Storage.GUI_MPR
                             MPR_Id = makeNewRequestDto.Id,
                         };
 
-                        if (MPR_DAO.CreateMPR_Export(mPR_Export) && MPR_DAO.CreateMPR_Export_Detail(detail))
+                        if (await MPR_DAO.CreateMPR_Export(mPR_Export) && MPR_DAO.CreateMPR_Export_Detail(detail))
                         {
                             this.Close();
                         }

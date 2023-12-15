@@ -80,7 +80,7 @@ namespace Storage.GUI_MPR
             grdAddMPR.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
             // Page MPRs
-            grdMRPs.DataSource = MPR_DAO.GetMPRs();
+            grdMRPs.DataSource = await MPR_DAO.GetMPRs();
             grdMRPs.RowTemplate.Height = 100;
             grdMRPs.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 

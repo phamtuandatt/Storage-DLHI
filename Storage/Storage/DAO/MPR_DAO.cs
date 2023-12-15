@@ -9,6 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Storage.DTOs;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Storage.Helper;
+using Storage.Response;
+using System.Net.Http;
+using Storage.Response.MPRResponseDto;
+using Storage.RequestDto.MPRRequestDto;
 
 namespace Storage.DAO
 {
@@ -16,19 +22,46 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetMPRs()
+        public static async Task<DataTable> GetMPRs()
         {
-            string sql = $"EXEC GET_MPR_LIST";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_MPRs}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<MPRResponseDto>>(json).ToList();
 
-            return data.GetData(sql, "MPRs");
+                return API.ListToDataTable(res, "MPRs");
+            }
         }
 
-        public static bool Add(MakeNewRequestDto dto)
+        public static async Task<bool> Add(MakeNewRequestDto dto)
         {
-            string sql = $"SET DATEFORMAT YMD INSERT INTO MPR VALUES ('{dto.Id}', '{dto.Created}', '{dto.ExpectDelivery}', " +
-                $"'{dto.Note}', '{dto.Item_Id}', '{dto.MPR_No}', '{dto.Usage}', {dto.Quantity})";
+            var entity = new MPRRequestDto()
+            {
+                Id = dto.Id,
+                Created = dto.Created,
+                ExpectedDelivery = dto.ExpectDelivery,
+                Note = dto.Note,
+                ItemId = dto.Item_Id,
+                MprNo = dto.MPR_No,
+                Usage = dto.Usage,
+                Quantity = dto.Quantity,
+            };
 
-            return data.Insert(sql) > 0;
+            StringContent content = new StringContent(JsonConvert.SerializeObject(entity),
+                    Encoding.UTF8, "application/json");
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_MPRs}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
         public static bool Update(MPRDto dto)
@@ -50,23 +83,47 @@ namespace Storage.DAO
         //------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------
 
-        public static bool CreateMPR_Export(MPR_Export dto)
+        public static async Task<bool> CreateMPR_Export(MPR_Export dto)
         {
-            string sql = $"SET DATEFORMAT YMD INSERT INTO MPR_EXPORT VALUES ('{dto.Id}', '{dto.Created}', {dto.ItemCount}, {dto.Status})";
+            StringContent content = new StringContent(JsonConvert.SerializeObject(dto),
+                    Encoding.UTF8, "application/json");
 
-            return data.Insert(sql) > 0;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_MPR_Export}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
-        public static bool UpdateMPR_Export_Status()
+        public static async Task<bool> UpdateMPR_Export_Status()
         {
-            string sql = "SELECT *FROM MPR_EXPORT WHERE STATUS = 2";
-            DataTable dt = data.GetData(sql, "status_2");
-            if (dt.Rows.Count == 0) return false;
-            DataRow row = dt.Rows[0];
+            StringContent content = new StringContent(JsonConvert.SerializeObject(new MPR_Export_Detail()),
+                    Encoding.UTF8, "application/json");
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PutAsync($"{API.API_DOMAIN}{API.UPDATE_MPR_EXPORT_STATUS}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            //string sql = "SELECT *FROM MPR_EXPORT WHERE STATUS = 2";
+            //DataTable dt = data.GetData(sql, "status_2");
+            //if (dt.Rows.Count == 0) return false;
+            //DataRow row = dt.Rows[0];
 
-            string sql_Update = $"UPDATE MPR_EXPORT SET STATUS = 1 WHERE ID = '{Guid.Parse(row["ID"].ToString())}'";
+            //string sql_Update = $"UPDATE MPR_EXPORT SET STATUS = 1 WHERE ID = '{Guid.Parse(row["ID"].ToString())}'";
 
-            return data.Update(sql_Update) > 0;
+            //return data.Update(sql_Update) > 0;
         }
 
         public static bool CreateMPR_Export_Detail(MPR_Export_Detail dto)

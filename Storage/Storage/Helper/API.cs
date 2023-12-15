@@ -170,5 +170,13 @@ namespace Storage.Helper
         // Payment method
         public const string GET_PAYMENT_METHOD = "/PaymentMethods";
         public const string POST_PAYMENT_METHOD = "/PaymentMethods";
+
+        // MPR
+        public const string GET_MPRs = "/Mprs";
+        public const string POST_MPRs = "/Mprs";
+
+        // MPR Export
+        public const string POST_MPR_Export = "/MprExports";
+        public const string UPDATE_MPR_EXPORT_STATUS = "/MprExports/UpdateMPR_Export_Status";
     }
 }

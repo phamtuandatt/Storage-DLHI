@@ -19,15 +19,6 @@ namespace Storage.DTOs
 
     }
 
-//    ID UNIQUEIDENTIFIER NOT NULL,
-//CREATED DATETIME,
-//	EXPECTED_DELIVERY DATETIME,
-//    NOTE NVARCHAR(MAX),
-//	ITEM_ID UNIQUEIDENTIFIER NOT NULL,
-//    MPR_NO NVARCHAR(100),
-//	USAGE NVARCHAR(MAX),
-//	QUANTITY INT,
-
     internal class MPRDto
     {
         public Guid Id { get; set; }
