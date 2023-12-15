@@ -107,7 +107,7 @@ namespace Storage.GUI_MPR
                         MPR_Id = makeNewRequestDto.Id,
                     };
 
-                    if (MPR_DAO.InsertDetailExportIntoCurrentMPRExport(detail))
+                    if (await MPR_DAO.InsertDetailExportIntoCurrentMPRExport(detail))
                     {
                         this.Close();
                     }

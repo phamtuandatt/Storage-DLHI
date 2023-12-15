@@ -181,5 +181,6 @@ namespace Storage.Helper
 
         // MPR Export
         public const string POST_MPR_DETAIL = "/MprExportDetails";
+        public const string POST_MPR_EXPORT_DETAIL = "/MprExportDetails/InsertDetailExportIntoCurrentMPRExport";
     }
 }

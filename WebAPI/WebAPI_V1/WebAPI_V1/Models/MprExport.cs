@@ -13,5 +13,5 @@ public partial class MprExport
 
     public int? Status { get; set; }
 
-    public virtual MprExportDetail? MprExportDetail { get; set; }
+    public virtual ICollection<MprExportDetail> MprExportDetails { get; set; } = new List<MprExportDetail>();
 }

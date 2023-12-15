@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using WebAPI_V1.Models.ResponseDto.ExportItemResponseDto;
-using WebAPI_V1.Models.ResponseDto.ItemResponse;
 using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponseDto;
+using WebAPI_V1.Models.ResponseDto.ItemResponse;
 using WebAPI_V1.Models.ResponseDto.MPRResponseDto;
 using WebAPI_V1.Models.ResponseDto.POResponseDto;
 using WebAPI_V1.Models.ResponseDto.WarehouseResponse;
@@ -76,6 +76,10 @@ public partial class StorageDlhiContext : DbContext
     public virtual DbSet<Warehouse> Warehouses { get; set; }
 
     public virtual DbSet<WarehouseDetail> WarehouseDetails { get; set; }
+
+//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//        => optionsBuilder.UseSqlServer("server=PC-DATPHAM\\MSSQLSERVER01;database=STORAGE_DLHI;Integrated Security = true;uid=sa;pwd=Aa123456@;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -316,22 +320,23 @@ public partial class StorageDlhiContext : DbContext
 
         modelBuilder.Entity<MprExportDetail>(entity =>
         {
-            entity.HasKey(e => e.MprExportId);
+            entity.HasKey(e => new { e.MprExportId, e.MprId, e.Sl });
 
             entity.ToTable("MPR_EXPORT_DETAIL");
 
-            entity.Property(e => e.MprExportId)
-                .ValueGeneratedNever()
-                .HasColumnName("MPR_EXPORT_ID");
+            entity.Property(e => e.MprExportId).HasColumnName("MPR_EXPORT_ID");
             entity.Property(e => e.MprId).HasColumnName("MPR_ID");
+            entity.Property(e => e.Sl).HasColumnName("SL");
+            entity.Property(e => e.SlV2).HasColumnName("SL_V2");
 
-            entity.HasOne(d => d.MprExport).WithOne(p => p.MprExportDetail)
-                .HasForeignKey<MprExportDetail>(d => d.MprExportId)
+            entity.HasOne(d => d.MprExport).WithMany(p => p.MprExportDetails)
+                .HasForeignKey(d => d.MprExportId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_MPR_EXPORT_DETAIL_MPR_EXPORT");
 
             entity.HasOne(d => d.Mpr).WithMany(p => p.MprExportDetails)
                 .HasForeignKey(d => d.MprId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_MPR_EXPORT_DETAIL_MPR");
         });
 

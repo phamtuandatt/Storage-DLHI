@@ -24,10 +24,10 @@ namespace WebAPI_V1.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MprExportDetail>>> GetMprExportDetails()
         {
-          if (_context.MprExportDetails == null)
-          {
-              return NotFound();
-          }
+            if (_context.MprExportDetails == null)
+            {
+                return NotFound();
+            }
             return await _context.MprExportDetails.ToListAsync();
         }
 
@@ -35,10 +35,10 @@ namespace WebAPI_V1.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MprExportDetail>> GetMprExportDetail(Guid id)
         {
-          if (_context.MprExportDetails == null)
-          {
-              return NotFound();
-          }
+            if (_context.MprExportDetails == null)
+            {
+                return NotFound();
+            }
             var mprExportDetail = await _context.MprExportDetails.FindAsync(id);
 
             if (mprExportDetail == null)
@@ -85,10 +85,10 @@ namespace WebAPI_V1.Controllers
         [HttpPost]
         public async Task<ActionResult<MprExportDetail>> PostMprExportDetail(MprExportDetail mprExportDetail)
         {
-          if (_context.MprExportDetails == null)
-          {
-              return Problem("Entity set 'StorageDlhiContext.MprExportDetails'  is null.");
-          }
+            if (_context.MprExportDetails == null)
+            {
+                return Problem("Entity set 'StorageDlhiContext.MprExportDetails'  is null.");
+            }
             _context.MprExportDetails.Add(mprExportDetail);
             try
             {
@@ -107,6 +107,43 @@ namespace WebAPI_V1.Controllers
             }
 
             return CreatedAtAction("GetMprExportDetail", new { id = mprExportDetail.MprExportId }, mprExportDetail);
+        }
+
+        [HttpPost("InsertDetailExportIntoCurrentMPRExport")]
+        public async Task<ActionResult<MprExportDetail>> InsertDetailExportIntoCurrentMPRExport(MprExportDetail mprExportDetail)
+        {
+            if (_context.MprExportDetails == null)
+            {
+                return Problem("Entity set 'StorageDlhiContext.MprExportDetails'  is null.");
+            }
+
+            try
+            {
+                var mprExport = _context.MprExports.FirstOrDefault(st => st.Status == 2);
+
+                mprExportDetail.MprExportId = mprExport!.Id;
+                _context.MprExportDetails.Add(mprExportDetail);
+                await _context.SaveChangesAsync();
+
+                mprExport.ItemCount = _context.MprExports.Count(it => it.Id == mprExport.Id);
+                _context.Attach(mprExport);
+                _context.Entry(mprExport).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+
+            }
+            catch (DbUpdateException)
+            {
+                if (MprExportDetailExists(mprExportDetail.MprExportId))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok();
         }
 
         // DELETE: api/MprExportDetails/5

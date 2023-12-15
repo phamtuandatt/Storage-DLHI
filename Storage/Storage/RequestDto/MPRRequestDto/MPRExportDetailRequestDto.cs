@@ -10,6 +10,10 @@ namespace Storage.RequestDto.MPRRequestDto
     {
         public Guid MprExportId { get; set; }
 
-        public Guid? MprId { get; set; }
+        public Guid MprId { get; set; }
+
+        public Guid Sl { get; set; }
+
+        public string SlV2 { get; set; }
     }
 }

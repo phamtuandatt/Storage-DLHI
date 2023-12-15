@@ -15,6 +15,7 @@ using Storage.Response;
 using System.Net.Http;
 using Storage.Response.MPRResponseDto;
 using Storage.RequestDto.MPRRequestDto;
+using System.CodeDom;
 
 namespace Storage.DAO
 {
@@ -50,6 +51,8 @@ namespace Storage.DAO
 
             StringContent content = new StringContent(JsonConvert.SerializeObject(entity),
                     Encoding.UTF8, "application/json");
+
+            var a = JsonConvert.SerializeObject(entity);
 
             using (HttpClient httpClient = new HttpClient())
             {
@@ -132,6 +135,8 @@ namespace Storage.DAO
             {
                 MprExportId = dto.MPR_Export_Id,
                 MprId = dto.MPR_Id,
+                Sl = Guid.NewGuid(),
+                SlV2 = "",
             };
 
             StringContent content = new StringContent(JsonConvert.SerializeObject(entity),
@@ -149,20 +154,43 @@ namespace Storage.DAO
             }
         }
 
-        public static bool InsertDetailExportIntoCurrentMPRExport(MPR_Export_Detail dto)
+        public static async Task<bool> InsertDetailExportIntoCurrentMPRExport(MPR_Export_Detail dto)
         {
-            string sql = "SELECT *FROM MPR_EXPORT WHERE STATUS = 2";
-            DataTable dt = data.GetData(sql, "status_2");
-            if (dt.Rows.Count == 0) { return false; }
-            DataRow row = dt.Rows[0];
+            //string sql = "SELECT *FROM MPR_EXPORT WHERE STATUS = 2";
+            //DataTable dt = data.GetData(sql, "status_2");
+            //if (dt.Rows.Count == 0) { return false; }
+            //DataRow row = dt.Rows[0];
 
-            string sql_Insert = $"INSERT INTO MPR_EXPORT_DETAIL VALUES ('{Guid.Parse(row["ID"].ToString())}', '{dto.MPR_Id}')";
+            //string sql_Insert = $"INSERT INTO MPR_EXPORT_DETAIL VALUES ('{Guid.Parse(row["ID"].ToString())}', '{dto.MPR_Id}')";
 
-            if (data.Insert(sql_Insert) > 0)
+            //if (data.Insert(sql_Insert) > 0)
+            //{
+            //    return data.Update($"EXEC UPDATE_ITEM_COUNT_MPR_EXPORT '{Guid.Parse(row["ID"].ToString())}'") > 0;
+            //}
+            //return false;
+
+            var entity = new MPRExportDetailRequestDto()
             {
-                return data.Update($"EXEC UPDATE_ITEM_COUNT_MPR_EXPORT '{Guid.Parse(row["ID"].ToString())}'") > 0;
+                MprExportId = dto.MPR_Export_Id,
+                MprId = dto.MPR_Id,
+                Sl = Guid.NewGuid(),
+                SlV2 = "",
+            };
+
+            StringContent content = new StringContent(JsonConvert.SerializeObject(entity),
+                                Encoding.UTF8, "application/json");
+            var a = JsonConvert.SerializeObject(entity);
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PostAsync($"{API.API_DOMAIN}{API.POST_MPR_EXPORT_DETAIL}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
             }
-            return false;
         }
 
         public static DataTable GetMPRExports()
