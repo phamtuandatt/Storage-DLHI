@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using WebAPI_V1.Models.ResponseDto.ExportItemResponseDto;
-using WebAPI_V1.Models.ResponseDto.ItemResponse;
 using WebAPI_V1.Models.ResponseDto.ItemResponse.ItemResponseDto;
+using WebAPI_V1.Models.ResponseDto.ItemResponse;
 using WebAPI_V1.Models.ResponseDto.MPRResponseDto;
 using WebAPI_V1.Models.ResponseDto.POResponseDto;
 using WebAPI_V1.Models.ResponseDto.WarehouseResponse;
@@ -21,7 +22,7 @@ public partial class StorageDlhiContext : DbContext
     }
 
     public virtual DbSet<ItemResponse> ItemResponses { get; set; }
-    public virtual DbSet<ItemByWarehouseResponseDto> ItemByWarehouseResponses{ get; set; }
+    public virtual DbSet<ItemByWarehouseResponseDto> ItemByWarehouseResponses { get; set; }
     public virtual DbSet<InventoriesResponseDto> InventoriesResponse { get; set; }
     public virtual DbSet<ExportItemDetailResponseDto> ExportItemDetailResponseDtos { get; set; }
     public virtual DbSet<POResponseDto> POResponseDtos { get; set; }
@@ -33,6 +34,9 @@ public partial class StorageDlhiContext : DbContext
     //------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------
+
+    public virtual DbSet<AuditLog> AuditLogs { get; set; }
+
     public virtual DbSet<ExportItem> ExportItems { get; set; }
 
     public virtual DbSet<ExportItemDetail> ExportItemDetails { get; set; }
@@ -71,11 +75,6 @@ public partial class StorageDlhiContext : DbContext
 
     public virtual DbSet<WarehouseDetail> WarehouseDetails { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<ItemByWarehouseResponseDto>(k => k.HasNoKey());
@@ -90,6 +89,22 @@ public partial class StorageDlhiContext : DbContext
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------
+
+        modelBuilder.Entity<AuditLog>(entity =>
+        {
+            entity.HasKey(e => e.LogId).HasName("PK__AuditLog__5E5499A8A3ED719C");
+
+            entity.ToTable("AuditLog");
+
+            entity.Property(e => e.LogId).HasColumnName("LogID");
+            entity.Property(e => e.LogDateTime)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Operation).HasMaxLength(10);
+            entity.Property(e => e.RecordId).HasColumnName("RecordID");
+            entity.Property(e => e.TableName).HasMaxLength(255);
+        });
+
         modelBuilder.Entity<ExportItem>(entity =>
         {
             entity.ToTable("EXPORT_ITEM");
