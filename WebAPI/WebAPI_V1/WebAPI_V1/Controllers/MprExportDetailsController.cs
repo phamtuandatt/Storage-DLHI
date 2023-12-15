@@ -31,22 +31,32 @@ namespace WebAPI_V1.Controllers
             return await _context.MprExportDetails.ToListAsync();
         }
 
-        // GET: api/MprExportDetails/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<MprExportDetail>> GetMprExportDetail(Guid id)
+        [HttpGet("GetMprExportDetailsByProc")]
+        public async Task<ActionResult<MprExportDetail>> GetMprExportDetailsByProc()
         {
-            if (_context.MprExportDetails == null)
+            try
             {
-                return NotFound();
+                var courseList = await _context.MPRExportDetailResponseDtos.FromSqlRaw($"EXEC GET_MPR_EXPORT_DETAILS").ToListAsync();
+                return Ok(courseList);
             }
-            var mprExportDetail = await _context.MprExportDetails.FindAsync(id);
-
-            if (mprExportDetail == null)
+            catch (Exception)
             {
-                return NotFound();
+                return BadRequest();
             }
+        }
 
-            return mprExportDetail;
+        [HttpGet("GetMprExportExcel")]
+        public async Task<ActionResult<MprExportDetail>> GetMprExportExcel()
+        {
+            try
+            {
+                var courseList = await _context.MRPExportExcelResponseDtos.FromSqlRaw($"GET_MPR_EXPORT_EXCEL").ToListAsync();
+                return Ok(courseList);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
 
         // PUT: api/MprExportDetails/5

@@ -193,11 +193,16 @@ namespace Storage.DAO
             }
         }
 
-        public static DataTable GetMPRExports()
+        public static async Task<DataTable> GetMPRExports()
         {
-            string sql = "SELECT *FROM MPR_EXPORT";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_MPR_Export}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<MPR_Export>>(json).ToList();
 
-            return data.GetData(sql, "MPRExports");
+                return API.ListToDataTable(res, "MPRss");
+            }
         }
 
         public static DataTable GetMPRExportDetail(Guid Id)
@@ -207,23 +212,44 @@ namespace Storage.DAO
             return data.GetData(sql, "MPRExportDetail");
         }
 
-        public static DataTable GetMPRExportDetails()
+        public static async Task<DataTable> GetMPRExportDetails()
         {
-            string sql = "EXEC GET_MPR_EXPORT_DETAILS";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_MPR_Export_Detail}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<MRPExportDetailResponseDto>>(json).ToList();
 
-            return data.GetData(sql, "MPRExportDetails");
+                return API.ListToDataTable(res, "MPRExportDetails");
+            }
         }
 
-        public static DataTable GetMPRExportExcel()
+        public static async Task<DataTable> GetMPRExportExcel()
         {
-            string sql = "EXEC GET_MPR_EXPORT_EXCEL";
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_MPR_Export_Excel}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<MRPExportExcelResponseDto>>(json).ToList();
 
-            return data.GetData(sql, "Export Data");
+                return API.ListToDataTable(res, "MPRExportDetails");
+            }
         }
 
-        public static bool UpdateStatusExportExcel(Guid id)
+        public static async Task<bool> UpdateStatusExportExcel(Guid id)
         {
-            return data.Update($"UPDATE MPR_EXPORT SET STATUS = 0 WHERE ID = '{id}'") > 0;
+            StringContent content = new StringContent("", Encoding.UTF8, "application/json");
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.PutAsync($"{API.API_DOMAIN}{API.PUT_MPR_Export}{id}", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
     }
 }

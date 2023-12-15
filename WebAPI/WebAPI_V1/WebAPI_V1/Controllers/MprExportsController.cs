@@ -81,6 +81,37 @@ namespace WebAPI_V1.Controllers
             return NoContent();
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateStatusExportExcel(Guid id)
+        {
+            var mprExport = _context.MprExports.FirstOrDefault(st => st.Id == id);
+
+            if (mprExport == null)
+            {
+                return BadRequest();
+            }
+            mprExport.Status = 0;
+            _context.Entry(mprExport).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MprExportExists(mprExport.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         [HttpPost]
         public async Task<ActionResult<MprExport>> PostMprExport(MprExport mprExport)
         {

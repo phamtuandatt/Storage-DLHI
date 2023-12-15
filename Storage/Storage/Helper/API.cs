@@ -176,10 +176,14 @@ namespace Storage.Helper
         public const string POST_MPRs = "/Mprs";
 
         // MPR Export
+        public const string GET_MPR_Export = "/MprExports";
         public const string POST_MPR_Export = "/MprExports";
+        public const string PUT_MPR_Export = "/MprExports/";
         public const string UPDATE_MPR_EXPORT_STATUS = "/MprExports/UpdateMPR_Export_Status";
 
-        // MPR Export
+        // MPR Export Detail
+        public const string GET_MPR_Export_Detail = "/MprExportDetails/GetMprExportDetailsByProc";
+        public const string GET_MPR_Export_Excel = "/MprExportDetails/GetMprExportExcel";
         public const string POST_MPR_DETAIL = "/MprExportDetails";
         public const string POST_MPR_EXPORT_DETAIL = "/MprExportDetails/InsertDetailExportIntoCurrentMPRExport";
     }

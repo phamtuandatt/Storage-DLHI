@@ -33,7 +33,53 @@ namespace Storage.GUI_MPR
         {
             InitializeComponent();
             LoadData();
-            dataExportExcel_DB = MPR_DAO.GetMPRExportExcel();
+        }
+
+        public async void LoadData()
+        {
+            data = await Item_DAO.GetItemsAsync();
+            dataMPRExportDetail = await MPR_DAO.GetMPRExportDetails();
+
+            // Page add MPR
+            grdAddMPR.DataSource = data;
+            grdAddMPR.RowTemplate.Height = 100;
+            grdAddMPR.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+            // Page MPRs
+            grdMRPs.DataSource = await MPR_DAO.GetMPRs();
+            grdMRPs.RowTemplate.Height = 100;
+            grdMRPs.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+            // Page MPRExport
+            grdMPRExport.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            DataTable dtMPRExport = new DataTable();
+            dtMPRExport.Columns.Add("ID");
+            dtMPRExport.Columns.Add("CREATED");
+            dtMPRExport.Columns.Add("ITEM_COUNT");
+            dtMPRExport.Columns.Add("STATUS");
+
+            var dtt = await MPR_DAO.GetMPRExports();
+            foreach (DataRow item in dtt.Rows)
+            {
+                DataRow r = dtMPRExport.NewRow();
+                r["ID"] = item["ID"];
+                r["CREATED"] = item["CREATED"];
+                r["ITEM_COUNT"] = item["ITEMCOUNT"];
+                r["STATUS"] = int.Parse(item["STATUS"].ToString()) == 0 ? "Exported" : "Not exported";
+                dtMPRExport.Rows.Add(r);
+            }
+            grdMPRExport.DataSource = dtMPRExport;
+            if (grdMPRExport.Rows.Count > 0)
+            {
+                grdMPRExport.Rows[0].Selected = true;
+                DataView dv = dataMPRExportDetail.DefaultView;
+                dv.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[0].Cells[0].Value.ToString())}'";
+                grdMPRExportDetail.DataSource = dv.ToTable();
+
+                grdMPRExportDetail.RowTemplate.Height = 100;
+            }
+
+            dataExportExcel_DB = await MPR_DAO.GetMPRExportExcel();
             dataExportExcel = new DataTable();
             dataExportExcel.Columns.Add("NO");
             dataExportExcel.Columns.Add("Code");
@@ -61,55 +107,11 @@ namespace Storage.GUI_MPR
                     row[5] = item.Field<byte[]>("PICTURE");
                     row[6] = item.Field<string>("USAGE");
                     row[7] = "";
-                    row[8] = Int64.Parse(item.Field<Int64>("QUANTITY").ToString().Replace(",",""));
+                    row[8] = Int64.Parse(item.Field<Int64>("QUANTITY").ToString().Replace(",", ""));
 
                     i++;
                     dataExportExcel.Rows.Add(row);
                 }
-            }
-        }
-
-        public async void LoadData()
-        {
-            data = await Item_DAO.GetItemsAsync();
-            dataMPRExportDetail = MPR_DAO.GetMPRExportDetails();
-
-            // Page add MPR
-            grdAddMPR.DataSource = data;
-            grdAddMPR.RowTemplate.Height = 100;
-            grdAddMPR.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
-            // Page MPRs
-            grdMRPs.DataSource = await MPR_DAO.GetMPRs();
-            grdMRPs.RowTemplate.Height = 100;
-            grdMRPs.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
-            // Page MPRExport
-            grdMPRExport.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            DataTable dtMPRExport = new DataTable();
-            dtMPRExport.Columns.Add("ID");
-            dtMPRExport.Columns.Add("CREATED");
-            dtMPRExport.Columns.Add("ITEM_COUNT");
-            dtMPRExport.Columns.Add("STATUS");
-
-            foreach (DataRow item in MPR_DAO.GetMPRExports().Rows)
-            {
-                DataRow r = dtMPRExport.NewRow();
-                r["ID"] = item["ID"];
-                r["CREATED"] = item["CREATED"];
-                r["ITEM_COUNT"] = item["ITEM_COUNT"];
-                r["STATUS"] = int.Parse(item["STATUS"].ToString()) == 0 ? "Exported" : "Not exported";
-                dtMPRExport.Rows.Add(r);
-            }
-            grdMPRExport.DataSource = dtMPRExport;
-            if (grdMPRExport.Rows.Count > 0)
-            {
-                grdMPRExport.Rows[0].Selected = true;
-                DataView dv = dataMPRExportDetail.DefaultView;
-                dv.RowFilter = $"MPR_EXPORT_ID = '{Guid.Parse(grdMPRExport.Rows[0].Cells[0].Value.ToString())}'";
-                grdMPRExportDetail.DataSource = dv.ToTable();
-
-                grdMPRExportDetail.RowTemplate.Height = 100;
             }
         }
 
@@ -253,7 +255,7 @@ namespace Storage.GUI_MPR
             LoadData();
         }
 
-        private void btnExportExcel_Click(object sender, EventArgs e)
+        private async void btnExportExcel_Click(object sender, EventArgs e)
         {
             if (grdMPRExport.Rows.Count > 0 && grdMPRExportDetail.Rows.Count > 0)
             {
@@ -384,7 +386,7 @@ namespace Storage.GUI_MPR
                         package.SaveAs(new FileInfo(path));
 
                         int rsl = grdMPRExport.CurrentRow.Index;
-                        bool ex = MPR_DAO.UpdateStatusExportExcel(Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString()));
+                        bool ex = await MPR_DAO.UpdateStatusExportExcel(Guid.Parse(grdMPRExport.Rows[rsl].Cells[0].Value.ToString()));
 
                         KryptonMessageBox.Show("Export successfully !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

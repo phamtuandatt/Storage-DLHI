@@ -29,6 +29,8 @@ public partial class StorageDlhiContext : DbContext
     public virtual DbSet<PODetailResponseDto> PODetailResponseDtos { get; set; }
     public virtual DbSet<GetPoExportResponseDto> GetPoExportResponseDtos { get; set; }
     public virtual DbSet<MPRResponseDto> MPRResponseDtos { get; set; }
+    public virtual DbSet<MPRExportDetailResponseDto> MPRExportDetailResponseDtos { get; set; }
+    public virtual DbSet<MRPExportExcelResponseDto> MRPExportExcelResponseDtos { get; set; }
 
     //------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------
@@ -90,6 +92,8 @@ public partial class StorageDlhiContext : DbContext
         modelBuilder.Entity<PODetailResponseDto>(k => k.HasNoKey());
         modelBuilder.Entity<GetPoExportResponseDto>(k => k.HasNoKey());
         modelBuilder.Entity<MPRResponseDto>(k => k.HasNoKey());
+        modelBuilder.Entity<MPRExportDetailResponseDto>(k => k.HasNoKey());
+        modelBuilder.Entity<MRPExportExcelResponseDto>(k => k.HasNoKey());
 
         //------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------
