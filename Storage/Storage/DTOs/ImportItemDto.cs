@@ -11,9 +11,9 @@ namespace Storage.DTOs
         public Guid Id { get; set; } 
         public DateTime Created { get; set; }
         public string Bill_No { get; set; }
-        public Int64 SumQuantity { get; set;  }    
-        public Int64 SumPrice { get; set; }  
-        public Int64 Total { get; set; }
+        public Int64? SumQuantity { get; set;  }    
+        public Int64? SumPrice { get; set; }  
+        public Int64? Total { get; set; }
     }
 
     internal class ImportItemDetailDto

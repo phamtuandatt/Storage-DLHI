@@ -1,9 +1,14 @@
-﻿using Storage.DataProvider;
+﻿using Newtonsoft.Json;
+using Storage.DataProvider;
 using Storage.DTOs;
+using Storage.Helper;
+using Storage.Response;
+using Storage.Response.ImportItemDto;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +19,16 @@ namespace Storage.DAO
     {
         public static SQLServerProvider data = new SQLServerProvider();
 
-        public static DataTable GetImportItems()
+        public static async Task<DataTable> GetImportItems()
         {
-            return data.GetData("SELECT *FROM IMPORT_ITEM", "ImportItems");
+            using (HttpClient client = new HttpClient())
+            {
+                var url = $"{API.API_DOMAIN}{API.GET_IMPORT_ITEMS}";
+                string json = await client.GetStringAsync(url);
+                var res = JsonConvert.DeserializeObject<List<ImportItemResponseDto>>(json).ToList();
+
+                return API.ListToDataTable(res, "ImportItems");
+            }
         }
 
         public static bool Add(ImportItemDto ex)

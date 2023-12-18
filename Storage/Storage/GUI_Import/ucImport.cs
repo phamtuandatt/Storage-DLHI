@@ -59,7 +59,7 @@ namespace Storage.GUI_Import
             var convertString = $"PNK-{date}-{ImportItem_DAO.GetCurrentBillNoInDate(date)}";
             txtBillNo.Text = convertString;
 
-            dataImportItems = ImportItem_DAO.GetImportItems();
+            dataImportItems = await ImportItem_DAO.GetImportItems();
             grdItemImports.DataSource = dataImportItems;
             dataImportItemDetails = ImportItemDetailDAO.GetImportItemDetails();
             grdImportItemDetails.RowTemplate.Height = 100;
